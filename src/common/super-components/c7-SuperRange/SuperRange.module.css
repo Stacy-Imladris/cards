@@ -1,0 +1,17 @@
+input[type="range"]{
+    width: 300px;
+}
+
+input[type=range].range::-webkit-slider-runnable-track {
+    height: 0.9em;
+    border-radius: 0.5em;
+    background: #4CAF50;
+    box-shadow: 1px 1px 5px #000000;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    pointer-events: all;
+    -webkit-appearance: none;
+    border-radius: 50%;
+    box-shadow: 1px 1px 2px #000000;
+}

@@ -1,0 +1,14 @@
+.editableSpan {
+    display: inline-block;
+    margin: 2px 0 2px 10px;
+    padding-top: 10px;
+    height: 30px;
+    width: 220px;
+    outline: none;
+    color: #077517;
+    text-align: left;
+    font-size: 22px;
+    font-family: "Times New Roman";
+    border: 0;
+    border-bottom: 2px solid #077517;
+}

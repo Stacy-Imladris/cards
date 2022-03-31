@@ -1,0 +1,11 @@
+.checkbox {
+    width: 20px;
+    height: 20px;
+    vertical-align: top;
+    margin: 5px;
+    box-shadow: inset 0px 1px 1px #4CAF50, 0px 1px 3px rgba(7,111,23,0.5);
+}
+
+.spanClassName {
+
+}

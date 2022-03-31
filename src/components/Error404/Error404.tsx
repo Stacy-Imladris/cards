@@ -3,7 +3,7 @@ import s from './Error404.module.css'
 import t from '../../common/styles/Themes.module.css'
 import {NavLink} from 'react-router-dom';
 import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton';
-import {PATH} from '../../App';
+import {PATH} from '../../app/App';
 import {useAppSelector} from '../../bll/store';
 
 export const Error404 = () => {

@@ -1,7 +1,7 @@
 import {NavLink} from 'react-router-dom';
 import React from 'react';
-import {PATH} from '../../app/App';
 import s from './Header.module.css';
+import {PATH} from '../../app/AllRoutes';
 
 export const Header = () => {
     return (

@@ -6,16 +6,17 @@ import SuperInputText from '../../common/super-components/c1-SuperInputText/Supe
 import SuperEditableSpan from '../../common/super-components/c4-SuperEditableSpan/SuperEditableSpan';
 import SuperSelect from '../../common/super-components/c5-SuperSelect/SuperSelect';
 import SuperRadio from '../../common/super-components/c6-SuperRadio/SuperRadio';
-import {useAppDispatch, useAppSelector} from '../../bll/store';
+import {useAppSelector} from '../../bll/store';
 import {themeActions, ThemeType} from '../../bll/themeReducer';
 import t from '../../common/styles/Themes.module.css';
 import SuperRange from '../../common/super-components/c7-SuperRange/SuperRange';
 import {SuperDoubleRange} from '../../common/super-components/c8-SuperDoubleRange/SuperDoubleRange';
 import {AlternativeSuperDoubleRange} from '../../common/super-components/c8-SuperDoubleRange/AlternativeSuperDoubleRange';
+import {useDispatch} from 'react-redux';
 
 export const Test = () => {
     const theme = useAppSelector(state => state.theme.theme)
-    const dispatch = useAppDispatch()
+    const dispatch = useDispatch()
 
     const [text, setText] = useState<string>('')
     const error = text ? '' : 'error'

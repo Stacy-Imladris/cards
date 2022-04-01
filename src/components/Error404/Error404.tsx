@@ -11,10 +11,10 @@ export const Error404 = () => {
 
     return (
         <div className={`${s.container} ${t[theme]} ${t[theme + '-text']}`}>
-            <div className={s.error}>404</div>
-            <div className={s.text}>Page not found!</div>
-            <div className={s.textNav}>Maybe, you want to see your <NavLink to={PATH.PROFILE} className={s.nav}>Profile</NavLink> page?</div>
-            <div>In case you decide to leave this awesome application, press button:
+            <div className={`${s.error} ${t[theme + '-text']}`}>404</div>
+            <div className={`${s.text} ${t[theme + '-text']}`}>Page not found!</div>
+            <div className={`${s.textNav} ${t[theme + '-text']}`}>Maybe, you want to see your <NavLink to={PATH.PROFILE} className={s.nav}>Profile</NavLink> page?</div>
+            <div className={t[theme + '-text']}>In case you decide to leave this awesome application, press button:
                 <div className={s.joke}><SuperButton>Leave</SuperButton></div>
             </div>
         </div>

@@ -6,6 +6,8 @@ import SuperButton from '../../common/super-components/c2-SuperButton/SuperButto
 import {useAppSelector} from '../../bll/store';
 import {PATH} from '../../app/AllRoutes';
 
+//test
+
 export const Error404 = () => {
     const theme = useAppSelector(state => state.theme.theme)
 

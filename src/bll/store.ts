@@ -12,7 +12,6 @@ const rootReducer = combineReducers({
 export const store = createStore(rootReducer, applyMiddleware(thunk))
 
 export type AppRootStateType = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
 export type InferActionTypes<T> = T extends { [keys: string]: (...args: any[]) => infer U } ? U : never
 export type ActionsType = AppActionTypes
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppRootStateType, unknown, ActionsType>

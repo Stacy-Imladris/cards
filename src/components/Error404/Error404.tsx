@@ -6,8 +6,6 @@ import SuperButton from '../../common/super-components/c2-SuperButton/SuperButto
 import {useAppSelector} from '../../bll/store';
 import {PATH} from '../../app/AllRoutes';
 
-//test
-
 export const Error404 = () => {
     const theme = useAppSelector(state => state.theme.theme)
 
@@ -15,7 +13,9 @@ export const Error404 = () => {
         <div className={`${s.container} ${t[theme]} ${t[theme + '-text']}`}>
             <div className={`${s.error} ${t[theme + '-text']}`}>404</div>
             <div className={`${s.text} ${t[theme + '-text']}`}>Page not found!</div>
-            <div className={`${s.textNav} ${t[theme + '-text']}`}>Maybe, you want to see your <NavLink to={PATH.PROFILE} className={s.nav}>Profile</NavLink> page?</div>
+            <div className={`${s.textNav} ${t[theme + '-text']}`}>
+                Maybe, you want to see your <NavLink to={PATH.PROFILE} className={s.nav}>Profile</NavLink> page?
+            </div>
             <div className={t[theme + '-text']}>In case you decide to leave this awesome application, press button:
                 <div className={s.joke}><SuperButton>Leave</SuperButton></div>
             </div>

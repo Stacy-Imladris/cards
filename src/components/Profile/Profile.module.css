@@ -3,6 +3,7 @@
 }
 
 .profilePage {
+    border: 1px solid gray;
     border-radius: 5px;
     box-shadow: 0 0 5px #004901;
     width: 1008px;

@@ -1,7 +1,6 @@
 import {useState} from 'react';
 import {Registration} from './Registration';
 import {useDispatch} from 'react-redux';
-import {useAppSelector} from '../../../bll/store';
 import {signUp} from '../RegistrationBLL/registration-reducer';
 
 export const RegistrationContainer = () => {
@@ -9,7 +8,6 @@ export const RegistrationContainer = () => {
     const [password, setPassword] = useState<string>('')
     const [password2, setPassword2] = useState<string>('')
 
-    const registration = useAppSelector(state => state.registration)
     const dispatch = useDispatch()
 
     const toSignUp = () => {

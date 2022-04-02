@@ -1,11 +1,16 @@
 import React, {ChangeEvent, useState} from 'react';
 import s from './Login.module.css';
+import {LoginType} from "../../api/api";
+import {loginTC} from "./loginReducer";
+import {useDispatch} from "react-redux";
 
 
 export const Login = () => {
 
     let [email, setEmail] = useState("")
     let [password, setPassword] = useState("")
+
+    const dispatch = useDispatch()
 
     const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
         setEmail(e.currentTarget.value)
@@ -15,13 +20,14 @@ export const Login = () => {
         setPassword(e.currentTarget.value)
     }
 
-    const login = {
+    const login: LoginType = {
         email: email,
         password: password
     }
 
     const onClickLogin = () => {
-        alert(JSON.stringify(login))
+        // alert(JSON.stringify(login))
+        dispatch(loginTC(login))
     }
 
 

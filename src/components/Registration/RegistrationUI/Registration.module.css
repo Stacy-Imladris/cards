@@ -19,6 +19,11 @@
     min-height: 70px;
 }
 
+.buttons {
+    margin: 15px auto;
+}
+
 .error {
     color: #e82323;
+    margin: 15px auto;
 }

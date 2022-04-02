@@ -1,9 +1,41 @@
-import React from 'react';
+import React from 'react'
+import s from './Profile.module.css'
+import profile_ava from '../../assets/profile_ava.png'
 
 export const Profile = () => {
     return (
-        <div>
+        <div className={s.profileWrapper}>
+            <div className={s.profilePage}>
+                <div className={s.profileContent}>
+                    <div className={s.profileBlock}>
+                        <div className={s.profile_avatar}><img src={profile_ava} alt={'avatar'}/></div>
+                        <div className={s.profile_name}>Ivanov Ivan</div>
+                        <div className={s.profile_job}>Front-end developer</div>
+                        <div className={s.profile_edit}>
+                            <button>Edit profile</button>
+                        </div>
+                    </div>
+                    <div className={s.profile_filter}>
+                        <h3>Number of cards</h3>
+                    </div>
+                </div>
 
+                <div className={s.profilePacks}>
+                    profilePacks
+                    <h1>My packs list</h1>
+                    <div className={s.profilePacks_search}>
+                        profilePacks_search
+                        <div><input/></div>
+                    </div>
+                    <div className={s.profilePacks_packsTable}>
+                        profilePacks_packsTable
+                    </div>
+                    <div className={s.profilePacks_pagination}>
+                        profilePacks_pagination
+                        <div>1 2 3 4...</div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

@@ -8,7 +8,7 @@ type SuperButtonPropsType = DefaultButtonPropsType & {
     red?: boolean
 }
 
-const SuperButton: React.FC<SuperButtonPropsType> = (
+export const SuperButton: React.FC<SuperButtonPropsType> = (
     {
         red, className,
         ...restProps// все остальные пропсы попадут в объект restProps, там же будет children

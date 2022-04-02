@@ -1,0 +1,24 @@
+.registrationContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainText {
+    font-weight: bold;
+    font-size: 36px;
+    margin: 10px auto;
+}
+
+.registrationContainer span {
+    font-size: 22px;
+    margin-top: 7px;
+}
+
+.preloader {
+    min-height: 70px;
+}
+
+.error {
+    color: #e82323;
+}

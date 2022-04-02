@@ -13,7 +13,7 @@ type SuperInputTextPropsType = Omit<DefaultInputPropsType, 'type'> & { // и + �
     spanClassName?: string
 }
 
-const SuperInputText: React.FC<SuperInputTextPropsType> = (
+export const SuperInputText: React.FC<SuperInputTextPropsType> = (
     {
         //type, // достаём и игнорируем чтоб нельзя было задать другой тип инпута
         onChange, onChangeText,

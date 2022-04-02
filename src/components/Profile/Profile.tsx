@@ -1,6 +1,8 @@
 import React from 'react'
 import s from './Profile.module.css'
 import profile_ava from '../../assets/profile_ava.png'
+import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton'
+import SuperInputText from '../../common/super-components/c1-SuperInputText/SuperInputText'
 
 export const Profile = () => {
     return (
@@ -8,11 +10,14 @@ export const Profile = () => {
             <div className={s.profilePage}>
                 <div className={s.profileContent}>
                     <div className={s.profileBlock}>
-                        <div className={s.profile_avatar}><img src={profile_ava} alt={'avatar'}/></div>
+                        <div className={s.profile_avatar}>
+                            <img src={profile_ava} alt={'avatar'}/>
+                        </div>
                         <div className={s.profile_name}>Ivanov Ivan</div>
                         <div className={s.profile_job}>Front-end developer</div>
                         <div className={s.profile_edit}>
-                            <button>Edit profile</button>
+                            <SuperButton>Edit profile</SuperButton>
+                            {/*<button>Edit profile</button>*/}
                         </div>
                     </div>
                     <div className={s.profile_filter}>
@@ -25,7 +30,10 @@ export const Profile = () => {
                     <h1>My packs list</h1>
                     <div className={s.profilePacks_search}>
                         profilePacks_search
-                        <div><input/></div>
+                        <div>
+                            {/*<input/>*/}
+                            <SuperInputText placeholder={'search'}/>
+                        </div>
                     </div>
                     <div className={s.profilePacks_packsTable}>
                         profilePacks_packsTable

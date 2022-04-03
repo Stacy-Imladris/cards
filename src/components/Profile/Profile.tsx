@@ -27,7 +27,7 @@ export const Profile = () => {
                         <div className={s.profile_name}>{name}</div>
                         <div className={s.profile_job}>Front-end developer</div>
                         <div className={s.profile_edit}>
-                            <SuperButton >Edit profile</SuperButton>
+                            <SuperButton onClick={editProfile}>Edit profile</SuperButton>
                         </div>
                     </div>
                     <div className={s.profile_filter}>

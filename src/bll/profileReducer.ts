@@ -1,7 +1,8 @@
-import {InferActionTypes} from './store'
-import {UserType} from '../api/api'
+import {AppRootStateType, InferActionTypes} from './store'
+import {cardsApi, UserType} from '../api/api'
+import {ThunkAction} from 'redux-thunk'
 
-const appInitialState = {
+const initialState = {
     user: {
         _id: '',
         email: 'mail@mail.com',
@@ -15,10 +16,10 @@ const appInitialState = {
         rememberMe: false,
         error: ''
     },
-    editMode: true,
+    editMode: false
 }
 
-export const profileReducer = (state: AppInitialStateType = appInitialState, action: AppActionTypes): AppInitialStateType => {
+export const profileReducer = (state: ProfileInitialStateType = initialState, action: ProfileActionTypes): ProfileInitialStateType => {
     switch (action.type) {
         case 'APP/SET_EDIT_MODE_PROFILE':
             return {
@@ -28,7 +29,7 @@ export const profileReducer = (state: AppInitialStateType = appInitialState, act
         case 'APP/UPDATE_PROFILE':
             return {
                 ...state,
-                user: {...state.user, email: action.email, name: action.name}
+                user: {...state.user, ...action.user}
             }
         default:
             return state
@@ -36,9 +37,20 @@ export const profileReducer = (state: AppInitialStateType = appInitialState, act
 }
 
 export const profileActions = {
-    updateProfileAC: (name: string, email: string) => ({type: 'APP/UPDATE_PROFILE', name, email} as const),
+    setProfileAC: (user: UserType) => ({type: 'APP/UPDATE_PROFILE', user} as const),
     setEditModeProfileAC: (editMode: boolean) => ({type: 'APP/SET_EDIT_MODE_PROFILE', editMode} as const)
 }
 
-export type AppInitialStateType = typeof appInitialState
-export type AppActionTypes = InferActionTypes<typeof profileActions>
+//thunks:
+export const updateProfile = (name: string, avatar: string): ThunkType => async (dispatch) => {
+    const response = await cardsApi.update(name, avatar)
+    debugger
+    console.log(response)
+    dispatch(profileActions.setProfileAC(response.data.updatedUser))
+}
+
+//types:
+type ThunkType = ThunkAction<void, AppRootStateType, unknown, ProfileActionTypes>
+
+export type ProfileInitialStateType = typeof initialState
+export type ProfileActionTypes = InferActionTypes<typeof profileActions>

@@ -12,8 +12,8 @@ export const cardsApi = {
     me() {
         return instance.post<ResponseType>('auth/me', {})
     },
-    update(data: profileData) {
-        return instance.put<ResponseUpdateType>('auth/me', data)
+    update(name: string, avatar: string) {
+        return instance.put<ResponseUpdateType>('/auth/me', {name, avatar})
     },
 }
 
@@ -22,11 +22,6 @@ export const cardsApi = {
 export type LoginType = {
     email: string,
     password: string
-}
-
-type profileData = {
-    name: string
-    avatar: string
 }
 
 type ResponseType = UserType

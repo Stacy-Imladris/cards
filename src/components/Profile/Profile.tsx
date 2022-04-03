@@ -3,8 +3,19 @@ import s from './Profile.module.css'
 import profile_ava from '../../assets/profile_ava.png'
 import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton'
 import SuperInputText from '../../common/super-components/c1-SuperInputText/SuperInputText'
+import {useSelector} from "react-redux";
+import {AppRootStateType} from "../../bll/store";
+import {Navigate} from "react-router-dom";
+import {PATH} from "../../app/AllRoutes";
 
 export const Profile = () => {
+
+    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn)
+
+    if (!isLoggedIn) {
+        return <Navigate to={PATH.LOGIN}/>
+    }
+
     return (
         <div className={s.profileWrapper}>
             <div className={s.profilePage}>

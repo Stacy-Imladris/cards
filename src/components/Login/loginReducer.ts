@@ -9,7 +9,7 @@ const initialState = {
     error: null as NullableType<string>
 }
 
-type InitialStateType = typeof initialState
+export type InitialStateType = typeof initialState
 
 export const loginReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {
@@ -27,7 +27,7 @@ export const loginReducer = (state: InitialStateType = initialState, action: Act
 // actions
 export const setIsLoggedInAC = (value: boolean) =>
     ({type: 'login/SET-IS-LOGGED-IN', value} as const)
-export const setRegistrationError = (error: string) =>
+export const setLoginError = (error: string) =>
     ({type: 'login/SET-ERROR', error} as const)
 
 // thunk
@@ -38,7 +38,7 @@ export const loginTC = (data: LoginType) => (dispatch: Dispatch<ActionsType>) =>
             dispatch(registrationActions.getRedirect(false))
         })
         .catch((err) => {
-            dispatch(setRegistrationError(err.response.data.error))
+            dispatch(setLoginError(err.response.data.error))
         })
 }
 
@@ -52,6 +52,6 @@ export const logoutTC = () => (dispatch: Dispatch<ActionsType>) => {
 
 // types
 export type LoginActionsType = ReturnType<typeof setIsLoggedInAC>
-| ReturnType<typeof setRegistrationError>
+| ReturnType<typeof setLoginError>
 
 export type NullableType<T> = null | T

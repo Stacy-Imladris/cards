@@ -8,6 +8,7 @@ import {Error404} from '../components/Error404/Error404'
 import React from 'react'
 import {RegistrationContainer} from '../components/Registration/RegistrationUI/RegistrationContainer'
 
+
 export enum PATH {
     LOGIN = '/login',
     REGISTRATION = '/registration',

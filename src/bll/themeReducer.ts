@@ -7,7 +7,7 @@ const themeInitialState = {
 export const themeReducer = (state: ThemeInitialStateType = themeInitialState, action: ThemeActionTypes): ThemeInitialStateType => {
     switch (action.type) {
         case 'THEME/CHANGE_THEME':
-            return {...state, theme: action.payload.theme}
+            return {...state, ...action.payload}
         default:
             return state
     }

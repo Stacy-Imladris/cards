@@ -3,9 +3,11 @@ import {AppActionTypes, appReducer} from './appReducer';
 import thunk, {ThunkAction} from 'redux-thunk';
 import {themeReducer} from './themeReducer';
 import {TypedUseSelectorHook, useSelector} from 'react-redux';
+import {profileReducer} from './profileReducer'
 
 const rootReducer = combineReducers({
     app: appReducer,
+    profile: profileReducer,
     theme: themeReducer,
 })
 

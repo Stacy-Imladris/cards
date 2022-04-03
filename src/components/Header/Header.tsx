@@ -15,6 +15,12 @@ export const Header = () => {
                          className={({isActive}) => isActive ? s.active : s.nav}>Error 404</NavLink>
                 <NavLink to={PATH.LOGIN}
                          className={({isActive}) => isActive ? s.active : s.nav}>Log In</NavLink>
+                <NavLink to={PATH.REGISTRATION}
+                         className={({isActive}) => isActive ? s.active : s.nav}>Registration</NavLink>
+                <NavLink to={PATH.PASSWORD_RECOVERY}
+                         className={({isActive}) => isActive ? s.active : s.nav}>Password recovery</NavLink>
+                <NavLink to={PATH.NEW_PASSWORD}
+                         className={({isActive}) => isActive ? s.active : s.nav}>New password</NavLink>
             </div>
             <div className={s.menu}>Menu</div>
         </nav>

@@ -5,7 +5,7 @@ import axios from 'axios';
 const registrationInitialState = {
     error: '',
     isLoading: false,
-    redirect: false,
+    toLogIn: false,
 }
 
 export const registrationReducer = (state: RegistrationInitialStateType = registrationInitialState, action: RegistrationActionTypes): RegistrationInitialStateType => {
@@ -22,7 +22,7 @@ export const registrationReducer = (state: RegistrationInitialStateType = regist
 export const registrationActions = {
     setRegistrationError: (error: string) => ({type: 'REGISTRATION/SET_ERROR', payload: {error}} as const),
     setRegistrationIsLoading: (isLoading: boolean) => ({type: 'REGISTRATION/SET_IS_LOADING', payload: {isLoading}} as const),
-    getRedirect: (redirect: boolean) => ({type: 'REGISTRATION/GET_REDIRECT', payload: {redirect}} as const),
+    toLogIn: (toLogIn: boolean) => ({type: 'REGISTRATION/GET_REDIRECT', payload: {toLogIn}} as const),
 }
 
 //thunk
@@ -33,9 +33,9 @@ export const signUp = ({email, password, password2}: RegDataType): AppThunk => a
         dispatch(registrationActions.setRegistrationIsLoading(false))
     } else {
         try {
-            await registrationAPI.toSignUp({email, password})
+            await registrationAPI.signUp({email, password})
             dispatch(registrationActions.setRegistrationError(''))
-            dispatch(registrationActions.getRedirect(true))
+            dispatch(registrationActions.toLogIn(true))
         } catch (e) {
             if (axios.isAxiosError(e)){
                 dispatch(registrationActions.setRegistrationError(e.response ? e.response.data.error : e.message))

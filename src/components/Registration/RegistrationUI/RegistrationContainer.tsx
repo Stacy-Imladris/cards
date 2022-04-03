@@ -14,6 +14,6 @@ export const RegistrationContainer = () => {
         dispatch(signUp({email, password, password2}))
     }
 
-    return <Registration toSignUp={toSignUp} email={email} password={password} password2={password2}
-        setEmail={setEmail} setPassword={setPassword} setPassword2={setPassword2} disabled={false}/>
+    return <Registration signUp={toSignUp} email={email} password={password} password2={password2}
+        setEmail={setEmail} setPassword={setPassword} setPassword2={setPassword2}/>
 }

@@ -6,7 +6,7 @@ beforeEach(() => {
     registrationStartState = {
         error: '',
         isLoading: false,
-        redirect: false,
+        toLogIn: false,
     }
 })
 
@@ -23,7 +23,7 @@ test('correct isLoading value should be set', () => {
 })
 
 test('correct redirect value should be set', () => {
-    const endState = registrationReducer(registrationStartState, registrationActions.getRedirect(true))
+    const endState = registrationReducer(registrationStartState, registrationActions.toLogIn(true))
 
-    expect(endState.redirect).toBe(true)
+    expect(endState.toLogIn).toBe(true)
 })

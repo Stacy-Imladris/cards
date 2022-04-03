@@ -10,7 +10,13 @@ const instance = axios.create({
 
 export const cardsApi = {
     login(data: LoginType) {
-        return instance.post("auth/login", data)
+        return instance.post('auth/login', data)
+    },
+    me() {
+        return instance.post<ResponseType>('auth/me', {})
+    },
+    update(name: string, avatar: string) {
+        return instance.put<ResponseUpdateType>('/auth/me', {name, avatar})
     },
     logout() {
         return instance.delete("auth/me")
@@ -22,4 +28,25 @@ export const cardsApi = {
 export type LoginType = {
     email: string,
     password: string
+}
+
+type ResponseType = UserType
+
+type ResponseUpdateType = {
+    updatedUser: UserType
+    error?: string
+}
+
+export type UserType = {
+    _id: string
+    email: string
+    name: string
+    avatar?: string
+    publicCardPacksCount: number
+    created: Date
+    updated: Date
+    isAdmin: boolean
+    verified: boolean
+    rememberMe: boolean
+    error?: string
 }

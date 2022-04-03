@@ -3,6 +3,7 @@ import {AppActionTypes, appReducer} from './appReducer';
 import thunk, {ThunkAction} from 'redux-thunk';
 import {themeReducer} from './themeReducer';
 import {TypedUseSelectorHook, useSelector} from 'react-redux';
+import {profileReducer} from './profileReducer'
 import {
     RegistrationActionTypes,
     registrationReducer
@@ -14,8 +15,10 @@ import {
 } from '../components/PasswordPages/NewPassword/NewPasswordBLL/new-password-reducer';
 import {LoginActionsType, loginReducer} from "../components/Login/loginReducer";
 
+
 const rootReducer = combineReducers({
     app: appReducer,
+    profile: profileReducer,
     theme: themeReducer,
     registration: registrationReducer,
     recovery: recoveryReducer,

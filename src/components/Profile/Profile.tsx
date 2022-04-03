@@ -3,6 +3,10 @@ import s from './Profile.module.css'
 import profile_ava from '../../assets/profile_ava.png'
 import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton'
 import SuperInputText from '../../common/super-components/c1-SuperInputText/SuperInputText'
+import {useDispatch, useSelector} from 'react-redux'
+import {useAppSelector} from '../../bll/store'
+import {profileActions} from '../../bll/profileReducer'
+import {EditProfile} from './EditProfile'
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../bll/store";
 import {Navigate} from "react-router-dom";
@@ -10,25 +14,31 @@ import {PATH} from "../../app/AllRoutes";
 
 export const Profile = () => {
 
-    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn)
+    const isLoggedIn = useAppSelector(state => state.login.isLoggedIn)
 
     if (!isLoggedIn) {
         return <Navigate to={PATH.LOGIN}/>
     }
 
+    const name = useAppSelector(state => state.profile.user.name)
+    const editMode = useAppSelector(state => state.profile.editMode)
+    const dispatch = useDispatch()
+    const editProfile = () => dispatch(profileActions.setEditModeProfileAC(true))
+    if (editMode) {
+        return <EditProfile/>
+    }
     return (
         <div className={s.profileWrapper}>
             <div className={s.profilePage}>
                 <div className={s.profileContent}>
                     <div className={s.profileBlock}>
-                        <div className={s.profile_avatar}>
+                        <div className={s.profile__avatar}>
                             <img src={profile_ava} alt={'avatar'}/>
                         </div>
-                        <div className={s.profile_name}>Ivanov Ivan</div>
+                        <div className={s.profile_name}>{name}</div>
                         <div className={s.profile_job}>Front-end developer</div>
                         <div className={s.profile_edit}>
-                            <SuperButton>Edit profile</SuperButton>
-                            {/*<button>Edit profile</button>*/}
+                            <SuperButton onClick={editProfile}>Edit profile</SuperButton>
                         </div>
                     </div>
                     <div className={s.profile_filter}>
@@ -42,7 +52,6 @@ export const Profile = () => {
                     <div className={s.profilePacks_search}>
                         profilePacks_search
                         <div>
-                            {/*<input/>*/}
                             <SuperInputText placeholder={'search'}/>
                         </div>
                     </div>

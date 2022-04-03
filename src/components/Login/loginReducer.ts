@@ -35,7 +35,6 @@ export const loginTC = (data: LoginType) => (dispatch: Dispatch<ActionsType>) =>
     cardsApi.login(data)
         .then((res) => {
             dispatch(setIsLoggedInAC(true))
-            dispatch(registrationActions.toLogIn(false))
         })
         .catch((err) => {
             dispatch(setLoginError(err.response.data.error))
@@ -47,7 +46,6 @@ export const logoutTC = () => (dispatch: Dispatch<ActionsType>) => {
         .then((res) => {
             dispatch(setIsLoggedInAC(false))
         })
-
 }
 
 // types

@@ -1,20 +1,26 @@
 import React, {ChangeEvent, useState} from 'react';
-import s from './Login.module.css';
+import k from './Login.module.css';
 import {LoginType} from "../../api/api";
 import {loginTC} from "./loginReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType, useAppSelector} from "../../bll/store";
-import {Navigate, useNavigate} from "react-router-dom";
+import {Link, Navigate, useNavigate} from "react-router-dom";
 import SuperInputText from "../../common/super-components/c1-SuperInputText/SuperInputText";
 import SuperButton from "../../common/super-components/c2-SuperButton/SuperButton";
 import {PATH} from "../../app/AllRoutes";
+import {Preloader} from "../../common/preloader/Preloader";
 
+import s from '../../common/styles/Forms.module.css'
+import t from '../../common/styles/Themes.module.css'
+import {registrationActions} from "../Registration/RegistrationBLL/registration-reducer";
+import {recoveryActions} from "../PasswordPages/Recovery/RecoveryBLL/recovery-reducer";
 
 export const Login = () => {
     let [email, setEmail] = useState<string>("")
     let [password, setPassword] = useState<string>("")
 
     const error = useAppSelector(state => state.login.error)
+    const theme = useAppSelector(state => state.theme.theme)
     const dispatch = useDispatch()
     const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn)
 
@@ -35,35 +41,44 @@ export const Login = () => {
         dispatch(loginTC(login))
     }
 
+    const onClickSignUp = () => {
+        dispatch(registrationActions.toLogIn(false))
+    }
+
+    const onClickForgotPassword = () => {
+        dispatch(recoveryActions.toLogIn(false))
+    }
+
     if (isLoggedIn) {
         return <Navigate to={PATH.PROFILE}/>
     }
 
 
     return (
-        <div className={s.loginForm}>
-            <h2 className={s.text}>it-incubator</h2>
-            <h3 className={s.text}>Sign In</h3>
-            <span className={s.emailLabel}>Email</span>
+        <div className={`${s.container} ${t[theme + '-text']}`}>
+            <h2 className={`${s.mainText} ${t[theme + '-text']}`}>it-incubator</h2>
+            <h3 className={`${s.mainText} ${t[theme + '-text']}`}>Sign In</h3>
+            <span>Email</span>
             <SuperInputText
                 name="email"
                 value={email}
-                // type={"email"}
                 onChange={onChangeEmail}
                 className={s.email}
             />
-            <span className={s.passwordLabel}>Password</span>
-            <SuperInputText
+            <span>Password</span>
+            <div className={s.password}><SuperInputText
                 value={password}
                 type={"password"}
                 onChange={onChangePassword}
-                className={s.password}
             />
+                <div>👁</div>
+            </div>
             <div className={s.error}>{error}</div>
-            <div className={s.forgotPassword}>Forgot Password</div>
+            <div><Link to="/password-recovery" className={k.forgotPassword} onClick={onClickForgotPassword}>Forgot
+                Password</Link></div>
             <SuperButton onClick={onClickLogin} className={s.login}>Login</SuperButton>
-            <div className={s.dontHaveAccount}>Don't have an account?</div>
-            <div className={s.SignUp}>Sign Up</div>
+            <div><Link to="/registration" className={k.dontHaveAccount}>Don't have an account?</Link></div>
+            <div><Link to="/registration" className={k.SignUp} onClick={onClickSignUp}>Sign Up</Link></div>
         </div>
     )
 }

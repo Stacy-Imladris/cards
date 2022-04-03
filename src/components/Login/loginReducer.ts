@@ -1,33 +1,57 @@
 import {Dispatch} from "redux";
-import {cardsApi} from "../../api/api";
+import {cardsApi, LoginType} from "../../api/api";
+import {ActionsType} from "../../bll/store";
+import {registrationActions} from "../Registration/RegistrationBLL/registration-reducer";
 
 
 const initialState = {
-    isLoggedIn: false
+    isLoggedIn: false,
+    error: null as NullableType<string>
 }
+
 type InitialStateType = typeof initialState
 
 export const loginReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {
         case 'login/SET-IS-LOGGED-IN':
             return {...state, isLoggedIn: action.value}
+
+        case "login/SET-ERROR": {
+            return {...state, error: action.error}
+        }
         default:
             return state
     }
 }
+
 // actions
 export const setIsLoggedInAC = (value: boolean) =>
     ({type: 'login/SET-IS-LOGGED-IN', value} as const)
+export const setRegistrationError = (error: string) =>
+    ({type: 'login/SET-ERROR', error} as const)
 
-// thunks
-export const loginTC = (data: any) => (dispatch: Dispatch<ActionsType>) => {
+// thunk
+export const loginTC = (data: LoginType) => (dispatch: Dispatch<ActionsType>) => {
     cardsApi.login(data)
         .then((res) => {
-            if (res.data.resultCode === 0) {
-                dispatch(setIsLoggedInAC(true))
-            }
+            dispatch(setIsLoggedInAC(true))
+            dispatch(registrationActions.getRedirect(false))
+        })
+        .catch((err) => {
+            dispatch(setRegistrationError(err.response.data.error))
         })
 }
 
+export const logoutTC = () => (dispatch: Dispatch<ActionsType>) => {
+    cardsApi.logout()
+        .then((res) => {
+            dispatch(setIsLoggedInAC(false))
+        })
+
+}
+
 // types
-type ActionsType = ReturnType<typeof setIsLoggedInAC>
+export type LoginActionsType = ReturnType<typeof setIsLoggedInAC>
+| ReturnType<typeof setRegistrationError>
+
+export type NullableType<T> = null | T

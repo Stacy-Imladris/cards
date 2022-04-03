@@ -7,18 +7,20 @@ import {
     RegistrationActionTypes,
     registrationReducer
 } from '../components/Registration/RegistrationBLL/registration-reducer';
+import {LoginActionsType, loginReducer} from "../components/Login/loginReducer";
 
 const rootReducer = combineReducers({
     app: appReducer,
     theme: themeReducer,
     registration: registrationReducer,
+    login: loginReducer
 })
 
 export const store = createStore(rootReducer, applyMiddleware(thunk))
 
 export type AppRootStateType = ReturnType<typeof store.getState>
 export type InferActionTypes<T> = T extends { [keys: string]: (...args: any[]) => infer U } ? U : never
-export type ActionsType = AppActionTypes | RegistrationActionTypes
+export type ActionsType = AppActionTypes | RegistrationActionTypes | LoginActionsType
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppRootStateType, unknown, ActionsType>
 export const useAppSelector: TypedUseSelectorHook<AppRootStateType> = useSelector
 

@@ -12,7 +12,7 @@ export const registrationReducer = (state: RegistrationInitialStateType = regist
     switch (action.type) {
         case 'REGISTRATION/SET_ERROR':
         case 'REGISTRATION/SET_IS_LOADING':
-        case 'REGISTRATION/GET_REDIRECT':
+        case 'REGISTRATION/TO_LOG_IN':
             return {...state, ...action.payload}
         default:
             return state
@@ -22,7 +22,7 @@ export const registrationReducer = (state: RegistrationInitialStateType = regist
 export const registrationActions = {
     setRegistrationError: (error: string) => ({type: 'REGISTRATION/SET_ERROR', payload: {error}} as const),
     setRegistrationIsLoading: (isLoading: boolean) => ({type: 'REGISTRATION/SET_IS_LOADING', payload: {isLoading}} as const),
-    toLogIn: (toLogIn: boolean) => ({type: 'REGISTRATION/GET_REDIRECT', payload: {toLogIn}} as const),
+    toLogIn: (toLogIn: boolean) => ({type: 'REGISTRATION/TO_LOG_IN', payload: {toLogIn}} as const),
 }
 
 //thunk

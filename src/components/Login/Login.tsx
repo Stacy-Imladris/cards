@@ -11,10 +11,8 @@ import {PATH} from "../../app/AllRoutes";
 
 
 export const Login = () => {
-
     let [email, setEmail] = useState<string>("")
     let [password, setPassword] = useState<string>("")
-
 
     const error = useAppSelector(state => state.login.error)
     const dispatch = useDispatch()
@@ -54,15 +52,12 @@ export const Login = () => {
                 onChange={onChangeEmail}
                 className={s.email}
             />
-            <div className={s.error}>{error}</div>
             <span className={s.passwordLabel}>Password</span>
             <SuperInputText
                 value={password}
-                // type={"password"}
+                type={"password"}
                 onChange={onChangePassword}
                 className={s.password}
-
-
             />
             <div className={s.error}>{error}</div>
             <div className={s.forgotPassword}>Forgot Password</div>

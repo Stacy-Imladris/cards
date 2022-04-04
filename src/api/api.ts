@@ -15,7 +15,7 @@ export const cardsApi = {
         return instance.post<ResponseType>('auth/me', {})
     },
     update(name: string, avatar: string) {
-        return instance.put<ResponseUpdateType>('/auth/me', {name, avatar})
+        return instance.put<ResponseUpdateType>('auth/me', {name})
     },
 }
 

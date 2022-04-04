@@ -25,7 +25,7 @@ const SuperInputText: React.FC<SuperInputTextPropsType> = (
         ...restProps// все остальные пропсы попадут в объект restProps
     }
 ) => {
-    const [typeText, setTypeText] = useState<boolean>(true)
+    const [typeText, setTypeText] = useState<boolean>(!eye)
 
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
         onChange // если есть пропс onChange

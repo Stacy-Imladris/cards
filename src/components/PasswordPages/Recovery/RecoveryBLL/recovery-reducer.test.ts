@@ -7,7 +7,6 @@ beforeEach(() => {
         error: '',
         isLoading: false,
         check: false,
-        toLogIn: false,
     }
 })
 
@@ -27,10 +26,4 @@ test('correct check value should be set', () => {
     const endState = recoveryReducer(recoveryStartState, recoveryActions.getCheckEmail(true))
 
     expect(endState.check).toBe(true)
-})
-
-test('correct toLogin value should be set', () => {
-    const endState = recoveryReducer(recoveryStartState, recoveryActions.toLogIn(true))
-
-    expect(endState.toLogIn).toBe(true)
 })

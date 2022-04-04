@@ -7,8 +7,9 @@ import SuperButton from '../../../../common/super-components/c2-SuperButton/Supe
 import {useAppSelector} from '../../../../bll/store';
 import {useDispatch} from 'react-redux';
 import {recoveryActions} from '../RecoveryBLL/recovery-reducer';
-import {Navigate} from 'react-router-dom';
+import {Link, Navigate} from 'react-router-dom';
 import {PATH} from '../../../../app/AllRoutes';
+import k from '../../../Login/Login.module.css';
 
 type RecoveryPropsType = {
     email: string
@@ -19,18 +20,8 @@ type RecoveryPropsType = {
 export const Recovery = ({setEmail, email, toSendInstructions}: RecoveryPropsType) => {
     const isLoading = useAppSelector(state => state.recovery.isLoading)
     const error = useAppSelector(state => state.recovery.error)
-    const toLogin = useAppSelector(state => state.recovery.toLogIn)
     const check = useAppSelector(state => state.recovery.check)
     const theme = useAppSelector(state => state.theme.theme)
-    const dispatch = useDispatch()
-
-    if (toLogin) {
-        return <Navigate to={PATH.LOGIN}/>
-    }
-
-    const toLogIn = () => {
-        dispatch(recoveryActions.toLogIn(true))
-    }
 
     return check
         ? <div>
@@ -48,6 +39,6 @@ export const Recovery = ({setEmail, email, toSendInstructions}: RecoveryPropsTyp
             </div>
             <span>Did you remember your password?</span>
             <div className={`${s.error} ${t[theme + '-text']}`}>{error}</div>
-            <div onClick={toLogIn}>Try logging in</div>
+            <div><Link to="/login">Try logging in</Link></div>
         </div>
 }

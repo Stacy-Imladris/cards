@@ -5,7 +5,7 @@ import s from '../../../common/styles/Forms.module.css'
 import t from '../../../common/styles/Themes.module.css'
 import {Preloader} from '../../../common/preloader/Preloader';
 import {useAppSelector} from '../../../bll/store';
-import {Navigate} from 'react-router-dom';
+import {Link, Navigate, useNavigate} from 'react-router-dom';
 import {PATH} from '../../../app/AllRoutes';
 import {registrationActions} from '../RegistrationBLL/registration-reducer';
 import {useDispatch} from 'react-redux';
@@ -25,29 +25,25 @@ export const Registration = ({signUp, email, password, password2, setEmail, setP
     const isLoading = useAppSelector(state => state.registration.isLoading)
     const toLogin = useAppSelector(state => state.registration.toLogIn)
     const theme = useAppSelector(state => state.theme.theme)
-    const dispatch = useDispatch()
+
+    const navigate = useNavigate()
 
     if (toLogin) {
         return <Navigate to={PATH.LOGIN}/>
     }
-
-    const onCancelClick = () => {
-        dispatch(registrationActions.toLogIn(true))
-    }
-
 
     return (
         <div className={`${s.container} ${t[theme + '-text']}`}>
             <div className={s.preloader}>{isLoading && <Preloader/>}</div>
             <div className={`${s.mainText} ${t[theme + '-text']}`}>Sign up</div>
             <span>Email</span>
-            <div><SuperInputText value={email} onChangeText={setEmail} eye/></div>
+            <div><SuperInputText value={email} onChangeText={setEmail}/></div>
             <span>Password</span>
             <div><SuperInputText value={password} onChangeText={setPassword} eye/></div>
             <span>Confirm password</span>
             <div><SuperInputText value={password2} onChangeText={setPassword2} eye/></div>
             <div className={s.buttons}>
-                <SuperButton disabled={isLoading} onClick={onCancelClick}>Cancel</SuperButton>
+                <SuperButton disabled={isLoading} onClick={() => navigate('/login')}>Cancel</SuperButton>
                 <SuperButton disabled={isLoading} onClick={signUp}>Register</SuperButton>
             </div>
             <div className={`${s.error} ${t[theme + '-text']}`}>{error}</div>

@@ -1,9 +1,7 @@
-import {Dispatch} from "redux";
 import {cardsApi, LoginType} from "../../api/api";
-import {ActionsType} from "../../bll/store";
 import {registrationActions} from "../Registration/RegistrationBLL/registration-reducer";
 import {profileActions} from '../../bll/profileReducer'
-import {ActionsType, AppThunk} from "../../bll/store";
+import {AppThunk} from "../../bll/store";
 
 
 const initialState = {
@@ -46,7 +44,7 @@ export const loginTC = (data: LoginType): AppThunk => dispatch => {
         })
 }
 
-export const logoutTC = () => (dispatch: Dispatch<ActionsType>) => {
+export const logoutTC = (): AppThunk => dispatch => {
     cardsApi.logout()
         .then((res) => {
             dispatch(setIsLoggedInAC(false))

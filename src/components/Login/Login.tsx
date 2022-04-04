@@ -1,20 +1,18 @@
 import React, {ChangeEvent, useState} from 'react';
 import k from './Login.module.css';
-import {LoginType} from "../../api/api";
-import {loginTC} from "./loginReducer";
-import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType, useAppSelector} from "../../bll/store";
-import {Navigate} from "react-router-dom";
-import {Link, Navigate, useNavigate} from "react-router-dom";
-import SuperInputText from "../../common/super-components/c1-SuperInputText/SuperInputText";
-import SuperButton from "../../common/super-components/c2-SuperButton/SuperButton";
-import {PATH} from "../../app/AllRoutes";
-import {Preloader} from "../../common/preloader/Preloader";
+import {LoginType} from '../../api/api';
+import {loginTC} from './loginReducer';
+import {useDispatch, useSelector} from 'react-redux';
+import {AppRootStateType, useAppSelector} from '../../bll/store';
+import {Link, Navigate} from 'react-router-dom';
+import SuperInputText from '../../common/super-components/c1-SuperInputText/SuperInputText';
+import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton';
+import {PATH} from '../../app/AllRoutes';
 
 import s from '../../common/styles/Forms.module.css'
 import t from '../../common/styles/Themes.module.css'
-import {registrationActions} from "../Registration/RegistrationBLL/registration-reducer";
-import {recoveryActions} from "../PasswordPages/Recovery/RecoveryBLL/recovery-reducer";
+import {registrationActions} from '../Registration/RegistrationBLL/registration-reducer';
+import {recoveryActions} from '../PasswordPages/Recovery/RecoveryBLL/recovery-reducer';
 
 export const Login = () => {
     let [email, setEmail] = useState<string>("")
@@ -42,14 +40,6 @@ export const Login = () => {
         dispatch(loginTC(login))
     }
 
-    const onClickSignUp = () => {
-        dispatch(registrationActions.toLogIn(false))
-    }
-
-    const onClickForgotPassword = () => {
-        dispatch(recoveryActions.toLogIn(false))
-    }
-
     if (isLoggedIn) {
         return <Navigate to={PATH.PROFILE}/>
     }
@@ -73,14 +63,13 @@ export const Login = () => {
                 className={s.password}
                 eye
             />
-                <div>👁</div>
             </div>
             <div className={s.error}>{error}</div>
-            <div><Link to="/password-recovery" className={k.forgotPassword} onClick={onClickForgotPassword}>Forgot
+            <div><Link to="/password-recovery" className={k.forgotPassword}>Forgot
                 Password</Link></div>
             <SuperButton onClick={onClickLogin} className={s.login}>Login</SuperButton>
             <div><Link to="/registration" className={k.dontHaveAccount}>Don't have an account?</Link></div>
-            <div><Link to="/registration" className={k.SignUp} onClick={onClickSignUp}>Sign Up</Link></div>
+            <div><Link to="/registration" className={k.SignUp}>Sign Up</Link></div>
         </div>
     )
 }

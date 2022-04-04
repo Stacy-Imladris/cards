@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, {AxiosResponse} from 'axios'
 
 
 const instance = axios.create({
@@ -10,7 +10,7 @@ const instance = axios.create({
 
 export const cardsApi = {
     login(data: LoginType) {
-        return instance.post('auth/login', data)
+        return instance.post<UserType>('auth/login', data)
     },
     me() {
         return instance.post<ResponseType>('auth/me', {})
@@ -19,7 +19,7 @@ export const cardsApi = {
         return instance.put<ResponseUpdateType>('auth/me', {name})
     },
     logout() {
-        return instance.delete("auth/me")
+        return instance.delete('auth/me')
     },
 }
 

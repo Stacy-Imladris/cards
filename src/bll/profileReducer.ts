@@ -16,20 +16,24 @@ const initialState = {
         rememberMe: false,
         error: ''
     },
+    error: '' as string | undefined,
     editMode: false
 }
 
 export const profileReducer = (state: ProfileInitialStateType = initialState, action: ProfileActionTypes): ProfileInitialStateType => {
     switch (action.type) {
-        case 'APP/SET_EDIT_MODE_PROFILE':
+        case 'profile/SET-USER-DATA':
+            return {...state, user: {...state.user, ...action.user}}
+        case 'profile/SET_EDIT_MODE_PROFILE':
             return {
                 ...state,
                 editMode: action.editMode
             }
-        case 'APP/UPDATE_PROFILE':
+        case 'profile/UPDATE_PROFILE':
             return {
                 ...state,
-                user: {...state.user, ...action.user}
+                user: {...state.user, ...action.user},
+                error: action.error
             }
         default:
             return state
@@ -37,8 +41,9 @@ export const profileReducer = (state: ProfileInitialStateType = initialState, ac
 }
 
 export const profileActions = {
-    setProfileAC: (user: UserType) => ({type: 'APP/UPDATE_PROFILE', user} as const),
-    setEditModeProfileAC: (editMode: boolean) => ({type: 'APP/SET_EDIT_MODE_PROFILE', editMode} as const)
+    setProfileAC: (user: UserType, error?: string) => ({type: 'profile/UPDATE_PROFILE', user, error} as const),
+    setEditModeProfileAC: (editMode: boolean) => ({type: 'profile/SET_EDIT_MODE_PROFILE', editMode} as const),
+    setUserData: (user: UserType) => ({type: 'profile/SET-USER-DATA', user} as const),
 }
 
 //thunks:

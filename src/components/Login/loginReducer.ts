@@ -2,6 +2,7 @@ import {Dispatch} from "redux";
 import {cardsApi, LoginType} from "../../api/api";
 import {ActionsType} from "../../bll/store";
 import {registrationActions} from "../Registration/RegistrationBLL/registration-reducer";
+import {profileActions} from '../../bll/profileReducer'
 
 
 const initialState = {
@@ -36,6 +37,8 @@ export const loginTC = (data: LoginType) => (dispatch: Dispatch<ActionsType>) =>
         .then((res) => {
             dispatch(setIsLoggedInAC(true))
             dispatch(registrationActions.toLogIn(false))
+            dispatch(profileActions.setUserData(res.data))
+
         })
         .catch((err) => {
             dispatch(setLoginError(err.response.data.error))
@@ -53,5 +56,6 @@ export const logoutTC = () => (dispatch: Dispatch<ActionsType>) => {
 // types
 export type LoginActionsType = ReturnType<typeof setIsLoggedInAC>
 | ReturnType<typeof setLoginError>
+| ReturnType<typeof profileActions.setUserData>
 
 export type NullableType<T> = null | T

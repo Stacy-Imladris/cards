@@ -82,6 +82,11 @@
     align-items: center;
 }
 
+.profileError {
+    color: red;
+    height: 30px;
+}
+
 .edit__applyButtons {
     display: flex;
     justify-content: space-evenly;

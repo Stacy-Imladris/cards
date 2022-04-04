@@ -2,6 +2,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 400px;
+    padding: 20px;
+    text-align: center;
+    border: 7px #077517 solid;
+    border-radius: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    box-shadow: 0 27px 27px 0 rgba(0,0,0,0.2), 0 27px 27px 0 rgba(0,0,0,0.19);
 }
 
 .mainText {
@@ -20,16 +30,20 @@
 }
 
 .buttons {
-    margin: 15px auto;
+    margin: 20px auto;
 }
 
 .error {
     color: #e82323;
-    margin: 15px auto;
+    font-size: 22px;
+    margin: 10px 0 25px 0;
+    height: 30px;
 }
 
 .link {
-    padding: 5px;
+    display: inline-block;
+    padding-bottom: 5px;
     text-decoration: none;
     border-bottom-style: groove;
+    margin-bottom: 10px;
 }

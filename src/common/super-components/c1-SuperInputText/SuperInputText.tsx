@@ -66,8 +66,8 @@ const SuperInputText: React.FC<SuperInputTextPropsType> = (
                     {eye && <span onClick={switchInputType}>👁</span>}
                 </div>
             </div>
-            <div>
-                {error && <span className={finalSpanClassName}>{error}</span>}
+            <div className={finalSpanClassName}>
+                {error && <span>{error}</span>}
             </div>
         </>
     )

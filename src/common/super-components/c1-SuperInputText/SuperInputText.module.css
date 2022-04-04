@@ -3,7 +3,7 @@
     align-items: center;
 }
 
-input[type=text]:focus {
+input:focus {
     background-color: #4CAF50;
     width: 220px;
 }
@@ -23,7 +23,7 @@ input[type=text]:focus {
 }
 
 .error {
-
+    color: #b21919;
 }
 
 .eye {

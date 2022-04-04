@@ -24,7 +24,7 @@ export const Recovery = ({setEmail, email, toSendInstructions}: RecoveryPropsTyp
     const theme = useAppSelector(state => state.theme.theme)
 
     return check
-        ? <div>
+        ? <div className={`${s.container} ${t[theme + '-text']}`}>
             <div className={`${s.mainText} ${t[theme + '-text']}`}>Check Email</div>
             <span>We've sent an Email with instructions to {email}</span>
         </div>

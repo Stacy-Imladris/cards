@@ -27,3 +27,9 @@
     color: #e82323;
     margin: 15px auto;
 }
+
+.link {
+    padding: 5px;
+    text-decoration: none;
+    border-bottom-style: groove;
+}

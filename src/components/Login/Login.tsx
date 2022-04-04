@@ -8,11 +8,8 @@ import {Link, Navigate} from 'react-router-dom';
 import SuperInputText from '../../common/super-components/c1-SuperInputText/SuperInputText';
 import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton';
 import {PATH} from '../../app/AllRoutes';
-
 import s from '../../common/styles/Forms.module.css'
 import t from '../../common/styles/Themes.module.css'
-import {registrationActions} from '../Registration/RegistrationBLL/registration-reducer';
-import {recoveryActions} from '../PasswordPages/Recovery/RecoveryBLL/recovery-reducer';
 
 export const Login = () => {
     let [email, setEmail] = useState<string>("")

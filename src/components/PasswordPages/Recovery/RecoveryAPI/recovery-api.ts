@@ -12,7 +12,7 @@ export const recoveryAPI = {
         return instance.post<any, AxiosResponse<ResponseType>, RecoveryDataType>('auth/forgot', {
             email, from: '<ada.davis27@gmail.com>',
             message: `<div style="background-color: #d0eca1; padding: 20px; border-radius: 15px">
-password recovery link: <a href='http://localhost:3000/cards#/new-password/$token$'>link</a></div>`
+This is a password recovery link: <a href='http://localhost:3000/cards#/new-password/$token$'>link</a></div>`
         }).then(res => res.data)
     },
 }

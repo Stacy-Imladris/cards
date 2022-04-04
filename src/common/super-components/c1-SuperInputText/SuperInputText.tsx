@@ -49,23 +49,27 @@ const SuperInputText: React.FC<SuperInputTextPropsType> = (
     const finalInputClassName = `${s.errorInput} ${className ? className : s.superInput}`
 
     return (
-        <div className={s.superInput}>
-            <div className={s.eye}></div>
-            <div>
-                <input
-                    type={typeText ? 'text' : 'password'}
-                    onChange={onChangeCallback}
-                    onKeyPress={onKeyPressCallback}
-                    className={finalInputClassName}
+        <>
+            <div className={s.superInput}>
+                <div className={s.eye}></div>
+                <div>
+                    <input
+                        type={typeText ? 'text' : 'password'}
+                        onChange={onChangeCallback}
+                        onKeyPress={onKeyPressCallback}
+                        className={finalInputClassName}
 
-                    {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
-                />
+                        {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
+                    />
+                </div>
+                <div className={s.eye}>
+                    {eye && <span onClick={switchInputType}>👁</span>}
+                </div>
             </div>
-            <div className={s.eye}>
-                {eye && <span onClick={switchInputType}>👁</span>}
+            <div>
+                {error && <span className={finalSpanClassName}>{error}</span>}
             </div>
-            {error && <span className={finalSpanClassName}>{error}</span>}
-        </div>
+        </>
     )
 }
 

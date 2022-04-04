@@ -1,14 +1,10 @@
-import React from 'react';
 import SuperInputText from '../../../common/super-components/c1-SuperInputText/SuperInputText';
 import SuperButton from '../../../common/super-components/c2-SuperButton/SuperButton';
 import s from '../../../common/styles/Forms.module.css'
 import t from '../../../common/styles/Themes.module.css'
 import {Preloader} from '../../../common/preloader/Preloader';
-import {useAppSelector} from '../../../bll/store';
-import {Link, Navigate, useNavigate} from 'react-router-dom';
-import {PATH} from '../../../app/AllRoutes';
-import {registrationActions} from '../RegistrationBLL/registration-reducer';
-import {useDispatch} from 'react-redux';
+import {NavigateFunction} from 'react-router-dom';
+import {memo} from 'react';
 
 type RegistrationPropsType = {
     signUp: () => void
@@ -18,24 +14,18 @@ type RegistrationPropsType = {
     setEmail: (value: string) => void
     setPassword: (value: string) => void
     setPassword2: (value: string) => void
+    error: string
+    isLoading: boolean
+    theme: string
+    navigate: NavigateFunction
 }
 
-export const Registration = ({signUp, email, password, password2, setEmail, setPassword, setPassword2}: RegistrationPropsType) => {
-    const error = useAppSelector(state => state.registration.error)
-    const isLoading = useAppSelector(state => state.registration.isLoading)
-    const toLogin = useAppSelector(state => state.registration.toLogIn)
-    const theme = useAppSelector(state => state.theme.theme)
-
-    const navigate = useNavigate()
-
-    if (toLogin) {
-        return <Navigate to={PATH.LOGIN}/>
-    }
-
+export const Registration = memo(({signUp, email, setEmail, password, setPassword, password2, setPassword2,
+                                 error, isLoading, theme, navigate}: RegistrationPropsType) => {
     return (
         <div className={`${s.container} ${t[theme + '-text']}`}>
             <div className={s.preloader}>{isLoading && <Preloader/>}</div>
-            <div className={`${s.mainText} ${t[theme + '-text']}`}>Sign up</div>
+            <div className={s.mainText}>Sign up</div>
             <span>Email</span>
             <div><SuperInputText value={email} onChangeText={setEmail}/></div>
             <span>Password</span>
@@ -46,7 +36,7 @@ export const Registration = ({signUp, email, password, password2, setEmail, setP
                 <SuperButton disabled={isLoading} onClick={() => navigate('/login')}>Cancel</SuperButton>
                 <SuperButton disabled={isLoading} onClick={signUp}>Register</SuperButton>
             </div>
-            <div className={`${s.error} ${t[theme + '-text']}`}>{error}</div>
+            <div className={s.error}>{error}</div>
         </div>
     )
-}
+})

@@ -14,7 +14,7 @@
 }
 
 .links {
-    width: 500px;
+    width: 1300px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -52,7 +52,7 @@
 }
 
 .menu {
-    width: 500px;
+    width: 1300px;
     height: 35px;
     padding: 4px 0 0 0;
     font-size: 26px;

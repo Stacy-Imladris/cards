@@ -10,11 +10,11 @@ export const NewPasswordContainer = () => {
 
     const dispatch = useDispatch()
 
-    let {token} = useParams<'token'>()
-
+    let {resetPasswordToken} = useParams<'resetPasswordToken'>()
+    console.log(resetPasswordToken)
     const toChangePassword = () => {
-        if (token) {
-            dispatch(changePassword({password, password2, token}))
+        if (resetPasswordToken) {
+            dispatch(changePassword({password, password2, resetPasswordToken}))
         }
     }
 

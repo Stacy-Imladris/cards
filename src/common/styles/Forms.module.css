@@ -10,13 +10,6 @@
     margin: 10px auto;
 }
 
-.password {
-    margin-left: 30px;
-    font-size: 28px;
-    display: flex;
-    align-items: center;
-}
-
 .container span {
     font-size: 22px;
     margin-top: 7px;

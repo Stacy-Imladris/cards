@@ -26,14 +26,14 @@ export const newPasswordActions = {
 }
 
 //thunk
-export const changePassword = ({password, password2, token}: NewPasswordDataType): AppThunk => async dispatch => {
+export const changePassword = ({password, password2, resetPasswordToken}: NewPasswordDataType): AppThunk => async dispatch => {
     dispatch(newPasswordActions.setNewPasswordIsLoading(true))
     if (password !== password2) {
         dispatch(newPasswordActions.setNewPasswordError('Password confirmation failed!'))
         dispatch(newPasswordActions.setNewPasswordIsLoading(false))
     } else {
         try {
-            await newPasswordAPI.changePassword({password, token})
+            await newPasswordAPI.changePassword({password, resetPasswordToken})
             dispatch(newPasswordActions.setNewPasswordError(''))
             dispatch(newPasswordActions.toLogIn(true))
         } catch (e) {

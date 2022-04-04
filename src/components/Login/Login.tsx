@@ -4,7 +4,7 @@ import {LoginType} from "../../api/api";
 import {loginTC} from "./loginReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType, useAppSelector} from "../../bll/store";
-import {Navigate, useNavigate} from "react-router-dom";
+import {Navigate} from "react-router-dom";
 import SuperInputText from "../../common/super-components/c1-SuperInputText/SuperInputText";
 import SuperButton from "../../common/super-components/c2-SuperButton/SuperButton";
 import {PATH} from "../../app/AllRoutes";
@@ -55,9 +55,9 @@ export const Login = () => {
             <span className={s.passwordLabel}>Password</span>
             <SuperInputText
                 value={password}
-                type={"password"}
                 onChange={onChangePassword}
                 className={s.password}
+                eye
             />
             <div className={s.error}>{error}</div>
             <div className={s.forgotPassword}>Forgot Password</div>

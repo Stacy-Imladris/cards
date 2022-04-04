@@ -41,11 +41,11 @@ export const Registration = ({signUp, email, password, password2, setEmail, setP
             <div className={s.preloader}>{isLoading && <Preloader/>}</div>
             <div className={`${s.mainText} ${t[theme + '-text']}`}>Sign up</div>
             <span>Email</span>
-            <div><SuperInputText value={email} onChangeText={setEmail} type={'text'}/></div>
+            <div><SuperInputText value={email} onChangeText={setEmail} eye/></div>
             <span>Password</span>
-            <div className={s.password}><SuperInputText value={password} onChangeText={setPassword} type={'password'}/><div>👁</div></div>
+            <div><SuperInputText value={password} onChangeText={setPassword} eye/></div>
             <span>Confirm password</span>
-            <div className={s.password}><SuperInputText value={password2} onChangeText={setPassword2} type={'password'}/><div>👁</div></div>
+            <div><SuperInputText value={password2} onChangeText={setPassword2} eye/></div>
             <div className={s.buttons}>
                 <SuperButton disabled={isLoading} onClick={onCancelClick}>Cancel</SuperButton>
                 <SuperButton disabled={isLoading} onClick={signUp}>Register</SuperButton>

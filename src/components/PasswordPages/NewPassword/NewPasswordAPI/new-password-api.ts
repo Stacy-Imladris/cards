@@ -16,5 +16,5 @@ export const newPasswordAPI = {
 export type NewPasswordDataType = {
     password: string
     password2: string
-    token: string
+    resetPasswordToken: string
 }

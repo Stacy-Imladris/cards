@@ -1,5 +1,6 @@
 .superInput {
-
+    display: flex;
+    align-items: center;
 }
 
 input[type=text]:focus {
@@ -23,4 +24,9 @@ input[type=text]:focus {
 
 .error {
 
+}
+
+.eye {
+    width: 30px;
+    font-size: 30px;
 }

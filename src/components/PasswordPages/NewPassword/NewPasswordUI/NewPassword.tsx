@@ -31,9 +31,9 @@ export const NewPassword = ({password, password2, setPassword, setPassword2, cha
             <div className={s.preloader}>{isLoading && <Preloader/>}</div>
             <div className={`${s.mainText} ${t[theme + '-text']}`}>Create new password</div>
             <span>Password</span>
-            <div><SuperInputText value={password} onChangeText={setPassword} type={'password'}/></div>
+            <div><SuperInputText value={password} onChangeText={setPassword} eye/></div>
             <span>Confirm password</span>
-            <div><SuperInputText value={password2} onChangeText={setPassword2} type={'password'}/></div>
+            <div><SuperInputText value={password2} onChangeText={setPassword2} eye/></div>
             <span>Create new password</span>
             <div className={s.buttons}>
                 <SuperButton disabled={isLoading} onClick={changePassword}>Create new password</SuperButton>

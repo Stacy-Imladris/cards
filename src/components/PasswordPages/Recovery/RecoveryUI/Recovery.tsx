@@ -41,7 +41,7 @@ export const Recovery = ({setEmail, email, toSendInstructions}: RecoveryPropsTyp
             <div className={s.preloader}>{isLoading && <Preloader/>}</div>
             <div className={`${s.mainText} ${t[theme + '-text']}`}>Forgot your password?</div>
             <span>Email</span>
-            <div><SuperInputText value={email} onChangeText={setEmail} type={'text'}/></div>
+            <div><SuperInputText value={email} onChangeText={setEmail}/></div>
             <span>Enter your email address and we will send you further instructions</span>
             <div className={s.buttons}>
                 <SuperButton disabled={isLoading} onClick={toSendInstructions}>Send instructions</SuperButton>

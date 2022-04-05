@@ -1,14 +1,13 @@
-import {NavLink} from 'react-router-dom';
-import React, {useCallback} from 'react';
-import s from './Header.module.css';
-import {PATH} from '../../app/AllRoutes';
-import {useDispatch, useSelector} from 'react-redux';
-import {AppRootStateType, useAppSelector} from '../../bll/store';
-import {logoutTC} from '../Login/loginReducer';
-import t from '../../common/styles/Themes.module.css';
-import {themeActions, ThemeType} from '../../bll/themeReducer';
-import SuperSelect from '../../common/super-components/c5-SuperSelect/SuperSelect';
-import {saveState} from '../../utils/localstorage';
+import {NavLink} from 'react-router-dom'
+import React, {useCallback} from 'react'
+import s from './Header.module.css'
+import {PATH} from '../../app/AllRoutes'
+import {useDispatch, useSelector} from 'react-redux'
+import {AppRootStateType, useAppSelector} from '../../bll/store'
+import {logoutTC} from '../Login/LoginBLL/loginReducer'
+import {themeActions, ThemeType} from '../../bll/themeReducer'
+import SuperSelect from '../../common/super-components/c5-SuperSelect/SuperSelect'
+import {saveState} from '../../utils/localstorage'
 
 const themes = ['day', 'night']
 
@@ -46,7 +45,7 @@ export const Header = () => {
                 {isLoggedIn && <NavLink onClick={logOut} to={PATH.LOGIN}
                                         className={({isActive}) => isActive ? s.active : s.nav}>Log Out</NavLink>}
                 <span className={s.text}>
-                    Theme
+                    Change theme
                 </span>
                     <SuperSelect
                         options={themes}

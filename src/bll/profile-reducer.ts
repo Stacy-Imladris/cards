@@ -1,5 +1,5 @@
 import {AppThunk, InferActionTypes} from './store'
-import {cardsApi, UserType} from '../api/api'
+import {profileAPI, UserType} from '../components/Profile/profile-api'
 import axios from 'axios'
 import {setIsLoggedInAC} from '../components/Login/LoginBLL/loginReducer';
 
@@ -36,7 +36,7 @@ export const profileActions = {
 export const updateProfile = (name: string, avatar: string): AppThunk => async dispatch => {
     dispatch(profileActions.setIsFetchingProfileAC(true))
     try {
-        const response = await cardsApi.update(name, avatar)
+        const response = await profileAPI.update(name, avatar)
         dispatch(profileActions.setUserData(response.data.updatedUser))
         dispatch(profileActions.setEditModeProfileAC(false))
     } catch (e) {
@@ -52,7 +52,7 @@ export const updateProfile = (name: string, avatar: string): AppThunk => async d
 export const auth = (): AppThunk => async dispatch => {
     dispatch(profileActions.setIsFetchingProfileAC(true))
     try {
-        const response = await cardsApi.me()
+        const response = await profileAPI.me()
         dispatch(profileActions.setUserData(response.data))
         dispatch(setIsLoggedInAC(true))
     } catch (e) {

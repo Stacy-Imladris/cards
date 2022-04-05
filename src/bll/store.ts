@@ -8,7 +8,7 @@ import {LoginActionsType, loginReducer} from '../components/Login/LoginBLL/login
 import {RecoveryActionTypes, recoveryReducer} from '../components/Recovery/RecoveryBLL/recovery-reducer';
 import {NewPasswordActionTypes, newPasswordReducer} from '../components/NewPassword/NewPasswordBLL/new-password-reducer';
 import {loadValue} from '../utils/localstorage';
-import {UserType} from '../api/api';
+import {UserType} from '../components/Profile/profile-api';
 
 const rootReducer = combineReducers({
     theme: themeReducer,

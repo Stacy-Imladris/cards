@@ -1,11 +1,10 @@
 import {profileActions} from '../../../bll/profile-reducer';
 import {AppThunk} from '../../../bll/store';
-import {registrationActions} from '../../Registration/RegistrationBLL/registration-reducer';
 import {cardsApi, LoginType} from '../LoginAPI/api';
 
 export const initialState = {
     isLoggedIn: false,
-    error: null as NullableType<string>,
+    error: '',
     isLogin: false
 }
 
@@ -37,13 +36,12 @@ export const setLoginErrorAC = (error: string) =>
 export const setLoginAC = (value: boolean) =>
     ({type: 'login/SET-LOGIN', value} as const)
 
-// thunk
+// thunks
 export const loginTC = (data: LoginType): AppThunk => dispatch => {
     dispatch(setLoginAC(true))
     cardsApi.login(data)
         .then((res) => {
             dispatch(setIsLoggedInAC(true))
-            dispatch(registrationActions.toLogIn(false))
             dispatch(profileActions.setUserData(res.data))
         })
         .catch((err) => {
@@ -64,6 +62,3 @@ export type LoginActionsType = ReturnType<typeof setIsLoggedInAC>
     | ReturnType<typeof setLoginAC>
     | ReturnType<typeof setLoginErrorAC>
     | ReturnType<typeof profileActions.setUserData>
-
-
-export type NullableType<T> = null | T

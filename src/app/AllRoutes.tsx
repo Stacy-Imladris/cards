@@ -1,6 +1,6 @@
 import React from 'react';
 import {Navigate, Route, Routes} from 'react-router-dom';
-import {Login} from '../components/Login/Login';
+import {Login} from '../components/Login/LoginUI/Login';
 import {Profile} from '../components/Profile/Profile';
 import {Test} from '../components/Test/Test';
 import {Error404} from '../components/Error404/Error404';

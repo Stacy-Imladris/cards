@@ -4,7 +4,7 @@ import {themeReducer} from './themeReducer';
 import {TypedUseSelectorHook, useSelector} from 'react-redux';
 import {profileReducer} from './profile-reducer'
 import {RegistrationActionTypes, registrationReducer} from '../components/Registration/RegistrationBLL/registration-reducer';
-import {LoginActionsType, loginReducer} from '../components/Login/loginReducer';
+import {LoginActionsType, loginReducer} from '../components/Login/LoginBLL/loginReducer';
 import {RecoveryActionTypes, recoveryReducer} from '../components/Recovery/RecoveryBLL/recovery-reducer';
 import {NewPasswordActionTypes, newPasswordReducer} from '../components/NewPassword/NewPasswordBLL/new-password-reducer';
 import {loadValue} from '../utils/localstorage';
@@ -48,6 +48,7 @@ const preloadedState = {
     login: {
         isLoggedIn: false,
         error: null,
+        isLogin: false
     },
 }
 

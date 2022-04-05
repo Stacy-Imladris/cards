@@ -4,7 +4,7 @@ import s from './Header.module.css';
 import {PATH} from '../../app/AllRoutes';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppRootStateType, useAppSelector} from '../../bll/store';
-import {logoutTC} from '../Login/loginReducer';
+import {logoutTC} from '../Login/LoginBLL/loginReducer';
 import t from '../../common/styles/Themes.module.css';
 import {themeActions, ThemeType} from '../../bll/themeReducer';
 import SuperSelect from '../../common/super-components/c5-SuperSelect/SuperSelect';

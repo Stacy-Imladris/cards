@@ -1,12 +1,7 @@
-import {registrationActions} from "../../Registration/RegistrationBLL/registration-reducer";
-import {profileActions} from '../../../bll/profileReducer'
-import {AppThunk} from "../../../bll/store";
-import {cardsApi, LoginType} from "../LoginAPI/api";
-import {cardsApi, LoginType} from "../../api/api";
-import {registrationActions} from "../Registration/RegistrationBLL/registration-reducer";
-import {profileActions} from '../../bll/profile-reducer'
-import {AppThunk} from "../../bll/store";
-
+import {profileActions} from '../../../bll/profile-reducer';
+import {AppThunk} from '../../../bll/store';
+import {registrationActions} from '../../Registration/RegistrationBLL/registration-reducer';
+import {cardsApi, LoginType} from '../LoginAPI/api';
 
 export const initialState = {
     isLoggedIn: false,

@@ -3,10 +3,9 @@
 }
 
 .select select {
-    margin: 5px;
+    margin: 2px;
     display: block;
-    max-width: 300px;
-    padding: .35rem 2.5rem .35rem 1rem;
+    padding: .20rem 2.5rem .20rem 1rem;
     background: linear-gradient(to right, #077517, #469d4b, #4CAF50, #469d4b, #077517);
     border: 1px solid white;
     border-radius: 10px;
@@ -14,7 +13,7 @@
     -moz-appearance: none;
     appearance: none;
     font-family: "Times New Roman";
-    font-size: 22px;
+    font-size: 18px;
     font-weight: bold;
     color: white;
 }

@@ -7,7 +7,7 @@ export const Logo = () => {
     const theme = useAppSelector(state => state.theme.theme)
 
     return <>
-        <div><img alt={'logo'} src={logo} className={s.logo}/></div>
+        <img alt={'logo'} src={logo} className={s.logo}/>
         <h2 className={`${s.brand} ${t[theme + '-text']}`}>BRAINSTORM</h2>
     </>
 }

@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 400px;
-    padding: 20px 30px;
+    width: 30%;
+    padding: 15px 20px;
     text-align: center;
     border: 5px #077517 solid;
     border-radius: 30px;
@@ -16,26 +16,26 @@
 
 .mainText {
     font-weight: bold;
-    font-size: 36px;
+    font-size: 24px;
     margin: 10px auto;
 }
 
 .container span {
-    font-size: 22px;
-    margin-top: 7px;
+    font-size: 16px;
+    margin-top: 2px;
 }
 
 .preloader {
-    height: 70px;
+    height: 40px;
 }
 
 .buttons {
-    margin: 20px auto;
+    margin: 10px auto;
 }
 
 .error {
     color: #e82323;
-    font-size: 22px;
+    font-size: 16px;
     margin: 10px 0 25px 0;
     height: 30px;
 }

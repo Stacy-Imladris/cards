@@ -46,7 +46,7 @@ export const Header = () => {
                 {isLoggedIn && <NavLink onClick={logOut} to={PATH.LOGIN}
                                         className={({isActive}) => isActive ? s.active : s.nav}>Log Out</NavLink>}
                 <span className={s.text}>
-                    Change theme
+                    Theme
                 </span>
                     <SuperSelect
                         options={themes}

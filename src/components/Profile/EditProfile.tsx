@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import s from './Profile.module.css'
 import profile_ava from '../../assets/images/profile_ava.png'
 import SuperInputText from '../../common/super-components/c1-SuperInputText/SuperInputText'
@@ -19,10 +19,15 @@ export const EditProfile = () => {
 
     const dispatch = useDispatch()
 
+    useEffect(() => {
+        return () => {
+            dispatch(profileActions.setProfileError(''))
+        }
+    }, [])
+
     const navigateToProfile = () => {
         <Navigate to={PATH.PROFILE}/>
         dispatch(profileActions.setEditModeProfileAC(false))
-        dispatch(profileActions.setProfileError(''))
     }
 
     const updateData = () => {
@@ -59,7 +64,7 @@ export const EditProfile = () => {
                 </div>
             </div>
             <div>
-                {isFetching && <Preloader />}
+                {isFetching && <Preloader/>}
             </div>
         </div>
     )

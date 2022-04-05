@@ -8,15 +8,21 @@ import {AllRoutes, PATH} from './AllRoutes'
 import {Navigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {auth} from '../bll/profile-reducer'
+import {Preloader} from '../common/preloader/Preloader';
 
 export const App = () => {
     const theme = useAppSelector(state => state.theme.theme)
     const isLoggedIn = useAppSelector(state => state.login.isLoggedIn)
+    const isInitialized = useAppSelector(state => state.profile.isInitialized)
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(auth())
     }, [])
+
+    if (!isInitialized) {
+        return <Preloader/>
+    }
 
     if(!isLoggedIn) {
         <Navigate to={PATH.LOGIN} />

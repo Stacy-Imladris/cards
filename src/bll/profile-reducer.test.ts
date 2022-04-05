@@ -15,11 +15,11 @@ beforeEach(() => {
             isAdmin: false,
             verified: false,
             rememberMe: false,
-            error: ''
         },
         error: '',
         editMode: false,
         isFetching: false,
+        isInitialized: false,
     }
 })
 
@@ -36,33 +36,11 @@ test('set authorizing user data', () => {
         isAdmin: false,
         verified: false,
         rememberMe: false,
-        error: ''
     }
 
     const endState = profileReducer(state, profileActions.setUserData(userData))
 
     expect(endState.user._id).toBe('2')
-})
-
-test('set updated user data', () => {
-
-    const userData = {
-        _id: '1',
-        email: 'pupik@mail.com',
-        name: 'Pupik',
-        avatar: '',
-        publicCardPacksCount: 0,
-        created: new Date(),
-        updated: new Date(),
-        isAdmin: false,
-        verified: false,
-        rememberMe: false,
-        error: ''
-    }
-
-    const endState = profileReducer(state, profileActions.updateProfileAC(userData))
-
-    expect(endState.user.name).toBe('Pupik')
 })
 
 test('set editMode for changing profile', () => {

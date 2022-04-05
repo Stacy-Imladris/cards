@@ -48,5 +48,4 @@ export type UserType = {
     isAdmin: boolean
     verified: boolean
     rememberMe: boolean
-    error?: string
 }

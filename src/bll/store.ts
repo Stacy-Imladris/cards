@@ -8,6 +8,7 @@ import {LoginActionsType, loginReducer} from '../components/Login/loginReducer';
 import {RecoveryActionTypes, recoveryReducer} from '../components/Recovery/RecoveryBLL/recovery-reducer';
 import {NewPasswordActionTypes, newPasswordReducer} from '../components/NewPassword/NewPasswordBLL/new-password-reducer';
 import {loadValue} from '../utils/localstorage';
+import {UserType} from '../api/api';
 
 const rootReducer = combineReducers({
     theme: themeReducer,
@@ -23,23 +24,11 @@ const preloadedState = {
         theme: loadValue() ? loadValue() : 'day',
     },
     profile: {
-        user: {
-            _id: '',
-            email: 'mail@mail.com',
-            name: 'Barbaris',
-            avatar: '',
-            publicCardPacksCount: 0,
-            created: new Date(),
-            updated: new Date(),
-            isAdmin: false,
-            verified: false,
-            rememberMe: false,
-            error: ''
-        },
+        user: {} as UserType,
         error: '',
         editMode: false,
         isFetching: false,
-        isAuth: false,
+        isInitialized: false,
     },
     registration: {
         error: '',
@@ -62,9 +51,7 @@ const preloadedState = {
     },
 }
 
-export const store = createStore(rootReducer,
-    preloadedState, // ? App works without it. Isn't it?
-    applyMiddleware(thunk))
+export const store = createStore(rootReducer, preloadedState, applyMiddleware(thunk))
 
 export type AppRootStateType = ReturnType<typeof store.getState>
 export type InferActionTypes<T> = T extends { [keys: string]: (...args: any[]) => infer U } ? U : never

@@ -2,31 +2,17 @@ import {AppRootStateType, InferActionTypes} from './store'
 import {cardsApi, UserType} from '../api/api'
 import {ThunkAction} from 'redux-thunk'
 import axios from 'axios'
+import {setIsLoggedInAC} from '../components/Login/loginReducer'
 
 const initialState = {
-    user: {
-        _id: '',
-        email: 'mail@mail.com',
-        name: 'Barbaris',
-        avatar: '',
-        publicCardPacksCount: 0,
-        created: new Date(),
-        updated: new Date(),
-        isAdmin: false,
-        verified: false,
-        rememberMe: false,
-        error: ''
-    },
+    user: {} as UserType,
     error: '' as string | undefined,
     editMode: false,
     isFetching: false,
-    isAuth: false
 }
 
 export const profileReducer = (state: ProfileStateType = initialState, action: ProfileActionTypes): ProfileStateType => {
     switch (action.type) {
-        case 'profile/SET_IS_AUTHORIZED':
-            return {...state, isAuth: action.isAuth}
 
         case 'profile/SET_USER_DATA':
             return {...state, user: {...state.user, ...action.user}}
@@ -56,7 +42,6 @@ export const profileActions = {
     setEditModeProfileAC: (editMode: boolean) => ({type: 'profile/SET_EDIT_MODE_PROFILE', editMode} as const),
     setIsFetchingProfileAC: (isFetching: boolean) => ({type: 'profile/SET_IS_FETCHING_PROFILE', isFetching} as const),
     setUserData: (user: UserType) => ({type: 'profile/SET_USER_DATA', user} as const),
-    setIsAuth: (isAuth: boolean) => ({type: 'profile/SET_IS_AUTHORIZED', isAuth} as const),
     setProfileError: (error: string) => ({type: 'profile/SET_PROFILE_ERROR', error} as const)
 }
 
@@ -82,7 +67,7 @@ export const auth = (): ThunkType => async (dispatch) => {
     try {
         const response = await cardsApi.me()
         dispatch(profileActions.setUserData(response.data))
-        dispatch(profileActions.setIsAuth(true))
+        dispatch(setIsLoggedInAC(true))
     } catch (e) {
         if (axios.isAxiosError(e)) {
             const error = e.response ? e.response.data.error : (e.message + ', more details in the console')
@@ -97,4 +82,4 @@ export const auth = (): ThunkType => async (dispatch) => {
 type ThunkType = ThunkAction<void, AppRootStateType, unknown, ProfileActionTypes>
 
 export type ProfileStateType = typeof initialState
-export type ProfileActionTypes = InferActionTypes<typeof profileActions>
+export type ProfileActionTypes = InferActionTypes<typeof profileActions> | ReturnType<typeof setIsLoggedInAC>

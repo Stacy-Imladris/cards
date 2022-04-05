@@ -39,6 +39,7 @@ const preloadedState = {
         error: '',
         editMode: false,
         isFetching: false,
+        isAuth: false,
     },
     registration: {
         error: '',
@@ -61,7 +62,9 @@ const preloadedState = {
     },
 }
 
-export const store = createStore(rootReducer, preloadedState, applyMiddleware(thunk))
+export const store = createStore(rootReducer,
+    // preloadedState,
+    applyMiddleware(thunk))
 
 export type AppRootStateType = ReturnType<typeof store.getState>
 export type InferActionTypes<T> = T extends { [keys: string]: (...args: any[]) => infer U } ? U : never

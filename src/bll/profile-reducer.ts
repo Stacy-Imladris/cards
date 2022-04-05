@@ -2,7 +2,7 @@ import {AppRootStateType, InferActionTypes} from './store'
 import {cardsApi, UserType} from '../api/api'
 import {ThunkAction} from 'redux-thunk'
 import axios from 'axios'
-import {setIsLoggedInAC} from '../components/Login/loginReducer'
+import {setIsLoggedInAC} from '../components/Login/LoginBLL/loginReducer';
 
 const initialState = {
     user: {} as UserType,

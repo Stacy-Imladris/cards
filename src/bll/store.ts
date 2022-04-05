@@ -47,7 +47,7 @@ const preloadedState = {
     },
     login: {
         isLoggedIn: false,
-        error: null,
+        error: '',
         isLogin: false
     },
 }

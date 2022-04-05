@@ -9,12 +9,14 @@ import {profileActions} from '../../bll/profile-reducer';
 import {useDispatch} from 'react-redux';
 import {useAppSelector} from '../../bll/store';
 import {EditProfile} from './EditProfile';
+import {Preloader} from '../../common/preloader/Preloader';
 
 export const Profile = () => {
     const isLoggedIn = useAppSelector(state => state.login.isLoggedIn)
     const name = useAppSelector(state => state.profile.user.name)
     const editMode = useAppSelector(state => state.profile.editMode)
     const dispatch = useDispatch()
+
     const editProfile = () => dispatch(profileActions.setEditModeProfileAC(true))
 
     if (editMode) {

@@ -8,12 +8,13 @@ import {AllRoutes, PATH} from './AllRoutes'
 import {Navigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {auth} from '../bll/profile-reducer'
-import {AppPreloader} from '../common/preloader/AppPreloader'
+import {Preloader} from '../common/preloader/Preloader';
 
 export const App = () => {
     const theme = useAppSelector(state => state.theme.theme)
     const isLoggedIn = useAppSelector(state => state.login.isLoggedIn)
     const isInitialized = useAppSelector(state => state.profile.isInitialized)
+
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -21,7 +22,7 @@ export const App = () => {
     }, [])
 
     if (!isInitialized) {
-        return <AppPreloader/>
+        return <div className={s.app_progress}><Preloader/></div>
     }
 
     if(!isLoggedIn) {

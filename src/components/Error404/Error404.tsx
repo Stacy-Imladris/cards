@@ -5,12 +5,13 @@ import {NavLink} from 'react-router-dom';
 import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton';
 import {useAppSelector} from '../../bll/store';
 import {PATH} from '../../app/AllRoutes';
+import {Logo} from '../../common/logo/Logo';
 
 export const Error404 = () => {
     const theme = useAppSelector(state => state.theme.theme)
 
     return (
-        <div className={`${s.container} ${t[theme]} ${t[theme + '-text']}`}>
+        <div className={`${s.container} ${t[theme + '-text']}`}>
             <div className={`${s.error} ${t[theme + '-text']}`}>404</div>
             <div className={`${s.text} ${t[theme + '-text']}`}>Page not found!</div>
             <div className={`${s.textNav} ${t[theme + '-text']}`}>

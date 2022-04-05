@@ -1,6 +1,5 @@
-import {AppRootStateType, InferActionTypes} from './store'
+import {AppThunk, InferActionTypes} from './store'
 import {cardsApi, UserType} from '../api/api'
-import {ThunkAction} from 'redux-thunk'
 import axios from 'axios'
 import {setIsLoggedInAC} from '../components/Login/LoginBLL/loginReducer';
 
@@ -34,7 +33,7 @@ export const profileActions = {
 }
 
 //thunks:
-export const updateProfile = (name: string, avatar: string): ThunkType => async (dispatch) => {
+export const updateProfile = (name: string, avatar: string): AppThunk => async dispatch => {
     dispatch(profileActions.setIsFetchingProfileAC(true))
     try {
         const response = await cardsApi.update(name, avatar)
@@ -50,7 +49,7 @@ export const updateProfile = (name: string, avatar: string): ThunkType => async 
     }
 }
 
-export const auth = (): ThunkType => async (dispatch) => {
+export const auth = (): AppThunk => async dispatch => {
     dispatch(profileActions.setIsFetchingProfileAC(true))
     try {
         const response = await cardsApi.me()
@@ -68,7 +67,5 @@ export const auth = (): ThunkType => async (dispatch) => {
 }
 
 //types:
-type ThunkType = ThunkAction<void, AppRootStateType, unknown, ProfileActionTypes>
-
 export type ProfileStateType = typeof initialState
-export type ProfileActionTypes = InferActionTypes<typeof profileActions> | ReturnType<typeof setIsLoggedInAC>
+export type ProfileActionTypes = InferActionTypes<typeof profileActions>

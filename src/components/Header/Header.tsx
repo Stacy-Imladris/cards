@@ -5,7 +5,6 @@ import {PATH} from '../../app/AllRoutes';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppRootStateType, useAppSelector} from '../../bll/store';
 import {logoutTC} from '../Login/LoginBLL/loginReducer';
-import t from '../../common/styles/Themes.module.css';
 import {themeActions, ThemeType} from '../../bll/themeReducer';
 import SuperSelect from '../../common/super-components/c5-SuperSelect/SuperSelect';
 import {saveState} from '../../utils/localstorage';
@@ -45,15 +44,8 @@ export const Header = () => {
                                          className={({isActive}) => isActive ? s.active : s.nav}>Log In</NavLink>}
                 {isLoggedIn && <NavLink onClick={logOut} to={PATH.LOGIN}
                                         className={({isActive}) => isActive ? s.active : s.nav}>Log Out</NavLink>}
-                <span className={s.text}>
-                    Change theme
-                </span>
-                    <SuperSelect
-                        options={themes}
-                        value={theme}
-                        onChangeOption={onChangeCallback}
-                    />
-
+                <span className={s.text}>Theme</span>
+                <SuperSelect options={themes} value={theme} onChangeOption={onChangeCallback}/>
             </div>
             <div className={s.menu}>Menu</div>
         </nav>

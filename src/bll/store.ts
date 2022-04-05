@@ -63,7 +63,7 @@ const preloadedState = {
 }
 
 export const store = createStore(rootReducer,
-    // preloadedState,
+    preloadedState, // ? App works without it. Isn't it?
     applyMiddleware(thunk))
 
 export type AppRootStateType = ReturnType<typeof store.getState>

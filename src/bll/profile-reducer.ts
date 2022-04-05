@@ -13,7 +13,6 @@ const initialState = {
 
 export const profileReducer = (state: ProfileStateType = initialState, action: ProfileActionTypes): ProfileStateType => {
     switch (action.type) {
-
         case 'profile/SET_USER_DATA':
             return {...state, user: {...state.user, ...action.user}}
 

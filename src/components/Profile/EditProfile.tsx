@@ -7,7 +7,7 @@ import {useAppSelector} from '../../bll/store'
 import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton'
 import {Navigate} from 'react-router-dom'
 import {PATH} from '../../app/AllRoutes'
-import {profileActions, updateProfile} from '../../bll/profileReducer'
+import {profileActions, updateProfile} from '../../bll/profile-reducer'
 import {Preloader} from '../../common/preloader/Preloader'
 
 export const EditProfile = () => {

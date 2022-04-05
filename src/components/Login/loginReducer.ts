@@ -1,6 +1,6 @@
 import {cardsApi, LoginType} from "../../api/api";
 import {registrationActions} from "../Registration/RegistrationBLL/registration-reducer";
-import {profileActions} from '../../bll/profileReducer'
+import {profileActions} from '../../bll/profile-reducer'
 import {AppThunk} from "../../bll/store";
 
 

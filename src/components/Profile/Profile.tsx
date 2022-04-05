@@ -5,7 +5,7 @@ import SuperButton from '../../common/super-components/c2-SuperButton/SuperButto
 import SuperInputText from '../../common/super-components/c1-SuperInputText/SuperInputText'
 import {Navigate} from "react-router-dom";
 import {PATH} from "../../app/AllRoutes";
-import {profileActions} from '../../bll/profileReducer';
+import {profileActions} from '../../bll/profile-reducer';
 import {useDispatch} from 'react-redux';
 import {useAppSelector} from '../../bll/store';
 import {EditProfile} from './EditProfile';

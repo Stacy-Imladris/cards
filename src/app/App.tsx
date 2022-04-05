@@ -7,7 +7,7 @@ import s from './App.module.css'
 import {AllRoutes, PATH} from './AllRoutes'
 import {Navigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
-import {auth} from '../bll/profileReducer'
+import {auth} from '../bll/profile-reducer'
 
 export const App = () => {
     const theme = useAppSelector(state => state.theme.theme)

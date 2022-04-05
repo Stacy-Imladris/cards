@@ -4,7 +4,8 @@ import s from '../../../common/styles/Forms.module.css'
 import t from '../../../common/styles/Themes.module.css'
 import {Preloader} from '../../../common/preloader/Preloader';
 import {NavigateFunction} from 'react-router-dom';
-import {memo} from 'react';
+import React, {memo} from 'react';
+import {Logo} from '../../../common/logo/Logo';
 
 type RegistrationPropsType = {
     signUp: () => void
@@ -24,6 +25,7 @@ export const Registration = memo(({signUp, email, setEmail, password, setPasswor
                                  error, isLoading, theme, navigate}: RegistrationPropsType) => {
     return (
         <div className={`${s.container} ${t[theme + '-text']}`}>
+            <Logo/>
             <div className={s.preloader}>{isLoading && <Preloader/>}</div>
             <div className={s.mainText}>Sign up</div>
             <span>Email</span>

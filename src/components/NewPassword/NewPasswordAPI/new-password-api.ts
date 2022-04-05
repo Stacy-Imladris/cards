@@ -1,5 +1,5 @@
 import axios, {AxiosResponse} from 'axios';
-import {ResponseType} from '../../../Registration/RegistrationAPI/registration-api';
+import {ResponseType} from '../../Registration/RegistrationAPI/registration-api';
 
 const instance = axios.create({
     //baseURL: 'http://localhost:7542/2.0/',

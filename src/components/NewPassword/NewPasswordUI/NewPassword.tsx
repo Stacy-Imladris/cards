@@ -1,9 +1,10 @@
-import {memo} from 'react';
-import s from '../../../../common/styles/Forms.module.css'
-import t from '../../../../common/styles/Themes.module.css';
-import {Preloader} from '../../../../common/preloader/Preloader';
-import SuperInputText from '../../../../common/super-components/c1-SuperInputText/SuperInputText';
-import SuperButton from '../../../../common/super-components/c2-SuperButton/SuperButton';
+import React, {memo} from 'react';
+import s from '../../../common/styles/Forms.module.css'
+import t from '../../../common/styles/Themes.module.css';
+import {Preloader} from '../../../common/preloader/Preloader';
+import SuperButton from '../../../common/super-components/c2-SuperButton/SuperButton';
+import SuperInputText from '../../../common/super-components/c1-SuperInputText/SuperInputText';
+import {Logo} from '../../../common/logo/Logo';
 
 type NewPasswordPropsType = {
     password: string
@@ -20,6 +21,7 @@ export const NewPassword = memo(({password, password2, setPassword, setPassword2
                                      isLoading, error, theme}: NewPasswordPropsType) => {
     return (
         <div className={`${s.container} ${t[theme + '-text']}`}>
+            <Logo/>
             <div className={s.preloader}>{isLoading && <Preloader/>}</div>
             <div className={s.mainText}>Create new password</div>
             <span>Password</span>

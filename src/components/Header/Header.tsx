@@ -1,5 +1,5 @@
 import {NavLink} from 'react-router-dom';
-import React from 'react';
+import React, {useCallback} from 'react';
 import s from './Header.module.css';
 import {PATH} from '../../app/AllRoutes';
 import {useDispatch, useSelector} from 'react-redux';
@@ -8,6 +8,7 @@ import {logoutTC} from '../Login/loginReducer';
 import t from '../../common/styles/Themes.module.css';
 import {themeActions, ThemeType} from '../../bll/themeReducer';
 import SuperSelect from '../../common/super-components/c5-SuperSelect/SuperSelect';
+import {saveState} from '../../utils/localstorage';
 
 const themes = ['day', 'night']
 
@@ -20,9 +21,10 @@ export const Header = () => {
         dispatch(logoutTC())
     }
 
-    const onChangeCallback = (theme: ThemeType) => {
+    const onChangeCallback = useCallback((theme: ThemeType) => {
         dispatch(themeActions.changeTheme(theme))
-    }
+        saveState(theme)
+    }, [dispatch])
 
     return (
         <nav className={s.main}>

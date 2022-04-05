@@ -1,6 +1,6 @@
-import {AppThunk, InferActionTypes} from '../../../../bll/store';
 import axios from 'axios';
 import {newPasswordAPI, NewPasswordDataType} from '../NewPasswordAPI/new-password-api';
+import {AppThunk, InferActionTypes} from '../../../bll/store';
 
 const newPasswordInitialState = {
     error: '',

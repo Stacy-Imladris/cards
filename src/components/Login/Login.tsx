@@ -10,6 +10,7 @@ import SuperButton from '../../common/super-components/c2-SuperButton/SuperButto
 import {PATH} from '../../app/AllRoutes';
 import s from '../../common/styles/Forms.module.css'
 import t from '../../common/styles/Themes.module.css'
+import {Logo} from '../../common/logo/Logo';
 
 export const Login = () => {
     let [email, setEmail] = useState<string>("")
@@ -44,7 +45,7 @@ export const Login = () => {
 
     return (
         <div className={`${s.container} ${t[theme + '-text']}`}>
-            <h2 className={`${s.mainText} ${t[theme + '-text']}`}>it-incubator</h2>
+            <Logo/>
             <h3 className={`${s.mainText} ${t[theme + '-text']}`}>Sign In</h3>
             <span>Email</span>
             <SuperInputText

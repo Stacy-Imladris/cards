@@ -1,7 +1,6 @@
 import {AppRootStateType, InferActionTypes} from './store'
 import {cardsApi, UserType} from '../api/api'
 import {ThunkAction} from 'redux-thunk'
-import {appActions} from './appReducer'
 import axios from 'axios'
 
 const initialState = {

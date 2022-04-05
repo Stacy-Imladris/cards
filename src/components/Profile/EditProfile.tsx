@@ -1,10 +1,9 @@
 import React, {useState} from 'react'
 import s from './Profile.module.css'
-import profile_ava from '../../assets/profile_ava.png'
+import profile_ava from '../../assets/images/profile_ava.png'
 import SuperInputText from '../../common/super-components/c1-SuperInputText/SuperInputText'
-import {useDispatch, useSelector} from 'react-redux'
-import {AppRootStateType, useAppSelector} from '../../bll/store'
-import {UserType} from '../../api/api'
+import {useDispatch} from 'react-redux'
+import {useAppSelector} from '../../bll/store'
 import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton'
 import {Navigate} from 'react-router-dom'
 import {PATH} from '../../app/AllRoutes'
@@ -12,7 +11,6 @@ import {profileActions, updateProfile} from '../../bll/profileReducer'
 import {Preloader} from '../../common/preloader/Preloader'
 
 export const EditProfile = () => {
-
     const userData = useAppSelector(state => state.profile.user)
     const error = useAppSelector(state => state.profile.error)
     const isLoggedIn = useAppSelector(state => state.login.isLoggedIn)

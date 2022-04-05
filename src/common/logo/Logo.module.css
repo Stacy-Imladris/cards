@@ -1,0 +1,16 @@
+.logo {
+    width: 100px;
+    height: 100px;
+    margin-bottom: -20px;
+    -webkit-filter: drop-shadow(2px 2px 2px #000);
+    filter: drop-shadow(2px 2px 2px #000);
+}
+
+.brand {
+    color: #6cdd9e;
+    font-size: 45px;
+    margin: 15px auto;
+    text-shadow: 2px 2px 1px #000;
+    letter-spacing: 3px;
+    font-family: "Snap ITC";
+}

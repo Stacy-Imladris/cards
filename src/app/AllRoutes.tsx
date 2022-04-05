@@ -5,8 +5,8 @@ import {Profile} from '../components/Profile/Profile';
 import {Test} from '../components/Test/Test';
 import {Error404} from '../components/Error404/Error404';
 import {RegistrationContainer} from '../components/Registration/RegistrationUI/RegistrationContainer';
-import {RecoveryContainer} from '../components/PasswordPages/Recovery/RecoveryUI/RecoveryContainer';
-import {NewPasswordContainer} from '../components/PasswordPages/NewPassword/NewPasswordUI/NewPasswordContainer';
+import {RecoveryContainer} from '../components/Recovery/RecoveryUI/RecoveryContainer';
+import {NewPasswordContainer} from '../components/NewPassword/NewPasswordUI/NewPasswordContainer';
 
 export enum PATH {
     LOGIN = '/login',

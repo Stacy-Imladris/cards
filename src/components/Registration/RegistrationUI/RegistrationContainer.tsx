@@ -1,7 +1,7 @@
-import {memo, useCallback, useState} from 'react';
+import {memo, useCallback, useEffect, useState} from 'react';
 import {Registration} from './Registration';
 import {useDispatch} from 'react-redux';
-import {signUp} from '../RegistrationBLL/registration-reducer';
+import {registrationActions, signUp} from '../RegistrationBLL/registration-reducer';
 import {useAppSelector} from '../../../bll/store';
 import {Navigate, useNavigate} from 'react-router-dom';
 import {PATH} from '../../../app/AllRoutes';
@@ -22,6 +22,12 @@ export const RegistrationContainer = memo(() => {
     const toSignUp = useCallback(() => {
         dispatch(signUp({email, password, password2}))
     }, [dispatch, email, password, password2])
+
+    useEffect(() => {
+        return () => {
+            dispatch(registrationActions.setRegistrationError(''))
+        }
+    }, [])
 
     if (toLogin) {
         return <Navigate to={PATH.LOGIN}/>

@@ -1,7 +1,7 @@
-import {Dispatch} from "redux";
 import {cardsApi, LoginType} from "../../api/api";
-import {ActionsType} from "../../bll/store";
 import {registrationActions} from "../Registration/RegistrationBLL/registration-reducer";
+import {profileActions} from '../../bll/profileReducer'
+import {AppThunk} from "../../bll/store";
 
 
 const initialState = {
@@ -11,7 +11,7 @@ const initialState = {
 
 export type InitialStateType = typeof initialState
 
-export const loginReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
+export const loginReducer = (state: InitialStateType = initialState, action: LoginActionsType): InitialStateType => {
     switch (action.type) {
         case 'login/SET-IS-LOGGED-IN':
             return {...state, isLoggedIn: action.value}
@@ -31,27 +31,29 @@ export const setLoginError = (error: string) =>
     ({type: 'login/SET-ERROR', error} as const)
 
 // thunk
-export const loginTC = (data: LoginType) => (dispatch: Dispatch<ActionsType>) => {
+export const loginTC = (data: LoginType): AppThunk => dispatch => {
     cardsApi.login(data)
         .then((res) => {
             dispatch(setIsLoggedInAC(true))
             dispatch(registrationActions.toLogIn(false))
+            dispatch(profileActions.setUserData(res.data))
+
         })
         .catch((err) => {
             dispatch(setLoginError(err.response.data.error))
         })
 }
 
-export const logoutTC = () => (dispatch: Dispatch<ActionsType>) => {
+export const logoutTC = (): AppThunk => dispatch => {
     cardsApi.logout()
         .then((res) => {
             dispatch(setIsLoggedInAC(false))
         })
-
 }
 
 // types
 export type LoginActionsType = ReturnType<typeof setIsLoggedInAC>
 | ReturnType<typeof setLoginError>
+| ReturnType<typeof profileActions.setUserData>
 
 export type NullableType<T> = null | T

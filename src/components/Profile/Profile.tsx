@@ -1,6 +1,6 @@
 import React from 'react'
 import s from './Profile.module.css'
-import profile_ava from '../../assets/profile_ava.png'
+import profile_ava from '../../assets/images/profile_ava.png'
 import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton'
 import SuperInputText from '../../common/super-components/c1-SuperInputText/SuperInputText'
 import {Navigate} from "react-router-dom";

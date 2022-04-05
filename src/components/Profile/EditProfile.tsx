@@ -1,19 +1,21 @@
 import React, {useState} from 'react'
 import s from './Profile.module.css'
-import profile_ava from '../../assets/profile_ava.png'
+import profile_ava from '../../assets/images/profile_ava.png'
 import SuperInputText from '../../common/super-components/c1-SuperInputText/SuperInputText'
-import {useDispatch, useSelector} from 'react-redux'
-import {AppRootStateType} from '../../bll/store'
-import {UserType} from '../../api/api'
+import {useDispatch} from 'react-redux'
+import {useAppSelector} from '../../bll/store'
 import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton'
 import {Navigate} from 'react-router-dom'
 import {PATH} from '../../app/AllRoutes'
 import {profileActions, updateProfile} from '../../bll/profileReducer'
+import {Preloader} from '../../common/preloader/Preloader'
 
 export const EditProfile = () => {
-    const userData = useSelector<AppRootStateType, UserType>(state => state.profile.user)
+    const userData = useAppSelector(state => state.profile.user)
+    const error = useAppSelector(state => state.profile.error)
+    const isLoggedIn = useAppSelector(state => state.login.isLoggedIn)
+    const isFetching = useAppSelector(state => state.profile.isFetching)
     const [name, setName] = useState<string>(userData.name)
-    const isAuthorized = true // this data will be taken from loginProfile via useSelector
 
     const dispatch = useDispatch()
 
@@ -23,12 +25,11 @@ export const EditProfile = () => {
     }
 
     const updateData = () => {
-        if (isAuthorized) {
+        if (isLoggedIn) {
             dispatch(updateProfile(name, 'https//avatar-url.img'))
         } else {
             <Navigate to={PATH.LOGIN}/>
         }
-        dispatch(profileActions.setEditModeProfileAC(false))
     }
 
     const changeNameHandle = (e: React.ChangeEvent<HTMLInputElement>) => setName(e.currentTarget.value)
@@ -45,6 +46,9 @@ export const EditProfile = () => {
             <div>
                 <SuperInputText value={userData.email}/>
             </div>
+            <div className={s.profileError}>
+                {error && error}
+            </div>
             <div className={s.edit__applyButtons}>
                 <div>
                     <SuperButton onClick={navigateToProfile}>Cancel</SuperButton>
@@ -52,7 +56,9 @@ export const EditProfile = () => {
                 <div>
                     <SuperButton onClick={updateData}>Save</SuperButton>
                 </div>
-
+            </div>
+            <div>
+                {isFetching && <Preloader />}
             </div>
         </div>
     )

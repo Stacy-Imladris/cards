@@ -18,5 +18,5 @@ export const themeActions = {
 }
 
 export type ThemeType = 'day' | 'night'
-type ThemeInitialStateType = typeof themeInitialState
+export type ThemeInitialStateType = typeof themeInitialState
 export type ThemeActionTypes = InferActionTypes<typeof themeActions>

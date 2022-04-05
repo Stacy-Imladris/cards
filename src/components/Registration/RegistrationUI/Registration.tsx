@@ -1,14 +1,11 @@
-import React from 'react';
 import SuperInputText from '../../../common/super-components/c1-SuperInputText/SuperInputText';
 import SuperButton from '../../../common/super-components/c2-SuperButton/SuperButton';
 import s from '../../../common/styles/Forms.module.css'
 import t from '../../../common/styles/Themes.module.css'
 import {Preloader} from '../../../common/preloader/Preloader';
-import {useAppSelector} from '../../../bll/store';
-import {Navigate} from 'react-router-dom';
-import {PATH} from '../../../app/AllRoutes';
-import {registrationActions} from '../RegistrationBLL/registration-reducer';
-import {useDispatch} from 'react-redux';
+import {NavigateFunction} from 'react-router-dom';
+import React, {memo} from 'react';
+import {Logo} from '../../../common/logo/Logo';
 
 type RegistrationPropsType = {
     signUp: () => void
@@ -18,39 +15,30 @@ type RegistrationPropsType = {
     setEmail: (value: string) => void
     setPassword: (value: string) => void
     setPassword2: (value: string) => void
+    error: string
+    isLoading: boolean
+    theme: string
+    navigate: NavigateFunction
 }
 
-export const Registration = ({signUp, email, password, password2, setEmail, setPassword, setPassword2}: RegistrationPropsType) => {
-    const error = useAppSelector(state => state.registration.error)
-    const isLoading = useAppSelector(state => state.registration.isLoading)
-    const toLogin = useAppSelector(state => state.registration.toLogIn)
-    const theme = useAppSelector(state => state.theme.theme)
-    const dispatch = useDispatch()
-
-    if (toLogin) {
-        return <Navigate to={PATH.LOGIN}/>
-    }
-
-    const onCancelClick = () => {
-        dispatch(registrationActions.toLogIn(true))
-    }
-
-
+export const Registration = memo(({signUp, email, setEmail, password, setPassword, password2, setPassword2,
+                                 error, isLoading, theme, navigate}: RegistrationPropsType) => {
     return (
         <div className={`${s.container} ${t[theme + '-text']}`}>
+            <Logo/>
             <div className={s.preloader}>{isLoading && <Preloader/>}</div>
-            <div className={`${s.mainText} ${t[theme + '-text']}`}>Sign up</div>
+            <div className={s.mainText}>Sign up</div>
             <span>Email</span>
-            <div><SuperInputText value={email} onChangeText={setEmail} type={'text'}/></div>
+            <div><SuperInputText value={email} onChangeText={setEmail}/></div>
             <span>Password</span>
-            <div className={s.password}><SuperInputText value={password} onChangeText={setPassword} type={'password'}/><div>👁</div></div>
+            <div><SuperInputText value={password} onChangeText={setPassword} eye/></div>
             <span>Confirm password</span>
-            <div className={s.password}><SuperInputText value={password2} onChangeText={setPassword2} type={'password'}/><div>👁</div></div>
+            <div><SuperInputText value={password2} onChangeText={setPassword2} eye/></div>
             <div className={s.buttons}>
-                <SuperButton disabled={isLoading} onClick={onCancelClick}>Cancel</SuperButton>
+                <SuperButton disabled={isLoading} onClick={() => navigate('/login')}>Cancel</SuperButton>
                 <SuperButton disabled={isLoading} onClick={signUp}>Register</SuperButton>
             </div>
-            <div className={`${s.error} ${t[theme + '-text']}`}>{error}</div>
+            <div className={s.error}>{error}</div>
         </div>
     )
-}
+})

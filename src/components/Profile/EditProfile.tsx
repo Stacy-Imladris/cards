@@ -22,6 +22,7 @@ export const EditProfile = () => {
     const navigateToProfile = () => {
         <Navigate to={PATH.PROFILE}/>
         dispatch(profileActions.setEditModeProfileAC(false))
+        dispatch(profileActions.setProfileError(''))
     }
 
     const updateData = () => {

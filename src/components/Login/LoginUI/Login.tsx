@@ -1,6 +1,6 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
 import k from './Login.module.css';
-import {LoginType} from '../../../api/api';
+import {LoginType} from '../../Profile/profile-api';
 import {loginTC, setLoginAC, setLoginErrorAC} from '../LoginBLL/loginReducer';
 import {useDispatch} from 'react-redux';
 import {useAppSelector} from '../../../bll/store';

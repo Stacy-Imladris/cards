@@ -1,14 +1,14 @@
 import React, {useEffect} from 'react'
-import './App.css';
-import {Header} from '../components/Header/Header';
-import {useAppSelector} from '../bll/store';
+import './App.css'
+import {Header} from '../components/Header/Header'
+import {useAppSelector} from '../bll/store'
 import t from '../common/styles/Themes.module.css'
 import s from './App.module.css'
 import {AllRoutes, PATH} from './AllRoutes'
 import {Navigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {auth} from '../bll/profile-reducer'
-import {Preloader} from '../common/preloader/Preloader';
+import {AppPreloader} from '../common/preloader/AppPreloader'
 
 export const App = () => {
     const theme = useAppSelector(state => state.theme.theme)
@@ -21,7 +21,7 @@ export const App = () => {
     }, [])
 
     if (!isInitialized) {
-        return <Preloader/>
+        return <AppPreloader/>
     }
 
     if(!isLoggedIn) {

@@ -1,5 +1,5 @@
 import axios, {AxiosResponse} from 'axios'
-import {UserType} from "../../../api/api";
+import {UserType} from "../../Profile/profile-api";
 
 
 const instance = axios.create({

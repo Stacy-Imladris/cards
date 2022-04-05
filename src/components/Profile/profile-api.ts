@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, {AxiosResponse} from 'axios'
 
 
 const instance = axios.create({
@@ -8,12 +8,12 @@ const instance = axios.create({
 })
 
 
-export const cardsApi = {
+export const profileAPI = {
     me() {
-        return instance.post<ResponseType>('auth/me', {})
+        return instance.post<any, AxiosResponse<ResponseType>, {}>('auth/me', {})
     },
     update(name: string, avatar: string) {
-        return instance.put<ResponseUpdateType>('auth/me', {name})
+        return instance.put<any, AxiosResponse<ResponseUpdateType>, {name: string, avatar?: string}>('auth/me', {name})
     },
 }
 
@@ -25,14 +25,8 @@ export type LoginType = {
 
 type ResponseType = UserType
 
-// type ResponseDeleteType = {
-//     info: string
-//     error?: string
-// }
-
 type ResponseUpdateType = {
     updatedUser: UserType
-    error?: string
 }
 
 export type UserType = {

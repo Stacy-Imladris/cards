@@ -42,3 +42,9 @@
     transform: rotate(-135deg);
     background: #85da88;
 }
+
+.app_progress {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+}

@@ -20,33 +20,32 @@ const initialState = {
     error: '' as string | undefined,
     editMode: false,
     isFetching: false,
+    isAuth: false
 }
 
-export const profileReducer = (state: ProfileInitialStateType = initialState, action: ProfileActionTypes): ProfileInitialStateType => {
+export const profileReducer = (state: ProfileStateType = initialState, action: ProfileActionTypes): ProfileStateType => {
     switch (action.type) {
+        case 'profile/SET_IS_AUTHORIZED':
+            return {...state, isAuth: action.isAuth}
+
         case 'profile/SET_USER_DATA':
             return {...state, user: {...state.user, ...action.user}}
+
         case 'profile/SET_EDIT_MODE_PROFILE':
-            return {
-                ...state,
-                editMode: action.editMode
-            }
+            return {...state, editMode: action.editMode}
+
         case 'profile/SET_IS_FETCHING_PROFILE':
-            return {
-                ...state,
-                isFetching: action.isFetching
-            }
+            return {...state, isFetching: action.isFetching}
+
         case 'profile/UPDATE_PROFILE':
             return {
                 ...state,
                 user: {...state.user, ...action.user},
                 error: action.error
             }
+
         case 'profile/SET_PROFILE_ERROR':
-            return {
-                ...state,
-                error: action.error
-            }
+            return {...state, error: action.error}
         default:
             return state
     }
@@ -57,7 +56,8 @@ export const profileActions = {
     setEditModeProfileAC: (editMode: boolean) => ({type: 'profile/SET_EDIT_MODE_PROFILE', editMode} as const),
     setIsFetchingProfileAC: (isFetching: boolean) => ({type: 'profile/SET_IS_FETCHING_PROFILE', isFetching} as const),
     setUserData: (user: UserType) => ({type: 'profile/SET_USER_DATA', user} as const),
-    setProfileError: (error: string) => ({type: 'profile/SET_PROFILE_ERROR', error} as const),
+    setIsAuth: (isAuth: boolean) => ({type: 'profile/SET_IS_AUTHORIZED', isAuth} as const),
+    setProfileError: (error: string) => ({type: 'profile/SET_PROFILE_ERROR', error} as const)
 }
 
 //thunks:
@@ -66,20 +66,35 @@ export const updateProfile = (name: string, avatar: string): ThunkType => async 
     try {
         const response = await cardsApi.update(name, avatar)
         dispatch(profileActions.updateProfileAC(response.data.updatedUser))
-        dispatch(profileActions.setIsFetchingProfileAC(false))
         dispatch(profileActions.setEditModeProfileAC(false))
-    }
-    catch(e) {
+    } catch (e) {
         if (axios.isAxiosError(e)) {
             const error = e.response ? e.response.data.error : (e.message + ', more details in the console')
             dispatch(profileActions.setProfileError(error))
-            dispatch(profileActions.setIsFetchingProfileAC(false))
         }
+    } finally {
+        dispatch(profileActions.setIsFetchingProfileAC(false))
+    }
+}
+
+export const auth = (): ThunkType => async (dispatch) => {
+    dispatch(profileActions.setIsFetchingProfileAC(true))
+    try {
+        const response = await cardsApi.me()
+        dispatch(profileActions.setUserData(response.data))
+        dispatch(profileActions.setIsAuth(true))
+    } catch (e) {
+        if (axios.isAxiosError(e)) {
+            const error = e.response ? e.response.data.error : (e.message + ', more details in the console')
+            dispatch(profileActions.setProfileError(error))
+        }
+    } finally {
+        dispatch(profileActions.setIsFetchingProfileAC(false))
     }
 }
 
 //types:
 type ThunkType = ThunkAction<void, AppRootStateType, unknown, ProfileActionTypes>
 
-export type ProfileInitialStateType = typeof initialState
+export type ProfileStateType = typeof initialState
 export type ProfileActionTypes = InferActionTypes<typeof profileActions>

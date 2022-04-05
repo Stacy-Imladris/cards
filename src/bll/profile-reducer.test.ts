@@ -41,6 +41,7 @@ test('set authorizing user data', () => {
     const endState = profileReducer(state, profileActions.setUserData(userData))
 
     expect(endState.user._id).toBe('2')
+    expect(endState.user.name).toBe('User')
 })
 
 test('set editMode for changing profile', () => {
@@ -66,4 +67,11 @@ test('set profile error', () => {
     const endState = profileReducer(state, profileActions.setProfileError('error'))
 
     expect(endState.error).toBe('error')
+})
+
+test('set isInitialized value', () => {
+
+    const endState = profileReducer(state, profileActions.setIsInitialized(true))
+
+    expect(endState.isInitialized).toBe(true)
 })

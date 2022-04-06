@@ -1,4 +1,4 @@
-import {NavLink} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import React, {useCallback} from 'react';
 import s from './Header.module.css';
 import {PATH} from '../../app/AllRoutes';
@@ -8,6 +8,7 @@ import {logoutTC} from '../Login/LoginBLL/loginReducer';
 import {themeActions, ThemeType} from '../../bll/themeReducer';
 import SuperSelect from '../../common/super-components/c5-SuperSelect/SuperSelect';
 import {saveState} from '../../utils/localstorage';
+
 
 const themes = ['day', 'night']
 
@@ -42,8 +43,7 @@ export const Header = () => {
                          className={({isActive}) => isActive ? s.active : s.nav}>New password</NavLink>
                 {!isLoggedIn && <NavLink to={PATH.LOGIN}
                                          className={({isActive}) => isActive ? s.active : s.nav}>Log In</NavLink>}
-                {isLoggedIn && <NavLink onClick={logOut} to={PATH.LOGIN}
-                                        className={({isActive}) => isActive ? s.active : s.nav}>Log Out</NavLink>}
+                {isLoggedIn && <span onClick={logOut} className={isLoggedIn  ? s.nav : s.active}>Log Out</span>}
                 <span className={s.text}>Theme</span>
                 <SuperSelect options={themes} value={theme} onChangeOption={onChangeCallback}/>
             </div>

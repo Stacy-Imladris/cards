@@ -8,7 +8,7 @@ const instance = axios.create({
 
 export const registrationAPI = {
     signUp(data: Omit<RegDataType, 'password2'>) {
-        return instance.post<any, AxiosResponse<ResponseType>, Omit<RegDataType, 'password2'>>('auth/register', data)
+        return instance.post<ResponseType, AxiosResponse<ResponseType>, Omit<RegDataType, 'password2'>>('auth/register', data)
             .then(res => res.data)
     },
 }

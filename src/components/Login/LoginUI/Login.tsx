@@ -12,16 +12,19 @@ import s from '../../../common/styles/Forms.module.css'
 import t from '../../../common/styles/Themes.module.css'
 import {Logo} from '../../../common/logo/Logo';
 import {Preloader} from "../../../common/preloader/Preloader";
+import SuperCheckbox from "../../../common/super-components/c3-SuperCheckbox/SuperCheckbox";
 
 export const Login = () => {
     let [email, setEmail] = useState<string>("")
     let [password, setPassword] = useState<string>("")
-
+    let [rememberMe, setRememberMe] = useState<boolean>(false)
+    const login = {email, password, rememberMe}
     const error = useAppSelector(state => state.login.error)
     const theme = useAppSelector(state => state.theme.theme)
     const dispatch = useDispatch()
     const isLoggedIn = useAppSelector(state => state.login.isLoggedIn)
-    const isLogin = useAppSelector(state=> state.login.isLogin)
+    const isLogin = useAppSelector(state => state.login.isLogin)
+
 
     useEffect(() => {
         return () => {
@@ -43,9 +46,8 @@ export const Login = () => {
         setPassword(e.currentTarget.value)
     }
 
-    const login: LoginType = {
-        email: email,
-        password: password
+    const onChangeRememberMe = (e: ChangeEvent<HTMLInputElement>) => {
+        setRememberMe(!rememberMe)
     }
 
     const onClickLogin = () => {
@@ -77,11 +79,15 @@ export const Login = () => {
                 eye
             />
             </div>
+            <span><SuperCheckbox checked={rememberMe} onChange={onChangeRememberMe}>
+                <span className={t[theme + '-text']}>Remember me</span>
+            </SuperCheckbox></span>
             <div className={s.error}>{error}</div>
             <div><Link to="/password-recovery" className={`${k.forgotPassword} ${t[theme + '-text']}`}>Forgot
                 Password</Link></div>
             <SuperButton onClick={onClickLogin} className={s.login}>Login</SuperButton>
-            <div><Link to="/registration" className={`${k.dontHaveAccount} ${t[theme + '-text']}`}>Don't have an account?</Link></div>
+            <div><Link to="/registration" className={`${k.dontHaveAccount} ${t[theme + '-text']}`}>Don't have an
+                account?</Link></div>
             <div><Link to="/registration" className={`${s.SignUp} ${t[theme + '-text']}`}>Sign Up</Link></div>
         </div>
     )

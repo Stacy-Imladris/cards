@@ -22,7 +22,8 @@ export const cardsApi = {
 //types
 export type LoginType = {
     email: string,
-    password: string
+    password: string,
+    rememberMe: boolean
 }
 
 type ResponseDeleteType = {

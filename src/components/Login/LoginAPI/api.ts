@@ -10,8 +10,8 @@ const instance = axios.create({
 
 
 export const cardsApi = {
-    login(data: LoginType) {
-        return instance.post<any, AxiosResponse<UserType>, LoginType>('auth/login', data)
+    login(login: LoginType) {
+        return instance.post<any, AxiosResponse<UserType>, LoginType>('auth/login', login)
     },
     logout() {
         return instance.delete<any, AxiosResponse<ResponseDeleteType>>('auth/me')

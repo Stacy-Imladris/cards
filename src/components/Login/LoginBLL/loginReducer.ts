@@ -37,9 +37,9 @@ export const setLoginAC = (value: boolean) =>
     ({type: 'login/SET-LOGIN', value} as const)
 
 // thunks
-export const loginTC = (data: LoginType): AppThunk => dispatch => {
+export const loginTC = (login: LoginType): AppThunk => dispatch => {
     dispatch(setLoginAC(true))
-    cardsApi.login(data)
+    cardsApi.login(login)
         .then((res) => {
             dispatch(setIsLoggedInAC(true))
             dispatch(profileActions.setUserData(res.data))

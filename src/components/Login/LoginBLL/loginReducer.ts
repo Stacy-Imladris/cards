@@ -14,15 +14,12 @@ export const loginReducer = (state: InitialStateType = initialState, action: Log
     switch (action.type) {
         case 'login/SET-IS-LOGGED-IN':
             return {...state, isLoggedIn: action.value}
-
         case "login/SET-ERROR": {
             return {...state, error: action.error}
         }
-
         case "login/SET-LOGIN": {
             return {...state, isLogin: action.value}
         }
-
         default:
             return state
     }

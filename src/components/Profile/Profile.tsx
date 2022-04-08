@@ -9,7 +9,6 @@ import {profileActions} from '../../bll/profile-reducer';
 import {useDispatch} from 'react-redux';
 import {useAppSelector} from '../../bll/store';
 import {EditProfile} from './EditProfile';
-import {Preloader} from '../../common/preloader/Preloader';
 
 export const Profile = () => {
     const isLoggedIn = useAppSelector(state => state.login.isLoggedIn)

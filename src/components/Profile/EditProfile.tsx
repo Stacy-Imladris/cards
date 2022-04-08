@@ -23,7 +23,7 @@ export const EditProfile = () => {
         return () => {
             dispatch(profileActions.setProfileError(''))
         }
-    }, [])
+    }, [dispatch])
 
     const navigateToProfile = () => {
         <Navigate to={PATH.PROFILE}/>

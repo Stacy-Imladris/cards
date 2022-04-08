@@ -1,6 +1,5 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
 import k from './Login.module.css';
-import {LoginType} from '../../Profile/profile-api';
 import {loginTC, setLoginAC, setLoginErrorAC} from '../LoginBLL/loginReducer';
 import {useDispatch} from 'react-redux';
 import {useAppSelector} from '../../../bll/store';
@@ -18,6 +17,7 @@ export const Login = () => {
     let [email, setEmail] = useState<string>("")
     let [password, setPassword] = useState<string>("")
     let [rememberMe, setRememberMe] = useState<boolean>(false)
+
     const login = {email, password, rememberMe}
     const error = useAppSelector(state => state.login.error)
     const theme = useAppSelector(state => state.theme.theme)
@@ -25,18 +25,17 @@ export const Login = () => {
     const isLoggedIn = useAppSelector(state => state.login.isLoggedIn)
     const isLogin = useAppSelector(state => state.login.isLogin)
 
-
     useEffect(() => {
         return () => {
             dispatch(setLoginErrorAC(''))
         }
-    }, [])
+    }, [dispatch])
 
     useEffect(() => {
         return () => {
             dispatch(setLoginAC(false))
         }
-    }, [])
+    }, [dispatch])
 
     const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
         setEmail(e.currentTarget.value)

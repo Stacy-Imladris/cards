@@ -2,10 +2,11 @@
     display: flex;
     flex-direction: column;
     transition-duration: 500ms;
-    transform: translate(0, -36px);
+    transform: translate(0, 36px);
     font-family: "Times New Roman";
     position: sticky;
     top: 0;
+    color: white;
 }
 
 .main:hover {
@@ -19,36 +20,29 @@
     background-color: #077517;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     justify-content: space-around;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .nav {
     text-decoration: none;
-    padding: 2px;
-    background-color: #077517;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
     width: 25%;
-    height: 100%;
     text-align: center;
     cursor: pointer;
+    color: white;
 }
 
 .nav:hover {
     color: #faec00;
-    font-weight: bold;
     background: linear-gradient(to right, #077517, #4CAF50, #4CAF50, #4CAF50, #077517);
 }
 
 .active {
     text-decoration: none;
-    padding: 3px;
     color: #faec00;
-    font-size: 18px;
-    font-weight: bold;
-    width: 30%;
-    height: 100%;
+    width: 25%;
     text-align: center;
+    background: linear-gradient(to right, #077517, #4CAF50, #4CAF50, #4CAF50, #077517);
 }
 
 .menu {
@@ -56,15 +50,12 @@
     font-size: 20px;
     background: #077517;
     text-align: center;
-    color: white;
     border-radius: 0 0 10px 10px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 .text {
     margin-right: 5px;
-    color: white;
-    text-align: center;
     font-size: 18px;
     font-weight: bold;
 }

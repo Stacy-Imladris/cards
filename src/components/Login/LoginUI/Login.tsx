@@ -32,12 +32,6 @@ export const Login = () => {
         }
     }, [])
 
-    useEffect(() => {
-        return () => {
-            dispatch(setLoginAC(false))
-        }
-    }, [])
-
     const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
         setEmail(e.currentTarget.value)
     }

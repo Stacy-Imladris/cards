@@ -43,10 +43,11 @@ export const loginTC = (login: LoginType): AppThunk => dispatch => {
         .then((res) => {
             dispatch(setIsLoggedInAC(true))
             dispatch(profileActions.setUserData(res.data))
+            dispatch(setLoginAC(false))
         })
         .catch((err) => {
             dispatch(setLoginAC(false))
-            dispatch(setLoginErrorAC(err.response.data.error))
+            dispatch(setLoginErrorAC(err.response ? err.response.data.error : err.message))
         })
 }
 

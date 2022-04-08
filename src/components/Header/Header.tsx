@@ -1,4 +1,4 @@
-import {NavLink} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import React, {useCallback} from 'react';
 import s from './Header.module.css';
 import {PATH} from '../../app/AllRoutes';
@@ -40,10 +40,19 @@ export const Header = () => {
                          className={({isActive}) => isActive ? s.active : s.nav}>Password recovery</NavLink>}
                 {/*<NavLink to={PATH.NEW_PASSWORD}
                          className={({isActive}) => isActive ? s.active : s.nav}>New password</NavLink>*/}
+                {/*<NavLink to={PATH.TEST}*/}
+                {/*         className={({isActive}) => isActive ? s.active : s.nav}>Test</NavLink>*/}
+                {/*<NavLink to={PATH.ERROR_404}*/}
+                {/*         className={({isActive}) => isActive ? s.active : s.nav}>Error 404</NavLink>*/}
+                <NavLink to={PATH.REGISTRATION}
+                         className={({isActive}) => isActive ? s.active : s.nav}>Registration</NavLink>
+                <NavLink to={PATH.PASSWORD_RECOVERY}
+                         className={({isActive}) => isActive ? s.active : s.nav}>Password recovery</NavLink>
+                <NavLink to={PATH.NEW_PASSWORD}
+                         className={({isActive}) => isActive ? s.active : s.nav}>New password</NavLink>
                 {!isLoggedIn && <NavLink to={PATH.LOGIN}
                                          className={({isActive}) => isActive ? s.active : s.nav}>Log In</NavLink>}
-                {isLoggedIn && <NavLink onClick={logOut} to={PATH.LOGIN}
-                                        className={({isActive}) => isActive ? s.active : s.nav}>Log Out</NavLink>}
+                {isLoggedIn && <span onClick={logOut} className={isLoggedIn  ? s.nav: s.active}>Log Out</span>}
                 <span className={s.text}>Theme</span>
                 <SuperSelect options={themes} value={theme} onChangeOption={onChangeCallback}/>
             </div>

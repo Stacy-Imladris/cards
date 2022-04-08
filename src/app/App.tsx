@@ -22,11 +22,11 @@ export const App = () => {
     }, [])
 
     if (!isInitialized) {
-        return <div className={s.app_progress}><Preloader/></div>
+        return <div className={s.appProgress}><Preloader/></div>
     }
 
     if(!isLoggedIn) {
-        <Navigate to={PATH.LOGIN} />
+        <Navigate to={PATH.LOGIN}/>
     }
 
     return (

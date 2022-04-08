@@ -22,7 +22,7 @@ export const RecoveryContainer = memo(() => {
         return () => {
             dispatch(recoveryActions.setRecoveryError(''))
         }
-    }, [])
+    }, [dispatch])
 
     return <Recovery toSendInstructions={toSendInstructionsOnEmail} email={email} setEmail={setEmail}
                      isLoading={isLoading} error={error} check={check} theme={theme}/>

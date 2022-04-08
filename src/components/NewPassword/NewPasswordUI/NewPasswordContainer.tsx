@@ -29,7 +29,7 @@ export const NewPasswordContainer = memo(() => {
         return () => {
             dispatch(newPasswordActions.setNewPasswordError(''))
         }
-    }, [])
+    }, [dispatch])
 
     if (toLogin) {
         return <Navigate to={PATH.LOGIN}/>

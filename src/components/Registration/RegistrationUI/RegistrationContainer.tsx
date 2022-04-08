@@ -27,7 +27,7 @@ export const RegistrationContainer = memo(() => {
         return () => {
             dispatch(registrationActions.setRegistrationError(''))
         }
-    }, [])
+    }, [dispatch])
 
     if (toLogin) {
         return <Navigate to={PATH.LOGIN}/>

@@ -8,7 +8,7 @@ beforeEach(() => {
     }
 })
 
-test('correct error message should be set', () => {
+test('correct theme should be set', () => {
     const endState = themeReducer(themeStartState, themeActions.changeTheme('night'))
 
     expect(endState.theme).toBe('night')

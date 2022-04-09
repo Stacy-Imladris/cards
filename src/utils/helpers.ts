@@ -1,0 +1,1 @@
+export const addZeroToDigit = (digit: number) => digit.toString().length < 2 && `0${digit}`

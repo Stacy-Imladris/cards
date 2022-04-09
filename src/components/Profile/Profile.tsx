@@ -9,6 +9,7 @@ import {profileActions} from '../../bll/profile-reducer';
 import {useDispatch} from 'react-redux';
 import {useAppSelector} from '../../bll/store';
 import {EditProfile} from './EditProfile';
+import {Table} from '../../common/Table/Table'
 
 export const Profile = () => {
     const isLoggedIn = useAppSelector(state => state.login.isLoggedIn)
@@ -56,6 +57,7 @@ export const Profile = () => {
                     </div>
                     <div className={s.profilePacks_packsTable}>
                         profilePacks_packsTable
+                        <Table />
                     </div>
                     <div className={s.profilePacks_pagination}>
                         profilePacks_pagination

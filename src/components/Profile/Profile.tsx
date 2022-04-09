@@ -3,7 +3,7 @@ import s from './Profile.module.css'
 import profile_ava from '../../assets/images/profile_ava.png'
 import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton'
 import SuperInputText from '../../common/super-components/c1-SuperInputText/SuperInputText'
-import {Navigate} from "react-router-dom";
+import {Navigate, useNavigate} from 'react-router-dom';
 import {PATH} from "../../app/AllRoutes";
 import {profileActions} from '../../bll/profile-reducer';
 import {useDispatch} from 'react-redux';
@@ -16,6 +16,7 @@ export const Profile = () => {
     const name = useAppSelector(state => state.profile.user.name)
     const editMode = useAppSelector(state => state.profile.editMode)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const editProfile = () => dispatch(profileActions.setEditModeProfileAC(true))
 
@@ -47,7 +48,8 @@ export const Profile = () => {
                 </div>
 
                 <div className={s.profilePacks}>
-                    <h1>My packs list</h1>
+                    <h2 onClick={() => navigate('/packs')}>Packs list</h2>
+                    <h2>My packs list</h2>
                     <div className={s.profilePacks_search}>
                         <div>
                             <SuperInputText placeholder={'search'}/>

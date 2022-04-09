@@ -1,6 +1,6 @@
 import {FC} from 'react'
-import {PackActions} from './PackActions'
-import {PackType} from '../../bll/packs-reducer';
+import {PackType} from './Table'
+import {Pack} from './Pack'
 
 type PackListPropsType = {
     cardPacks: Array<PackType>
@@ -9,20 +9,7 @@ type PackListPropsType = {
 export const PacksList: FC<PackListPropsType> = ({cardPacks}) => {
     return <>
         {
-            cardPacks.map(pack => {
-                    return <tr key={pack._id}>
-
-                        <td>{pack.name}</td>
-                        <td>{pack.cardsCount}</td>
-                        <td>{pack.updated}</td>
-                        <td>{pack.user_name}</td>
-
-                        <td>
-                            <PackActions key={pack._id} isMyPacks={pack.private}/>
-                        </td>
-                    </tr>
-                }
-            )}
-
+            cardPacks.map(pack => <Pack key={pack._id} pack={pack}/>)
+        }
     </>
 }

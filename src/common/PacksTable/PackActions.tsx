@@ -1,5 +1,6 @@
 import s from './Table.module.css'
 import {FC} from 'react'
+import SuperButton from '../super-components/c2-SuperButton/SuperButton'
 
 type PackActionsType = {
     isMyPacks: boolean
@@ -9,18 +10,13 @@ type PackActionsType = {
 export const PackActions: FC<PackActionsType> = ({isMyPacks, key}) => {
 
     return <div className={s.packs__actions_buttons} key={key}>
-        {isMyPacks
-        && <>
-            <div>
-                <button>Delete</button>
-            </div>
-            <div>
-                <button>Edit</button>
-            </div>
-        </>
+        {
+            isMyPacks
+            && <>
+                <SuperButton red>Delete</SuperButton>
+                <SuperButton>Edit</SuperButton>
+            </>
         }
-        <div>
-            <button>Learn</button>
-        </div>
+        <SuperButton>Learn</SuperButton>
     </div>
 }

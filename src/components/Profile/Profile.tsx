@@ -1,4 +1,3 @@
-import React from 'react'
 import s from './Profile.module.css'
 import profile_ava from '../../assets/images/profile_ava.png'
 import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton'
@@ -9,7 +8,6 @@ import {profileActions} from '../../bll/profile-reducer';
 import {useDispatch} from 'react-redux';
 import {useAppSelector} from '../../bll/store';
 import {EditProfile} from './EditProfile';
-import {Table} from '../../common/Table/Table'
 
 export const Profile = () => {
     const isLoggedIn = useAppSelector(state => state.login.isLoggedIn)
@@ -56,7 +54,7 @@ export const Profile = () => {
                         </div>
                     </div>
                     <div className={s.profilePacks_packsTable}>
-                        <Table />
+                        {/*<PacksTable />*/}
                     </div>
                     <div className={s.profilePacks_pagination}>
                         profilePacks_pagination

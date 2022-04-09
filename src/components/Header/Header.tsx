@@ -30,16 +30,10 @@ export const Header = () => {
             <div className={s.links}>
                 <NavLink to={PATH.PROFILE}
                          className={({isActive}) => isActive ? s.active : s.nav}>Profile</NavLink>
-                {/*<NavLink to={PATH.TEST}
-                         className={({isActive}) => isActive ? s.active : s.nav}>Test</NavLink>
-                <NavLink to={PATH.ERROR_404}
-                         className={({isActive}) => isActive ? s.active : s.nav}>Error 404</NavLink>*/}
                 {!isLoggedIn && <NavLink to={PATH.REGISTRATION}
                                          className={({isActive}) => isActive ? s.active : s.nav}>Registration</NavLink>}
                 {!isLoggedIn && <NavLink to={PATH.PASSWORD_RECOVERY}
                          className={({isActive}) => isActive ? s.active : s.nav}>Password recovery</NavLink>}
-                {/*<NavLink to={PATH.NEW_PASSWORD}
-                         className={({isActive}) => isActive ? s.active : s.nav}>New password</NavLink>*/}
                 {!isLoggedIn && <NavLink to={PATH.LOGIN}
                                          className={({isActive}) => isActive ? s.active : s.nav}>Log In</NavLink>}
                 {isLoggedIn && <span onClick={logOut} className={isLoggedIn  ? s.nav: s.active}>Log Out</span>}

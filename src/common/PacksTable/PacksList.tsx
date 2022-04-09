@@ -1,10 +1,9 @@
 import {FC} from 'react'
-import {getLastUpdatedDate} from '../../utils/helpers'
 import {PackActions} from './PackActions'
-import {packType} from './Table'
+import {PackType} from '../../bll/packs-reducer';
 
 type PackListPropsType = {
-    cardPacks: Array<packType>
+    cardPacks: Array<PackType>
 }
 
 export const PacksList: FC<PackListPropsType> = ({cardPacks}) => {
@@ -15,7 +14,7 @@ export const PacksList: FC<PackListPropsType> = ({cardPacks}) => {
 
                         <td>{pack.name}</td>
                         <td>{pack.cardsCount}</td>
-                        <td>{getLastUpdatedDate(pack.updated)}</td>
+                        <td>{pack.updated}</td>
                         <td>{pack.user_name}</td>
 
                         <td>

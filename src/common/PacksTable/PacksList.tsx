@@ -1,9 +1,9 @@
 import {FC} from 'react'
-import {PackType} from './Table'
 import {Pack} from './Pack'
+import {PackType} from '../../bll/packs-reducer';
 
 type PackListPropsType = {
-    cardPacks: Array<PackType>
+    cardPacks: PackType[]
 }
 
 export const PacksList: FC<PackListPropsType> = ({cardPacks}) => {

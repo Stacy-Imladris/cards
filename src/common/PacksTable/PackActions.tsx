@@ -1,4 +1,4 @@
-import s from './Table.module.css'
+import s from './PacksTable.module.css'
 import {FC} from 'react'
 import SuperButton from '../super-components/c2-SuperButton/SuperButton'
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import s from './Profile.module.css'
+import t from '../../common/styles/Themes.module.css';
 import profile_ava from '../../assets/images/profile_ava.png'
 import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton'
 import SuperInputText from '../../common/super-components/c1-SuperInputText/SuperInputText'
@@ -14,6 +15,7 @@ import {Table} from '../../common/Table/Table'
 export const Profile = () => {
     const isLoggedIn = useAppSelector(state => state.login.isLoggedIn)
     const name = useAppSelector(state => state.profile.user.name)
+    const theme = useAppSelector(state => state.theme.theme)
     const editMode = useAppSelector(state => state.profile.editMode)
     const dispatch = useDispatch()
 
@@ -28,7 +30,7 @@ export const Profile = () => {
     }
 
     return (
-        <div className={s.profileWrapper}>
+        <div className={`${s.profileWrapper} ${s.container} ${t[theme + '-text']}`}>
             <div className={s.profilePage}>
                 <div className={s.profileContent}>
                     <div className={s.profileBlock}>

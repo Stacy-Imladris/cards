@@ -1,4 +1,5 @@
 import {PacksList} from './PacksList'
+import s from './Table.module.css'
 
 export const Table = () => {
 
@@ -73,21 +74,23 @@ export const Table = () => {
         }
     ]
 
-    return <table>
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Cards</th>
-            <th>Last Updated</th>
-            <th>Created by</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
+    return <div className={s.table}>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Cards</th>
+                <th>Last Updated</th>
+                <th>Created by</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
 
-        <tbody>
-        <PacksList cardPacks={cardPacks}/>
-        </tbody>
-    </table>
+            <tbody>
+            <PacksList cardPacks={cardPacks}/>
+            </tbody>
+        </table>
+    </div>
 }
 
 export type PackType = {

@@ -14,7 +14,7 @@ export const SearchField = () => {
     const changeSearchTitle = (e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.currentTarget.value)
         clearTimeout(timerId)
-        const id: number = +setTimeout(debounce, 1500, dispatch, title)
+        const id: number = +setTimeout(debounce, 700, dispatch, title)
         setTimerId(id)
     }
 

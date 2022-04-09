@@ -1,4 +1,6 @@
 import s from './Table.module.css'
+import {PackActions} from './PackActions'
+import {addZeroToDigit} from '../../utils/helpers'
 
 export const Table = () => {
 
@@ -8,7 +10,7 @@ export const Table = () => {
             user_id: '2',
             user_name: 'Peter Petrov',
             private: true,
-            name: "Peter's pack",
+            name: 'Peter\'s pack',
             path: '',
             grade: 0,
             shots: 0,
@@ -18,14 +20,14 @@ export const Table = () => {
             created: new Date('2020-05-09T15:40:40.339Z'),
             updated: new Date('2022-04-08T15:40:40.339Z'),
             more_id: '',
-            __v: 0,
+            __v: 0
         },
         {
             _id: 'pack_2',
             user_id: '2',
             user_name: 'Ivanov Ivan',
             private: false,
-            name: "Peter's pack",
+            name: 'Peter\'s pack',
             path: '',
             grade: 0,
             shots: 0,
@@ -35,14 +37,14 @@ export const Table = () => {
             created: new Date('2021-09-12T15:40:40.339Z'),
             updated: new Date('2022-03-05T15:40:40.339Z'),
             more_id: '',
-            __v: 0,
+            __v: 0
         },
         {
             _id: 'pack_2',
             user_id: '2',
             user_name: 'Ivanov Ivan',
             private: false,
-            name: "Peter's pack",
+            name: 'Peter\'s pack',
             path: '',
             grade: 0,
             shots: 0,
@@ -52,14 +54,14 @@ export const Table = () => {
             created: new Date('2021-09-12T15:40:40.339Z'),
             updated: new Date('2022-03-05T15:40:40.339Z'),
             more_id: '',
-            __v: 0,
+            __v: 0
         },
         {
             _id: 'pack_2',
             user_id: '2',
             user_name: 'Ivanov Ivan',
             private: false,
-            name: "Peter's pack",
+            name: 'Peter\'s pack',
             path: '',
             grade: 0,
             shots: 0,
@@ -69,8 +71,8 @@ export const Table = () => {
             created: new Date('2021-09-12T15:40:40.339Z'),
             updated: new Date('2022-03-05T15:40:40.339Z'),
             more_id: '',
-            __v: 0,
-        },
+            __v: 0
+        }
     ]
 
     return <table>
@@ -85,43 +87,26 @@ export const Table = () => {
         </thead>
 
         <tbody>
-        {cardPacks.map(pack => {
+        {
+            cardPacks.map(pack => {
 
-            const PackActiions = () => {
-                const isMyPacks: boolean = pack.private
-                return <div className={s.packs__actions_buttons}>
-                    {isMyPacks
-                    && <>
-                        <div>
-                            <button>Delete</button>
-                        </div>
-                        <div>
-                            <button>Edit</button>
-                        </div>
-                    </>
-                    }
-                    <div>
-                        <button>Learn</button>
-                    </div>
-                </div>
-            }
+                    const day = addZeroToDigit(pack.updated.getDay())
+                    const month = addZeroToDigit(pack.updated.getMonth())
+                    const year = pack.updated.getFullYear()
 
-            const day = pack.updated.getDay().toString().length < 2 && `0${pack.updated.getDay()}`
-            const month = pack.updated.getMonth().toString().length < 2 && `0${pack.updated.getMonth()}`
-            const year = pack.updated.getFullYear()
+                    const lastUpdated = `${day}.${month}.${year}`
 
-            const lastUpdated = `${day}.${month}.${year}`
+                    return <tr key={pack._id}>
 
-            return <tr key={pack._id}>
+                        <td>{pack.name}</td>
+                        <td>{pack.cardsCount}</td>
+                        <td>{lastUpdated}</td>
+                        <td>{pack.user_name}</td>
 
-                <td>{pack.name}</td>
-                <td>{pack.cardsCount}</td>
-                <td>{lastUpdated}</td>
-                <td>{pack.user_name}</td>
-
-                <td><PackActiions/></td>
-            </tr>
-        })}
+                        <td><PackActions key={pack._id} isMyPacks={pack.private}/></td>
+                    </tr>
+                }
+            )}
 
         </tbody>
     </table>

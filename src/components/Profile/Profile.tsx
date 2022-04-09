@@ -47,16 +47,13 @@ export const Profile = () => {
                 </div>
 
                 <div className={s.profilePacks}>
-                    profilePacks
                     <h1>My packs list</h1>
                     <div className={s.profilePacks_search}>
-                        profilePacks_search
                         <div>
                             <SuperInputText placeholder={'search'}/>
                         </div>
                     </div>
                     <div className={s.profilePacks_packsTable}>
-                        profilePacks_packsTable
                         <Table />
                     </div>
                     <div className={s.profilePacks_pagination}>

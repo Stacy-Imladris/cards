@@ -60,7 +60,8 @@
 }
 
 .profilePacks_packsTable {
-    height: 300px;
+    margin: 20px 0;
+    /*height: 300px;*/
     width: 669px;
     background-color: #eaeaea;
 }

@@ -1,18 +1,15 @@
 import s from './PackLiastAll.module.css'
-import {PacksTable} from "../PacksTable/PacksTable";
+import {PacksTable} from '../PacksTable/PacksTable';
 import t from '../../common/styles/Themes.module.css';
-import {useAppSelector} from "../../bll/store";
-import SuperButton from "../../common/super-components/c2-SuperButton/SuperButton";
-import {useState} from "react";
-import SuperInputText from "../../common/super-components/c1-SuperInputText/SuperInputText";
-import React, {ChangeEvent, useState} from "react";
-import {AlternativeSuperDoubleRange} from "../../common/super-components/c8-SuperDoubleRange/AlternativeSuperDoubleRange";
+import {useAppSelector} from '../../bll/store';
+import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton';
+import React, {useState} from 'react';
+import {AlternativeSuperDoubleRange} from '../../common/super-components/c8-SuperDoubleRange/AlternativeSuperDoubleRange';
 import {Paginator} from '../Paginator/Paginator';
 import {SearchField} from '../SearchField/SearchField';
-import SuperRadio from "../../common/super-components/c6-SuperRadio/SuperRadio";
-import {useDispatch} from "react-redux";
-import {packsActions} from "../../bll/packs-reducer";
-
+import SuperRadio from '../../common/super-components/c6-SuperRadio/SuperRadio';
+import {useDispatch} from 'react-redux';
+import {packsActions} from '../../bll/packs-reducer';
 
 export const PackListAll = () => {
     const theme = useAppSelector(state => state.theme.theme)
@@ -51,11 +48,13 @@ export const PackListAll = () => {
             <div className={s.buttons}>
                 <button>My</button>
                 <button>All</button>
+            </div>
             <div className={s.superRadio}>
                 <div>Snow packs cards</div>
                 <div><SuperRadio name={'radio'} options={arr}
                                  value={valueFromArray} onChangeOption={onChangeOption}
-                                 className={s.superRadio}/></div>
+                                 className={s.superRadio}/>
+                </div>
             </div>
             <div>
                 <p>Number of cards</p>

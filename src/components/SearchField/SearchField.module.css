@@ -2,13 +2,6 @@
     position: relative;
 }
 
-.search {
-    width: 270px;
-    margin: 10px 30px;
-    padding: 7px 15px;
-    border-radius: 20px;
-}
-
 .deleteIcon {
     position: absolute;
     top: 15px;

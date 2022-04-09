@@ -1,5 +1,5 @@
 import {PacksList} from './PacksList'
-import {getPacks, packsActions} from '../../bll/packs-reducer';
+import {getPacks} from '../../bll/packs-reducer';
 import {useDispatch} from 'react-redux';
 import {useAppSelector} from '../../bll/store';
 import {useEffect} from 'react';

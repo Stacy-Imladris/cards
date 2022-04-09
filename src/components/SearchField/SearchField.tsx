@@ -1,4 +1,4 @@
-import {ChangeEvent, KeyboardEvent, useState} from 'react';
+import {KeyboardEvent, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import s from './SearchField.module.css';
 import SuperInputText
@@ -11,8 +11,8 @@ export const SearchField = () => {
 
     const dispatch = useDispatch()
 
-    const changeSearchTitle = (e: ChangeEvent<HTMLInputElement>) => {
-        setTitle(e.currentTarget.value)
+    const onChangeText = (title: string) => {
+        setTitle(title)
         clearTimeout(timerId)
         const id: number = +setTimeout(debounce, 700, dispatch, title)
         setTimerId(id)
@@ -30,14 +30,9 @@ export const SearchField = () => {
 
     return (
         <div className={s.searchBlock}>
-            <SuperInputText/>
-            <input
-                placeholder="Enter title for search"
-                value={title}
-                className={s.search}
-                onChange={changeSearchTitle}
-                onKeyPress={onKeyStartSearching}
-            />
+            <SuperInputText value={title} onChangeText={onChangeText}
+                            onKeyPress={onKeyStartSearching}
+                            placeholder={'Enter title for search'}/>
             {title && (
                 <button type="button" className={s.deleteIcon}
                         onClick={deleteTextForSearch}>

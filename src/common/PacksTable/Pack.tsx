@@ -16,5 +16,4 @@ export const Pack: FC<PackPropsType> = ({pack}) => {
             <PackActions key={pack._id} isMyPacks={pack.private}/>
         </td>
     </tr>
-
 }

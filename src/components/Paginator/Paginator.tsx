@@ -2,10 +2,11 @@ import {useDispatch} from 'react-redux';
 import s from './Paginator.module.css';
 import {useAppSelector} from '../../bll/store';
 import {getPagesForRender} from '../../utils/page-helper';
-import {packsActions} from '../../bll/packs-reducer';
+import {getPacks, packsActions} from '../../bll/packs-reducer';
 
 export const Paginator = () => {
     const cardPacksTotalCount = useAppSelector(state => state.packs.cardPacksTotalCount)
+    const packs = useAppSelector(state => state.packs.packs)
     const page = useAppSelector(state => state.packs.params.page)
     const pageCount = useAppSelector(state => state.packs.params.pageCount)
 
@@ -22,42 +23,46 @@ export const Paginator = () => {
 
     const onPageChanged = (page: number) => {
         dispatch(packsActions.setCurrentPage(page))
+        dispatch(getPacks())
     }
 
     return (
-        <div className={s.paginatorContainer}>
-            <div className={s.container}>
-                <div>
-                    {page > 3 && (
-                        <>
-                            <button
-                                onClick={() => onPageChanged(page - 1)}>Previous
-                            </button>
-                            <button className={page === 1 ? s.selectedPage : ''}
-                                    onClick={() => onPageChanged(1)}> 1
-                            </button>
-                            <span>...</span>
-                        </>
-                    )}
-                </div>
-                <div>
-                    {pagesForRender.map(p => (
-                        <button className={page === p ? s.selectedPage : ''}
-                                onClick={() => onPageChanged(p)} key={p}> {p} </button>))}
-                </div>
-                <div>
-                    {page < pages.length - 2 && (
-                        <>
-                            <span>...</span>
-                            <button
-                                className={page === pages.length ? s.selectedPage : ''}
-                                onClick={() => onPageChanged(pages.length)}> {pages.length} </button>
-                            <button onClick={() => onPageChanged(page + 1)}>Next
-                            </button>
-                        </>
-                    )}
+        packs.length ?
+            <div className={s.paginatorContainer}>
+                <div className={s.container}>
+                    <div>
+                        {page > 3 && (
+                            <>
+                                <button
+                                    onClick={() => onPageChanged(page - 1)}>Previous
+                                </button>
+                                <button className={page === 1 ? s.selectedPage : ''}
+                                        onClick={() => onPageChanged(1)}> 1
+                                </button>
+                                <span>...</span>
+                            </>
+                        )}
+                    </div>
+                    <div>
+                        {pagesForRender.map(p => (
+                            <button className={page === p ? s.selectedPage : ''}
+                                    onClick={() => onPageChanged(p)}
+                                    key={p}> {p} </button>))}
+                    </div>
+                    <div>
+                        {page < pages.length - 2 && (
+                            <>
+                                <span>...</span>
+                                <button
+                                    className={page === pages.length ? s.selectedPage : ''}
+                                    onClick={() => onPageChanged(pages.length)}> {pages.length} </button>
+                                <button onClick={() => onPageChanged(page + 1)}>Next
+                                </button>
+                            </>
+                        )}
+                    </div>
                 </div>
             </div>
-        </div>
+            : <div>Nothing was found</div>
     )
 }

@@ -55,7 +55,6 @@ const preloadedState = {
     },
     packs: {
         packs: [] as PackType[],
-        user_id: '',
         error: '',
         isLoading: false,
         isPacksSet: false,
@@ -76,8 +75,9 @@ export const store = createStore(rootReducer, preloadedState, applyMiddleware(th
 
 export type AppRootStateType = ReturnType<typeof store.getState>
 export type InferActionTypes<T> = T extends { [keys: string]: (...args: any[]) => infer U } ? U : never
-export type ActionsType = RegistrationActionTypes | RecoveryActionTypes | NewPasswordActionTypes
-    | LoginActionsType | ProfileActionTypes | PacksActionTypes
+export type ActionsType = RegistrationActionTypes | RecoveryActionTypes
+    | NewPasswordActionTypes | LoginActionsType
+    | ProfileActionTypes | PacksActionTypes
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppRootStateType, unknown, ActionsType>
 export const useAppSelector: TypedUseSelectorHook<AppRootStateType> = useSelector
 

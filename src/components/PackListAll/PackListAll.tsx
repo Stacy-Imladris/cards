@@ -3,10 +3,10 @@ import {PacksTable} from "../PacksTable/PacksTable";
 import t from '../../common/styles/Themes.module.css';
 import {useAppSelector} from "../../bll/store";
 import SuperButton from "../../common/super-components/c2-SuperButton/SuperButton";
-import SuperInputText from "../../common/super-components/c1-SuperInputText/SuperInputText";
 import {useState} from "react";
 import {AlternativeSuperDoubleRange} from "../../common/super-components/c8-SuperDoubleRange/AlternativeSuperDoubleRange";
 import {Paginator} from '../Paginator/Paginator';
+import {SearchField} from '../SearchField/SearchField';
 
 export const PackListAll = () => {
     const theme = useAppSelector(state => state.theme.theme)
@@ -25,7 +25,6 @@ export const PackListAll = () => {
         setValue2(value[1])
     }
 
-
     return (
         <div className={`${s.profileWrapper} ${s.container} ${t[theme + '-text']}`}>
             <p>Snow packs cards</p>
@@ -42,7 +41,7 @@ export const PackListAll = () => {
                 </div>
             </div>
             <div>
-                <SuperInputText/>
+                <SearchField/>
             </div>
             <div>
                 <SuperButton>Add new pack</SuperButton>

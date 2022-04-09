@@ -4,7 +4,6 @@ import {packAPI, PackType} from '../api/packs-api';
 
 const packsInitialState = {
     packs: [] as PackType[],
-    user_id: '',
     error: '',
     isLoading: false,
     isPacksSet: false,
@@ -23,7 +22,6 @@ const packsInitialState = {
 export const packsReducer = (state: PacksInitialStateType = packsInitialState, action: PacksActionTypes): PacksInitialStateType => {
     switch (action.type) {
         case 'PACKS/SET_PACKS':
-        case 'PACKS/SET_PACKS_FOR_USER':
         case 'PACKS/SET_PACKS_ERROR':
         case 'PACKS/SET_PACKS_IS_LOADING':
         case 'PACKS/SET_IS_PACKS_SET':
@@ -31,6 +29,10 @@ export const packsReducer = (state: PacksInitialStateType = packsInitialState, a
             return {...state, ...action.payload}
         case 'PACKS/SET_CURRENT_PAGE':
             return {...state, params: {...state.params, page: action.payload.currentPage}}
+        case 'PACKS/SET_TITLE_FOR_SEARCH':
+            return {...state, params: {...state.params, packName: action.payload.packName}}
+        case 'PACKS/SET_PACKS_FOR_USER':
+            return {...state, params: {...state.params, user_id: action.payload.user_id}}
         default:
             return state
     }
@@ -45,6 +47,7 @@ export const packsActions = {
     setCardPacksTotalCount: (cardPacksTotalCount: number) =>
         ({type: 'PACKS/SET_CARD_PACKS_TOTAL_COUNT', payload: {cardPacksTotalCount}} as const),
     setCurrentPage: (currentPage: number) => ({type: 'PACKS/SET_CURRENT_PAGE', payload: {currentPage}} as const),
+    setTitleForSearch: (packName: string) => ({type: 'PACKS/SET_TITLE_FOR_SEARCH', payload: {packName}} as const),
 }
 
 //thunk

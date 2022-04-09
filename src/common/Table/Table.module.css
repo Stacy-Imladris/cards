@@ -23,12 +23,12 @@ tbody  tr:nth-child(2n) {
     background-color: #ECECF9;
 }
 thead  tr:nth-child(n) {
-    background-color: #ECECF9;
+    background-color: #D9D9F1;
 }
 .packs__actions_buttons {
     display: flex;
     justify-content: end;
 }
 .packs__actions_buttons div {
-    margin: 0 4px;
+    margin: 0 3px;
 }

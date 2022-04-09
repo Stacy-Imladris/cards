@@ -13,7 +13,7 @@ export const PackActions: FC<PackActionsType> = ({isMyPacks, key}) => {
         {
             isMyPacks
             && <>
-                <SuperButton>Delete</SuperButton>
+                <SuperButton red>Delete</SuperButton>
                 <SuperButton>Edit</SuperButton>
             </>
         }

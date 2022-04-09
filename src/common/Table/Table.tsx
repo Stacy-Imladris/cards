@@ -2,7 +2,7 @@ import {PacksList} from './PacksList'
 
 export const Table = () => {
 
-    const cardPacks: Array<packType> = [
+    const cardPacks: Array<PackType> = [
         {
             _id: 'pack_1',
             user_id: '2',
@@ -90,7 +90,7 @@ export const Table = () => {
     </table>
 }
 
-export type packType = {
+export type PackType = {
     _id: string,
     user_id: string,
     user_name: string,

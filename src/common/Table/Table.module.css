@@ -29,6 +29,3 @@ thead  tr:nth-child(n) {
     display: flex;
     justify-content: end;
 }
-.packs__actions_buttons div {
-    margin: 0 3px;
-}

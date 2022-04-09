@@ -26,7 +26,7 @@ export const App = () => {
     }
 
     if(!isLoggedIn) {
-        <Navigate to={PATH.LOGIN}/>
+        return <Navigate to={PATH.LOGIN}/>
     }
 
     return (

@@ -8,7 +8,12 @@ const instance = axios.create({
 
 export const packAPI = {
     getPacks() {
-        return instance.get('cards/pack')
-            .then(res => res.data)
+        return instance.get('cards/pack').then(res => res.data)
+    },
+    addPack() {
+        return instance.post('cards/pack')
+    },
+    deletePack(id: string) {
+        return instance.delete(`cards/pack?id=${id}`)
     },
 }

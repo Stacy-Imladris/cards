@@ -14,7 +14,6 @@ export const PacksTable = () => {
     }, [dispatch])
 
     return <>
-        <button onClick={() => dispatch(getPacks())}>getPacks</button>
         <table>
             <thead>
             <tr>

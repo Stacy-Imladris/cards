@@ -1,6 +1,6 @@
 import {AppThunk, InferActionTypes} from './store';
 import axios from 'axios';
-import {packAPI} from '../api/packs-api';
+import {packAPI, PackType} from '../api/packs-api';
 
 const packsInitialState = {
     packs: [] as PackType[],
@@ -9,7 +9,7 @@ const packsInitialState = {
     isLoading: false,
     isPacksSet: false,
     params: {
-        packName: 'english',
+        packName: '',
         min: 3,
         max: 9,
         sortPacks: '0updated',
@@ -17,6 +17,7 @@ const packsInitialState = {
         pageCount: 7,
         user_id: '',
     } as ParamsType,
+    cardPacksTotalCount: 0,
 }
 
 export const packsReducer = (state: PacksInitialStateType = packsInitialState, action: PacksActionTypes): PacksInitialStateType => {
@@ -26,7 +27,10 @@ export const packsReducer = (state: PacksInitialStateType = packsInitialState, a
         case 'PACKS/SET_PACKS_ERROR':
         case 'PACKS/SET_PACKS_IS_LOADING':
         case 'PACKS/SET_IS_PACKS_SET':
+        case 'PACKS/SET_CARD_PACKS_TOTAL_COUNT':
             return {...state, ...action.payload}
+        case 'PACKS/SET_CURRENT_PAGE':
+            return {...state, params: {...state.params, page: action.payload.currentPage}}
         default:
             return state
     }
@@ -38,6 +42,9 @@ export const packsActions = {
     setPacksError: (error: string) => ({type: 'PACKS/SET_PACKS_ERROR', payload: {error}} as const),
     setPacksIsLoading: (isLoading: boolean) => ({type: 'PACKS/SET_PACKS_IS_LOADING', payload: {isLoading}} as const),
     setIsPacksSet: (toLogIn: boolean) => ({type: 'PACKS/SET_IS_PACKS_SET', payload: {toLogIn}} as const),
+    setCardPacksTotalCount: (cardPacksTotalCount: number) =>
+        ({type: 'PACKS/SET_CARD_PACKS_TOTAL_COUNT', payload: {cardPacksTotalCount}} as const),
+    setCurrentPage: (currentPage: number) => ({type: 'PACKS/SET_CURRENT_PAGE', payload: {currentPage}} as const),
 }
 
 //thunk
@@ -47,6 +54,7 @@ export const getPacks = (): AppThunk => async (dispatch, getState) => {
     try {
         const data = await packAPI.getPacks(params)
         dispatch(packsActions.setPacksError(''))
+        dispatch(packsActions.setCardPacksTotalCount(data.cardPacksTotalCount))
         dispatch(packsActions.setPacks(data.cardPacks))
     } catch (e) {
         if (axios.isAxiosError(e)) {
@@ -62,24 +70,6 @@ export const getPacks = (): AppThunk => async (dispatch, getState) => {
 //types
 export type PacksInitialStateType = typeof packsInitialState
 export type PacksActionTypes = InferActionTypes<typeof packsActions>
-export type PackType = {
-    _id: string
-    user_id: string
-    user_name: string
-    private: boolean
-    name: string
-    path: string
-    grade: number
-    shots: number
-    cardsCount: number
-    type: string
-    rating: number
-    created: Date
-    updated: Date
-    more_id: string
-    __v: number
-    deckCover: null | string
-}
 export type ParamsType = {
     packName: string
     min: number

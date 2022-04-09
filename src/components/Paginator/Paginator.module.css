@@ -1,0 +1,43 @@
+.paginatorContainer {
+    position: sticky;
+    bottom: 0;
+    background-color: green;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    color: white;
+    padding: 5px 0;
+}
+
+.container div {
+    width: 180px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.container div span {
+    padding: 0 10px;
+}
+
+.container div button {
+    cursor: pointer;
+    border: none;
+    background-color: green;
+    outline: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20%;
+    min-width: 40px;
+}
+
+.container div button:hover {
+    background-color: #afaf1b;
+}
+
+.selectedPage {
+    font-weight: bold;
+    background-color: #afaf1b;
+}

@@ -1,6 +1,6 @@
 import {FC} from 'react'
 import {PackActions} from './PackActions'
-import {PackType} from '../../bll/packs-reducer';
+import {PackType} from '../../api/packs-api';
 
 type PackPropsType = {
     pack: PackType
@@ -13,7 +13,7 @@ export const Pack: FC<PackPropsType> = ({pack}) => {
         <td>{pack.updated}</td>
         <td>{pack.user_name}</td>
         <td>
-            <PackActions key={pack._id} isMyPacks={pack.private}/>
+            <PackActions isMyPacks={pack.private}/>
         </td>
     </tr>
 }

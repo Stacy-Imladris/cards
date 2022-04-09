@@ -6,10 +6,9 @@ import SuperButton from "../../common/super-components/c2-SuperButton/SuperButto
 import SuperInputText from "../../common/super-components/c1-SuperInputText/SuperInputText";
 import {useState} from "react";
 import {AlternativeSuperDoubleRange} from "../../common/super-components/c8-SuperDoubleRange/AlternativeSuperDoubleRange";
-
+import {Paginator} from '../Paginator/Paginator';
 
 export const PackListAll = () => {
-
     const theme = useAppSelector(state => state.theme.theme)
 
     const [value1Range, setValue1] = useState(0)
@@ -28,15 +27,12 @@ export const PackListAll = () => {
 
 
     return (
-
         <div className={`${s.profileWrapper} ${s.container} ${t[theme + '-text']}`}>
-
             <p>Snow packs cards</p>
             <div className={s.buttons}>
                 <button>My</button>
                 <button>All</button>
             </div>
-
             <div>
                 <p>Number of cards</p>
                 <div className={s.input}>
@@ -45,27 +41,18 @@ export const PackListAll = () => {
                     <span className={`${s.num} ${t[theme + '-text']}`}>{value2Range}</span>
                 </div>
             </div>
-
             <div>
                 <SuperInputText/>
             </div>
-
             <div>
                 <SuperButton>Add new pack</SuperButton>
             </div>
-
             <div className={s.packsTable}>
                 <PacksTable/>
             </div>
-
-
             <div className={s.profilePacks_pagination}>
-                profilePacks_pagination
-                <div>1 2 3 4...</div>
+                <Paginator/>
             </div>
-
-
-
         </div>
     )
 }

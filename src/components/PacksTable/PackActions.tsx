@@ -4,12 +4,11 @@ import SuperButton from '../../common/super-components/c2-SuperButton/SuperButto
 
 type PackActionsType = {
     isMyPacks: boolean
-    key: string
 }
 
-export const PackActions: FC<PackActionsType> = ({isMyPacks, key}) => {
+export const PackActions: FC<PackActionsType> = ({isMyPacks}) => {
 
-    return <div className={s.packs__actions_buttons} key={key}>
+    return <div className={s.packs__actions_buttons}>
         {
             isMyPacks
             && <>

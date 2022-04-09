@@ -9,7 +9,8 @@ import {RecoveryActionTypes, recoveryReducer} from '../components/Recovery/Recov
 import {NewPasswordActionTypes, newPasswordReducer} from '../components/NewPassword/NewPasswordBLL/new-password-reducer';
 import {loadValue} from '../utils/localstorage';
 import {UserType} from '../components/Profile/profile-api';
-import {PacksActionTypes, packsReducer, PackType, ParamsType} from './packs-reducer';
+import {PacksActionTypes, packsReducer, ParamsType} from './packs-reducer';
+import {PackType} from '../api/packs-api';
 
 const rootReducer = combineReducers({
     theme: themeReducer,
@@ -67,6 +68,7 @@ const preloadedState = {
             pageCount: 7,
             user_id: '',
         } as ParamsType,
+        cardPacksTotalCount: 0,
     }
 }
 

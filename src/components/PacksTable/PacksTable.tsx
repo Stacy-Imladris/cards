@@ -6,12 +6,13 @@ import {useEffect} from 'react';
 
 export const PacksTable = () => {
     const packs = useAppSelector(state => state.packs.packs)
+    const currentPage = useAppSelector(state => state.packs.params.page)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getPacks())
-    }, [dispatch])
+    }, [dispatch, currentPage])
 
     return <>
         <table>

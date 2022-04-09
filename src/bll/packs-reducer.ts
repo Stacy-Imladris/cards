@@ -8,6 +8,15 @@ const packsInitialState = {
     error: '',
     isLoading: false,
     isPacksSet: false,
+    params: {
+        packName: 'english',
+        min: 3,
+        max: 9,
+        sortPacks: '0updated',
+        page: 1,
+        pageCount: 7,
+        user_id: '',
+    } as ParamsType,
 }
 
 export const packsReducer = (state: PacksInitialStateType = packsInitialState, action: PacksActionTypes): PacksInitialStateType => {
@@ -32,10 +41,11 @@ export const packsActions = {
 }
 
 //thunk
-export const getPacks = (): AppThunk => async dispatch => {
+export const getPacks = (): AppThunk => async (dispatch, getState) => {
+    const params = getState().packs.params
     dispatch(packsActions.setPacksIsLoading(true))
     try {
-        const data = await packAPI.getPacks()
+        const data = await packAPI.getPacks(params)
         dispatch(packsActions.setPacksError(''))
         dispatch(packsActions.setPacks(data.cardPacks))
     } catch (e) {
@@ -69,4 +79,13 @@ export type PackType = {
     more_id: string
     __v: number
     deckCover: null | string
+}
+export type ParamsType = {
+    packName: string
+    min: number
+    max: number
+    sortPacks: string
+    page: number
+    pageCount: number
+    user_id: string
 }

@@ -1,5 +1,5 @@
 import s from './PackLiastAll.module.css'
-import {PacksTable} from "../../common/PacksTable/PacksTable";
+import {PacksTable} from "../PacksTable/PacksTable";
 import t from '../../common/styles/Themes.module.css';
 import {useAppSelector} from "../../bll/store";
 import SuperButton from "../../common/super-components/c2-SuperButton/SuperButton";

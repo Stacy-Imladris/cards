@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {ParamsType} from '../bll/packs-reducer';
 
 const instance = axios.create({
     baseURL: 'http://localhost:7542/2.0/',
@@ -7,8 +8,8 @@ const instance = axios.create({
 })
 
 export const packAPI = {
-    getPacks() {
-        return instance.get('cards/pack').then(res => res.data)
+    getPacks(params: ParamsType) {
+        return instance.get('cards/pack', {params}).then(res => res.data)
     },
     addPack() {
         return instance.post('cards/pack')

@@ -9,7 +9,7 @@ import {RecoveryActionTypes, recoveryReducer} from '../components/Recovery/Recov
 import {NewPasswordActionTypes, newPasswordReducer} from '../components/NewPassword/NewPasswordBLL/new-password-reducer';
 import {loadValue} from '../utils/localstorage';
 import {UserType} from '../components/Profile/profile-api';
-import {PacksActionTypes, packsReducer, PackType} from './packs-reducer';
+import {PacksActionTypes, packsReducer, PackType, ParamsType} from './packs-reducer';
 
 const rootReducer = combineReducers({
     theme: themeReducer,
@@ -58,6 +58,15 @@ const preloadedState = {
         error: '',
         isLoading: false,
         isPacksSet: false,
+        params: {
+            packName: 'english',
+            min: 3,
+            max: 9,
+            sortPacks: '0updated',
+            page: 1,
+            pageCount: 7,
+            user_id: '',
+        } as ParamsType,
     }
 }
 

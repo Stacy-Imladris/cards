@@ -1,6 +1,6 @@
 import s from './PacksTable.module.css'
 import {FC} from 'react'
-import SuperButton from '../super-components/c2-SuperButton/SuperButton'
+import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton'
 
 type PackActionsType = {
     isMyPacks: boolean

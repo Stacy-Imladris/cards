@@ -7,7 +7,7 @@ import {Error404} from '../components/Error404/Error404';
 import {RegistrationContainer} from '../components/Registration/RegistrationUI/RegistrationContainer';
 import {RecoveryContainer} from '../components/Recovery/RecoveryUI/RecoveryContainer';
 import {NewPasswordContainer} from '../components/NewPassword/NewPasswordUI/NewPasswordContainer';
-import {PacksTable} from '../common/PacksTable/PacksTable';
+import {PacksTable} from '../components/PacksTable/PacksTable';
 import {PackListAll} from "../components/PackListAll/PackListAll";
 
 export enum PATH {

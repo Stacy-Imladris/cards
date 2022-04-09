@@ -9,7 +9,6 @@ import {profileActions} from '../../bll/profile-reducer';
 import {useDispatch} from 'react-redux';
 import {useAppSelector} from '../../bll/store';
 import {EditProfile} from './EditProfile';
-import {PackListAll} from "../PackListAll/PackListAll";
 
 export const Profile = () => {
     const isLoggedIn = useAppSelector(state => state.login.isLoggedIn)
@@ -49,7 +48,6 @@ export const Profile = () => {
                 </div>
 
                 <div className={s.profilePacks}>
-                    <h2 onClick={() => navigate(PATH.PACKS)}>Packs list</h2>
                     <h2 onClick={() => navigate(PATH.PACKS_LIST_ALL)}>PackListAll</h2>
                     <h2>My packs list</h2>
                     <div className={s.profilePacks_search}>

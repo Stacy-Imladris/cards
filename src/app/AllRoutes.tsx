@@ -18,7 +18,6 @@ export enum PATH {
     PASSWORD_RECOVERY = '/password-recovery',
     NEW_PASSWORD = '/new-password/:resetPasswordToken',
     TEST = '/test',
-    PACKS = '/packs',
     PACKS_LIST_ALL = '/packs-list-all',
 }
 
@@ -33,7 +32,6 @@ export const AllRoutes = () => {
             <Route path={PATH.PASSWORD_RECOVERY} element={<RecoveryContainer/>}/>
             <Route path={PATH.NEW_PASSWORD} element={<NewPasswordContainer/>}/>
             <Route path={PATH.TEST} element={<Test/>}/>
-            <Route path={PATH.PACKS} element={<PacksTable/>}/>
             <Route path={PATH.PACKS_LIST_ALL} element={<PackListAll/>}/>
             <Route path={PATH.ERROR_404} element={<Error404/>}/>
             <Route path="*" element={<Navigate to={PATH.ERROR_404}/>}/>

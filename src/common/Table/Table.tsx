@@ -1,6 +1,4 @@
-import s from './Table.module.css'
-import {PackActions} from './PackActions'
-import {addZeroToDigit} from '../../utils/helpers'
+import {PacksList} from './PacksList'
 
 export const Table = () => {
 
@@ -87,27 +85,7 @@ export const Table = () => {
         </thead>
 
         <tbody>
-        {
-            cardPacks.map(pack => {
-
-                    const day = addZeroToDigit(pack.updated.getDay())
-                    const month = addZeroToDigit(pack.updated.getMonth())
-                    const year = pack.updated.getFullYear()
-
-                    const lastUpdated = `${day}.${month}.${year}`
-
-                    return <tr key={pack._id}>
-
-                        <td>{pack.name}</td>
-                        <td>{pack.cardsCount}</td>
-                        <td>{lastUpdated}</td>
-                        <td>{pack.user_name}</td>
-
-                        <td><PackActions key={pack._id} isMyPacks={pack.private}/></td>
-                    </tr>
-                }
-            )}
-
+        <PacksList cardPacks={cardPacks}/>
         </tbody>
     </table>
 }
@@ -129,3 +107,6 @@ export type packType = {
     more_id: string,
     __v: number
 }
+
+
+

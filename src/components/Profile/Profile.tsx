@@ -49,8 +49,8 @@ export const Profile = () => {
                 </div>
 
                 <div className={s.profilePacks}>
-                    <h2 onClick={() => navigate('/packs')}>Packs list</h2>
-                    <h2 onClick={() => navigate('/packsListAll')}>PackListAll</h2>
+                    <h2 onClick={() => navigate(PATH.PACKS)}>Packs list</h2>
+                    <h2 onClick={() => navigate(PATH.PACKS_LIST_ALL)}>PackListAll</h2>
                     <h2>My packs list</h2>
                     <div className={s.profilePacks_search}>
                         <div>

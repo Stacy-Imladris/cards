@@ -2,12 +2,9 @@ import s from './PackLiastAll.module.css'
 import {PacksTable} from "../../common/PacksTable/PacksTable";
 import t from '../../common/styles/Themes.module.css';
 import {useAppSelector} from "../../bll/store";
-import profile_ava from "../../assets/images/profile_ava.png";
 import SuperButton from "../../common/super-components/c2-SuperButton/SuperButton";
 import SuperInputText from "../../common/super-components/c1-SuperInputText/SuperInputText";
-import SuperRange from "../../common/super-components/c7-SuperRange/SuperRange";
-import React, {useState} from "react";
-import SuperRadio from "../../common/super-components/c6-SuperRadio/SuperRadio";
+import {useState} from "react";
 import {AlternativeSuperDoubleRange} from "../../common/super-components/c8-SuperDoubleRange/AlternativeSuperDoubleRange";
 
 

@@ -19,7 +19,7 @@ export enum PATH {
     NEW_PASSWORD = '/new-password/:resetPasswordToken',
     TEST = '/test',
     PACKS = '/packs',
-    PACKS_LIST_ALL = '/packsListAll',
+    PACKS_LIST_ALL = '/packs-list-all',
 }
 
 export const AllRoutes = () => {

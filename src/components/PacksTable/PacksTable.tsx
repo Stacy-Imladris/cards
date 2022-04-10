@@ -8,7 +8,7 @@ import {setSortValuesToStore} from '../../utils/sort-helper';
 
 export const PacksTable = () => {
     const [sortField, setSortField] = useState<SortValuesType>('updated')
-    const [sortValue, setSortValue] = useState<SortOrderType>('0')
+    const [sortValue, setSortValue] = useState<SortOrderType>('1')
 
     const packs = useAppSelector(state => state.packs.packs)
     const packName = useAppSelector(state => state.packs.params.packName)

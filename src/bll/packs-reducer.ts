@@ -33,6 +33,9 @@ export const packsReducer = (state: PacksInitialStateType = packsInitialState, a
             return {...state, params: {...state.params, packName: action.payload.packName}}
         case 'PACKS/SET_PACKS_FOR_USER':
             return {...state, params: {...state.params, user_id: action.payload.user_id}}
+        case 'PACKS/UPDATE_PACK':
+            return {...state, params: {...state.params,
+                    user_id: action.payload.user_id, packName: action.payload.packName }}
         default:
             return state
     }
@@ -48,6 +51,7 @@ export const packsActions = {
         ({type: 'PACKS/SET_CARD_PACKS_TOTAL_COUNT', payload: {cardPacksTotalCount}} as const),
     setCurrentPage: (currentPage: number) => ({type: 'PACKS/SET_CURRENT_PAGE', payload: {currentPage}} as const),
     setTitleForSearch: (packName: string) => ({type: 'PACKS/SET_TITLE_FOR_SEARCH', payload: {packName}} as const),
+    updatePack: (packName: string, user_id: string) => ({type: 'PACKS/UPDATE_PACK', payload: {packName, user_id}} as const),
 }
 
 //thunk

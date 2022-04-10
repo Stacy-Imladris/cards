@@ -9,7 +9,7 @@ type PackPropsType = {
 }
 
 export const Pack: FC<PackPropsType> = ({pack}) => {
-    const userId = useAppSelector(state => state.profile.user._id)
+    const profileUserId = useAppSelector(state => state.profile.user._id)
     const lastUpdate = getLastUpdatedDate(pack.updated)
 
     return <tr>
@@ -18,7 +18,7 @@ export const Pack: FC<PackPropsType> = ({pack}) => {
         <td>{lastUpdate}</td>
         <td>{pack.user_name}</td>
         <td>
-            <PackActions key={pack._id} isMyPacks={pack.user_id === userId}/>
+            <PackActions isMyPacks={pack.user_id === profileUserId} profileUserId={profileUserId}/>
             {/*<PackActions key={pack._id} isMyPacks={true}/>*/}
         </td>
     </tr>

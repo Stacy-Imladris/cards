@@ -9,8 +9,10 @@ import {RecoveryActionTypes, recoveryReducer} from '../components/Recovery/Recov
 import {NewPasswordActionTypes, newPasswordReducer} from '../components/NewPassword/NewPasswordBLL/new-password-reducer';
 import {loadValue} from '../utils/localstorage';
 import {UserType} from '../components/Profile/profile-api';
-import {PacksActionTypes, packsReducer, ParamsType} from './packs-reducer';
+import {PacksActionTypes, PacksParamsType, packsReducer} from './packs-reducer';
 import {PackType} from '../api/packs-api';
+import {CardsActionTypes, CardsParamsType, cardsReducer} from './cards-reducer';
+import {CardType} from '../api/cards-api';
 
 const rootReducer = combineReducers({
     theme: themeReducer,
@@ -20,6 +22,7 @@ const rootReducer = combineReducers({
     newPassword: newPasswordReducer,
     login: loginReducer,
     packs: packsReducer,
+    cards: cardsReducer,
 })
 
 const preloadedState = {
@@ -57,7 +60,6 @@ const preloadedState = {
         packs: [] as PackType[],
         error: '',
         isLoading: false,
-        isPacksSet: false,
         params: {
             packName: 'english',
             min: 3,
@@ -66,9 +68,27 @@ const preloadedState = {
             page: 1,
             pageCount: 7,
             user_id: '',
-        } as ParamsType,
+        } as PacksParamsType,
         cardPacksTotalCount: 0,
-    }
+    },
+    cards: {
+        cards: [] as CardType[],
+        error: '',
+        isLoading: false,
+        params: {
+            cardAnswer: '',
+            cardQuestion: '',
+            cardsPack_id: '5eb6a2f72f849402d46c6ac7',
+            min: 1,
+            max: 4,
+            sortCards: '0grade',
+            page: 1,
+            pageCount: 7,
+        } as CardsParamsType,
+        cardsTotalCount: 0,
+        packName: '',
+        packId: '',
+    },
 }
 
 export const store = createStore(rootReducer, preloadedState, applyMiddleware(thunk))
@@ -77,7 +97,7 @@ export type AppRootStateType = ReturnType<typeof store.getState>
 export type InferActionTypes<T> = T extends { [keys: string]: (...args: any[]) => infer U } ? U : never
 export type ActionsType = RegistrationActionTypes | RecoveryActionTypes
     | NewPasswordActionTypes | LoginActionsType
-    | ProfileActionTypes | PacksActionTypes
+    | ProfileActionTypes | PacksActionTypes | CardsActionTypes
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppRootStateType, unknown, ActionsType>
 export const useAppSelector: TypedUseSelectorHook<AppRootStateType> = useSelector
 

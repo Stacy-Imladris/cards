@@ -1,5 +1,6 @@
 import {FC} from 'react'
 import {getLastUpdatedDate} from '../../../utils/date-helpers'
+import {CardType} from '../../../api/cards-api';
 
 type CardPropsType = {
     card: CardType

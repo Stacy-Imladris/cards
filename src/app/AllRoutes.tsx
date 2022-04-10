@@ -7,6 +7,7 @@ import {RegistrationContainer} from '../components/Registration/RegistrationUI/R
 import {RecoveryContainer} from '../components/Recovery/RecoveryUI/RecoveryContainer'
 import {NewPasswordContainer} from '../components/NewPassword/NewPasswordUI/NewPasswordContainer'
 import {Packs} from '../components/Packs/Packs'
+import {Cards} from '../components/Cards/Cards';
 
 export enum PATH {
     LOGIN = '/login',
@@ -17,6 +18,7 @@ export enum PATH {
     NEW_PASSWORD = '/new-password/:resetPasswordToken',
     TEST = '/test',
     PACKS = '/packs',
+    CARDS = '/cards',
 }
 
 export const AllRoutes = () => {
@@ -30,6 +32,7 @@ export const AllRoutes = () => {
             <Route path={PATH.NEW_PASSWORD} element={<NewPasswordContainer/>}/>
             <Route path={PATH.TEST} element={<Test/>}/>
             <Route path={PATH.PACKS} element={<Packs/>}/>
+            <Route path={PATH.CARDS} element={<Cards/>}/>
             <Route path={PATH.ERROR_404} element={<Error404/>}/>
             <Route path="*" element={<Navigate to={PATH.ERROR_404}/>}/>
         </Routes>

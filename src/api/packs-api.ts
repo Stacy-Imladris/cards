@@ -1,8 +1,9 @@
-import {ParamsType} from '../bll/packs-reducer';
+import {AxiosResponse} from 'axios';
+import {PacksParamsType} from '../bll/packs-reducer';
 import {instance} from './instance';
 
-export const packAPI = {
-    getPacks(params: ParamsType) {
+export const packsAPI = {
+    getPacks(params: PacksParamsType) {
         return instance.get<PacksResponseType>('cards/pack', {params}).then(res => res.data)
     },
     addPack() {
@@ -16,6 +17,7 @@ export const packAPI = {
     },
 }
 
+//types
 export type PacksResponseType = {
     cardPacks: PackType[]
     cardPacksTotalCount: number
@@ -42,7 +44,6 @@ export type PackType = {
     __v: number
     deckCover: null | string
 }
-
 type UpdatePackType = {
     _id: string
     name: string

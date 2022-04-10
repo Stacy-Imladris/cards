@@ -1,16 +1,24 @@
 import {useDispatch} from 'react-redux';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {CardsList} from './CardsList';
 import s from './CardsTable.module.css'
+import {useAppSelector} from '../../../bll/store';
+import {getCards} from '../../../bll/cards-reducer';
+import {cardsAPI, CardType} from '../../../api/cards-api';
 
 export const CardsTable = () => {
     //const [sortField, setSortField] = useState<SortValuesType>('updated')
     //const [sortValue, setSortValue] = useState<SortOrderType>('1')
+    const [cards, setCards] = useState<CardType[]>([])
+
+    //const cards = useAppSelector(state => state.cards.cards)
+    const id = useAppSelector(state => state.cards.packId)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
-        //dispatch(getCards())
+        cardsAPI.getCards(id).then((data) => setCards(data.cards))
+        //dispatch(getCards(id))
     }, [dispatch])
 
     /*const changeSortField = (fieldToSort: SortValuesType) => {

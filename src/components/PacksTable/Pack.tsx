@@ -8,8 +8,6 @@ type PackPropsType = {
     pack: PackType
 }
 
-
-
 export const Pack: FC<PackPropsType> = ({pack}) => {
     const userId = useAppSelector(state => state.profile.user._id)
     const lastUpdate = getLastUpdatedDate(pack.updated)

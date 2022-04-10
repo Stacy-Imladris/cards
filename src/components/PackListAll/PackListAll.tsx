@@ -1,6 +1,7 @@
-import s from './PackLiastAll.module.css'
 import {PacksTable} from '../PacksTable/PacksTable';
 import t from '../../common/styles/Themes.module.css';
+import s from './PackLiastAll.module.css'
+import c from '../../common/styles/Container.module.css'
 import {useAppSelector} from '../../bll/store';
 import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton';
 import React, {useState} from 'react';
@@ -21,7 +22,7 @@ export const PackListAll = () => {
     const onChangeOption = (value: string) => {
         setValueFromArray(value)
         if (value === 'All') {
-            dispatch(packsActions.setPacksForUser(""))
+            dispatch(packsActions.setPacksForUser(''))
         } else {
             dispatch(packsActions.setPacksForUser(user_id))
         }
@@ -43,39 +44,30 @@ export const PackListAll = () => {
     }
 
     return (
-        <div className={`${s.profileWrapper} ${s.container} ${t[theme + '-text']}`}>
-            <p>Snow packs cards</p>
-            <div className={s.buttons}>
-                <button>My</button>
-                <button>All</button>
-            </div>
-            <div className={s.superRadio}>
-                <div>Snow packs cards</div>
-                <div><SuperRadio name={'radio'} options={arr}
-                                 value={valueFromArray} onChangeOption={onChangeOption}
-                                 className={s.superRadio}/>
+        <div className={`${c.container} ${t[theme + '-text']}`}>
+                <div className={c.settings}>
+                    <div className={c.text}>Show packs cards</div>
+                    <SuperRadio name={'radio'} options={arr}
+                                value={valueFromArray} onChangeOption={onChangeOption}
+                                className={s.superRadio}
+                    />
+                    <div className={c.text}>Number of cards</div>
+                    <div>
+                    <span className={s.num}>{value1Range}</span>
+                        <AlternativeSuperDoubleRange value={[value1Range, value2Range]}
+                                                     onChangeRange={changeTwoValue}/>
+                        <span className={s.num}>{value2Range}</span>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <p>Number of cards</p>
-                <div className={s.input}>
-                    <span className={`${s.num} ${t[theme + '-text']}`}>{value1Range}</span>
-                    <AlternativeSuperDoubleRange value={[value1Range, value2Range]} onChangeRange={changeTwoValue}/>
-                    <span className={`${s.num} ${t[theme + '-text']}`}>{value2Range}</span>
+                <div className={c.performance}>
+                    <div className={c.title}>Packs list</div>
+                    <div className={s.rowElements}>
+                        <SearchField/>
+                        <SuperButton>Add new pack</SuperButton>
+                    </div>
+                    <div className={c.table}><PacksTable/></div>
+                    <div className={c.pagination}><Paginator/></div>
                 </div>
-            </div>
-            <div>
-                <SearchField/>
-            </div>
-            <div>
-                <SuperButton>Add new pack</SuperButton>
-            </div>
-            <div className={s.packsTable}>
-                <PacksTable/>
-            </div>
-            <div className={s.profilePacks_pagination}>
-                <Paginator/>
-            </div>
         </div>
     )
 }

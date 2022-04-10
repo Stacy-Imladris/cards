@@ -5,6 +5,7 @@ import {useAppSelector} from '../../bll/store';
 import {useEffect} from 'react';
 
 export const PacksTable = () => {
+    const theme = useAppSelector(state => state.theme.theme)
     const packs = useAppSelector(state => state.packs.packs)
     const packName = useAppSelector(state => state.packs.params.packName)
     const user_id = useAppSelector(state => state.packs.params.user_id)

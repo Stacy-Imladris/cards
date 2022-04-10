@@ -4,6 +4,7 @@ import s from './SearchField.module.css';
 import SuperInputText
     from '../../common/super-components/c1-SuperInputText/SuperInputText';
 import {debounce} from '../../utils/debounce-helper';
+import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton';
 
 export const SearchField = () => {
     const [title, setTitle] = useState<string>('')
@@ -30,15 +31,14 @@ export const SearchField = () => {
 
     return (
         <div className={s.searchBlock}>
+            <div className={s.loupe}>🔍︎</div>
             <SuperInputText value={title} onChangeText={onChangeText}
                             onKeyPress={onKeyStartSearching}
-                            placeholder={'Enter title for search'}/>
-            {title && (
-                <button type="button" className={s.deleteIcon}
-                        onClick={deleteTextForSearch}>
-                    ✘
-                </button>
-            )}
+                            placeholder={'Enter title for search'}
+                            className={s.searchField}/>
+            <SuperButton className={s.deleteIcon} onClick={deleteTextForSearch}>
+                ✘
+            </SuperButton>
         </div>
     )
 }

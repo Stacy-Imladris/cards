@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, {AxiosResponse} from 'axios'
 import {ParamsType} from '../bll/packs-reducer';
 
 const instance = axios.create({
@@ -16,6 +16,9 @@ export const packAPI = {
     },
     deletePack(id: string) {
         return instance.delete(`cards/pack?id=${id}`)
+    },
+    updatePack(cardsPack: UpdatePackType) {
+        return instance.put<any, AxiosResponse<PackType>, UpdatePackType>(`cards/pack`, cardsPack )
     },
 }
 
@@ -44,4 +47,9 @@ export type PackType = {
     more_id: string
     __v: number
     deckCover: null | string
+}
+
+type UpdatePackType = {
+    _id: string
+    name: string
 }

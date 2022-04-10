@@ -25,8 +25,8 @@ export const profileReducer = (state: ProfileStateType = initialState, action: P
 }
 
 export const profileActions = {
-    setEditModeProfileAC: (editMode: boolean) => ({type: 'profile/SET_EDIT_MODE_PROFILE', payload: {editMode}} as const),
-    setIsFetchingProfileAC: (isFetching: boolean) => ({type: 'profile/SET_IS_FETCHING_PROFILE', payload: {isFetching}} as const),
+    setEditModeProfile: (editMode: boolean) => ({type: 'profile/SET_EDIT_MODE_PROFILE', payload: {editMode}} as const),
+    setIsFetchingProfile: (isFetching: boolean) => ({type: 'profile/SET_IS_FETCHING_PROFILE', payload: {isFetching}} as const),
     setUserData: (user: UserType) => ({type: 'profile/SET_USER_DATA', payload: {user}} as const),
     setProfileError: (error: string) => ({type: 'profile/SET_PROFILE_ERROR', payload: {error}} as const),
     setIsInitialized: (isInitialized: boolean) => ({type: 'profile/SET_IS_INITIALIZED', payload: {isInitialized}} as const)
@@ -34,23 +34,23 @@ export const profileActions = {
 
 //thunks:
 export const updateProfile = (name: string, avatar: string): AppThunk => async dispatch => {
-    dispatch(profileActions.setIsFetchingProfileAC(true))
+    dispatch(profileActions.setIsFetchingProfile(true))
     try {
         const response = await profileAPI.update(name, avatar)
         dispatch(profileActions.setUserData(response.data.updatedUser))
-        dispatch(profileActions.setEditModeProfileAC(false))
+        dispatch(profileActions.setEditModeProfile(false))
     } catch (e) {
         if (axios.isAxiosError(e)) {
             const error = e.response ? e.response.data.error : (e.message + ', more details in the console')
             dispatch(profileActions.setProfileError(error))
         }
     } finally {
-        dispatch(profileActions.setIsFetchingProfileAC(false))
+        dispatch(profileActions.setIsFetchingProfile(false))
     }
 }
 
 export const auth = (): AppThunk => async dispatch => {
-    dispatch(profileActions.setIsFetchingProfileAC(true))
+    dispatch(profileActions.setIsFetchingProfile(true))
     try {
         const response = await profileAPI.me()
         dispatch(profileActions.setUserData(response.data))
@@ -61,7 +61,7 @@ export const auth = (): AppThunk => async dispatch => {
             dispatch(profileActions.setProfileError(error))
         }
     } finally {
-        dispatch(profileActions.setIsFetchingProfileAC(false))
+        dispatch(profileActions.setIsFetchingProfile(false))
         dispatch(profileActions.setIsInitialized(true))
     }
 }

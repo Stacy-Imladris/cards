@@ -17,7 +17,10 @@ export const Profile = () => {
     const editMode = useAppSelector(state => state.profile.editMode)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const editProfile = () => dispatch(profileActions.setEditModeProfileAC(true))
+    const editProfile = () => {
+        dispatch(profileActions.setEditModeProfile(true))
+        dispatch(profileActions.setProfileError(''))
+    }
 
     if (editMode) {
         return <EditProfile/>

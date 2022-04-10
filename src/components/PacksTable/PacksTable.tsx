@@ -3,6 +3,7 @@ import {getPacks} from '../../bll/packs-reducer';
 import {useDispatch} from 'react-redux';
 import {useAppSelector} from '../../bll/store';
 import {useEffect} from 'react';
+import s from './PacksTable.module.css'
 
 export const PacksTable = () => {
     const packs = useAppSelector(state => state.packs.packs)
@@ -16,7 +17,7 @@ export const PacksTable = () => {
     }, [dispatch, packName, user_id])
 
     return <>
-        <table>
+        <table className={s.table}>
             <thead>
             <tr>
                 <th>Name</th>

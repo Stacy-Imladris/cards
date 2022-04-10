@@ -20,7 +20,7 @@
 .packsActionsButtons {
     display: flex;
     justify-content: flex-end;
-    width: 100%;
+    min-width: 150px;
 }
 
 .packsActionsButtons button {

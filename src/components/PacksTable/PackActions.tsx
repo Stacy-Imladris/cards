@@ -10,7 +10,7 @@ export const PackActions: FC<PackActionsType> = ({isMyPacks}) => {
 
     return <div className={s.packsActionsButtons}>
         {
-            !isMyPacks
+            isMyPacks
             && <>
                 <SuperButton red>Delete</SuperButton>
                 <SuperButton>Edit</SuperButton>

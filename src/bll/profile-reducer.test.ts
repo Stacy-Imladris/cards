@@ -46,8 +46,8 @@ test('set authorizing user data', () => {
 
 test('set editMode for changing profile', () => {
 
-    const endState = profileReducer(state, profileActions.setEditModeProfileAC(true))
-    const endState2 = profileReducer(endState, profileActions.setEditModeProfileAC(false))
+    const endState = profileReducer(state, profileActions.setEditModeProfile(true))
+    const endState2 = profileReducer(endState, profileActions.setEditModeProfile(false))
 
     expect(endState.editMode).toBe(true)
     expect(endState2.editMode).toBe(false)
@@ -55,8 +55,8 @@ test('set editMode for changing profile', () => {
 
 test('set isFetching to show Preloader or not', () => {
 
-    const endState = profileReducer(state, profileActions.setIsFetchingProfileAC(true))
-    const endState2 = profileReducer(endState, profileActions.setIsFetchingProfileAC(false))
+    const endState = profileReducer(state, profileActions.setIsFetchingProfile(true))
+    const endState2 = profileReducer(endState, profileActions.setIsFetchingProfile(false))
 
     expect(endState.isFetching).toBe(true)
     expect(endState2.isFetching).toBe(false)

@@ -1,0 +1,61 @@
+.table {
+    width: 100%;
+    font-size: 16px;
+    border-collapse: collapse;
+    text-align: center;
+    box-shadow: 0 7px 7px 0 rgba(0,0,0,0.2), 0 7px 7px 0 rgba(0,0,0,0.19);
+}
+
+.table th, td {
+    padding: 7px 7px;
+}
+
+.table th, td {
+    border: solid 2px #077517;
+}
+.table th:first-child, td:first-child {
+    text-align: left;
+}
+
+.packsActionsButtons {
+    display: flex;
+    justify-content: flex-end;
+    min-width: 150px;
+}
+
+.packsActionsButtons button {
+    font-size: 16px;
+    padding: 3px 5px;
+    margin: 0 2px;
+    border-radius: 4px;
+}
+
+.triangle {
+    display: inline-block;
+    width: 10px;
+}
+
+.name {
+    min-width: 17%;
+    max-width: 17%;
+}
+
+.cards {
+    min-width: 10%;
+    max-width: 10%;
+}
+
+.updated {
+    min-width: 17%;
+    max-width: 17%;
+}
+
+.creator {
+    min-width: 23%;
+    max-width: 23%;
+}
+
+.actions {
+    min-width: 22%;
+    max-width: 22%;
+}

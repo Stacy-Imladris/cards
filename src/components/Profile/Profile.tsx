@@ -47,7 +47,7 @@ export const Profile = () => {
                 </div>
 
                 <div className={s.profilePacks}>
-                    <h2 onClick={() => navigate(PATH.PACKS_LIST_ALL)}>PackListAll</h2>
+                    <h2 onClick={() => navigate(PATH.PACKS)}>PackListAll</h2>
                     <h2>My packs list</h2>
                     <div className={s.profilePacks_search}>
                         <div>

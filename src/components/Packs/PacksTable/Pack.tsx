@@ -1,8 +1,8 @@
 import {FC} from 'react'
 import {PackActions} from './PackActions'
-import {useAppSelector} from '../../bll/store'
-import {PackType} from '../../api/packs-api';
-import {getLastUpdatedDate} from '../../utils/date-helpers'
+import {useAppSelector} from '../../../bll/store'
+import {PackType} from '../../../api/packs-api';
+import {getLastUpdatedDate} from '../../../utils/date-helpers'
 
 type PackPropsType = {
     pack: PackType

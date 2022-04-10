@@ -1,10 +1,10 @@
 import {PacksList} from './PacksList'
-import {getPacks, SortOrderType, SortValuesType} from '../../bll/packs-reducer'
+import {getPacks, SortOrderType, SortValuesType} from '../../../bll/packs-reducer'
 import {useDispatch} from 'react-redux'
-import {useAppSelector} from '../../bll/store'
+import {useAppSelector} from '../../../bll/store'
 import {useEffect, useState} from 'react'
 import s from './PacksTable.module.css'
-import {setSortValuesToStore} from '../../utils/sort-helper';
+import {setSortValuesToStore} from '../../../utils/sort-helper';
 
 export const PacksTable = () => {
     const [sortField, setSortField] = useState<SortValuesType>('updated')

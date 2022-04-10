@@ -1,15 +1,8 @@
-import axios, {AxiosResponse} from 'axios'
+import {AxiosResponse} from 'axios'
 import {UserType} from "../../Profile/profile-api";
+import {instance} from '../../../api/instance';
 
-
-const instance = axios.create({
-    baseURL: 'http://localhost:7542/2.0/',
-    //baseURL: 'https://neko-back.herokuapp.com/2.0',
-    withCredentials: true
-})
-
-
-export const cardsApi = {
+export const loginApi = {
     login(login: LoginType) {
         return instance.post<any, AxiosResponse<UserType>, LoginType>('auth/login', login)
     },
@@ -17,7 +10,6 @@ export const cardsApi = {
         return instance.delete<any, AxiosResponse<ResponseDeleteType>>('auth/me')
     },
 }
-
 
 //types
 export type LoginType = {

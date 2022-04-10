@@ -1,6 +1,6 @@
 import {profileActions} from '../../../bll/profile-reducer';
 import {AppThunk} from '../../../bll/store';
-import {cardsApi, LoginType} from '../LoginAPI/api';
+import {loginApi, LoginType} from '../LoginAPI/login-api';
 
 export const initialState = {
     isLoggedIn: false,
@@ -34,7 +34,7 @@ export const setLoginAC = (value: boolean) =>
 // thunks
 export const loginTC = (login: LoginType): AppThunk => dispatch => {
     dispatch(setLoginAC(true))
-    cardsApi.login(login)
+    loginApi.login(login)
         .then((res) => {
             dispatch(setIsLoggedInAC(true))
             dispatch(profileActions.setUserData(res.data))
@@ -47,7 +47,7 @@ export const loginTC = (login: LoginType): AppThunk => dispatch => {
 }
 
 export const logoutTC = (): AppThunk => dispatch => {
-    cardsApi.logout()
+    loginApi.logout()
         .then(() => {
             dispatch(setIsLoggedInAC(false))
         })

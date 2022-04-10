@@ -25,10 +25,6 @@ export const App = () => {
         return <div className={s.appProgress}><Preloader/></div>
     }
 
-    if(!isLoggedIn) {
-        <Navigate to={PATH.LOGIN}/>
-    }
-
     return (
         <div className={`${s.main} ${t[theme]}`}>
             <Header/>

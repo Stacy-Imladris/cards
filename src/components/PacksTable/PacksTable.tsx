@@ -1,57 +1,68 @@
 import {PacksList} from './PacksList'
-import {getPacks} from '../../bll/packs-reducer'
+import {getPacks, SortOrderType, SortValuesType} from '../../bll/packs-reducer'
 import {useDispatch} from 'react-redux'
 import {useAppSelector} from '../../bll/store'
 import {useEffect, useState} from 'react'
 import s from './PacksTable.module.css'
+import {setSortValuesToStore} from '../../utils/sort-helper';
 
 export const PacksTable = () => {
+    const [sortField, setSortField] = useState<SortValuesType>('updated')
+    const [sortValue, setSortValue] = useState<SortOrderType>('0')
+
     const packs = useAppSelector(state => state.packs.packs)
     const packName = useAppSelector(state => state.packs.params.packName)
     const user_id = useAppSelector(state => state.packs.params.user_id)
-
-    const [sortName, setSortName] = useState<boolean>(true)
-    const [sortCards, setSortCards] = useState<boolean>(false)
-    const [sortUpdate, setSortUpdate] = useState<boolean>(false)
-    const [sortCreated, setSortCreated] = useState<boolean>(false)
+    const sortPacks = useAppSelector(state => state.packs.params.sortPacks)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getPacks())
-    }, [dispatch, packName, user_id])
+    }, [dispatch, packName, user_id, sortPacks])
 
-    const sortStyleName = sortName ? `${s.triangle}` : `${s.triangle_up}`
-    const sortStyleCards = sortCards ? `${s.triangle}` : `${s.triangle_up}`
-    const sortStyleUpdate = sortUpdate ? `${s.triangle}` : `${s.triangle_up}`
-    const sortStyleCreated = sortCreated ? `${s.triangle}` : `${s.triangle_up}`
+    const changeSortField = (fieldToSort: SortValuesType) => {
+        setSortField(fieldToSort)
+        setSortValuesToStore(dispatch, sortValue, fieldToSort)
+    }
+
+    const changeSortOrder = () => {
+        const sort = sortValue === '0' ? '1' : '0'
+        setSortValue(sort)
+        setSortValuesToStore(dispatch, sort, sortField)
+    }
+
+    const triangle = sortValue === '0' ? '▼' : '▲'
 
     return <>
         <table className={s.table}>
-            <thead>
+            <thead className={s.headers}>
             <tr>
-                <th className={s.th}>
-                    <span>Name</span>
-                    <span className={sortStyleName} onClick={() => setSortName(sortName => !sortName)}></span>
+                <th className={s.name}>
+                    <span onClick={() => changeSortField('name')}>
+                        Name <span className={s.triangle}>{sortField === 'name' && <span onClick={changeSortOrder}>{triangle}</span>}</span>
+                    </span>
                 </th>
-                <th className={s.th}>
-                    <span>Cards</span>
-                    <span className={sortStyleCards} onClick={() => setSortCards(sortCards => !sortCards)}></span>
+                <th className={s.cards}>
+                    <span onClick={() => changeSortField('cardsCount')}>
+                        Cards <span className={s.triangle}>{sortField === 'cardsCount' && <span onClick={changeSortOrder}>{triangle}</span>}</span>
+                    </span>
                 </th>
-                <th className={s.th}>
-                    <span>Last Updated</span>
-                    <span className={sortStyleUpdate} onClick={() => setSortUpdate(sortUpdate => !sortUpdate)}></span>
+                <th className={s.updated}>
+                    <span onClick={() => changeSortField('updated')}>
+                        Updated <span className={s.triangle}>{sortField === 'updated' && <span onClick={changeSortOrder}>{triangle}</span>}</span>
+                    </span>
                 </th>
-                <th className={s.th}>
-                    <span>Created by</span>
-                    <span className={sortStyleCreated} onClick={() => setSortCreated(sortCreated => !sortCreated)}></span>
+                <th className={s.creator}>
+                    <span onClick={() => changeSortField('user_name')}>
+                        Creator <span className={s.triangle}>{sortField === 'user_name' && <span onClick={changeSortOrder}>{triangle}</span>}</span>
+                    </span>
                 </th>
-                <th className={s.th}>
+                <th className={s.actions}>
                     <span>Actions</span>
                 </th>
             </tr>
             </thead>
-
             <tbody>
             <PacksList cardPacks={packs}/>
             </tbody>

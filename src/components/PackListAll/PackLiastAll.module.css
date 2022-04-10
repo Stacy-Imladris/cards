@@ -1,6 +1,7 @@
 .num {
     display: inline-block;
     width: 33px;
+    text-align: center;
 }
 
 .rowElements {

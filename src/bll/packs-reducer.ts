@@ -13,7 +13,7 @@ const packsInitialState = {
         max: 9,
         sortPacks: '0updated',
         page: 1,
-        pageCount: 7,
+        pageCount: 3,
         user_id: '',
     } as ParamsType,
     cardPacksTotalCount: 0,
@@ -33,6 +33,8 @@ export const packsReducer = (state: PacksInitialStateType = packsInitialState, a
             return {...state, params: {...state.params, packName: action.payload.packName}}
         case 'PACKS/SET_PACKS_FOR_USER':
             return {...state, params: {...state.params, user_id: action.payload.user_id}}
+        case 'PACKS/SET_SORT_PARAMETERS':
+            return {...state, params: {...state.params, sortPacks: action.payload.sortPacks}}
         default:
             return state
     }
@@ -48,6 +50,7 @@ export const packsActions = {
         ({type: 'PACKS/SET_CARD_PACKS_TOTAL_COUNT', payload: {cardPacksTotalCount}} as const),
     setCurrentPage: (currentPage: number) => ({type: 'PACKS/SET_CURRENT_PAGE', payload: {currentPage}} as const),
     setTitleForSearch: (packName: string) => ({type: 'PACKS/SET_TITLE_FOR_SEARCH', payload: {packName}} as const),
+    setSortParameters: (sortPacks: string) => ({type: 'PACKS/SET_SORT_PARAMETERS', payload: {sortPacks}} as const),
 }
 
 //thunk
@@ -82,3 +85,5 @@ export type ParamsType = {
     pageCount: number
     user_id: string
 }
+export type SortValuesType = 'name' | 'cardsCount' | 'updated' | 'user_name'
+export type SortOrderType = '0' | '1'

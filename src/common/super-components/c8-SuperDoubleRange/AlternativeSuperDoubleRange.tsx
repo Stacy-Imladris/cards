@@ -25,7 +25,7 @@ export const AlternativeSuperDoubleRange: React.FC<AlternativeSuperDoubleRangePr
     }
 
     return (
-        <Box sx={{width: 180, display: 'inline-block', margin: '0 10px 0 10px'}}>
+        <Box sx={{width: 130, display: 'inline-block', margin: '0 10px 0 10px'}}>
             <Slider
                 getAriaLabel={() => 'My range'}
                 value={value ? value : range}

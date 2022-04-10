@@ -18,8 +18,7 @@ export const Pack: FC<PackPropsType> = ({pack}) => {
         <td>{lastUpdate}</td>
         <td>{pack.user_name}</td>
         <td>
-            <PackActions key={pack._id} isMyPacks={pack.user_id === userId}/>
-            {/*<PackActions key={pack._id} isMyPacks={true}/>*/}
+            <PackActions isMyPacks={pack.user_id === userId}/>
         </td>
     </tr>
 }

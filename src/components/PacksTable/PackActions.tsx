@@ -1,6 +1,6 @@
-import s from './PacksTable.module.css'
 import {FC} from 'react'
 import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton'
+import s from './PacksTable.module.css'
 
 type PackActionsType = {
     isMyPacks: boolean
@@ -8,9 +8,9 @@ type PackActionsType = {
 
 export const PackActions: FC<PackActionsType> = ({isMyPacks}) => {
 
-    return <div className={s.packs__actions_buttons}>
+    return <div className={s.packsActionsButtons}>
         {
-            isMyPacks
+            !isMyPacks
             && <>
                 <SuperButton red>Delete</SuperButton>
                 <SuperButton>Edit</SuperButton>

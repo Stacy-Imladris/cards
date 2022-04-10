@@ -1,7 +1,7 @@
 import {FC} from 'react'
 import {PackActions} from './PackActions'
-import {PackType} from '../../bll/packs-reducer';
 import {useAppSelector} from '../../bll/store'
+import {PackType} from '../../api/packs-api';
 
 type PackPropsType = {
     pack: PackType
@@ -19,5 +19,4 @@ export const Pack: FC<PackPropsType> = ({pack}) => {
             {/*<PackActions key={pack._id} isMyPacks={true}/>*/}
         </td>
     </tr>
-
 }

@@ -17,7 +17,6 @@ export const Profile = () => {
     const editMode = useAppSelector(state => state.profile.editMode)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-
     const editProfile = () => dispatch(profileActions.setEditModeProfileAC(true))
 
     if (editMode) {
@@ -48,7 +47,7 @@ export const Profile = () => {
                 </div>
 
                 <div className={s.profilePacks}>
-                    <h2 onClick={() => navigate('/packs')}>Packs list</h2>
+                    <h2 onClick={() => navigate(PATH.PACKS_LIST_ALL)}>PackListAll</h2>
                     <h2>My packs list</h2>
                     <div className={s.profilePacks_search}>
                         <div>

@@ -9,7 +9,8 @@ import {RecoveryActionTypes, recoveryReducer} from '../components/Recovery/Recov
 import {NewPasswordActionTypes, newPasswordReducer} from '../components/NewPassword/NewPasswordBLL/new-password-reducer';
 import {loadValue} from '../utils/localstorage';
 import {UserType} from '../components/Profile/profile-api';
-import {PacksActionTypes, packsReducer, PackType} from './packs-reducer';
+import {PacksActionTypes, packsReducer, ParamsType} from './packs-reducer';
+import {PackType} from '../api/packs-api';
 
 const rootReducer = combineReducers({
     theme: themeReducer,
@@ -54,10 +55,19 @@ const preloadedState = {
     },
     packs: {
         packs: [] as PackType[],
-        user_id: '',
         error: '',
         isLoading: false,
         isPacksSet: false,
+        params: {
+            packName: 'english',
+            min: 3,
+            max: 9,
+            sortPacks: '0updated',
+            page: 1,
+            pageCount: 7,
+            user_id: '',
+        } as ParamsType,
+        cardPacksTotalCount: 0,
     }
 }
 
@@ -65,8 +75,9 @@ export const store = createStore(rootReducer, preloadedState, applyMiddleware(th
 
 export type AppRootStateType = ReturnType<typeof store.getState>
 export type InferActionTypes<T> = T extends { [keys: string]: (...args: any[]) => infer U } ? U : never
-export type ActionsType = RegistrationActionTypes | RecoveryActionTypes | NewPasswordActionTypes
-    | LoginActionsType | ProfileActionTypes | PacksActionTypes
+export type ActionsType = RegistrationActionTypes | RecoveryActionTypes
+    | NewPasswordActionTypes | LoginActionsType
+    | ProfileActionTypes | PacksActionTypes
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppRootStateType, unknown, ActionsType>
 export const useAppSelector: TypedUseSelectorHook<AppRootStateType> = useSelector
 

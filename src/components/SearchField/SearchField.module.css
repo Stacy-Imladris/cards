@@ -1,0 +1,30 @@
+.searchBlock {
+    position: relative;
+    display: flex;
+    width: 500px;
+}
+
+.loupe {
+    position: absolute;
+    padding: 15px 0;
+}
+
+.searchField {
+    width: 380px;
+}
+
+.searchField:focus {
+    width: 400px;
+}
+
+.searchField::placeholder{
+    color: white;
+    opacity: 70%;
+}
+
+.deleteIcon {
+    padding: 9px;
+    cursor: pointer;
+    border-radius: 20px;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2), 0 3px 3px 0 rgba(0,0,0,0.19);
+}

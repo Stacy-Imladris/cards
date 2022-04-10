@@ -6,15 +6,16 @@ import {useEffect} from 'react';
 
 export const PacksTable = () => {
     const packs = useAppSelector(state => state.packs.packs)
+    const packName = useAppSelector(state => state.packs.params.packName)
+    const user_id = useAppSelector(state => state.packs.params.user_id)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getPacks())
-    }, [dispatch])
+    }, [dispatch, packName, user_id])
 
     return <>
-        <button onClick={() => dispatch(getPacks())}>getPacks</button>
         <table>
             <thead>
             <tr>

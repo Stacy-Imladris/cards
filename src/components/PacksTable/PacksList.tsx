@@ -1,6 +1,6 @@
 import {FC} from 'react'
 import {Pack} from './Pack'
-import {PackType} from '../../bll/packs-reducer';
+import {PackType} from '../../api/packs-api';
 
 type PackListPropsType = {
     cardPacks: PackType[]

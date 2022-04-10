@@ -1,15 +1,14 @@
 import s from './PacksTable.module.css'
 import {FC} from 'react'
-import SuperButton from '../super-components/c2-SuperButton/SuperButton'
+import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton'
 
 type PackActionsType = {
     isMyPacks: boolean
-    key: string
 }
 
-export const PackActions: FC<PackActionsType> = ({isMyPacks, key}) => {
+export const PackActions: FC<PackActionsType> = ({isMyPacks}) => {
 
-    return <div className={s.packs__actions_buttons} key={key}>
+    return <div className={s.packs__actions_buttons}>
         {
             isMyPacks
             && <>

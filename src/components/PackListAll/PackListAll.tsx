@@ -44,11 +44,7 @@ export const PackListAll = () => {
 
     return (
         <div className={`${s.profileWrapper} ${s.container} ${t[theme + '-text']}`}>
-            <p>Snow packs cards</p>
-            <div className={s.buttons}>
-                <button>My</button>
-                <button>All</button>
-            </div>
+
             <div className={s.superRadio}>
                 <div>Snow packs cards</div>
                 <div><SuperRadio name={'radio'} options={arr}

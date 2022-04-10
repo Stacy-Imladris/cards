@@ -7,41 +7,68 @@ const instance = axios.create({
     withCredentials: true,
 })
 
-export const packAPI = {
-    getPacks(params: ParamsType) {
-        return instance.get<PacksResponseType>('cards/pack', {params}).then(res => res.data)
+export const cardsAPI = {
+    getCards(data: ParamsGetCardsType) {
+        return instance.get<CardsResponseType>('/cards/card', {data}).then(res => res.data)
     },
-    addPack() {
-        return instance.post('cards/pack')
+    addCards(data: ParamsAddCardsType) {
+        return instance.post('/cards/card',{data})
     },
-    deletePack(id: string) {
-        return instance.delete(`cards/pack?id=${id}`)
+    deleteCards(cardsPackId: string) {
+        return instance.delete(`/cards/card?id=${cardsPackId}`)
     },
+    putCards(data: ParamsPutCardsType) {
+        return instance.put(`/cards/card`, {data})
+    }
 }
 
-export type PacksResponseType = {
-    cardPacks: PackType[]
-    cardPacksTotalCount: number
-    maxCardsCount: number
-    minCardsCount: number
+export type ParamsGetCardsType = {
+    cardAnswer?: string
+    cardQuestion?: string
+    cardsPack_id: number
+    min?: number
+    max?: number
+    sortCards?:number
+    page?:number
+    pageCount?:number
+}
+
+export type ParamsAddCardsType = {
+    cardsPack_id: string
+    question?: string
+    answer?: string
+    grade?: number
+    shots?: number
+    answerImg?: string
+    questionImg?: string
+    questionVideo?: string
+    answerVideo?: string
+}
+
+export type ParamsPutCardsType = {
+    _id: string
+    question?: string
+    comments?: string
+}
+
+export type CardsResponseType = {
+    cardPacks: CardType[]
+    cardsTotalCount: number
+    maxGrade: number
+    minGrade: number
     page: number
     pageCount: number
+    packUserId: string
 }
-export type PackType = {
-    _id: string
-    user_id: string
-    user_name: string
-    private: boolean
-    name: string
-    path: string
+
+export type CardType = {
+    answer: string
+    question: string
+    cardsPack_id: string
     grade: number
     shots: number
-    cardsCount: number
-    type: string
-    rating: number
-    created: Date
-    updated: Date
-    more_id: string
-    __v: number
-    deckCover: null | string
+    user_id: string
+    created: string
+    updated: string
+    _id: string
 }

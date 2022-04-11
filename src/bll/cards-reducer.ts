@@ -10,6 +10,8 @@ const cardsInitialState = {
         cardAnswer: '',
         cardQuestion: '',
         cardsPack_id: '',
+        min: 0,
+        max: 5,
         sortCards: '0grade',
         page: 1,
         pageCount: 7,
@@ -78,6 +80,8 @@ export type CardsParamsType = {
     cardAnswer: string
     cardQuestion: string
     cardsPack_id: string
+    min: number,
+    max: number,
     sortCards: string
     page: number
     pageCount: number

@@ -4,7 +4,7 @@ import {instance} from './instance';
 
 export const packsAPI = {
     getPacks(params: PacksParamsType) {
-        return instance.get<PacksResponseType>('cards/pack', {params}).then(res => res.data)
+        return instance.get<any, AxiosResponse<PacksResponseType>, PacksParamsType>('cards/pack', {params}).then(res => res.data)
     },
     addPack() {
         return instance.post('cards/pack')
@@ -25,6 +25,8 @@ export type PacksResponseType = {
     minCardsCount: number
     page: number
     pageCount: number
+    token: string
+    tokenDeathTime: number
 }
 export type PackType = {
     _id: string

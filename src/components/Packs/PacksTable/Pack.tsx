@@ -20,6 +20,8 @@ export const Pack: FC<PackPropsType> = ({pack}) => {
     const navigate = useNavigate()
 
     const openCard = () => {
+        /*dispatch(cardsActions.setQuestionForSearch(''))
+        dispatch(cardsActions.setAnswerForSearch(''))*/
         dispatch(cardsActions.setPackName(pack.name))
         dispatch(cardsActions.setPackId(pack._id))
         navigate(PATH.CARDS)

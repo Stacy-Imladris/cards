@@ -11,15 +11,18 @@ import {PATH} from '../../app/AllRoutes';
 import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton';
 import {useDispatch} from 'react-redux';
 import {cardsActions, getCards} from '../../bll/cards-reducer';
+import {selectCardAnswer, selectCardQuestion, selectCardsTotalCount,
+    selectPackName, selectPageForCards, selectPageCountForCards, selectTheme
+} from '../../selectors/selectors';
 
 export const Cards = () => {
-    const theme = useAppSelector(state => state.theme.theme)
-    const packName = useAppSelector(state => state.cards.packName)
-    const cardsTotalCount = useAppSelector(state => state.cards.cardsTotalCount)
-    const page = useAppSelector(state => state.cards.params.page)
-    const pageCount = useAppSelector(state => state.cards.params.pageCount)
-    const cardQuestion = useAppSelector(state => state.cards.params.cardQuestion)
-    const cardAnswer = useAppSelector(state => state.cards.params.cardAnswer)
+    const theme = useAppSelector(selectTheme)
+    const packName = useAppSelector(selectPackName)
+    const cardsTotalCount = useAppSelector(selectCardsTotalCount)
+    const page = useAppSelector(selectPageForCards)
+    const pageCount = useAppSelector(selectPageCountForCards)
+    const cardQuestion = useAppSelector(selectCardQuestion)
+    const cardAnswer = useAppSelector(selectCardAnswer)
 
     const dispatch = useDispatch()
     const navigate = useNavigate()

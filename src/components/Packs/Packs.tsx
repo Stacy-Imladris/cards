@@ -11,16 +11,19 @@ import {SearchField} from '../SearchField/SearchField';
 import SuperRadio from '../../common/super-components/c6-SuperRadio/SuperRadio';
 import {useDispatch} from 'react-redux';
 import {getPacks, packsActions} from '../../bll/packs-reducer';
+import {selectCardPacksTotalCount, selectPackNameForSearch, selectUser_id,
+    selectPageCountForPacks, selectPageForPacks, selectTheme,
+} from '../../selectors/selectors';
 
 const arr = ['All', 'My']
 
 export const Packs = () => {
-    const theme = useAppSelector(state => state.theme.theme)
-    const user_id = useAppSelector(state => state.profile.user._id)
-    const cardPacksTotalCount = useAppSelector(state => state.packs.cardPacksTotalCount)
-    const page = useAppSelector(state => state.packs.params.page)
-    const pageCount = useAppSelector(state => state.packs.params.pageCount)
-    const packName = useAppSelector(state => state.packs.params.packName)
+    const theme = useAppSelector(selectTheme)
+    const user_id = useAppSelector(selectUser_id)
+    const cardPacksTotalCount = useAppSelector(selectCardPacksTotalCount)
+    const page = useAppSelector(selectPageForPacks)
+    const pageCount = useAppSelector(selectPageCountForPacks)
+    const packName = useAppSelector(selectPackNameForSearch)
 
     const dispatch = useDispatch()
 

@@ -9,6 +9,8 @@ export const PacksTable = () => {
     const packs = useAppSelector(state => state.packs.packs)
     const packName = useAppSelector(state => state.packs.params.packName)
     const user_id = useAppSelector(state => state.packs.params.user_id)
+    const min=useAppSelector(state => state.packs.params.min)
+    const max=useAppSelector(state => state.packs.params.max)
 
     const [sortName, setSortName] = useState<boolean>(true)
     const [sortCards, setSortCards] = useState<boolean>(false)
@@ -19,7 +21,7 @@ export const PacksTable = () => {
 
     useEffect(() => {
         dispatch(getPacks())
-    }, [dispatch, packName, user_id])
+    }, [dispatch, packName, user_id, min, max])
 
     const sortStyleName = sortName ? `${s.triangle}` : `${s.triangle_up}`
     const sortStyleCards = sortCards ? `${s.triangle}` : `${s.triangle_up}`

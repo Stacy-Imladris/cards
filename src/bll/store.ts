@@ -58,6 +58,8 @@ const preloadedState = {
         error: '',
         isLoading: false,
         isPacksSet: false,
+        minCardsCount: 1,
+        maxCardsCount: 100,
         params: {
             packName: 'english',
             min: 3,

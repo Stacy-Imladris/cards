@@ -9,15 +9,13 @@ const cardsInitialState = {
     params: {
         cardAnswer: '',
         cardQuestion: '',
-        min: 1,
-        max: 4,
+        cardsPack_id: '',
         sortCards: '0grade',
         page: 1,
         pageCount: 7,
     } as CardsParamsType,
     cardsTotalCount: 0,
     packName: '',
-    packId: '',
 }
 
 export const cardsReducer = (state: CardsInitialStateType = cardsInitialState, action: CardsActionTypes): CardsInitialStateType => {
@@ -27,13 +25,12 @@ export const cardsReducer = (state: CardsInitialStateType = cardsInitialState, a
         case 'CARDS/SET_CARDS_IS_LOADING':
         case 'CARDS/SET_CARDS_TOTAL_COUNT':
         case 'CARDS/SET_PACK_NAME':
-        case 'CARDS/SET_PACK_ID':
             return {...state, ...action.payload}
         case 'CARDS/SET_CURRENT_PAGE':
         case 'CARDS/SET_ANSWER_FOR_SEARCH':
         case 'CARDS/SET_QUESTION_FOR_SEARCH':
         case 'CARDS/SET_SORT_PARAMETERS':
-        //case 'CARDS/SET_PACK_ID':
+        case 'CARDS/SET_PACK_ID':
             return {...state, params: {...state.params, ...action.payload}}
         default:
             return state
@@ -41,7 +38,7 @@ export const cardsReducer = (state: CardsInitialStateType = cardsInitialState, a
 }
 
 export const cardsActions = {
-    setCards: (packs: CardType[]) => ({type: 'CARDS/SET_CARDS', payload: {packs}} as const),
+    setCards: (cards: CardType[]) => ({type: 'CARDS/SET_CARDS', payload: {cards}} as const),
     setCardsError: (error: string) => ({type: 'CARDS/SET_CARDS_ERROR', payload: {error}} as const),
     setCardsIsLoading: (isLoading: boolean) => ({type: 'CARDS/SET_CARDS_IS_LOADING', payload: {isLoading}} as const),
     setCardsTotalCount: (cardsTotalCount: number) =>
@@ -50,17 +47,16 @@ export const cardsActions = {
     setAnswerForSearch: (cardAnswer: string) => ({type: 'CARDS/SET_ANSWER_FOR_SEARCH', payload: {cardAnswer}} as const),
     setQuestionForSearch: (cardQuestion: string) => ({type: 'CARDS/SET_QUESTION_FOR_SEARCH', payload: {cardQuestion}} as const),
     setSortParameters: (sortCards: string) => ({type: 'CARDS/SET_SORT_PARAMETERS', payload: {sortCards}} as const),
-    //setPackId: (cardsPack_id: string) => ({type: 'CARDS/SET_PACK_ID', payload: {cardsPack_id}} as const),
+    setPackId: (cardsPack_id: string) => ({type: 'CARDS/SET_PACK_ID', payload: {cardsPack_id}} as const),
     setPackName: (packName: string) => ({type: 'CARDS/SET_PACK_NAME', payload: {packName}} as const),
-    setPackId: (packId: string) => ({type: 'CARDS/SET_PACK_ID', payload: {packId}} as const),
 }
 
 //thunk
-export const getCards = (id: string): AppThunk => async (dispatch, getState) => {
+export const getCards = (): AppThunk => async (dispatch, getState) => {
     const params = getState().cards.params
     dispatch(cardsActions.setCardsIsLoading(true))
     try {
-        const data = await cardsAPI.getCards(id)
+        const data = await cardsAPI.getCards(params)
         dispatch(cardsActions.setCardsError(''))
         dispatch(cardsActions.setCardsTotalCount(data.cardsTotalCount))
         dispatch(cardsActions.setCards(data.cards))
@@ -82,8 +78,6 @@ export type CardsParamsType = {
     cardAnswer: string
     cardQuestion: string
     cardsPack_id: string
-    min: number
-    max: number
     sortCards: string
     page: number
     pageCount: number

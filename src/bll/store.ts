@@ -78,16 +78,13 @@ const preloadedState = {
         params: {
             cardAnswer: '',
             cardQuestion: '',
-            cardsPack_id: '5eb6a2f72f849402d46c6ac7',
-            min: 1,
-            max: 4,
+            cardsPack_id: '',
             sortCards: '0grade',
             page: 1,
             pageCount: 7,
         } as CardsParamsType,
         cardsTotalCount: 0,
         packName: '',
-        packId: '',
     },
 }
 

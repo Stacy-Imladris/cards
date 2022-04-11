@@ -2,10 +2,8 @@ import {instance} from './instance';
 import {CardsParamsType} from '../bll/cards-reducer';
 
 export const cardsAPI = {
-    //getCards(params: CardsParamsType) {
-    getCards(id: string) {
-        //return instance.get<CardsResponseType>('cards/card', {params}).then(res => res.data)
-        return instance.get<CardsResponseType>(`/cards/card`, {params: {cardsPack_id: id}}).then(res => res.data)
+    getCards(params: CardsParamsType) {
+        return instance.get<CardsResponseType>('cards/card', {params}).then(res => res.data)
     },
     addCard(newCard: NewCardType) {
         return instance.post('cards/card', {newCard})

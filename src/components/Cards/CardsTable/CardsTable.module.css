@@ -8,26 +8,11 @@
 
 .table th, td {
     padding: 7px 7px;
-}
-
-.table th, td {
     border: solid 2px #077517;
 }
+
 .table th:first-child, td:first-child {
     text-align: left;
-}
-
-.packsActionsButtons {
-    display: flex;
-    justify-content: flex-end;
-    min-width: 150px;
-}
-
-.packsActionsButtons button {
-    font-size: 16px;
-    padding: 3px 5px;
-    margin: 0 2px;
-    border-radius: 4px;
 }
 
 .triangle {
@@ -35,27 +20,18 @@
     width: 10px;
 }
 
-.name {
-    min-width: 17%;
-    max-width: 17%;
+.question {
+    width: 30%;
 }
 
-.cards {
-    min-width: 10%;
-    max-width: 10%;
+.answer {
+    width: 30%;
 }
 
 .updated {
-    min-width: 17%;
-    max-width: 17%;
+    width: 25%;
 }
 
-.creator {
-    min-width: 23%;
-    max-width: 23%;
-}
-
-.actions {
-    min-width: 22%;
-    max-width: 22%;
+.grade {
+    width: 15%;
 }

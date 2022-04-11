@@ -10,13 +10,18 @@ import {Paginator} from '../Paginator/Paginator';
 import {SearchField} from '../SearchField/SearchField';
 import SuperRadio from '../../common/super-components/c6-SuperRadio/SuperRadio';
 import {useDispatch} from 'react-redux';
-import {packsActions} from '../../bll/packs-reducer';
+import {getPacks, packsActions} from '../../bll/packs-reducer';
 
 const arr = ['All', 'My']
 
 export const Packs = () => {
     const theme = useAppSelector(state => state.theme.theme)
     const user_id = useAppSelector(state => state.profile.user._id)
+    const cardPacksTotalCount = useAppSelector(state => state.packs.cardPacksTotalCount)
+    const page = useAppSelector(state => state.packs.params.page)
+    const pageCount = useAppSelector(state => state.packs.params.pageCount)
+
+    const dispatch = useDispatch()
 
     const [valueFromArray, setValueFromArray] = useState(arr[0])
 
@@ -29,7 +34,6 @@ export const Packs = () => {
         }
     }
 
-    const dispatch = useDispatch()
     const [value1Range, setValue1] = useState(0)
     const [value2Range, setValue2] = useState(200)
 
@@ -42,6 +46,11 @@ export const Packs = () => {
     const changeTwoValue = (value: [number, number] | number[]) => {
         setValue1(value[0])
         setValue2(value[1])
+    }
+
+    const onPageChanged = (page: number) => {
+        dispatch(packsActions.setCurrentPage(page))
+        dispatch(getPacks())
     }
 
     return (
@@ -67,7 +76,11 @@ export const Packs = () => {
                         <SuperButton>Add new pack</SuperButton>
                     </div>
                     <div className={c.table}><PacksTable/></div>
-                    <div className={c.pagination}><Paginator/></div>
+                    <div className={c.pagination}>
+                        <Paginator onPageChanged={onPageChanged}
+                            itemsTotalCount={cardPacksTotalCount}
+                            pageCount={pageCount} page={page}/>
+                    </div>
                 </div>
         </div>
     )

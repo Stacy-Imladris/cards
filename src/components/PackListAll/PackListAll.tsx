@@ -14,11 +14,17 @@ import {packsActions} from '../../bll/packs-reducer';
 
 
 export const PackListAll = () => {
+
+    const dispatch = useDispatch()
     const theme = useAppSelector(state => state.theme.theme)
     const user_id = useAppSelector(state => state.profile.user._id)
+    const minCardsCount = useAppSelector(state => state.packs.minCardsCount)
+    const maxCardsCount = useAppSelector(state => state.packs.maxCardsCount)
 
     const arr = ['All', 'My']
     const [valueFromArray, setValueFromArray] = useState(arr[0])
+    const [value1Range, setValue1] = useState(minCardsCount)
+    const [value2Range, setValue2] = useState(maxCardsCount)
 
     const onChangeOption = (value: string) => {
         setValueFromArray(value)
@@ -28,12 +34,6 @@ export const PackListAll = () => {
             dispatch(packsActions.setPacksForUser(user_id))
         }
     }
-    const minCardsCount = useAppSelector(state => state.packs.minCardsCount)
-    const maxCardsCount = useAppSelector(state => state.packs.maxCardsCount)
-
-    const dispatch = useDispatch()
-    const [value1Range, setValue1] = useState(minCardsCount)
-    const [value2Range, setValue2] = useState(maxCardsCount)
 
     const changeTwoValue = (value: [number, number] | number[]) => {
         setValue1(value[0])

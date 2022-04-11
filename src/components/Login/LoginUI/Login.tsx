@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState, KeyboardEvent} from 'react';
 import k from './Login.module.css';
 import {loginTC, setLoginAC, setLoginErrorAC} from '../LoginBLL/loginReducer';
 import {useDispatch} from 'react-redux';
@@ -39,6 +39,12 @@ export const Login = () => {
         setPassword(e.currentTarget.value)
     }
 
+    const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") {
+            dispatch(loginTC(login))
+        }
+    }
+
     const onChangeRememberMe = (e: ChangeEvent<HTMLInputElement>) => {
         setRememberMe(!rememberMe)
     }
@@ -62,12 +68,14 @@ export const Login = () => {
                 name="email"
                 value={email}
                 onChange={onChangeEmail}
+                onKeyPress={onKeyPress}
                 className={s.email}
             />
             <span>Password</span>
             <div className={s.password}><SuperInputText
                 value={password}
                 onChange={onChangePassword}
+                onKeyPress={onKeyPress}
                 className={s.password}
                 eye
             />

@@ -1,7 +1,6 @@
 import {FC} from 'react'
 import {PackActions} from './PackActions'
-import {useAppSelector} from '../../bll/store'
-import {PackType} from '../../api/packs-api';
+import {PackType} from '../../api/packs-api'
 import {getLastUpdatedDate} from '../../utils/date-helpers'
 
 type PackPropsType = {
@@ -9,7 +8,7 @@ type PackPropsType = {
 }
 
 export const Pack: FC<PackPropsType> = ({pack}) => {
-    const profileUserId = useAppSelector(state => state.profile.user._id)
+
     const lastUpdate = getLastUpdatedDate(pack.updated)
 
     return <tr>
@@ -18,8 +17,7 @@ export const Pack: FC<PackPropsType> = ({pack}) => {
         <td>{lastUpdate}</td>
         <td>{pack.user_name}</td>
         <td>
-            <PackActions isMyPacks={pack.user_id === profileUserId} profileUserId={profileUserId}/>
-            {/*<PackActions key={pack._id} isMyPacks={true}/>*/}
+            <PackActions packUserId={pack.user_id}/>
         </td>
     </tr>
 }

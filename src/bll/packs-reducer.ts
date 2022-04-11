@@ -7,8 +7,8 @@ const packsInitialState = {
     error: '',
     isLoading: false,
     isPacksSet: false,
-    minCardsCount: 1,
-    maxCardsCount: 100,
+    minCardsCount: 0,
+    maxCardsCount: 103,
     params: {
         packName: '',
         min: 3,

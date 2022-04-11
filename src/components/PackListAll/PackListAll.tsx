@@ -10,7 +10,8 @@ import {Paginator} from '../Paginator/Paginator';
 import {SearchField} from '../SearchField/SearchField';
 import SuperRadio from '../../common/super-components/c6-SuperRadio/SuperRadio';
 import {useDispatch} from 'react-redux';
-import {getPacks, packsActions} from '../../bll/packs-reducer';
+import {packsActions} from '../../bll/packs-reducer';
+
 
 export const PackListAll = () => {
     const theme = useAppSelector(state => state.theme.theme)
@@ -42,8 +43,6 @@ export const PackListAll = () => {
     }
 
 
-
-
     return (
         <div className={`${c.container} ${t[theme + '-text']}`}>
             <div className={c.settings}>
@@ -57,12 +56,10 @@ export const PackListAll = () => {
                     <span className={s.num}>{value1Range}</span>
                     <AlternativeSuperDoubleRange value={[value1Range, value2Range]}
                                                  onChangeRange={changeTwoValue}
+                                                 min={minCardsCount} max={maxCardsCount}
                     />
                     <span className={s.num}>{value2Range}</span>
                 </div>
-
-
-
             </div>
             <div className={c.performance}>
                 <div className={c.title}>Packs list</div>

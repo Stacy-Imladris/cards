@@ -5,15 +5,18 @@ import Slider from '@mui/material/Slider';
 type AlternativeSuperDoubleRangePropsType = {
     onChangeRange?: (value: [number, number] | number[]) => void
     value?: [number, number]
+    min?: number
+    max?: number
 }
 
 export const AlternativeSuperDoubleRange: React.FC<AlternativeSuperDoubleRangePropsType> = ({
                                                                                                 onChangeRange,
-                                                                                                value,
+                                                                                                value, min, max,
                                                                                                 ...restProps
                                                                                             }) => {
-
-    const [range, setRange] = useState<number[]>(value ? value : [0, 100]);
+    const value1= 0
+    const value2= 103
+    const [range, setRange] = useState<number[]>(value ? value : [value1, value2]);
 
     const handleChange = (event: Event, newRange: number | number[]) => {
         setRange(newRange as number[]);
@@ -32,6 +35,8 @@ export const AlternativeSuperDoubleRange: React.FC<AlternativeSuperDoubleRangePr
                 onChange={handleChange}
                 valueLabelDisplay="auto"
                 sx={{color: 'success.main'}}
+                min={value1}
+                max={value2}
                 {...restProps}/>
         </Box>
     )

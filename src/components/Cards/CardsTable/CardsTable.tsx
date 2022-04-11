@@ -10,12 +10,14 @@ export const CardsTable = () => {
     //const [sortValue, setSortValue] = useState<SortOrderType>('1')
 
     const cards = useAppSelector(state => state.cards.cards)
+    const cardQuestion = useAppSelector(state => state.cards.params.cardQuestion)
+    const cardAnswer = useAppSelector(state => state.cards.params.cardAnswer)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getCards())
-    }, [dispatch])
+    }, [dispatch, cardQuestion, cardAnswer])
 
     /*const changeSortField = (fieldToSort: SortValuesType) => {
         setSortField(fieldToSort)

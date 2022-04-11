@@ -1,5 +1,6 @@
 import s from './Paginator.module.css';
 import {getPagesForRender} from '../../utils/page-helper';
+import {memo} from 'react';
 
 type PaginatorPropsType = {
     onPageChanged: (page: number) => void
@@ -8,7 +9,7 @@ type PaginatorPropsType = {
     pageCount: number
 }
 
-export const Paginator = ({onPageChanged, itemsTotalCount, page, pageCount}: PaginatorPropsType) => {
+export const Paginator = memo(({onPageChanged, itemsTotalCount, page, pageCount}: PaginatorPropsType) => {
     const pagesCount = Math.ceil(itemsTotalCount / pageCount)
 
     const pages = []
@@ -61,4 +62,4 @@ export const Paginator = ({onPageChanged, itemsTotalCount, page, pageCount}: Pag
             </div>
             : <div>Nothing was found</div>
     )
-}
+})

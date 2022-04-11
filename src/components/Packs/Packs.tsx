@@ -4,7 +4,7 @@ import s from './Packs.module.css'
 import c from '../../common/styles/Container.module.css'
 import {useAppSelector} from '../../bll/store';
 import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton';
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {AlternativeSuperDoubleRange} from '../../common/super-components/c8-SuperDoubleRange/AlternativeSuperDoubleRange';
 import {Paginator} from '../Paginator/Paginator';
 import {SearchField} from '../SearchField/SearchField';
@@ -20,6 +20,7 @@ export const Packs = () => {
     const cardPacksTotalCount = useAppSelector(state => state.packs.cardPacksTotalCount)
     const page = useAppSelector(state => state.packs.params.page)
     const pageCount = useAppSelector(state => state.packs.params.pageCount)
+    const packName = useAppSelector(state => state.packs.params.packName)
 
     const dispatch = useDispatch()
 
@@ -48,40 +49,46 @@ export const Packs = () => {
         setValue2(value[1])
     }
 
-    const onPageChanged = (page: number) => {
+    const onPageChanged = useCallback((page: number) => {
         dispatch(packsActions.setCurrentPage(page))
         dispatch(getPacks())
-    }
+    }, [dispatch])
+
+    const onChangeDebounceRequest = useCallback((title: string) => {
+        dispatch(packsActions.setCurrentPage(1))
+        dispatch(packsActions.setTitleForSearch(title))
+    }, [dispatch])
 
     return (
         <div className={`${c.container} ${t[theme + '-text']}`}>
-                <div className={c.settings}>
-                    <div className={c.text}>Show packs cards</div>
-                    <SuperRadio name={'radio'} options={arr}
-                                value={valueFromArray} onChangeOption={onChangeOption}
-                                className={s.superRadio}
-                    />
-                    <div className={c.text}>Number of cards</div>
-                    <div>
+            <div className={c.settings}>
+                <div className={c.text}>Show packs cards</div>
+                <SuperRadio name={'radio'} options={arr}
+                            value={valueFromArray} onChangeOption={onChangeOption}
+                            className={s.superRadio}
+                />
+                <div className={c.text}>Number of cards</div>
+                <div>
                     <span className={s.num}>{value1Range}</span>
-                        <AlternativeSuperDoubleRange value={[value1Range, value2Range]}
-                                                     onChangeRange={changeTwoValue}/>
-                        <span className={s.num}>{value2Range}</span>
-                    </div>
+                    <AlternativeSuperDoubleRange value={[value1Range, value2Range]}
+                                                 onChangeRange={changeTwoValue}/>
+                    <span className={s.num}>{value2Range}</span>
                 </div>
-                <div className={c.performance}>
-                    <div className={c.title}>Packs list</div>
-                    <div className={s.rowElements}>
-                        <SearchField/>
-                        <SuperButton>Add new pack</SuperButton>
-                    </div>
-                    <div className={c.table}><PacksTable/></div>
-                    <div className={c.pagination}>
-                        <Paginator onPageChanged={onPageChanged}
-                            itemsTotalCount={cardPacksTotalCount}
-                            pageCount={pageCount} page={page}/>
-                    </div>
+            </div>
+            <div className={c.performance}>
+                <div className={c.title}>Packs list</div>
+                <div className={s.rowElements}>
+                    <SearchField onChangeWithDebounce={onChangeDebounceRequest}
+                                 value={packName}/>
+                    <SuperButton>Add new pack</SuperButton>
                 </div>
+                <div className={c.table}><PacksTable/></div>
+                <div className={c.pagination}>
+                    <Paginator onPageChanged={onPageChanged}
+                               itemsTotalCount={cardPacksTotalCount}
+                               pageCount={pageCount} page={page}/>
+                </div>
+            </div>
         </div>
     )
 }

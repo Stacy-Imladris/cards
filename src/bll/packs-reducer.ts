@@ -1,6 +1,7 @@
 import {AppThunk, InferActionTypes} from './store';
 import axios from 'axios';
 import {packsAPI, PackType} from '../api/packs-api';
+import {UpdateCardPayload} from '../api/cards-api'
 
 const packsInitialState = {
     packs: [] as PackType[],
@@ -28,15 +29,13 @@ export const packsReducer = (state: PacksInitialStateType = packsInitialState, a
         case 'PACKS/SET_CURRENT_PAGE':
         case 'PACKS/SET_TITLE_FOR_SEARCH':
         case 'PACKS/SET_PACKS_FOR_USER':
-<<<<<<< HEAD
             return {...state, params: {...state.params, user_id: action.payload.user_id}}
         case 'PACKS/UPDATE_PACK':
             return {
                 ...state,
                 packs: state.packs.map(pack => pack.user_id === action.userId ? {...pack, ...action.pack} : pack)
             }
-=======
->>>>>>> master
+
         case 'PACKS/SET_SORT_PARAMETERS':
             return {...state, params: {...state.params, ...action.payload}}
         default:
@@ -54,10 +53,8 @@ export const packsActions = {
     setCurrentPage: (page: number) => ({type: 'PACKS/SET_CURRENT_PAGE', payload: {page}} as const),
     setTitleForSearch: (packName: string) => ({type: 'PACKS/SET_TITLE_FOR_SEARCH', payload: {packName}} as const),
     setSortParameters: (sortPacks: string) => ({type: 'PACKS/SET_SORT_PARAMETERS', payload: {sortPacks}} as const),
-<<<<<<< HEAD
     updatePackName: (pack: PackType, userId: string) => ({type: 'PACKS/UPDATE_PACK', pack, userId} as const)
-=======
->>>>>>> master
+
 }
 
 //thunk
@@ -80,10 +77,10 @@ export const getPacks = (): AppThunk => async (dispatch, getState) => {
     }
 }
 
-export const updatePack = (updateData: UpdatePackType): AppThunk => async (dispatch) => {
+export const updatePack = (cardsPack: UpdateCardPayload): AppThunk => async (dispatch) => {
     dispatch(packsActions.setPacksIsLoading(true))
     try {
-        const data = await packAPI.updatePack(updateData)
+        const data = await packsAPI.updatePack(cardsPack)
         dispatch(packsActions.setPacksError(''))
         // dispatch(packsActions.setCardPacksTotalCount(data.cardPacksTotalCount))
         dispatch(packsActions.updatePackName(data.data, updateData._id))

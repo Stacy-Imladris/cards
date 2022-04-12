@@ -7,10 +7,11 @@ import {AllRoutes} from './AllRoutes'
 import {useDispatch} from 'react-redux'
 import {auth} from '../bll/profile-reducer'
 import {Preloader} from '../common/preloader/Preloader';
+import {selectIsInitialized, selectTheme} from '../selectors/selectors';
 
 export const App = () => {
-    const theme = useAppSelector(state => state.theme.theme)
-    const isInitialized = useAppSelector(state => state.profile.isInitialized)
+    const theme = useAppSelector(selectTheme)
+    const isInitialized = useAppSelector(selectIsInitialized)
 
     const dispatch = useDispatch()
 

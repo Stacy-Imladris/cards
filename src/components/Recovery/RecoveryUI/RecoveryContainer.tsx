@@ -1,16 +1,21 @@
-import {memo, useCallback, useEffect, useState} from 'react';
+import {useCallback, useEffect, useState, KeyboardEvent} from 'react';
 import {useDispatch} from 'react-redux';
 import {Recovery} from './Recovery';
 import {recoveryActions, toSendInstructions} from '../RecoveryBLL/recovery-reducer';
 import {useAppSelector} from '../../../bll/store';
+import {
+    selectRecoveryCheck,
+    selectRecoveryError,
+    selectRecoveryIsLoading, selectTheme
+} from '../../../selectors/selectors';
 
-export const RecoveryContainer = memo(() => {
+export const RecoveryContainer = () => {
     const [email, setEmail] = useState<string>('')
 
-    const isLoading = useAppSelector(state => state.recovery.isLoading)
-    const error = useAppSelector(state => state.recovery.error)
-    const check = useAppSelector(state => state.recovery.check)
-    const theme = useAppSelector(state => state.theme.theme)
+    const theme = useAppSelector(selectTheme)
+    const isLoading = useAppSelector(selectRecoveryIsLoading)
+    const error = useAppSelector(selectRecoveryError)
+    const check = useAppSelector(selectRecoveryCheck)
 
     const dispatch = useDispatch()
 
@@ -21,9 +26,11 @@ export const RecoveryContainer = memo(() => {
     useEffect(() => {
         return () => {
             dispatch(recoveryActions.setRecoveryError(''))
+            dispatch(recoveryActions.getCheckEmail(false))
         }
     }, [dispatch])
 
-    return <Recovery toSendInstructions={toSendInstructionsOnEmail} email={email} setEmail={setEmail}
-                     isLoading={isLoading} error={error} check={check} theme={theme}/>
-})
+    return <Recovery toSendInstructions={toSendInstructionsOnEmail}
+                     email={email} setEmail={setEmail} theme={theme}
+                     isLoading={isLoading} error={error} check={check}/>
+}

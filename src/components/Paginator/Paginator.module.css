@@ -1,7 +1,7 @@
 .paginatorContainer {
     position: sticky;
     bottom: 0;
-    background-color: green;
+    background-color: #077517;
 }
 
 .container {
@@ -25,7 +25,7 @@
 .container div button {
     cursor: pointer;
     border: none;
-    background-color: green;
+    background-color: #077517;
     outline: none;
     color: white;
     padding: 5px 10px;
@@ -34,10 +34,13 @@
 }
 
 .container div button:hover {
-    background-color: #afaf1b;
+    font-weight: bold;
+    background-color: #4CAF50;
+    color: #faec00;
 }
 
-.selectedPage {
+.container div .selectedPage {
     font-weight: bold;
-    background-color: #afaf1b;
+    background-color: #4CAF50;
+    color: #faec00;
 }

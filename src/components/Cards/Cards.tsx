@@ -8,7 +8,7 @@ import {Paginator} from '../Paginator/Paginator';
 import {SearchField} from '../SearchField/SearchField';
 import {useNavigate} from 'react-router-dom';
 import {PATH} from '../../app/AllRoutes';
-import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton';
+import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton';
 import {useDispatch} from 'react-redux';
 import {cardsActions, getCards} from '../../bll/cards-reducer';
 import {selectCardAnswer, selectCardQuestion, selectCardsTotalCount,

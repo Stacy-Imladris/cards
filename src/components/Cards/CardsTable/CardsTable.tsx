@@ -4,14 +4,19 @@ import {CardsList} from './CardsList';
 import s from './CardsTable.module.css'
 import {useAppSelector} from '../../../bll/store';
 import {getCards} from '../../../bll/cards-reducer';
+import {
+    selectCards,
+    selectCardsAnswer,
+    selectCardsQuestion
+} from '../../../selectors/selectors';
 
 export const CardsTable = () => {
     //const [sortField, setSortField] = useState<SortValuesType>('updated')
     //const [sortValue, setSortValue] = useState<SortOrderType>('1')
 
-    const cards = useAppSelector(state => state.cards.cards)
-    const cardQuestion = useAppSelector(state => state.cards.params.cardQuestion)
-    const cardAnswer = useAppSelector(state => state.cards.params.cardAnswer)
+    const cards = useAppSelector(selectCards)
+    const cardQuestion = useAppSelector(selectCardsQuestion)
+    const cardAnswer = useAppSelector(selectCardsAnswer)
 
     const dispatch = useDispatch()
 

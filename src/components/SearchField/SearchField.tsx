@@ -1,33 +1,34 @@
-import {KeyboardEvent, useState} from 'react';
-import {useDispatch} from 'react-redux';
+import {KeyboardEvent, memo, useCallback, useState} from 'react';
 import s from './SearchField.module.css';
-import SuperInputText
+import {SuperInputText}
     from '../../common/super-components/c1-SuperInputText/SuperInputText';
-import {debounce} from '../../utils/debounce-helper';
-import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton';
+import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton';
 
-export const SearchField = () => {
-    const [title, setTitle] = useState<string>('')
+type SearchFieldPropsType = {
+    onChangeWithDebounce: (title: string) => void
+    value: string
+}
+
+export const SearchField = memo(({onChangeWithDebounce, value}: SearchFieldPropsType) => {
+    const [title, setTitle] = useState<string>(value)
     const [timerId, setTimerId] = useState<number>(0)
 
-    const dispatch = useDispatch()
-
-    const onChangeText = (title: string) => {
+    const onChangeText = useCallback((title: string) => {
         setTitle(title)
         clearTimeout(timerId)
-        const id: number = +setTimeout(debounce, 700, dispatch, title)
+        const id: number = +setTimeout(onChangeWithDebounce, 700, title)
         setTimerId(id)
-    }
+    }, [onChangeWithDebounce, timerId])
 
-    const deleteTextForSearch = () => {
+    const deleteTextForSearch = useCallback(() => {
         setTitle('')
-    }
+    }, [])
 
-    const onKeyStartSearching = (e: KeyboardEvent<HTMLInputElement>) => {
+    const onKeyStartSearching = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
-            debounce(dispatch, title)
+            onChangeWithDebounce(title)
         }
-    }
+    }, [onChangeWithDebounce])
 
     return (
         <div className={s.searchBlock}>
@@ -41,4 +42,4 @@ export const SearchField = () => {
             </SuperButton>
         </div>
     )
-}
+})

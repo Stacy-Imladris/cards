@@ -1,13 +1,13 @@
-import React from 'react'
 import s from './Error404.module.css'
 import t from '../../common/styles/Themes.module.css'
 import {NavLink} from 'react-router-dom'
-import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton'
+import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton'
 import {useAppSelector} from '../../bll/store'
 import {PATH} from '../../app/AllRoutes'
+import {selectTheme} from '../../selectors/selectors';
 
 export const Error404 = () => {
-    const theme = useAppSelector(state => state.theme.theme)
+    const theme = useAppSelector(selectTheme)
 
     return (
         <div className={`${s.container} ${t[theme + '-text']}`}>

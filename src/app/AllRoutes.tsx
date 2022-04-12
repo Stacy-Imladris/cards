@@ -25,15 +25,15 @@ export const AllRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<Navigate to={PATH.PROFILE}/>}/>
+            <Route path={PATH.PROFILE} element={<Profile/>}/>
             <Route path={PATH.LOGIN} element={<Login/>}/>
             <Route path={PATH.REGISTRATION} element={<RegistrationContainer/>}/>
-            <Route path={PATH.PROFILE} element={<Profile/>}/>
             <Route path={PATH.PASSWORD_RECOVERY} element={<RecoveryContainer/>}/>
             <Route path={PATH.NEW_PASSWORD} element={<NewPasswordContainer/>}/>
-            <Route path={PATH.TEST} element={<Test/>}/>
             <Route path={PATH.PACKS} element={<Packs/>}/>
             <Route path={PATH.CARDS} element={<Cards/>}/>
             <Route path={PATH.ERROR_404} element={<Error404/>}/>
+            <Route path={PATH.TEST} element={<Test/>}/>
             <Route path="*" element={<Navigate to={PATH.ERROR_404}/>}/>
         </Routes>
     )

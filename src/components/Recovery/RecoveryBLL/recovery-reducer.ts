@@ -28,9 +28,9 @@ export const recoveryActions = {
 //thunk
 export const toSendInstructions = (email: string): AppThunk => async dispatch => {
     dispatch(recoveryActions.setRecoveryIsLoading(true))
+    dispatch(recoveryActions.setRecoveryError(''))
     try {
         await recoveryAPI.toSendInstructions(email)
-        dispatch(recoveryActions.setRecoveryError(''))
         dispatch(recoveryActions.getCheckEmail(true))
     } catch (e) {
         if (axios.isAxiosError(e)) {

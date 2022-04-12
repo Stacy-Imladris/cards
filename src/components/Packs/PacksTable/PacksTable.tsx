@@ -1,15 +1,25 @@
 import {PacksList} from './PacksList'
-import {getPacks, SortOrderType, SortValuesType} from '../../../bll/packs-reducer'
+import {
+    getPacks,
+    packsActions,
+    SortOrderType,
+    SortValuesType
+} from '../../../bll/packs-reducer'
 import {useDispatch} from 'react-redux'
 import {useAppSelector} from '../../../bll/store'
-import {useEffect, useState} from 'react'
+import {useCallback, useEffect, useState} from 'react'
 import s from './PacksTable.module.css'
 import {setSortValuesToStore} from '../../../utils/sort-helper';
 import {
+    selectCardPacksTotalCount,
+    selectMaxForCards,
+    selectMinForCards,
     selectPackNameForSearch,
     selectPacks,
-    selectPackUserId, selectSortForPacks,
+    selectPackUserId, selectPageCountForPacks, selectPageForPacks, selectSortForPacks,
 } from '../../../selectors/selectors';
+import c from '../../../common/styles/Container.module.css';
+import {Paginator} from '../../Paginator/Paginator';
 
 export const PacksTable = () => {
     const [sortField, setSortField] = useState<SortValuesType>('updated')
@@ -19,8 +29,11 @@ export const PacksTable = () => {
     const packName = useAppSelector(selectPackNameForSearch)
     const user_id = useAppSelector(selectPackUserId)
     const sortPacks = useAppSelector(selectSortForPacks)
-    const min = useAppSelector(state => state.packs.params.min)
-    const max = useAppSelector(state => state.packs.params.max)
+    const min = useAppSelector(selectMinForCards)
+    const max = useAppSelector(selectMaxForCards)
+    const cardPacksTotalCount = useAppSelector(selectCardPacksTotalCount)
+    const page = useAppSelector(selectPageForPacks)
+    const pageCount = useAppSelector(selectPageCountForPacks)
 
     const dispatch = useDispatch()
 
@@ -41,28 +54,37 @@ export const PacksTable = () => {
 
     const triangle = sortValue === '0' ? '▼' : '▲'
 
-    return <>
+    const onPageChanged = useCallback((page: number) => {
+        dispatch(packsActions.setCurrentPage(page))
+        dispatch(getPacks())
+    }, [dispatch])
+
+    return <div className={s.packsTableContainer}>
         <table className={s.table}>
             <thead className={s.headers}>
             <tr>
                 <th className={s.name}>
                     <span onClick={() => changeSortField('name')}>
-                        Name <span className={s.triangle}>{sortField === 'name' && <span onClick={changeSortOrder}>{triangle}</span>}</span>
+                        Name <span className={s.triangle}>{sortField === 'name' &&
+                    <span onClick={changeSortOrder}>{triangle}</span>}</span>
                     </span>
                 </th>
                 <th className={s.cards}>
                     <span onClick={() => changeSortField('cardsCount')}>
-                        Cards <span className={s.triangle}>{sortField === 'cardsCount' && <span onClick={changeSortOrder}>{triangle}</span>}</span>
+                        Cards <span className={s.triangle}>{sortField === 'cardsCount' &&
+                    <span onClick={changeSortOrder}>{triangle}</span>}</span>
                     </span>
                 </th>
                 <th className={s.updated}>
                     <span onClick={() => changeSortField('updated')}>
-                        Updated <span className={s.triangle}>{sortField === 'updated' && <span onClick={changeSortOrder}>{triangle}</span>}</span>
+                        Updated <span className={s.triangle}>{sortField === 'updated' &&
+                    <span onClick={changeSortOrder}>{triangle}</span>}</span>
                     </span>
                 </th>
                 <th className={s.creator}>
                     <span onClick={() => changeSortField('user_name')}>
-                        Creator <span className={s.triangle}>{sortField === 'user_name' && <span onClick={changeSortOrder}>{triangle}</span>}</span>
+                        Creator <span className={s.triangle}>{sortField === 'user_name' &&
+                    <span onClick={changeSortOrder}>{triangle}</span>}</span>
                     </span>
                 </th>
                 <th className={s.actions}>
@@ -74,5 +96,10 @@ export const PacksTable = () => {
             <PacksList cardPacks={packs}/>
             </tbody>
         </table>
-    </>
+        <div className={s.pagination}>
+            <Paginator onPageChanged={onPageChanged}
+                       itemsTotalCount={cardPacksTotalCount}
+                       pageCount={pageCount} page={page}/>
+        </div>
+    </div>
 }

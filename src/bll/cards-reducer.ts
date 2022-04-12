@@ -83,7 +83,7 @@ export const cardsActions = {
 }
 
 //thunk
-export const getPacks = (params: ParamsGetCardsType): AppThunk => async (dispatch) => {
+export const getCards = (params: ParamsGetCardsType): AppThunk => async (dispatch) => {
     dispatch(cardsActions.setCardsIsLoading(true))
     try {
         const data = await cardsAPI.getCards(params)

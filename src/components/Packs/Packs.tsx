@@ -24,10 +24,14 @@ export const Packs = () => {
     const page = useAppSelector(selectPageForPacks)
     const pageCount = useAppSelector(selectPageCountForPacks)
     const packName = useAppSelector(selectPackNameForSearch)
+    const minCardsCount = useAppSelector(state => state.packs.minCardsCount)
+    const maxCardsCount = useAppSelector(state => state.packs.maxCardsCount)
 
     const dispatch = useDispatch()
 
     const [valueFromArray, setValueFromArray] = useState(arr[0])
+    const [value1Range, setValue1] = useState(minCardsCount)
+    const [value2Range, setValue2] = useState(maxCardsCount)
 
     const onChangeOption = useCallback((value: string) => {
         setValueFromArray(value)
@@ -38,18 +42,11 @@ export const Packs = () => {
         }
     }, [dispatch, user_id])
 
-    const [value1Range, setValue1] = useState(0)
-    const [value2Range, setValue2] = useState(200)
-
-    const changeValue = (value: number) => {
-        if (value < value2Range) {
-            setValue1(value)
-        }
-    }
-
     const changeTwoValue = useCallback((value: [number, number] | number[]) => {
         setValue1(value[0])
+        dispatch(packsActions.setPacksMin(value[0]))
         setValue2(value[1])
+        dispatch(packsActions.setPacksMax(value[1]))
     }, [])
 
     const onPageChanged = useCallback((page: number) => {
@@ -74,7 +71,8 @@ export const Packs = () => {
                 <div>
                     <span className={s.num}>{value1Range}</span>
                     <AlternativeSuperDoubleRange value={[value1Range, value2Range]}
-                                                 onChangeRange={changeTwoValue}/>
+                                                 onChangeRange={changeTwoValue}
+                                                 min={minCardsCount} max={maxCardsCount}/>
                     <span className={s.num}>{value2Range}</span>
                 </div>
             </div>

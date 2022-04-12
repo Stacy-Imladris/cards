@@ -19,12 +19,14 @@ export const PacksTable = () => {
     const packName = useAppSelector(selectPackNameForSearch)
     const user_id = useAppSelector(selectPackUserId)
     const sortPacks = useAppSelector(selectSortForPacks)
+    const min = useAppSelector(state => state.packs.params.min)
+    const max = useAppSelector(state => state.packs.params.max)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getPacks())
-    }, [dispatch, packName, user_id, sortPacks])
+    }, [dispatch, packName, user_id, sortPacks, min, max])
 
     const changeSortField = (fieldToSort: SortValuesType) => {
         setSortField(fieldToSort)

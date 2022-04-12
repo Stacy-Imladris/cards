@@ -25,7 +25,6 @@ export const packsReducer = (state: PacksInitialStateType = packsInitialState, a
         case 'PACKS/SET_PACKS':
         case 'PACKS/SET_PACKS_ERROR':
         case 'PACKS/SET_PACKS_IS_LOADING':
-        case 'PACKS/SET_IS_PACKS_SET':
         case 'PACKS/SET_CARD_PACKS_TOTAL_COUNT':
         case 'PACKS/SET_PACKS_MIN_CARDS_COUNT':
         case 'PACKS/SET_PACKS_MAX_CARDS_COUNT':

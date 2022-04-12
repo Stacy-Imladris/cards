@@ -1,9 +1,10 @@
-import {packsActions, PacksInitialStateType, packsReducer, ParamsType} from "./packs-reducer";
-import {PackType} from "../api/packs-api";
 import {
-    registrationActions,
-    registrationReducer
-} from "../components/Registration/RegistrationBLL/registration-reducer";
+    packsActions,
+    PacksInitialStateType,
+    PacksParamsType,
+    packsReducer,
+} from './packs-reducer';
+import {PackType} from "../api/packs-api";
 
 let startState: PacksInitialStateType
 
@@ -12,7 +13,6 @@ beforeEach(() => {
         packs: [] as PackType[],
         error: '',
         isLoading: false,
-        isPacksSet: false,
         minCardsCount: 0,
         maxCardsCount: 103,
         params: {
@@ -23,7 +23,7 @@ beforeEach(() => {
             page: 1,
             pageCount: 7,
             user_id: '',
-        } as ParamsType,
+        } as PacksParamsType,
         cardPacksTotalCount: 0,
     }
 })

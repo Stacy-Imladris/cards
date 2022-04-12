@@ -44,12 +44,6 @@ export const Login = () => {
         setPassword(value)
     }, [])
 
-    const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter") {
-            dispatch(loginTC(login))
-        }
-    }
-
     const onChangeRememberMe = useCallback((isChecked: boolean) => {
         setRememberMe(isChecked)
     }, [])
@@ -72,14 +66,14 @@ export const Login = () => {
                 name="email"
                 value={email}
                 onChangeText={onChangeEmail}
-                onKeyPress={onKeyPress}
+                onEnter={onClickLogin}
                 className={s.email}
             />
             <span>Password</span>
             <div className={s.password}><SuperInputText
                 value={password}
                 onChangeText={onChangePassword}
-                onKeyPress={onKeyPress}
+                onEnter={onClickLogin}
                 className={s.password}
                 eye
             />

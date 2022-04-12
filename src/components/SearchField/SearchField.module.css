@@ -1,20 +1,20 @@
 .searchBlock {
-    position: relative;
     display: flex;
+    align-items: center;
     width: 500px;
 }
 
 .loupe {
-    position: absolute;
-    padding: 15px 0;
+
 }
 
 .searchField {
     width: 380px;
+    margin: 0;
 }
 
 .searchField:focus {
-    width: 400px;
+    width: 380px;
 }
 
 .searchField::placeholder{
@@ -23,7 +23,6 @@
 }
 
 .deleteIcon {
-    padding: 9px;
     cursor: pointer;
     border-radius: 20px;
     box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2), 0 3px 3px 0 rgba(0,0,0,0.19);

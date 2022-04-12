@@ -1,4 +1,4 @@
-import {KeyboardEvent, memo, useCallback, useState} from 'react';
+import {memo, useCallback, useState} from 'react';
 import s from './SearchField.module.css';
 import {SuperInputText}
     from '../../common/super-components/c1-SuperInputText/SuperInputText';
@@ -16,28 +16,17 @@ export const SearchField = memo(({onChangeWithDebounce, value}: SearchFieldProps
     const onChangeText = useCallback((title: string) => {
         setTitle(title)
         clearTimeout(timerId)
-        const id: number = +setTimeout(onChangeWithDebounce, 700, title)
+        const id: number = +setTimeout(onChangeWithDebounce, 500, title)
         setTimerId(id)
-    }, [onChangeWithDebounce, timerId])
-
-    const deleteTextForSearch = useCallback(() => {
-        setTitle('')
-    }, [])
-
-    const onKeyStartSearching = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {
-            onChangeWithDebounce(title)
-        }
-    }, [onChangeWithDebounce])
+    }, [onChangeWithDebounce, timerId, title])
 
     return (
         <div className={s.searchBlock}>
             <div className={s.loupe}>🔍︎</div>
             <SuperInputText value={title} onChangeText={onChangeText}
-                            onKeyPress={onKeyStartSearching}
                             placeholder={'Enter title for search'}
                             className={s.searchField}/>
-            <SuperButton className={s.deleteIcon} onClick={deleteTextForSearch}>
+            <SuperButton className={s.deleteIcon} onClick={() => onChangeText('')}>
                 ✘
             </SuperButton>
         </div>

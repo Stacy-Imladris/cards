@@ -11,10 +11,7 @@ import t from '../../../common/styles/Themes.module.css'
 import {Logo} from '../../../common/logo/Logo';
 import {Preloader} from "../../../common/preloader/Preloader";
 import {SuperCheckbox} from "../../../common/super-components/c3-SuperCheckbox/SuperCheckbox";
-import {
-    selectIsLoggedIn,
-    selectLoginError, selectLoginIsLoading,
-    selectTheme
+import {selectIsLoggedIn, selectLoginError, selectLoginIsLoading, selectTheme
 } from '../../../selectors/selectors';
 import {login, loginActions} from '../LoginBLL/loginReducer';
 

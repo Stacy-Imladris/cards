@@ -5,21 +5,21 @@ import {SuperInputText} from '../../common/super-components/c1-SuperInputText/Su
 import {useDispatch} from 'react-redux'
 import {useAppSelector} from '../../bll/store'
 import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton'
-import {Navigate} from 'react-router-dom'
-import {PATH} from '../../app/AllRoutes'
 import {profileActions, updateProfile} from '../../bll/profile-reducer'
 import {Preloader} from '../../common/preloader/Preloader'
 import {
-    selectIsLoggedIn,
-    selectProfileError, selectProfileIsFetching,
+    selectProfileEditMode,
+    selectProfileError,
+    selectProfileIsFetching,
     selectProfileUser
 } from '../../selectors/selectors';
+import {Profile} from './Profile';
 
 export const EditProfile = () => {
     const userData = useAppSelector(selectProfileUser)
     const error = useAppSelector(selectProfileError)
-    const isLoggedIn = useAppSelector(selectIsLoggedIn)
     const isFetching = useAppSelector(selectProfileIsFetching)
+    const editMode = useAppSelector(selectProfileEditMode)
 
     const [name, setName] = useState<string>(userData.name)
 
@@ -32,21 +32,20 @@ export const EditProfile = () => {
     }, [dispatch])
 
     const navigateToProfile = useCallback(() => {
-        <Navigate to={PATH.PROFILE}/>
         dispatch(profileActions.setEditModeProfile(false))
     }, [dispatch])
 
     const updateData = useCallback(() => {
-        if (isLoggedIn) {
-            dispatch(updateProfile(name, 'https//avatar-url.img'))
-        } else {
-            <Navigate to={PATH.LOGIN}/>
-        }
+        dispatch(updateProfile(name, 'https//avatar-url.img'))
     }, [dispatch, name])
 
     const changeNameHandle = useCallback((value: string) => {
         setName(value)
     }, [])
+
+    if (!editMode) {
+        return <Profile/>
+    }
 
     return (
         <div className={s.editProfilePage}>

@@ -24,7 +24,8 @@ export const cardsAPI = {
 export type ParamsGetCardsType = {
     cardAnswer?: string
     cardQuestion?: string
-    cardsPack_id: number
+    // cardsPack_id: number
+    cardsPack_id: string
     min?: number
     max?: number
     sortCards?:number
@@ -70,4 +71,15 @@ export type CardType = {
     created: string
     updated: string
     _id: string
+}
+export type UpdateCardType = {
+    answer?: string
+    question?: string
+    cardsPack_id?: string
+    grade?: number
+    shots?: number
+    user_id?: string
+    created?: string
+    updated?: string
+    _id?: string
 }

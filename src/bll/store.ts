@@ -75,7 +75,7 @@ const preloadedState = {
         cardPacksTotalCount: 0
     },
     cards: {
-        cards: [
+        cardPacks: [
             {
                 answer: '',
                 question: '',

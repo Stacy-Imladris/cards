@@ -1,8 +1,8 @@
 import {InferActionTypes} from './store'
-import {CardsResponseType, CardType} from '../api/cards-api'
+import {CardsResponseType, CardType, UpdateCardType} from '../api/cards-api'
 
 const InitialState = {
-    cards: [
+    cardPacks: [
         {
             answer: '',
             question: '',
@@ -48,14 +48,14 @@ export const cardsReducer = (state: CardsStateType = InitialState, action: Cards
         case 'CARDS/SET_ANSWER_TITLE_FOR_SEARCH':
             return {...state, params: {...state.params, cardAnswer: action.payload.answer}}
         case 'CARDS/SET_QUESTION_TITLE_FOR_SEARCH':
-            return {...state, params: {...state.params, cardAnswer: action.payload.question}}
+            return {...state, params: {...state.params, cardQuestion: action.payload.question}}
         case 'CARDS/ADD-CARD':
-            return {...state, cards: [{...action.payload.card}, ...state.cards]}
+            return {...state, cardPacks: [{...action.payload.card}, ...state.cardPacks]}
         case 'CARDS/DELETE-CARD':
-            return {...state, cards: state.cards.filter(card => card._id !== action.payload.cardId)}
+            return {...state, cardPacks: state.cardPacks.filter(card => card._id !== action.payload.cardId)}
         case 'CARDS/UPDATE_CARD':
             return {
-                ...state, cards: state.cards.map(card => {
+                ...state, cardPacks: state.cardPacks.map(card => {
                     return card._id === action.payload.cardId ? {...card, ...action.payload.card} : card
                 })
             }
@@ -65,19 +65,19 @@ export const cardsReducer = (state: CardsStateType = InitialState, action: Cards
 }
 
 export const cardsActions = {
-    setCards: (cardsData: CardsResponseType) => ({type: 'CARDS/SET_CARDS', payload: {cardsData}} as const),
-    setCurrentPage: (currentPage: number) => ({type: 'CARDS/SET_CURRENT_PAGE', payload: {currentPage}} as const),
+    setCards: (cardsData: CardsResponseType) => ({type: 'CARDS/SET_CARDS', payload: cardsData} as const),
+    setCurrentPage: (page: number) => ({type: 'CARDS/SET_CURRENT_PAGE', payload: {page}} as const),
     setCardsError: (error: string) => ({type: 'CARDS/SET_CARDS_ERROR', payload: {error}} as const),
     setCardsIsLoading: (isLoading: boolean) => ({type: 'CARDS/SET_CARDS_IS_LOADING', payload: {isLoading}} as const),
-    setCardsTotalCount: (cardTotalCount: number) =>
-        ({type: 'CARDS/SET_CARDS_TOTAL_COUNT', payload: {cardTotalCount}} as const),
+    setCardsTotalCount: (cardsTotalCount: number) =>
+        ({type: 'CARDS/SET_CARDS_TOTAL_COUNT', payload: {cardsTotalCount}} as const),
     setAnswerTitleForSearch: (answer: string) =>
         ({type: 'CARDS/SET_ANSWER_TITLE_FOR_SEARCH', payload: {answer}} as const),
     setQuestionTitleForSearch: (question: string) =>
         ({type: 'CARDS/SET_QUESTION_TITLE_FOR_SEARCH', payload: {question}} as const),
     addCard: (card: CardType) => ({type: 'CARDS/ADD-CARD', payload: {card}} as const),
     deleteCard: (cardId: string) => ({type: 'CARDS/DELETE-CARD', payload: {cardId}} as const),
-    updateCard: (cardId: string, card: CardType) =>
+    updateCard: (cardId: string, card: UpdateCardType) =>
         ({type: 'CARDS/UPDATE_CARD', payload: {cardId, card}} as const)
 }
 
@@ -85,6 +85,6 @@ export const cardsActions = {
 
 
 //types
-type CardsStateType = typeof InitialState
+export type CardsStateType = typeof InitialState
 export type CardsActionTypes = InferActionTypes<typeof cardsActions>
 

@@ -52,8 +52,11 @@ export const Paginator = memo(({onPageChanged, itemsTotalCount, page, pageCount}
                                 <span>...</span>
                                 <button
                                     className={page === pages.length ? s.selectedPage : ''}
-                                    onClick={() => onClickPageChanged(pages.length)}> {pages.length} </button>
-                                <button onClick={() => onClickPageChanged(page + 1)}>Next
+                                    onClick={() => onClickPageChanged(pages.length)}>
+                                    {pages.length}
+                                </button>
+                                <button onClick={() => onClickPageChanged(page + 1)}>
+                                    Next
                                 </button>
                             </>
                         )}

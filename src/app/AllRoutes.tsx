@@ -1,4 +1,3 @@
-import React from 'react'
 import {Navigate, Route, Routes} from 'react-router-dom'
 import {Login} from '../components/Login/LoginUI/Login'
 import {Profile} from '../components/Profile/Profile'
@@ -7,7 +6,8 @@ import {Error404} from '../components/Error404/Error404'
 import {RegistrationContainer} from '../components/Registration/RegistrationUI/RegistrationContainer'
 import {RecoveryContainer} from '../components/Recovery/RecoveryUI/RecoveryContainer'
 import {NewPasswordContainer} from '../components/NewPassword/NewPasswordUI/NewPasswordContainer'
-import {PackListAll} from '../components/PackListAll/PackListAll'
+import {Packs} from '../components/Packs/Packs'
+import {Cards} from '../components/Cards/Cards';
 
 export enum PATH {
     LOGIN = '/login',
@@ -17,21 +17,22 @@ export enum PATH {
     PASSWORD_RECOVERY = '/password-recovery',
     NEW_PASSWORD = '/new-password/:resetPasswordToken',
     TEST = '/test',
-    PACKS_LIST_ALL = '/packs-list-all',
+    PACKS = '/packs',
+    CARDS = '/cards',
 }
 
 export const AllRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<Navigate to={PATH.PROFILE}/>}/>
-
             <Route path={PATH.LOGIN} element={<Login/>}/>
             <Route path={PATH.REGISTRATION} element={<RegistrationContainer/>}/>
             <Route path={PATH.PROFILE} element={<Profile/>}/>
             <Route path={PATH.PASSWORD_RECOVERY} element={<RecoveryContainer/>}/>
             <Route path={PATH.NEW_PASSWORD} element={<NewPasswordContainer/>}/>
             <Route path={PATH.TEST} element={<Test/>}/>
-            <Route path={PATH.PACKS_LIST_ALL} element={<PackListAll/>}/>
+            <Route path={PATH.PACKS} element={<Packs/>}/>
+            <Route path={PATH.CARDS} element={<Cards/>}/>
             <Route path={PATH.ERROR_404} element={<Error404/>}/>
             <Route path="*" element={<Navigate to={PATH.ERROR_404}/>}/>
         </Routes>

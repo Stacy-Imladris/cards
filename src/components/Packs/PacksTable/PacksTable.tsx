@@ -5,15 +5,20 @@ import {useAppSelector} from '../../../bll/store'
 import {useEffect, useState} from 'react'
 import s from './PacksTable.module.css'
 import {setSortValuesToStore} from '../../../utils/sort-helper';
+import {
+    selectPackNameForSearch,
+    selectPacks,
+    selectPackUserId, selectSortForPacks,
+} from '../../../selectors/selectors';
 
 export const PacksTable = () => {
     const [sortField, setSortField] = useState<SortValuesType>('updated')
     const [sortValue, setSortValue] = useState<SortOrderType>('1')
 
-    const packs = useAppSelector(state => state.packs.packs)
-    const packName = useAppSelector(state => state.packs.params.packName)
-    const user_id = useAppSelector(state => state.packs.params.user_id)
-    const sortPacks = useAppSelector(state => state.packs.params.sortPacks)
+    const packs = useAppSelector(selectPacks)
+    const packName = useAppSelector(selectPackNameForSearch)
+    const user_id = useAppSelector(selectPackUserId)
+    const sortPacks = useAppSelector(selectSortForPacks)
 
     const dispatch = useDispatch()
 

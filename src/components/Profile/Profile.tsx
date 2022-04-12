@@ -1,27 +1,34 @@
 import s from './Profile.module.css'
 import t from '../../common/styles/Themes.module.css';
 import profile_ava from '../../assets/images/profile_ava.png'
-import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton'
-import SuperInputText from '../../common/super-components/c1-SuperInputText/SuperInputText'
+import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton'
+import {SuperInputText} from '../../common/super-components/c1-SuperInputText/SuperInputText'
 import {Navigate, useNavigate} from 'react-router-dom';
 import {PATH} from "../../app/AllRoutes";
 import {profileActions} from '../../bll/profile-reducer';
 import {useDispatch} from 'react-redux';
 import {useAppSelector} from '../../bll/store';
 import {EditProfile} from './EditProfile';
+import {
+    selectIsLoggedIn,
+    selectProfileEditMode, selectProfileUserName,
+    selectTheme
+} from '../../selectors/selectors';
+import {useCallback} from 'react';
 
 export const Profile = () => {
-    const isLoggedIn = useAppSelector(state => state.login.isLoggedIn)
-    const name = useAppSelector(state => state.profile.user.name)
-    const theme = useAppSelector(state => state.theme.theme)
-    const editMode = useAppSelector(state => state.profile.editMode)
+    const isLoggedIn = useAppSelector(selectIsLoggedIn)
+    const name = useAppSelector(selectProfileUserName)
+    const theme = useAppSelector(selectTheme)
+    const editMode = useAppSelector(selectProfileEditMode)
+
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const editProfile = () => {
+    const editProfile = useCallback(() => {
         dispatch(profileActions.setEditModeProfile(true))
         dispatch(profileActions.setProfileError(''))
-    }
+    }, [dispatch])
 
     if (editMode) {
         return <EditProfile/>
@@ -57,9 +64,6 @@ export const Profile = () => {
                         <div>
                             <SuperInputText placeholder={'search'}/>
                         </div>
-                    </div>
-                    <div className={s.profilePacks_packsTable}>
-                        {/*<PacksTable />*/}
                     </div>
                     <div className={s.profilePacks_pagination}>
                         profilePacks_pagination

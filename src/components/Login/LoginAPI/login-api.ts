@@ -2,7 +2,7 @@ import {AxiosResponse} from 'axios'
 import {UserType} from "../../Profile/profile-api";
 import {instance} from '../../../api/instance';
 
-export const loginApi = {
+export const loginAPI = {
     login(login: LoginType) {
         return instance.post<any, AxiosResponse<UserType>, LoginType>('auth/login', login)
     },

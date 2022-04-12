@@ -1,7 +1,7 @@
 import {AppThunk, InferActionTypes} from './store'
 import {profileAPI, UserType} from '../components/Profile/profile-api'
 import axios from 'axios'
-import {setIsLoggedInAC} from '../components/Login/LoginBLL/loginReducer';
+import {loginActions} from '../components/Login/LoginBLL/loginReducer';
 
 const initialState = {
     user: {} as UserType,
@@ -54,7 +54,7 @@ export const auth = (): AppThunk => async dispatch => {
     try {
         const response = await profileAPI.me()
         dispatch(profileActions.setUserData(response.data))
-        dispatch(setIsLoggedInAC(true))
+        dispatch(loginActions.setIsLoggedIn(true))
     } catch (e) {
         if (axios.isAxiosError(e)) {
             const error = e.response ? e.response.data.error : (e.message + ', more details in the console')

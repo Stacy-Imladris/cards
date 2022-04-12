@@ -1,60 +1,66 @@
-import React, {ChangeEvent, useState} from 'react'
+import {useCallback, useState} from 'react'
 import s from './Test.module.css'
-import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton';
-import SuperCheckbox from '../../common/super-components/c3-SuperCheckbox/SuperCheckbox';
-import SuperInputText from '../../common/super-components/c1-SuperInputText/SuperInputText';
-import SuperEditableSpan from '../../common/super-components/c4-SuperEditableSpan/SuperEditableSpan';
-import SuperSelect from '../../common/super-components/c5-SuperSelect/SuperSelect';
-import SuperRadio from '../../common/super-components/c6-SuperRadio/SuperRadio';
+import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton';
+import {SuperCheckbox} from '../../common/super-components/c3-SuperCheckbox/SuperCheckbox';
+import {SuperInputText} from '../../common/super-components/c1-SuperInputText/SuperInputText';
+import {SuperEditableSpan} from '../../common/super-components/c4-SuperEditableSpan/SuperEditableSpan';
+import {SuperSelect} from '../../common/super-components/c5-SuperSelect/SuperSelect';
+import {SuperRadio} from '../../common/super-components/c6-SuperRadio/SuperRadio';
 import {useAppSelector} from '../../bll/store';
 import {themeActions, ThemeType} from '../../bll/themeReducer';
 import t from '../../common/styles/Themes.module.css';
-import SuperRange from '../../common/super-components/c7-SuperRange/SuperRange';
+import {SuperRange} from '../../common/super-components/c7-SuperRange/SuperRange';
 import {SuperDoubleRange} from '../../common/super-components/c8-SuperDoubleRange/SuperDoubleRange';
 import {AlternativeSuperDoubleRange} from '../../common/super-components/c8-SuperDoubleRange/AlternativeSuperDoubleRange';
 import {useDispatch} from 'react-redux';
+import {selectTheme} from '../../selectors/selectors';
+
+const arr = ['x', 'y', 'z']
+const themes = ['day', 'night']
 
 export const Test = () => {
-    const theme = useAppSelector(state => state.theme.theme)
+    const theme = useAppSelector(selectTheme)
+
     const dispatch = useDispatch()
 
     const [text, setText] = useState<string>('')
     const error = text ? '' : 'error'
 
-    const showAlert = () => {
+    const showAlert = useCallback(() => {
         if (error) {
             alert('введите текст...')
         } else {
             alert(text)
         }
-    }
+    }, [error, text])
 
     const [checked, setChecked] = useState<boolean>(false)
-    const testOnChange = (e: ChangeEvent<HTMLInputElement>) => setChecked(e.currentTarget.checked)
+
+    const testOnChange = useCallback((isChecked: boolean) => {
+        setChecked(isChecked)
+    }, [])
 
     const [value, setValue] = useState<string>('')
 
-    const arr = ['x', 'y', 'z']
     const [valueFromArray, onChangeOption] = useState(arr[0])
 
     const [value1Range, setValue1] = useState(0)
     const [value2Range, setValue2] = useState(100)
 
-    const changeValue = (value: number) => {
+    const changeValue = useCallback((value: number) => {
         if (value < value2Range) {
             setValue1(value)
         }
-    }
+    }, [value2Range])
 
-    const changeTwoValue = (value: [number, number] | number[]) => {
+    const changeTwoValue = useCallback((value: [number, number] | number[]) => {
         setValue1(value[0])
         setValue2(value[1])
-    }
+    }, [])
 
-    const themes = ['day', 'night']
-    const onChangeCallback = (theme: ThemeType) => {
+    const onChangeCallback = useCallback((theme: ThemeType) => {
         dispatch(themeActions.changeTheme(theme))
-    }
+    }, [dispatch])
 
     return (
         <div className={s.column}>
@@ -63,7 +69,7 @@ export const Test = () => {
             <SuperButton>default</SuperButton>
             <SuperButton disabled>disabled</SuperButton>
             <SuperButton red onClick={showAlert}>delete</SuperButton>
-            <SuperCheckbox checked={checked} onChange={testOnChange}/>
+            <SuperCheckbox checked={checked} onChangeChecked={testOnChange}/>
             <SuperEditableSpan value={value} onChangeText={setValue}
                 spanProps={{children: value ? undefined : 'enter text here...'}}/>
             <SuperSelect options={arr} value={valueFromArray} onChangeOption={onChangeOption}/>

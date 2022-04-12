@@ -1,5 +1,5 @@
-import {FC} from 'react'
-import SuperButton from '../../../common/super-components/c2-SuperButton/SuperButton'
+import {FC, memo} from 'react'
+import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton'
 import s from './PacksTable.module.css'
 import {packsActions} from '../../../bll/packs-reducer';
 
@@ -8,7 +8,7 @@ type PackActionsType = {
     userId: string
 }
 
-export const PackActions: FC<PackActionsType> = ({isMyPacks, userId}) => {
+export const PackActions: FC<PackActionsType> = memo(({isMyPacks, userId}) => {
 
     //const updatePack = () => packsActions.updatePack('New namePack', userId)
 
@@ -24,4 +24,4 @@ export const PackActions: FC<PackActionsType> = ({isMyPacks, userId}) => {
         }
         <SuperButton>Learn</SuperButton>
     </div>
-}
+})

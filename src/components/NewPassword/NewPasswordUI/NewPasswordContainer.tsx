@@ -1,19 +1,23 @@
-import {memo, useCallback, useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {NewPassword} from './NewPassword';
 import {changePassword, newPasswordActions} from '../NewPasswordBLL/new-password-reducer';
 import {Navigate, useParams} from 'react-router-dom';
 import {useAppSelector} from '../../../bll/store';
 import {PATH} from '../../../app/AllRoutes';
+import {
+    selectNewPasswordError,
+    selectNewPasswordIsLoading, selectNewPasswordToLogin, selectTheme
+} from '../../../selectors/selectors';
 
-export const NewPasswordContainer = memo(() => {
+export const NewPasswordContainer = () => {
     const [password, setPassword] = useState<string>('')
     const [password2, setPassword2] = useState<string>('')
 
-    const isLoading = useAppSelector(state => state.newPassword.isLoading)
-    const error = useAppSelector(state => state.newPassword.error)
-    const toLogin = useAppSelector(state => state.newPassword.toLogIn)
-    const theme = useAppSelector(state => state.theme.theme)
+    const theme = useAppSelector(selectTheme)
+    const isLoading = useAppSelector(selectNewPasswordIsLoading)
+    const error = useAppSelector(selectNewPasswordError)
+    const toLogin = useAppSelector(selectNewPasswordToLogin)
 
     const dispatch = useDispatch()
 
@@ -36,6 +40,6 @@ export const NewPasswordContainer = memo(() => {
     }
 
     return <NewPassword changePassword={toChangePassword} isLoading={isLoading} error={error} theme={theme}
-                        password={password} setPassword={setPassword} password2={password2} setPassword2={setPassword2}
-    />
-})
+                        password={password} setPassword={setPassword}
+                        password2={password2} setPassword2={setPassword2}/>
+}

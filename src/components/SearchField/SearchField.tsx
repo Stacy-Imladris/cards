@@ -1,8 +1,8 @@
 import {KeyboardEvent, memo, useCallback, useState} from 'react';
 import s from './SearchField.module.css';
-import SuperInputText
+import {SuperInputText}
     from '../../common/super-components/c1-SuperInputText/SuperInputText';
-import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton';
+import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton';
 
 type SearchFieldPropsType = {
     onChangeWithDebounce: (title: string) => void
@@ -18,11 +18,11 @@ export const SearchField = memo(({onChangeWithDebounce, value}: SearchFieldProps
         clearTimeout(timerId)
         const id: number = +setTimeout(onChangeWithDebounce, 700, title)
         setTimerId(id)
-    }, [onChangeWithDebounce, timerId, setTitle, setTimerId])
+    }, [onChangeWithDebounce, timerId])
 
     const deleteTextForSearch = useCallback(() => {
         setTitle('')
-    }, [setTitle])
+    }, [])
 
     const onKeyStartSearching = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {

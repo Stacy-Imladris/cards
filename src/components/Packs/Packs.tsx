@@ -3,12 +3,12 @@ import t from '../../common/styles/Themes.module.css';
 import s from './Packs.module.css'
 import c from '../../common/styles/Container.module.css'
 import {useAppSelector} from '../../bll/store';
-import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton';
-import React, {useCallback, useState} from 'react';
+import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton';
+import {useCallback, useState} from 'react';
 import {AlternativeSuperDoubleRange} from '../../common/super-components/c8-SuperDoubleRange/AlternativeSuperDoubleRange';
 import {Paginator} from '../Paginator/Paginator';
 import {SearchField} from '../SearchField/SearchField';
-import SuperRadio from '../../common/super-components/c6-SuperRadio/SuperRadio';
+import {SuperRadio} from '../../common/super-components/c6-SuperRadio/SuperRadio';
 import {useDispatch} from 'react-redux';
 import {getPacks, packsActions} from '../../bll/packs-reducer';
 import {selectCardPacksTotalCount, selectPackNameForSearch, selectUser_id,
@@ -29,14 +29,14 @@ export const Packs = () => {
 
     const [valueFromArray, setValueFromArray] = useState(arr[0])
 
-    const onChangeOption = (value: string) => {
+    const onChangeOption = useCallback((value: string) => {
         setValueFromArray(value)
         if (value === 'All') {
             dispatch(packsActions.setPacksForUser(''))
         } else {
             dispatch(packsActions.setPacksForUser(user_id))
         }
-    }
+    }, [dispatch, user_id])
 
     const [value1Range, setValue1] = useState(0)
     const [value2Range, setValue2] = useState(200)
@@ -47,10 +47,10 @@ export const Packs = () => {
         }
     }
 
-    const changeTwoValue = (value: [number, number] | number[]) => {
+    const changeTwoValue = useCallback((value: [number, number] | number[]) => {
         setValue1(value[0])
         setValue2(value[1])
-    }
+    }, [])
 
     const onPageChanged = useCallback((page: number) => {
         dispatch(packsActions.setCurrentPage(page))

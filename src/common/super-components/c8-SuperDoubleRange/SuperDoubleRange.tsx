@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import {FC, memo, useState} from 'react'
 import s from './SuperDoubleRange.module.css'
 
 type SuperDoubleRangePropsType = {
@@ -7,7 +7,7 @@ type SuperDoubleRangePropsType = {
     // min, max, step, disable, ...
 }
 
-export const SuperDoubleRange: React.FC<SuperDoubleRangePropsType> = (
+export const SuperDoubleRange: FC<SuperDoubleRangePropsType> = memo((
     {
         onChangeRange, value,
         ...restProps
@@ -47,4 +47,4 @@ export const SuperDoubleRange: React.FC<SuperDoubleRangePropsType> = (
             </div>
         </>
     )
-}
+})

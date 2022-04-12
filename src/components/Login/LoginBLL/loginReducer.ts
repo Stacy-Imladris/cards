@@ -1,60 +1,62 @@
 import {profileActions} from '../../../bll/profile-reducer';
-import {AppThunk} from '../../../bll/store';
-import {loginApi, LoginType} from '../LoginAPI/login-api';
+import {AppThunk, InferActionTypes} from '../../../bll/store';
+import {loginAPI, LoginType} from '../LoginAPI/login-api';
+import axios from 'axios';
 
-export const initialState = {
+export const loginInitialState = {
     isLoggedIn: false,
     error: '',
-    isLogin: false
+    isLoading: false
 }
 
-export type InitialStateType = typeof initialState
-
-export const loginReducer = (state: InitialStateType = initialState, action: LoginActionsType): InitialStateType => {
+export const loginReducer = (state: LoginInitialStateType = loginInitialState, action: LoginActionsType): LoginInitialStateType => {
     switch (action.type) {
-        case 'login/SET-IS-LOGGED-IN':
-            return {...state, isLoggedIn: action.value}
-        case "login/SET-ERROR":
-            return {...state, error: action.error}
-        case "login/SET-LOGIN":
-            return {...state, isLogin: action.value}
+        case 'LOGIN/SET-IS-LOGGED-IN':
+        case 'LOGIN/SET-ERROR':
+        case 'LOGIN/SET-LOGIN':
+            return {...state, ...action.payload}
         default:
             return state
     }
 }
 
 // actions
-export const setIsLoggedInAC = (value: boolean) =>
-    ({type: 'login/SET-IS-LOGGED-IN', value} as const)
-export const setLoginErrorAC = (error: string) =>
-    ({type: 'login/SET-ERROR', error} as const)
-export const setLoginAC = (value: boolean) =>
-    ({type: 'login/SET-LOGIN', value} as const)
-
-// thunks
-export const loginTC = (login: LoginType): AppThunk => dispatch => {
-    dispatch(setLoginAC(true))
-    loginApi.login(login)
-        .then((res) => {
-            dispatch(setIsLoggedInAC(true))
-            dispatch(profileActions.setUserData(res.data))
-            dispatch(setLoginAC(false))
-        })
-        .catch((err) => {
-            dispatch(setLoginAC(false))
-            dispatch(setLoginErrorAC(err.response ? err.response.data.error : err.message))
-        })
+export const loginActions = {
+    setIsLoggedIn: (isLoggedIn: boolean) =>
+        ({type: 'LOGIN/SET-IS-LOGGED-IN', payload: {isLoggedIn}} as const),
+    setLoginError: (error: string) =>
+        ({type: 'LOGIN/SET-ERROR', payload: {error}} as const),
+    setIsLoading: (isLoading: boolean) =>
+        ({type: 'LOGIN/SET-LOGIN', payload: {isLoading}} as const),
 }
 
-export const logoutTC = (): AppThunk => dispatch => {
-    loginApi.logout()
-        .then(() => {
-            dispatch(setIsLoggedInAC(false))
-        })
+// thunks
+export const login = (login: LoginType): AppThunk => async dispatch => {
+    dispatch(loginActions.setIsLoading(true))
+    try {
+        const res = await loginAPI.login(login)
+        dispatch(loginActions.setIsLoggedIn(true))
+        dispatch(profileActions.setUserData(res.data))
+    } catch (e) {
+        if (axios.isAxiosError(e)) {
+            dispatch(loginActions.setLoginError(e.response ? e.response.data.error : e.message))
+        } else {
+            dispatch(loginActions.setLoginError('Some error occurred'))
+        }
+    } finally {
+        dispatch(loginActions.setIsLoading(false))
+    }
+}
+
+export const logout = (): AppThunk => async dispatch => {
+    try {
+        await loginAPI.logout()
+        dispatch(loginActions.setIsLoggedIn(false))
+    } catch (e) {
+
+    }
 }
 
 // types
-export type LoginActionsType = ReturnType<typeof setIsLoggedInAC>
-    | ReturnType<typeof setLoginAC>
-    | ReturnType<typeof setLoginErrorAC>
-    | ReturnType<typeof profileActions.setUserData>
+export type LoginInitialStateType = typeof loginInitialState
+export type LoginActionsType = InferActionTypes<typeof loginActions>

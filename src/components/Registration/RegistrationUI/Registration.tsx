@@ -1,10 +1,10 @@
-import SuperInputText from '../../../common/super-components/c1-SuperInputText/SuperInputText';
-import SuperButton from '../../../common/super-components/c2-SuperButton/SuperButton';
+import {SuperInputText} from '../../../common/super-components/c1-SuperInputText/SuperInputText';
+import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton';
 import s from '../../../common/styles/Forms.module.css'
 import t from '../../../common/styles/Themes.module.css'
 import {Preloader} from '../../../common/preloader/Preloader';
 import {NavigateFunction} from 'react-router-dom';
-import React, {memo} from 'react';
+import {memo} from 'react';
 import {Logo} from '../../../common/logo/Logo';
 
 type RegistrationPropsType = {
@@ -29,11 +29,11 @@ export const Registration = memo(({signUp, email, setEmail, password, setPasswor
             <div className={s.preloader}>{isLoading && <Preloader/>}</div>
             <div className={s.mainText}>Sign up</div>
             <span>Email</span>
-            <div><SuperInputText value={email} onChangeText={setEmail}/></div>
+            <div><SuperInputText value={email} onChangeText={setEmail} onEnter={signUp}/></div>
             <span>Password</span>
-            <div><SuperInputText value={password} onChangeText={setPassword} eye/></div>
+            <div><SuperInputText value={password} onChangeText={setPassword} onEnter={signUp} eye/></div>
             <span>Confirm password</span>
-            <div><SuperInputText value={password2} onChangeText={setPassword2} eye/></div>
+            <div><SuperInputText value={password2} onChangeText={setPassword2} onEnter={signUp} eye/></div>
             <div className={s.buttons}>
                 <SuperButton disabled={isLoading} onClick={() => navigate('/login')}>Cancel</SuperButton>
                 <SuperButton disabled={isLoading} onClick={signUp}>Register</SuperButton>

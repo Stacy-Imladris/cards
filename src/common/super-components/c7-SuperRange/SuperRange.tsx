@@ -1,4 +1,4 @@
-import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes} from 'react'
+import {ChangeEvent, DetailedHTMLProps, FC, InputHTMLAttributes, memo} from 'react'
 import s from './SuperRange.module.css'
 
 // тип пропсов обычного инпута
@@ -10,7 +10,7 @@ type SuperRangePropsType = Omit<DefaultInputPropsType, 'type'> & { // и + ещ�
     onChangeRange?: (value: number) => void
 };
 
-const SuperRange: React.FC<SuperRangePropsType> = (
+export const SuperRange: FC<SuperRangePropsType> = memo((
     {
         //type, // достаём и игнорируем чтоб нельзя было задать другой тип инпута
         onChange, onChangeRange,
@@ -38,6 +38,4 @@ const SuperRange: React.FC<SuperRangePropsType> = (
             />
         </>
     )
-}
-
-export default SuperRange
+})

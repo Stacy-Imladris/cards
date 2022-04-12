@@ -1,6 +1,6 @@
 import {AppThunk, InferActionTypes} from '../../../bll/store';
 import {RegDataType, registrationAPI} from '../RegistrationAPI/registration-api';
-import axios, {AxiosError} from 'axios';
+import axios from 'axios';
 
 const registrationInitialState = {
     error: '',
@@ -28,13 +28,13 @@ export const registrationActions = {
 //thunk
 export const signUp = ({email, password, password2}: RegDataType): AppThunk => async dispatch => {
     dispatch(registrationActions.setRegistrationIsLoading(true))
+    dispatch(registrationActions.setRegistrationError(''))
     if (password !== password2) {
         dispatch(registrationActions.setRegistrationError('Password confirmation failed!'))
         dispatch(registrationActions.setRegistrationIsLoading(false))
     } else {
         try {
             await registrationAPI.signUp({email, password})
-            dispatch(registrationActions.setRegistrationError(''))
             dispatch(registrationActions.toLogIn(true))
         } catch (e) {
             if (axios.isAxiosError(e)){

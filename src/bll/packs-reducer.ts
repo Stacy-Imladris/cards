@@ -10,8 +10,8 @@ const packsInitialState = {
     maxCardsCount: 103,
     params: {
         packName: '',
-        min: 3,
-        max: 9,
+        min: 0,
+        max: 103,
         sortPacks: '0updated',
         page: 1,
         pageCount: 7,

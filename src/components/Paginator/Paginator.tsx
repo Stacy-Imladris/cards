@@ -63,6 +63,6 @@ export const Paginator = memo(({onPageChanged, itemsTotalCount, page, pageCount}
                     </div>
                 </div>
             </div>
-            : <div>Nothing was found</div>
+            : <div className={s.emptyAnswer}>Nothing was found</div>
     )
 })

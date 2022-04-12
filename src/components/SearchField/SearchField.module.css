@@ -1,23 +1,33 @@
 .searchBlock {
     display: flex;
     align-items: center;
-    width: 500px;
+    margin-right: 20px;
 }
 
-.loupe {
-
-}
-
-.searchField {
+.wideSearchField {
     width: 380px;
-    margin: 0;
+    margin: 0 -15px;
 }
 
-.searchField:focus {
+.wideSearchField:focus {
     width: 380px;
 }
 
-.searchField::placeholder{
+.wideSearchField::placeholder{
+    color: white;
+    opacity: 70%;
+}
+
+.narrowSearchField {
+    width: 155px;
+    margin: 0 -15px;
+}
+
+.narrowSearchField:focus {
+    width: 155px;
+}
+
+.narrowSearchField::placeholder{
     color: white;
     opacity: 70%;
 }

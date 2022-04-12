@@ -77,7 +77,7 @@ export const Packs = () => {
                     <div className={c.title}>Packs list</div>
                     <div className={s.rowElements}>
                         <SearchField onChangeWithDebounce={onChangeDebounceRequest}
-                                     value={packName}/>
+                                     value={packName} wide/>
                         <SuperButton>Add new pack</SuperButton>
                     </div>
                     <div className={c.table}><PacksTable/></div>

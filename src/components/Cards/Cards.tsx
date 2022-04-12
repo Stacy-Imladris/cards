@@ -40,7 +40,7 @@ export const Cards = () => {
         <div className={s.cardsContainer}>
             <div className={`${c.container} ${t[theme + '-text']}`}>
                 <div className={s.cardsTable}>
-                    <div className={s.rowElements}>
+                    <div className={s.backAndTitle}>
                         <SuperButton className={s.backIcon}
                                      onClick={() => navigate(PATH.PACKS)}>
                             ←
@@ -48,11 +48,14 @@ export const Cards = () => {
                         <div className={c.title}>{packName}</div>
                     </div>
                     <div className={s.rowElements}>
-                        <SearchField
-                            onChangeWithDebounce={onChangeDebounceQuestionRequest}
-                            value={cardQuestion}/>
-                        <SearchField onChangeWithDebounce={onChangeDebounceAnswerRequest}
-                                     value={cardAnswer}/>
+                        <div>
+                            <SearchField value={cardQuestion}
+                                         onChangeWithDebounce={onChangeDebounceQuestionRequest}/>
+                        </div>
+                        <div>
+                            <SearchField value={cardAnswer}
+                                         onChangeWithDebounce={onChangeDebounceAnswerRequest}/>
+                        </div>
                     </div>
                     <div className={c.table}><CardsTable/></div>
                 </div>

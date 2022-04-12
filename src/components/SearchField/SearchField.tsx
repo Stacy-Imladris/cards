@@ -7,9 +7,10 @@ import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperBut
 type SearchFieldPropsType = {
     onChangeWithDebounce: (title: string) => void
     value: string
+    wide?: boolean
 }
 
-export const SearchField = memo(({onChangeWithDebounce, value}: SearchFieldPropsType) => {
+export const SearchField = memo(({onChangeWithDebounce, value, wide}: SearchFieldPropsType) => {
     const [title, setTitle] = useState<string>(value)
     const [timerId, setTimerId] = useState<number>(0)
 
@@ -20,12 +21,14 @@ export const SearchField = memo(({onChangeWithDebounce, value}: SearchFieldProps
         setTimerId(id)
     }, [onChangeWithDebounce, timerId, title])
 
+    const searchFieldClassName = wide ? s.wideSearchField : s.narrowSearchField
+
     return (
         <div className={s.searchBlock}>
-            <div className={s.loupe}>🔍︎</div>
+            <div>🔍︎</div>
             <SuperInputText value={title} onChangeText={onChangeText}
                             placeholder={'Enter title for search'}
-                            className={s.searchField}/>
+                            className={searchFieldClassName}/>
             <SuperButton className={s.deleteIcon} onClick={() => onChangeText('')}>
                 ✘
             </SuperButton>

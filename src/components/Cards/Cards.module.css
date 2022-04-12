@@ -8,9 +8,14 @@
     width: 100%;
 }
 
+.backAndTitle {
+    display: flex;
+    justify-content: flex-start;
+}
+
 .rowElements {
     display: flex;
-    justify-content: space-between;
+    justify-cntent: flex-start;
     margin-bottom: 10px;
 }
 

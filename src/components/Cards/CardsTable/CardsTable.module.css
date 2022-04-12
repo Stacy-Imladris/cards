@@ -16,6 +16,10 @@
     border: solid 2px #077517;
 }
 
+.table th {
+    background: #4CAF50
+}
+
 .table th:first-child, td:first-child {
     text-align: left;
 }

@@ -64,7 +64,7 @@ export const PacksTable = () => {
 
     return <div className={s.packsTableContainer}>
         <table className={s.table}>
-            <thead className={s.headers}>
+            <thead>
             <tr>
                 <th className={s.name}>
                     <span onClick={() => changeSortField('name')}>

@@ -21,7 +21,7 @@ export const SearchField = memo(({onChangeWithDebounce, value, wide}: SearchFiel
         setTimerId(id)
     }, [onChangeWithDebounce, timerId, title])
 
-    const searchFieldClassName = wide ? s.wideSearchField : s.narrowSearchField
+    const searchFieldClassName = `${s.searchField} ${wide ? s.wideSearchField : s.narrowSearchField}`
 
     return (
         <div className={s.searchBlock}>

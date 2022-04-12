@@ -57,7 +57,7 @@ export const CardsTable = () => {
 
     return <div className={s.cardsTableContainer}>
         <table className={s.table}>
-            <thead className={s.headers}>
+            <thead>
             <tr>
                 <th className={s.question}>
                     {/*<span onClick={() => changeSortField('name')}>

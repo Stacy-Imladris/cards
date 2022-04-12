@@ -12,8 +12,8 @@ import {
     selectPageCountForCards,
     selectPageForCards
 } from '../../../selectors/selectors';
-import c from '../../../common/styles/Container.module.css';
 import {Paginator} from '../../Paginator/Paginator';
+import {packsActions} from '../../../bll/packs-reducer';
 
 export const CardsTable = () => {
     //const [sortField, setSortField] = useState<SortValuesType>('updated')
@@ -30,7 +30,7 @@ export const CardsTable = () => {
 
     useEffect(() => {
         dispatch(getCards())
-    }, [dispatch, cardQuestion, cardAnswer])
+    }, [dispatch, cardQuestion, cardAnswer, pageCount])
 
     /*const changeSortField = (fieldToSort: SortValuesType) => {
         setSortField(fieldToSort)
@@ -49,6 +49,10 @@ export const CardsTable = () => {
     const onPageChanged = useCallback((page: number) => {
         dispatch(cardsActions.setCurrentPage(page))
         dispatch(getCards())
+    }, [dispatch])
+
+    const onChangeSetAmountOfCards = useCallback((amountOfPacks: number) => {
+        dispatch(cardsActions.setCardsPageCount(amountOfPacks))
     }, [dispatch])
 
     return <div className={s.cardsTableContainer}>
@@ -94,7 +98,8 @@ export const CardsTable = () => {
             </tbody>
         </table>
         <div className={s.pagination}>
-            <Paginator onPageChanged={onPageChanged}
+            <Paginator onChangeSetAmountOfItems={onChangeSetAmountOfCards}
+                       onPageChanged={onPageChanged}
                        itemsTotalCount={cardsTotalCount}
                        pageCount={pageCount} page={page}/>
         </div>

@@ -33,6 +33,7 @@ export const cardsReducer = (state: CardsInitialStateType = cardsInitialState, a
         case 'CARDS/SET_QUESTION_FOR_SEARCH':
         case 'CARDS/SET_SORT_PARAMETERS':
         case 'CARDS/SET_PACK_ID':
+        case 'CARDS/SET_CARDS_PAGE_COUNT':
             return {...state, params: {...state.params, ...action.payload}}
         default:
             return state
@@ -51,6 +52,7 @@ export const cardsActions = {
     setSortParameters: (sortCards: string) => ({type: 'CARDS/SET_SORT_PARAMETERS', payload: {sortCards}} as const),
     setPackId: (cardsPack_id: string) => ({type: 'CARDS/SET_PACK_ID', payload: {cardsPack_id}} as const),
     setPackName: (packName: string) => ({type: 'CARDS/SET_PACK_NAME', payload: {packName}} as const),
+    setCardsPageCount: (pageCount: number) => ({type: 'CARDS/SET_CARDS_PAGE_COUNT', payload: {pageCount}} as const),
 }
 
 //thunk

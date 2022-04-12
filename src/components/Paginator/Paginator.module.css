@@ -1,4 +1,6 @@
 .paginatorContainer {
+    display: flex;
+    justify-content: center;
     background-color: #077517;
     border-radius: 0 0 20px 20px;
 }
@@ -11,14 +13,15 @@
 }
 
 .container div {
-    width: 180px;
+    width: 150px;
     display: flex;
     text-align: center;
     justify-content: center;
 }
 
 .container div span {
-    padding: 0 10px;
+    padding: 2px 5px;
+    font-size: 16px;
 }
 
 .container div button {
@@ -27,9 +30,11 @@
     background-color: #077517;
     outline: none;
     color: white;
-    padding: 5px 10px;
+    padding: 2px 3px;
     border-radius: 20%;
     min-width: 40px;
+    font-size: 14px;
+    margin: 0;
 }
 
 .container div button:hover {
@@ -45,5 +50,18 @@
 }
 
 .emptyAnswer {
+    padding-top: 170px;
+    font-family: "Times New Roman";
+    font-size: 22px;
     text-align: center;
+}
+
+.show {
+    display: flex;
+    align-items: center;
+}
+
+.show span{
+    display: inline-block;
+    font-size: 16px;
 }

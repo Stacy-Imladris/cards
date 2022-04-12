@@ -18,7 +18,6 @@ import {
     selectPacks,
     selectPackUserId, selectPageCountForPacks, selectPageForPacks, selectSortForPacks,
 } from '../../../selectors/selectors';
-import c from '../../../common/styles/Container.module.css';
 import {Paginator} from '../../Paginator/Paginator';
 
 export const PacksTable = () => {
@@ -39,7 +38,7 @@ export const PacksTable = () => {
 
     useEffect(() => {
         dispatch(getPacks())
-    }, [dispatch, packName, user_id, sortPacks, min, max])
+    }, [dispatch, packName, user_id, sortPacks, min, max, pageCount])
 
     const changeSortField = (fieldToSort: SortValuesType) => {
         setSortField(fieldToSort)
@@ -57,6 +56,10 @@ export const PacksTable = () => {
     const onPageChanged = useCallback((page: number) => {
         dispatch(packsActions.setCurrentPage(page))
         dispatch(getPacks())
+    }, [dispatch])
+
+    const onChangeSetAmountOfPacks = useCallback((amountOfPacks: number) => {
+        dispatch(packsActions.setPacksPageCount(amountOfPacks))
     }, [dispatch])
 
     return <div className={s.packsTableContainer}>
@@ -97,7 +100,8 @@ export const PacksTable = () => {
             </tbody>
         </table>
         <div className={s.pagination}>
-            <Paginator onPageChanged={onPageChanged}
+            <Paginator onChangeSetAmountOfItems={onChangeSetAmountOfPacks}
+                       onPageChanged={onPageChanged}
                        itemsTotalCount={cardPacksTotalCount}
                        pageCount={pageCount} page={page}/>
         </div>

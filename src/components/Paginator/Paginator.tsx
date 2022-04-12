@@ -37,7 +37,7 @@ export const Paginator = memo(({
         itemsTotalCount ?
             <div className={s.paginatorContainer}>
                     <div className={s.container}>
-                        <div>
+                        <div className={s.edge}>
                             {page > 3 && (
                                 <>
                                     <button onClick={() => onClickPageChanged(page - 1)}>
@@ -50,13 +50,13 @@ export const Paginator = memo(({
                                 </>
                             )}
                         </div>
-                        <div>
+                        <div className={s.center}>
                             {pagesForRender.map(p => (
                                 <button className={page === p ? s.selectedPage : ''}
                                         onClick={() => onClickPageChanged(p)}
                                         key={p}> {p} </button>))}
                         </div>
-                        <div>
+                        <div className={s.edge}>
                             {page < pages.length - 2 && (
                                 <>
                                     <span>...</span>

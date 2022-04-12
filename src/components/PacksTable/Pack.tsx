@@ -2,6 +2,8 @@ import {FC} from 'react'
 import {PackActions} from './PackActions'
 import {PackType} from '../../api/packs-api'
 import {getLastUpdatedDate} from '../../utils/date-helpers'
+import {getPacks} from '../../bll/cards-reducer'
+import {useDispatch} from 'react-redux'
 
 type PackPropsType = {
     pack: PackType
@@ -10,9 +12,12 @@ type PackPropsType = {
 export const Pack: FC<PackPropsType> = ({pack}) => {
 
     const lastUpdate = getLastUpdatedDate(pack.updated)
+    const dispatch = useDispatch()
+
+    const loadCards = () => dispatch(getPacks({cardsPack_id: pack._id}))
 
     return <tr>
-        <td>{pack.name}</td>
+        <td onClick={loadCards}>{pack.name}</td>
         <td>{pack.cardsCount}</td>
         <td>{lastUpdate}</td>
         <td>{pack.user_name}</td>

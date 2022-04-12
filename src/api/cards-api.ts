@@ -1,14 +1,14 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: 'http://localhost:7542/2.0/',
-    //baseURL: 'https://neko-back.herokuapp.com/2.0/',
+    // baseURL: 'http://localhost:7542/2.0/',
+    baseURL: 'https://neko-back.herokuapp.com/2.0/',
     withCredentials: true,
 })
 
 export const cardsAPI = {
     getCards(data: ParamsGetCardsType) {
-        return instance.get<CardsResponseType>('/cards/card', {data}).then(res => res.data)
+        return instance.get<CardsResponseType>(`/cards/card?cardsPack_id=${data.cardsPack_id}`)
     },
     addCards(data: ParamsAddCardsType) {
         return instance.post('/cards/card',{data})
@@ -24,7 +24,8 @@ export const cardsAPI = {
 export type ParamsGetCardsType = {
     cardAnswer?: string
     cardQuestion?: string
-    cardsPack_id: number
+    // cardsPack_id: number
+    cardsPack_id: string
     min?: number
     max?: number
     sortCards?:number
@@ -70,4 +71,15 @@ export type CardType = {
     created: string
     updated: string
     _id: string
+}
+export type UpdateCardType = {
+    answer?: string
+    question?: string
+    cardsPack_id?: string
+    grade?: number
+    shots?: number
+    user_id?: string
+    created?: string
+    updated?: string
+    _id?: string
 }

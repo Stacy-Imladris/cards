@@ -1,6 +1,12 @@
-import React, {DetailedHTMLProps, InputHTMLAttributes, HTMLAttributes, useState} from 'react'
+import {
+    DetailedHTMLProps,
+    InputHTMLAttributes,
+    HTMLAttributes,
+    useState,
+    FC, memo
+} from 'react'
 import s from './SuperEditableSpan.module.css'
-import SuperInputText from '../c1-SuperInputText/SuperInputText';
+import {SuperInputText} from '../c1-SuperInputText/SuperInputText';
 
 // тип пропсов обычного инпута
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
@@ -18,7 +24,7 @@ type SuperEditableSpanType = DefaultInputPropsType & { // и + ещё пропс
     spanProps?: DefaultSpanPropsType // пропсы для спана
 }
 
-const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
+export const SuperEditableSpan: FC<SuperEditableSpanType> = memo((
     {
         autoFocus, // игнорировать изменение этого пропса
         onBlur,
@@ -74,6 +80,4 @@ const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
             }
         </>
     )
-}
-
-export default SuperEditableSpan
+})

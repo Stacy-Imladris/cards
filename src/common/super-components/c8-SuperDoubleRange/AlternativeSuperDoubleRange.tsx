@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import {FC, memo, useState} from 'react'
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
@@ -7,7 +7,7 @@ type AlternativeSuperDoubleRangePropsType = {
     value?: [number, number]
 }
 
-export const AlternativeSuperDoubleRange: React.FC<AlternativeSuperDoubleRangePropsType> = ({
+export const AlternativeSuperDoubleRange: FC<AlternativeSuperDoubleRangePropsType> = memo(({
                                                                                                 onChangeRange,
                                                                                                 value,
                                                                                                 ...restProps
@@ -35,4 +35,4 @@ export const AlternativeSuperDoubleRange: React.FC<AlternativeSuperDoubleRangePr
                 {...restProps}/>
         </Box>
     )
-}
+})

@@ -1,6 +1,8 @@
-import axios, {AxiosResponse} from 'axios'
+import {AxiosResponse} from 'axios'
 import {UserType} from "../../Profile/profile-api";
+import {instance} from '../../../api/instance';
 
+<<<<<<< HEAD:src/components/Login/LoginAPI/api.ts
 
 const instance = axios.create({
     // baseURL: 'http://localhost:7542/2.0/',
@@ -10,6 +12,9 @@ const instance = axios.create({
 
 
 export const cardsApi = {
+=======
+export const loginAPI = {
+>>>>>>> master:src/components/Login/LoginAPI/login-api.ts
     login(login: LoginType) {
         return instance.post<any, AxiosResponse<UserType>, LoginType>('auth/login', login)
     },
@@ -17,7 +22,6 @@ export const cardsApi = {
         return instance.delete<any, AxiosResponse<ResponseDeleteType>>('auth/me')
     },
 }
-
 
 //types
 export type LoginType = {

@@ -1,20 +1,26 @@
-import React, {useEffect, useState} from 'react'
+import {useCallback, useEffect, useState} from 'react'
 import s from './Profile.module.css'
 import profile_ava from '../../assets/images/profile_ava.png'
-import SuperInputText from '../../common/super-components/c1-SuperInputText/SuperInputText'
+import {SuperInputText} from '../../common/super-components/c1-SuperInputText/SuperInputText'
 import {useDispatch} from 'react-redux'
 import {useAppSelector} from '../../bll/store'
-import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton'
+import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton'
 import {Navigate} from 'react-router-dom'
 import {PATH} from '../../app/AllRoutes'
 import {profileActions, updateProfile} from '../../bll/profile-reducer'
 import {Preloader} from '../../common/preloader/Preloader'
+import {
+    selectIsLoggedIn,
+    selectProfileError, selectProfileIsFetching,
+    selectProfileUser
+} from '../../selectors/selectors';
 
 export const EditProfile = () => {
-    const userData = useAppSelector(state => state.profile.user)
-    const error = useAppSelector(state => state.profile.error)
-    const isLoggedIn = useAppSelector(state => state.login.isLoggedIn)
-    const isFetching = useAppSelector(state => state.profile.isFetching)
+    const userData = useAppSelector(selectProfileUser)
+    const error = useAppSelector(selectProfileError)
+    const isLoggedIn = useAppSelector(selectIsLoggedIn)
+    const isFetching = useAppSelector(selectProfileIsFetching)
+
     const [name, setName] = useState<string>(userData.name)
 
     const dispatch = useDispatch()
@@ -25,20 +31,22 @@ export const EditProfile = () => {
         }
     }, [dispatch])
 
-    const navigateToProfile = () => {
+    const navigateToProfile = useCallback(() => {
         <Navigate to={PATH.PROFILE}/>
         dispatch(profileActions.setEditModeProfile(false))
-    }
+    }, [dispatch])
 
-    const updateData = () => {
+    const updateData = useCallback(() => {
         if (isLoggedIn) {
             dispatch(updateProfile(name, 'https//avatar-url.img'))
         } else {
             <Navigate to={PATH.LOGIN}/>
         }
-    }
+    }, [dispatch, name])
 
-    const changeNameHandle = (e: React.ChangeEvent<HTMLInputElement>) => setName(e.currentTarget.value)
+    const changeNameHandle = useCallback((value: string) => {
+        setName(value)
+    }, [])
 
     return (
         <div className={s.editProfilePage}>
@@ -47,7 +55,7 @@ export const EditProfile = () => {
                 <img src={profile_ava} alt="avatar"/>
             </div>
             <div>
-                <SuperInputText value={name} onChange={changeNameHandle}/>
+                <SuperInputText value={name} onChangeText={changeNameHandle}/>
             </div>
             <div>
                 <SuperInputText value={userData.email}/>

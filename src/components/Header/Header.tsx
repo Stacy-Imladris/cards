@@ -1,23 +1,25 @@
 import {NavLink} from 'react-router-dom';
-import React, {useCallback} from 'react';
+import {useCallback} from 'react';
 import s from './Header.module.css';
 import {PATH} from '../../app/AllRoutes';
-import {useDispatch, useSelector} from 'react-redux';
-import {AppRootStateType, useAppSelector} from '../../bll/store';
-import {logoutTC} from '../Login/LoginBLL/loginReducer';
+import {useDispatch} from 'react-redux';
+import {useAppSelector} from '../../bll/store';
 import {themeActions, ThemeType} from '../../bll/themeReducer';
-import SuperSelect from '../../common/super-components/c5-SuperSelect/SuperSelect';
+import {SuperSelect} from '../../common/super-components/c5-SuperSelect/SuperSelect';
 import {saveState} from '../../utils/localstorage';
+import {selectIsLoggedIn, selectTheme} from '../../selectors/selectors';
+import {logout} from '../Login/LoginBLL/loginReducer';
 
 const themes = ['day', 'night']
 
 export const Header = () => {
-    const theme = useAppSelector(state => state.theme.theme)
-    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn)
+    const theme = useAppSelector(selectTheme)
+    const isLoggedIn = useAppSelector(selectIsLoggedIn)
+
     const dispatch = useDispatch()
 
     const logOut = () => {
-        dispatch(logoutTC())
+        dispatch(logout())
     }
 
     const onChangeCallback = useCallback((theme: ThemeType) => {

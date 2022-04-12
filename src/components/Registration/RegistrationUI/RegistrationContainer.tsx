@@ -1,20 +1,24 @@
-import {memo, useCallback, useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import {Registration} from './Registration';
 import {useDispatch} from 'react-redux';
 import {registrationActions, signUp} from '../RegistrationBLL/registration-reducer';
 import {useAppSelector} from '../../../bll/store';
 import {Navigate, useNavigate} from 'react-router-dom';
 import {PATH} from '../../../app/AllRoutes';
+import {
+    selectRegistrationError, selectRegistrationIsLoading,
+    selectRegistrationToLogin, selectTheme
+} from '../../../selectors/selectors';
 
-export const RegistrationContainer = memo(() => {
+export const RegistrationContainer = () => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [password2, setPassword2] = useState<string>('')
 
-    const error = useAppSelector(state => state.registration.error)
-    const isLoading = useAppSelector(state => state.registration.isLoading)
-    const toLogin = useAppSelector(state => state.registration.toLogIn)
-    const theme = useAppSelector(state => state.theme.theme)
+    const theme = useAppSelector(selectTheme)
+    const error = useAppSelector(selectRegistrationError)
+    const isLoading = useAppSelector(selectRegistrationIsLoading)
+    const toLogin = useAppSelector(selectRegistrationToLogin)
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -29,15 +33,9 @@ export const RegistrationContainer = memo(() => {
         }
     }, [dispatch])
 
-    if (toLogin) {
-        return <Navigate to={PATH.LOGIN}/>
-    }
+    if (toLogin) return <Navigate to={PATH.LOGIN}/>
 
-    return <Registration
-        signUp={toSignUp} navigate={navigate}
-        email={email} setEmail={setEmail}
-        password={password} setPassword={setPassword}
-        password2={password2} setPassword2={setPassword2}
-        error={error} isLoading={isLoading} theme={theme}
-    />
-})
+    return <Registration signUp={toSignUp} navigate={navigate}
+        password={password} setPassword={setPassword} password2={password2} setPassword2={setPassword2}
+        error={error} isLoading={isLoading} theme={theme} email={email} setEmail={setEmail}/>
+}

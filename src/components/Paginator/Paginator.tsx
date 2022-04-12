@@ -1,18 +1,16 @@
-import {useDispatch} from 'react-redux';
 import s from './Paginator.module.css';
-import {useAppSelector} from '../../bll/store';
 import {getPagesForRender} from '../../utils/page-helper';
-import {getPacks, packsActions} from '../../bll/packs-reducer';
+import {memo} from 'react';
 
-export const Paginator = () => {
-    const cardPacksTotalCount = useAppSelector(state => state.packs.cardPacksTotalCount)
-    const packs = useAppSelector(state => state.packs.packs)
-    const page = useAppSelector(state => state.packs.params.page)
-    const pageCount = useAppSelector(state => state.packs.params.pageCount)
+type PaginatorPropsType = {
+    onPageChanged: (page: number) => void
+    itemsTotalCount: number
+    page: number
+    pageCount: number
+}
 
-    const dispatch = useDispatch()
-
-    const pagesCount = Math.ceil(cardPacksTotalCount / pageCount)
+export const Paginator = memo(({onPageChanged, itemsTotalCount, page, pageCount}: PaginatorPropsType) => {
+    const pagesCount = Math.ceil(itemsTotalCount / pageCount)
 
     const pages = []
     for (let i = 1; i <= pagesCount; i += 1) {
@@ -21,23 +19,22 @@ export const Paginator = () => {
 
     const pagesForRender = getPagesForRender(pages, page, pagesCount)
 
-    const onPageChanged = (page: number) => {
-        dispatch(packsActions.setCurrentPage(page))
-        dispatch(getPacks())
+    const onClickPageChanged = (page: number) => {
+        onPageChanged(page)
     }
 
     return (
-        packs.length ?
+        itemsTotalCount ?
             <div className={s.paginatorContainer}>
                 <div className={s.container}>
                     <div>
                         {page > 3 && (
                             <>
                                 <button
-                                    onClick={() => onPageChanged(page - 1)}>Previous
+                                    onClick={() => onClickPageChanged(page - 1)}>Previous
                                 </button>
                                 <button className={page === 1 ? s.selectedPage : ''}
-                                        onClick={() => onPageChanged(1)}> 1
+                                        onClick={() => onClickPageChanged(1)}> 1
                                 </button>
                                 <span>...</span>
                             </>
@@ -46,7 +43,7 @@ export const Paginator = () => {
                     <div>
                         {pagesForRender.map(p => (
                             <button className={page === p ? s.selectedPage : ''}
-                                    onClick={() => onPageChanged(p)}
+                                    onClick={() => onClickPageChanged(p)}
                                     key={p}> {p} </button>))}
                     </div>
                     <div>
@@ -55,8 +52,8 @@ export const Paginator = () => {
                                 <span>...</span>
                                 <button
                                     className={page === pages.length ? s.selectedPage : ''}
-                                    onClick={() => onPageChanged(pages.length)}> {pages.length} </button>
-                                <button onClick={() => onPageChanged(page + 1)}>Next
+                                    onClick={() => onClickPageChanged(pages.length)}> {pages.length} </button>
+                                <button onClick={() => onClickPageChanged(page + 1)}>Next
                                 </button>
                             </>
                         )}
@@ -65,4 +62,4 @@ export const Paginator = () => {
             </div>
             : <div>Nothing was found</div>
     )
-}
+})

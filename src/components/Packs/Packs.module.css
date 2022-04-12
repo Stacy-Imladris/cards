@@ -1,0 +1,11 @@
+.num {
+    display: inline-block;
+    width: 33px;
+    text-align: center;
+}
+
+.rowElements {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}

@@ -1,34 +1,30 @@
-import {InitialStateType, loginReducer, setIsLoggedInAC, setLoginErrorAC} from "./loginReducer";
+import {loginActions, LoginInitialStateType, loginReducer} from './loginReducer';
 
-let startState: InitialStateType
-
-// type  InitialStateType = {
-//     isLoggedIn: boolean,
-//     error: null | string,
-//     isLogin: boolean
-// }
+let startState: LoginInitialStateType
 
 beforeEach(() => {
     startState = {
         isLoggedIn: false,
         error: "",
-        isLogin: false
+        isLoading: false
     }
 })
 
-test('isLoggedIn should be meaning', () => {
+test('correct isLoggedIn value should be set', () => {
+    const endState = loginReducer(startState, loginActions.setIsLoggedIn(true))
 
-    const action = setIsLoggedInAC(true);
-
-    const endState = loginReducer(startState, action)
-    expect(endState.isLoggedIn).toBe(true);
+    expect(endState.isLoggedIn).toBeTruthy()
 })
 
 
-test('error should be meaning', () => {
+test('correct error message should be set', () => {
+    const endState = loginReducer(startState, loginActions.setLoginError("Some error"))
 
-    const action = setLoginErrorAC("Some error");
-
-    const endState = loginReducer(startState, action)
     expect(endState.error).toBe("Some error");
+})
+
+test('correct isLoading value should be set', () => {
+    const endState = loginReducer(startState, loginActions.setIsLoading(true))
+
+    expect(endState.isLoading).toBeTruthy()
 })

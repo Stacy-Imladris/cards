@@ -33,9 +33,7 @@ export const RegistrationContainer = () => {
         }
     }, [dispatch])
 
-    if (toLogin) {
-        return <Navigate to={PATH.LOGIN}/>
-    }
+    if (toLogin) return <Navigate to={PATH.LOGIN}/>
 
     return <Registration signUp={toSignUp} navigate={navigate}
         password={password} setPassword={setPassword} password2={password2} setPassword2={setPassword2}

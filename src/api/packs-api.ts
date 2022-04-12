@@ -1,15 +1,10 @@
-import axios, {AxiosResponse} from 'axios'
-import {ParamsType} from '../bll/packs-reducer';
+import {AxiosResponse} from 'axios';
+import {PacksParamsType} from '../bll/packs-reducer';
+import {instance} from './instance';
 
-const instance = axios.create({
-    // baseURL: 'http://localhost:7542/2.0/',
-    baseURL: 'https://neko-back.herokuapp.com/2.0/',
-    withCredentials: true,
-})
-
-export const packAPI = {
-    getPacks(params: ParamsType) {
-        return instance.get<PacksResponseType>('cards/pack', {params}).then(res => res.data)
+export const packsAPI = {
+    getPacks(params: PacksParamsType) {
+        return instance.get<any, AxiosResponse<PacksResponseType>, PacksParamsType>('cards/pack', {params}).then(res => res.data)
     },
     addPack() {
         return instance.post('cards/pack')
@@ -17,11 +12,12 @@ export const packAPI = {
     deletePack(id: string) {
         return instance.delete(`cards/pack?id=${id}`)
     },
-    updatePack(updateData: UpdatePackType) {
-        return instance.put<any, AxiosResponse<PackType>, UpdatePackType>(`cards/pack`, updateData )
+    updatePack(cardsPack: UpdatePackType) {
+        return instance.put<any, AxiosResponse<PackType>, UpdatePackType>(`cards/pack`, cardsPack )
     },
 }
 
+//types
 export type PacksResponseType = {
     cardPacks: PackType[]
     cardPacksTotalCount: number
@@ -29,6 +25,8 @@ export type PacksResponseType = {
     minCardsCount: number
     page: number
     pageCount: number
+    token: string
+    tokenDeathTime: number
 }
 export type PackType = {
     _id: string
@@ -48,8 +46,7 @@ export type PackType = {
     __v: number
     deckCover: null | string
 }
-
-export type UpdatePackType = {
+type UpdatePackType = {
     _id: string
     name: string
 }

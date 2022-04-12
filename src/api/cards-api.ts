@@ -1,66 +1,34 @@
-import axios from 'axios'
-
-const instance = axios.create({
-    // baseURL: 'http://localhost:7542/2.0/',
-    baseURL: 'https://neko-back.herokuapp.com/2.0/',
-    withCredentials: true,
-})
+import {instance} from './instance';
+import {CardsParamsType} from '../bll/cards-reducer';
+import {AxiosResponse} from 'axios';
 
 export const cardsAPI = {
-    getCards(data: ParamsGetCardsType) {
-        return instance.get<CardsResponseType>(`/cards/card?cardsPack_id=${data.cardsPack_id}`)
+    getCards(params: CardsParamsType) {
+        return instance.get<any, AxiosResponse<CardsResponseType>, CardsParamsType>('cards/card', {params}).then(res => res.data)
     },
-    addCards(data: ParamsAddCardsType) {
-        return instance.post('/cards/card',{data})
+    addCard(newCard: NewCardType) {
+        return instance.post('cards/card', {newCard})
     },
-    deleteCards(cardsPackId: string) {
-        return instance.delete(`/cards/card?id=${cardsPackId}`)
+    deleteCard(cardId: string) {
+        return instance.delete(`cards/card?id=${cardId}`)
     },
-    putCards(data: ParamsPutCardsType) {
-        return instance.put(`/cards/card`, {data})
+    updateCard(payload: UpdateCardPayload) {
+        return instance.put(`cards/card`, {payload})
     }
 }
 
-export type ParamsGetCardsType = {
-    cardAnswer?: string
-    cardQuestion?: string
-    // cardsPack_id: number
-    cardsPack_id: string
-    min?: number
-    max?: number
-    sortCards?:number
-    page?:number
-    pageCount?:number
-}
-
-export type ParamsAddCardsType = {
-    cardsPack_id: string
-    question?: string
-    answer?: string
-    grade?: number
-    shots?: number
-    answerImg?: string
-    questionImg?: string
-    questionVideo?: string
-    answerVideo?: string
-}
-
-export type ParamsPutCardsType = {
-    _id: string
-    question?: string
-    comments?: string
-}
-
+//types
 export type CardsResponseType = {
-    cardPacks: CardType[]
+    cards: CardType[]
     cardsTotalCount: number
     maxGrade: number
     minGrade: number
+    packUserId: string
     page: number
     pageCount: number
-    packUserId: string
+    token: string
+    tokenDeathTime: number
 }
-
 export type CardType = {
     answer: string
     question: string
@@ -68,18 +36,21 @@ export type CardType = {
     grade: number
     shots: number
     user_id: string
-    created: string
-    updated: string
+    created: Date
+    updated: Date
     _id: string
 }
-export type UpdateCardType = {
-    answer?: string
-    question?: string
-    cardsPack_id?: string
-    grade?: number
-    shots?: number
-    user_id?: string
-    created?: string
-    updated?: string
-    _id?: string
+export type NewCardType = {
+    cardsPack_id: string
+    question: string
+    answer: string
+    grade: number
+    shots: number
+    answerImg: string
+    questionImg: string
+    questionVideo: string
+    answerVideo: string
+}
+export type UpdateCardPayload = {
+    _id: string
 }

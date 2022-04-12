@@ -24,7 +24,6 @@ export const AllRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<Navigate to={PATH.PROFILE}/>}/>
-
             <Route path={PATH.LOGIN} element={<Login/>}/>
             <Route path={PATH.REGISTRATION} element={<RegistrationContainer/>}/>
             <Route path={PATH.PROFILE} element={<Profile/>}/>

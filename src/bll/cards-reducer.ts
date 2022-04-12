@@ -1,95 +1,67 @@
-import {AppThunk, InferActionTypes} from './store'
-import axios from 'axios'
-import {cardsAPI, CardsResponseType, CardType, ParamsGetCardsType, UpdateCardType} from '../api/cards-api'
+import {cardsAPI, CardType} from '../api/cards-api';
+import {AppThunk, InferActionTypes} from './store';
+import axios from 'axios';
 
-const InitialState = {
-    cardPacks: [
-        {
-            answer: '',
-            question: '',
-            cardsPack_id: '',
-            grade: 4.987525071790364,
-            shots: 1,
-            user_id: '',
-            created: '2020-05-13T11:05:44.867Z',
-            updated: '2020-05-13T11:05:44.867Z',
-            _id: ''
-        }
-    ] as CardType[],
-    cardsTotalCount: 3,
-    maxGrade: 4.987525071790364,
-    minGrade: 2.0100984354076568,
-    page: 1,
-    pageCount: 4,
-    packUserId: '',
-
+const cardsInitialState = {
+    cards: [] as CardType[],
+    error: '',
+    isLoading: false,
     params: {
         cardAnswer: '',
         cardQuestion: '',
         cardsPack_id: '',
-        min: 1,
-        max: 10,
-        sortCards: '0updated',
+        min: 0,
+        max: 5,
+        sortCards: '0grade',
         page: 1,
-        pageCount: 10
-    },
-
-    error: '',
-    isLoading: false
+        pageCount: 7,
+    } as CardsParamsType,
+    cardsTotalCount: 0,
+    packName: '',
 }
 
-export const cardsReducer = (state: CardsStateType = InitialState, action: CardsActionTypes): CardsStateType => {
+export const cardsReducer = (state: CardsInitialStateType = cardsInitialState, action: CardsActionTypes): CardsInitialStateType => {
     switch (action.type) {
         case 'CARDS/SET_CARDS':
-        case 'CARDS/SET_CURRENT_PAGE':
         case 'CARDS/SET_CARDS_ERROR':
         case 'CARDS/SET_CARDS_IS_LOADING':
         case 'CARDS/SET_CARDS_TOTAL_COUNT':
+        case 'CARDS/SET_PACK_NAME':
             return {...state, ...action.payload}
-        case 'CARDS/SET_ANSWER_TITLE_FOR_SEARCH':
-            return {...state, params: {...state.params, cardAnswer: action.payload.answer}}
-        case 'CARDS/SET_QUESTION_TITLE_FOR_SEARCH':
-            return {...state, params: {...state.params, cardQuestion: action.payload.question}}
-        case 'CARDS/ADD-CARD':
-            return {...state, cardPacks: [{...action.payload.card}, ...state.cardPacks]}
-        case 'CARDS/DELETE-CARD':
-            return {...state, cardPacks: state.cardPacks.filter(card => card._id !== action.payload.cardId)}
-        case 'CARDS/UPDATE_CARD':
-            return {
-                ...state, cardPacks: state.cardPacks.map(card => {
-                    return card._id === action.payload.cardId ? {...card, ...action.payload.card} : card
-                })
-            }
+        case 'CARDS/SET_CURRENT_PAGE':
+        case 'CARDS/SET_ANSWER_FOR_SEARCH':
+        case 'CARDS/SET_QUESTION_FOR_SEARCH':
+        case 'CARDS/SET_SORT_PARAMETERS':
+        case 'CARDS/SET_PACK_ID':
+            return {...state, params: {...state.params, ...action.payload}}
         default:
             return state
     }
 }
 
 export const cardsActions = {
-    setCards: (cardsData: CardsResponseType) => ({type: 'CARDS/SET_CARDS', payload: cardsData} as const),
-    setCurrentPage: (page: number) => ({type: 'CARDS/SET_CURRENT_PAGE', payload: {page}} as const),
+    setCards: (cards: CardType[]) => ({type: 'CARDS/SET_CARDS', payload: {cards}} as const),
     setCardsError: (error: string) => ({type: 'CARDS/SET_CARDS_ERROR', payload: {error}} as const),
     setCardsIsLoading: (isLoading: boolean) => ({type: 'CARDS/SET_CARDS_IS_LOADING', payload: {isLoading}} as const),
     setCardsTotalCount: (cardsTotalCount: number) =>
         ({type: 'CARDS/SET_CARDS_TOTAL_COUNT', payload: {cardsTotalCount}} as const),
-    setAnswerTitleForSearch: (answer: string) =>
-        ({type: 'CARDS/SET_ANSWER_TITLE_FOR_SEARCH', payload: {answer}} as const),
-    setQuestionTitleForSearch: (question: string) =>
-        ({type: 'CARDS/SET_QUESTION_TITLE_FOR_SEARCH', payload: {question}} as const),
-    addCard: (card: CardType) => ({type: 'CARDS/ADD-CARD', payload: {card}} as const),
-    deleteCard: (cardId: string) => ({type: 'CARDS/DELETE-CARD', payload: {cardId}} as const),
-    updateCard: (cardId: string, card: UpdateCardType) =>
-        ({type: 'CARDS/UPDATE_CARD', payload: {cardId, card}} as const)
+    setCurrentPage: (page: number) => ({type: 'CARDS/SET_CURRENT_PAGE', payload: {page}} as const),
+    setAnswerForSearch: (cardAnswer: string) => ({type: 'CARDS/SET_ANSWER_FOR_SEARCH', payload: {cardAnswer}} as const),
+    setQuestionForSearch: (cardQuestion: string) => ({type: 'CARDS/SET_QUESTION_FOR_SEARCH', payload: {cardQuestion}} as const),
+    setSortParameters: (sortCards: string) => ({type: 'CARDS/SET_SORT_PARAMETERS', payload: {sortCards}} as const),
+    setPackId: (cardsPack_id: string) => ({type: 'CARDS/SET_PACK_ID', payload: {cardsPack_id}} as const),
+    setPackName: (packName: string) => ({type: 'CARDS/SET_PACK_NAME', payload: {packName}} as const),
 }
 
 //thunk
-export const getCards = (params: ParamsGetCardsType): AppThunk => async (dispatch) => {
+export const getCards = (): AppThunk => async (dispatch, getState) => {
+    const params = getState().cards.params
     dispatch(cardsActions.setCardsIsLoading(true))
     try {
         const data = await cardsAPI.getCards(params)
         dispatch(cardsActions.setCardsError(''))
-        dispatch(cardsActions.setCardsTotalCount(data.data.cardsTotalCount))
-        dispatch(cardsActions.setCards(data.data))
+        dispatch(cardsActions.setCardsTotalCount(data.cardsTotalCount))
+        dispatch(cardsActions.setCards(data.cards))
     } catch (e) {
         if (axios.isAxiosError(e)) {
             dispatch(cardsActions.setCardsError(e.response ? e.response.data.error : e.message))
@@ -102,6 +74,17 @@ export const getCards = (params: ParamsGetCardsType): AppThunk => async (dispatc
 }
 
 //types
-export type CardsStateType = typeof InitialState
+export type CardsInitialStateType = typeof cardsInitialState
 export type CardsActionTypes = InferActionTypes<typeof cardsActions>
-
+export type CardsParamsType = {
+    cardAnswer: string
+    cardQuestion: string
+    cardsPack_id: string
+    min: number,
+    max: number,
+    sortCards: string
+    page: number
+    pageCount: number
+}
+//export type SortValuesType = 'name' | 'cardsCount' | 'updated' | 'user_name'
+//export type SortOrderType = '0' | '1'

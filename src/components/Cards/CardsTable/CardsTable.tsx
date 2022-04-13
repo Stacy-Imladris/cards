@@ -8,9 +8,9 @@ import {
     selectCards,
     selectCardsAnswer,
     selectCardsQuestion,
-    selectCardsTotalCount,
+    selectCardsTotalCount, selectPackUserId,
     selectPageCountForCards,
-    selectPageForCards
+    selectPageForCards, selectUser_id
 } from '../../../selectors/selectors';
 import {Paginator} from '../../Paginator/Paginator';
 import {packsActions} from '../../../bll/packs-reducer';
@@ -25,7 +25,8 @@ export const CardsTable = () => {
     const cardsTotalCount = useAppSelector(selectCardsTotalCount)
     const page = useAppSelector(selectPageForCards)
     const pageCount = useAppSelector(selectPageCountForCards)
-
+    const userId = useAppSelector(selectUser_id)
+    const packUserId = useAppSelector(selectPackUserId)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -91,6 +92,11 @@ export const CardsTable = () => {
                         Grade
                     </span>
                 </th>
+                {userId ===packUserId && <th>
+                    <span>
+                        Actions
+                    </span>
+                </th>}
             </tr>
             </thead>
             <tbody>

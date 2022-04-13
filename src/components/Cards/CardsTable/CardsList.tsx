@@ -9,7 +9,7 @@ type CardsListPropsType = {
 export const CardsList: FC<CardsListPropsType> = memo(({cards}) => {
     return <>
         {
-            cards.map(card => <Card key={card._id} card={card}/>)
+            cards.map(card => <Card key={card._id} card={card} id={card._id}/>)
         }
     </>
 })

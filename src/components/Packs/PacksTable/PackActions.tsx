@@ -25,7 +25,7 @@ export const PackActions: FC<PackActionsType> = memo(({isMyPacks, userId, packId
             && <>
                 <SuperButton red onClick={onClickDeletePack}>Delete</SuperButton>
                 <SuperButton
-                  // onClick={updatePack}
+                    // onClick={updatePack}
                 >Edit</SuperButton>
             </>
         }

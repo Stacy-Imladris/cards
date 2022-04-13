@@ -31,3 +31,9 @@
     padding: 2px;
     border-radius: 17px;
 }
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+
+}

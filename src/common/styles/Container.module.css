@@ -8,15 +8,29 @@
     min-height: 80vh;
 }
 
+@media screen and (max-width: 940px) {
+    .container {
+        flex-direction: column;
+    }
+    .settings {
+        display: flex;
+        align-items: center;
+        max-width: 80%;
+    }
+    .performance {
+        padding: 0 10px;
+        max-width: 100%;
+        min-width: 75%;
+    }
+}
+
 .settings {
-    max-width: 22%;
     min-width: 22%;
 }
 
 .performance {
     padding: 0 10px;
-    max-width: 74%;
-    min-width: 74%;
+    min-width: 75%;
 }
 
 .table {
@@ -34,5 +48,5 @@
 .text {
     font-weight: bold;
     font-size: 20px;
-    margin: 25px auto;
+    margin: 15px 10px 15px 10px;
 }

@@ -64,21 +64,21 @@ export const Packs = () => {
                                 className={s.superRadio}
                     />
                     <div className={c.text}>Number of cards</div>
-                    <div>
-                        <span className={s.num}>{value1Range}</span>
+                    <div className={s.doubleRange}>
+                        <div className={s.num}>{value1Range}</div>
                         <AlternativeSuperDoubleRange value={[value1Range, value2Range]}
                                                      onChangeRange={changeTwoValue}
                                                      min={minCardsCount}
                                                      max={maxCardsCount}/>
-                        <span className={s.num}>{value2Range}</span>
+                        <div className={s.num}>{value2Range}</div>
                     </div>
                 </div>
                 <div className={c.performance}>
                     <div className={c.title}>Packs list</div>
                     <div className={s.rowElements}>
                         <SearchField onChangeWithDebounce={onChangeDebounceRequest}
-                                     value={packName} wide/>
-                        <SuperButton>Add new pack</SuperButton>
+                                     value={packName} wide placeholder={'Enter pack\'s title for search'}/>
+                        <SuperButton className={s.addPack}>Add pack</SuperButton>
                     </div>
                     <div className={c.table}><PacksTable/></div>
                 </div>

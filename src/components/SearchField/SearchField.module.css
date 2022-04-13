@@ -17,6 +17,12 @@
     width: 440px;
 }
 
+@media screen and (max-width: 1235px) {
+    .wideSearchField {
+        width: 100%;
+    }
+}
+
 .wideSearchField:focus {
     width: 440px;
 }

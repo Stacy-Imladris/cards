@@ -8,9 +8,10 @@ type SearchFieldPropsType = {
     onChangeWithDebounce: (title: string) => void
     value: string
     wide?: boolean
+    placeholder?: string
 }
 
-export const SearchField = memo(({onChangeWithDebounce, value, wide}: SearchFieldPropsType) => {
+export const SearchField = memo(({onChangeWithDebounce, value, wide, placeholder}: SearchFieldPropsType) => {
     const [title, setTitle] = useState<string>(value)
     const [timerId, setTimerId] = useState<number>(0)
 
@@ -27,7 +28,7 @@ export const SearchField = memo(({onChangeWithDebounce, value, wide}: SearchFiel
         <div className={s.searchBlock}>
             <div>🔍︎</div>
             <SuperInputText value={title} onChangeText={onChangeText}
-                            placeholder={'Enter title for search'}
+                            placeholder={placeholder}
                             className={searchFieldClassName}/>
             <SuperButton className={s.deleteIcon} onClick={() => onChangeText('')}>
                 ✘

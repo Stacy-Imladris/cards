@@ -10,8 +10,25 @@
     text-align: center;
 }
 
+.addPack {
+    min-width: 120px;
+    width: 120px;
+}
+
 .rowElements {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
 }
+
+.doubleRange {
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+/*@media screen and (max-width: 1235px) {
+    .rowElements {
+        flex-direction: column;
+    }
+}*/

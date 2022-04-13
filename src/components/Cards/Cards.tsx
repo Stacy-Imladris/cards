@@ -49,11 +49,11 @@ export const Cards = () => {
                     </div>
                     <div className={s.rowElements}>
                         <div>
-                            <SearchField value={cardQuestion}
+                            <SearchField value={cardQuestion} placeholder={'Enter question'}
                                          onChangeWithDebounce={onChangeDebounceQuestionRequest}/>
                         </div>
                         <div>
-                            <SearchField value={cardAnswer}
+                            <SearchField value={cardAnswer} placeholder={'Enter answer'}
                                          onChangeWithDebounce={onChangeDebounceAnswerRequest}/>
                         </div>
                     </div>

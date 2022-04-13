@@ -6,11 +6,11 @@ export const packsAPI = {
     getPacks(params: PacksParamsType) {
         return instance.get<any, AxiosResponse<PacksResponseType>, PacksParamsType>('cards/pack', {params}).then(res => res.data)
     },
-    addPack() {
-        return instance.post('cards/pack')
+    addPack(cardsPack: CardsPackAddType) {
+        return instance.post<CardsPackAddType>('cards/pack', {cardsPack})
     },
-    deletePack(id: string) {
-        return instance.delete(`cards/pack?id=${id}`)
+    deletePack(_id: string) {
+        return instance.delete(`cards/pack?id=${_id}`)
     },
     updatePack(cardsPack: UpdatePackType) {
         return instance.put<any, AxiosResponse<PackType>, UpdatePackType>(`cards/pack`, cardsPack )
@@ -49,4 +49,10 @@ export type PackType = {
 type UpdatePackType = {
     _id: string
     name: string
+}
+
+export type CardsPackAddType = {
+    name: string,
+    deckCover: string,
+    private: boolean
 }

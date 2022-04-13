@@ -6,13 +6,14 @@ import {useAppSelector} from '../../bll/store';
 import React, {useCallback} from 'react';
 import {Paginator} from '../Paginator/Paginator';
 import {SearchField} from '../SearchField/SearchField';
-import {useNavigate} from 'react-router-dom';
+import {Navigate, useNavigate} from 'react-router-dom';
 import {PATH} from '../../app/AllRoutes';
 import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton';
 import {useDispatch} from 'react-redux';
 import {cardsActions, getCards} from '../../bll/cards-reducer';
-import {selectCardAnswer, selectCardQuestion, selectCardsTotalCount,
-    selectPackName, selectPageForCards, selectPageCountForCards, selectTheme
+import {
+    selectCardAnswer, selectCardQuestion, selectCardsTotalCount,
+    selectPackName, selectPageForCards, selectPageCountForCards, selectTheme, selectIsLoggedIn
 } from '../../selectors/selectors';
 
 export const Cards = () => {
@@ -23,7 +24,7 @@ export const Cards = () => {
     const pageCount = useAppSelector(selectPageCountForCards)
     const cardQuestion = useAppSelector(selectCardQuestion)
     const cardAnswer = useAppSelector(selectCardAnswer)
-
+    const isLoggedIn = useAppSelector(selectIsLoggedIn)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -41,6 +42,12 @@ export const Cards = () => {
         dispatch(cardsActions.setCurrentPage(1))
         dispatch(cardsActions.setAnswerForSearch(title))
     }, [dispatch])
+
+
+
+    if (!isLoggedIn) {
+        return <Navigate to={PATH.LOGIN}/>
+    }
 
     return (
         <div className={`${c.container} ${t[theme + '-text']}`}>

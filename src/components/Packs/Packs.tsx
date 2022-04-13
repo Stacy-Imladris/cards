@@ -4,16 +4,20 @@ import s from './Packs.module.css'
 import c from '../../common/styles/Container.module.css'
 import {useAppSelector} from '../../bll/store';
 import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton';
-import {useCallback, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import {AlternativeSuperDoubleRange} from '../../common/super-components/c8-SuperDoubleRange/AlternativeSuperDoubleRange';
 import {Paginator} from '../Paginator/Paginator';
 import {SearchField} from '../SearchField/SearchField';
 import {SuperRadio} from '../../common/super-components/c6-SuperRadio/SuperRadio';
 import {useDispatch} from 'react-redux';
-import {getPacks, packsActions} from '../../bll/packs-reducer';
-import {selectCardPacksTotalCount, selectPackNameForSearch, selectUser_id,
-    selectPageCountForPacks, selectPageForPacks, selectTheme,
+import {addPack, getPacks, packsActions} from '../../bll/packs-reducer';
+import {
+    selectCardPacksTotalCount, selectPackNameForSearch, selectUser_id,
+    selectPageCountForPacks, selectPageForPacks, selectTheme, selectIsLoggedIn, selectLoginError,
 } from '../../selectors/selectors';
+import {Navigate} from "react-router-dom";
+import {PATH} from "../../app/AllRoutes";
+import {loginActions} from "../Login/LoginBLL/loginReducer";
 
 const arr = ['All', 'My']
 
@@ -26,7 +30,8 @@ export const Packs = () => {
     const packName = useAppSelector(selectPackNameForSearch)
     const minCardsCount = useAppSelector(state => state.packs.minCardsCount)
     const maxCardsCount = useAppSelector(state => state.packs.maxCardsCount)
-
+    const isLoggedIn = useAppSelector(selectIsLoggedIn)
+    const status = useAppSelector(state => state.packs.status)
     const dispatch = useDispatch()
 
     const [valueFromArray, setValueFromArray] = useState(arr[0])
@@ -59,6 +64,20 @@ export const Packs = () => {
         dispatch(packsActions.setTitleForSearch(title))
     }, [dispatch])
 
+    const cardsPack = {
+        name: "no Name",
+        deckCover: "url or base64",
+        private: true
+    }
+    const addNewPack = () => {
+        dispatch(addPack(cardsPack))
+    }
+
+    if (!isLoggedIn) {
+        return <Navigate to={PATH.LOGIN}/>
+    }
+
+
     return (
         <div className={`${c.container} ${t[theme + '-text']}`}>
             <div className={c.settings}>
@@ -81,9 +100,10 @@ export const Packs = () => {
                 <div className={s.rowElements}>
                     <SearchField onChangeWithDebounce={onChangeDebounceRequest}
                                  value={packName}/>
-                    <SuperButton>Add new pack</SuperButton>
+                    <SuperButton onClick={addNewPack}>Add new pack</SuperButton>
                 </div>
                 <div className={c.table}><PacksTable/></div>
+                <div>{status}</div>
                 <div className={c.pagination}>
                     <Paginator onPageChanged={onPageChanged}
                                itemsTotalCount={cardPacksTotalCount}

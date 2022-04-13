@@ -53,7 +53,11 @@ export const logout = (): AppThunk => async dispatch => {
         await loginAPI.logout()
         dispatch(loginActions.setIsLoggedIn(false))
     } catch (e) {
-
+        if (axios.isAxiosError(e)) {
+            dispatch(loginActions.setLoginError(e.response ? e.response.data.response : e.message))
+        } else {
+            dispatch(loginActions.setLoginError('Some error occurred'))
+        }
     }
 }
 

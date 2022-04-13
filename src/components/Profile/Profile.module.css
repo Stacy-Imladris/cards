@@ -52,17 +52,11 @@
 
 }
 
-.profilePackst_search {
-}
-
 .profilePacks_packsTable {
     margin: 20px 0;
     /*height: 300px;*/
     width: 669px;
     background-color: #eaeaea;
-}
-
-.profilePacks_pagination {
 }
 
 .editProfilePage {

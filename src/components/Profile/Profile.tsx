@@ -4,7 +4,7 @@ import profile_ava from '../../assets/images/profile_ava.png'
 import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton'
 import {SuperInputText} from '../../common/super-components/c1-SuperInputText/SuperInputText'
 import {Navigate, useNavigate} from 'react-router-dom';
-import {PATH} from "../../app/AllRoutes";
+import {PATH} from '../../app/AllRoutes';
 import {profileActions} from '../../bll/profile-reducer';
 import {useDispatch} from 'react-redux';
 import {useAppSelector} from '../../bll/store';
@@ -48,9 +48,9 @@ export const Profile = () => {
                         </div>
                         <div className={s.profile_name}>{name}</div>
                         <div className={s.profile_job}>Front-end developer</div>
-                        <div>
-                            <SuperButton onClick={editProfile}>Edit profile</SuperButton>
-                        </div>
+
+                        <SuperButton onClick={editProfile}>Edit profile</SuperButton>
+
                     </div>
                     <div className={s.profile_filter}>
                         <h3>Number of cards</h3>
@@ -60,12 +60,10 @@ export const Profile = () => {
                 <div className={s.profilePacks}>
                     <h2 onClick={() => navigate(PATH.PACKS)}>PackListAll</h2>
                     <h2>My packs list</h2>
-                    <div className={s.profilePacks_search}>
-                        <div>
-                            <SuperInputText placeholder={'search'}/>
-                        </div>
+                    <div>
+                        <SuperInputText placeholder={'search'}/>
                     </div>
-                    <div className={s.profilePacks_pagination}>
+                    <div>
                         profilePacks_pagination
                         <div>1 2 3 4...</div>
                     </div>

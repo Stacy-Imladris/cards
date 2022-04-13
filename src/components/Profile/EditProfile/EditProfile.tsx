@@ -1,5 +1,4 @@
 import {useCallback, useEffect, useState} from 'react'
-//import s from '../Profile.module.css'
 import s from '../../../common/styles/Forms.module.css'
 import t from '../../../common/styles/Themes.module.css'
 import profile_ava from '../../../assets/images/profile_ava.png'

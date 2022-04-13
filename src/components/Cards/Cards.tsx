@@ -9,17 +9,14 @@ import {Navigate, useNavigate} from 'react-router-dom';
 import {PATH} from '../../app/AllRoutes';
 import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton';
 import {useDispatch} from 'react-redux';
-import {cardsActions} from '../../bll/cards-reducer';
+import {addCard, cardsActions} from '../../bll/cards-reducer';
 import {
     selectCardAnswer,
-    selectCardQuestion,
+    selectCardQuestion, selectIsLoggedIn, selectLoginError,
     selectPackName,
     selectTheme
-import {addCard, cardsActions, getCards} from '../../bll/cards-reducer';
-import {
-    selectCardAnswer, selectCardQuestion, selectCardsTotalCount,
-    selectPackName, selectPageForCards, selectPageCountForCards, selectTheme, selectIsLoggedIn, selectLoginError
 } from '../../selectors/selectors';
+
 
 export const Cards = () => {
     const theme = useAppSelector(selectTheme)

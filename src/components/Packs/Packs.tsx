@@ -8,8 +8,9 @@ import {AlternativeSuperDoubleRange} from '../../common/super-components/c8-Supe
 import {SearchField} from '../SearchField/SearchField';
 import {SuperRadio} from '../../common/super-components/c6-SuperRadio/SuperRadio';
 import {useDispatch} from 'react-redux';
-import {addPack, getPacks, packsActions} from '../../bll/packs-reducer';
+import {addPack, packsActions} from '../../bll/packs-reducer';
 import {
+    selectIsLoggedIn, selectLoginError,
     selectMaxCardsCount,
     selectMinCardsCount,
     selectPackNameForSearch,
@@ -18,7 +19,6 @@ import {
 } from '../../selectors/selectors';
 import {Navigate} from "react-router-dom";
 import {PATH} from "../../app/AllRoutes";
-import {loginActions} from "../Login/LoginBLL/loginReducer";
 
 const arr = ['All', 'My']
 
@@ -103,7 +103,7 @@ export const Packs = () => {
                     <div className={c.table}><PacksTable/></div>
                     <div>{status}</div>
                     <div>{errorPacks}</div>
-                    <div className={s.error}>{error}</div>
+                    <div>{error}</div>
                 </div>
             </div>
         </div>

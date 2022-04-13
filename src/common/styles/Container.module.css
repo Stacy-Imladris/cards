@@ -8,6 +8,15 @@
     min-height: 80vh;
 }
 
+.settings {
+    min-width: 22%;
+}
+
+.performance {
+    padding: 0 10px;
+    min-width: 75%;
+}
+
 @media screen and (max-width: 940px) {
     .container {
         flex-direction: column;
@@ -22,15 +31,6 @@
         max-width: 100%;
         min-width: 75%;
     }
-}
-
-.settings {
-    min-width: 22%;
-}
-
-.performance {
-    padding: 0 10px;
-    min-width: 75%;
 }
 
 .table {

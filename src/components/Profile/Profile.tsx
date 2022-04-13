@@ -8,7 +8,7 @@ import {PATH} from "../../app/AllRoutes";
 import {profileActions} from '../../bll/profile-reducer';
 import {useDispatch} from 'react-redux';
 import {useAppSelector} from '../../bll/store';
-import {EditProfile} from './EditProfile';
+import {EditProfile} from './EditProfile/EditProfile';
 import {
     selectIsLoggedIn,
     selectProfileEditMode, selectProfileUserName,
@@ -39,7 +39,7 @@ export const Profile = () => {
     }
 
     return (
-        <div className={`${s.profileWrapper} ${s.container} ${t[theme + '-text']}`}>
+        <div className={`${s.container} ${t[theme + '-text']}`}>
             <div className={s.profilePage}>
                 <div className={s.profileContent}>
                     <div className={s.profileBlock}>
@@ -48,7 +48,7 @@ export const Profile = () => {
                         </div>
                         <div className={s.profile_name}>{name}</div>
                         <div className={s.profile_job}>Front-end developer</div>
-                        <div className={s.profile_edit}>
+                        <div>
                             <SuperButton onClick={editProfile}>Edit profile</SuperButton>
                         </div>
                     </div>

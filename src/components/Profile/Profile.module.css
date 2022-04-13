@@ -1,7 +1,3 @@
-.profileWrapper {
-
-}
-
 .profilePage {
     border: 1px solid gray;
     border-radius: 5px;
@@ -40,7 +36,7 @@
     font-size: 14px;
     opacity: 0.7;
 }
-.profile_edit {}
+
 .profile_filter {
     background-color: #ECECF9;
     display: flex;

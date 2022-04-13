@@ -17,14 +17,17 @@
     width: 440px;
 }
 
-@media screen and (max-width: 1235px) {
-    .wideSearchField {
-        width: 100%;
-    }
-}
-
 .wideSearchField:focus {
     width: 440px;
+}
+
+@media screen and (max-width: 1235px) {
+    .wideSearchField {
+        width: 155px;
+    }
+    .wideSearchField:focus {
+        width: 155px;
+    }
 }
 
 .narrowSearchField {

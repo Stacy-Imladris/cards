@@ -1,6 +1,5 @@
 import {PacksTable} from './PacksTable/PacksTable';
 import t from '../../common/styles/Themes.module.css';
-import s from './Packs.module.css'
 import c from '../../common/styles/Container.module.css'
 import {useAppSelector} from '../../bll/store';
 import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton';
@@ -55,30 +54,30 @@ export const Packs = () => {
     }, [dispatch])
 
     return (
-        <div className={s.packsContainer}>
+        <div className={c.mainContainer}>
             <div className={`${c.container} ${t[theme + '-text']}`}>
                 <div className={c.settings}>
                     <div className={c.text}>Show packs cards</div>
                     <SuperRadio name={'radio'} options={arr}
                                 value={valueFromArray} onChangeOption={onChangeOption}
-                                className={s.superRadio}
                     />
                     <div className={c.text}>Number of cards</div>
-                    <div className={s.doubleRange}>
-                        <div className={s.num}>{value1Range}</div>
+                    <div className={c.doubleRange}>
+                        <div className={c.num}>{value1Range}</div>
                         <AlternativeSuperDoubleRange value={[value1Range, value2Range]}
                                                      onChangeRange={changeTwoValue}
                                                      min={minCardsCount}
                                                      max={maxCardsCount}/>
-                        <div className={s.num}>{value2Range}</div>
+                        <div className={c.num}>{value2Range}</div>
                     </div>
                 </div>
                 <div className={c.performance}>
                     <div className={c.title}>Packs list</div>
-                    <div className={s.rowElements}>
+                    <div className={c.rowElements}>
                         <SearchField onChangeWithDebounce={onChangeDebounceRequest}
-                                     value={packName} wide placeholder={'Enter pack\'s title for search'}/>
-                        <SuperButton className={s.addPack}>Add pack</SuperButton>
+                                     value={packName} wide
+                                     placeholder={'Enter pack\'s title for search'}/>
+                        <SuperButton className={c.addPack}>Add pack</SuperButton>
                     </div>
                     <div className={c.table}><PacksTable/></div>
                 </div>

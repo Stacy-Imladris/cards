@@ -1,22 +1,12 @@
 import {PacksList} from './PacksList'
-import {
-    getPacks,
-    packsActions,
-    SortOrderType,
-    SortValuesType
-} from '../../../bll/packs-reducer'
+import {getPacks, packsActions, SortOrderType, SortValuesType} from '../../../bll/packs-reducer'
 import {useDispatch} from 'react-redux'
 import {useAppSelector} from '../../../bll/store'
 import {useCallback, useEffect, useState} from 'react'
 import s from './PacksTable.module.css'
 import {setSortValuesToStore} from '../../../utils/sort-helper';
-import {
-    selectCardPacksTotalCount,
-    selectMaxForCards,
-    selectMinForCards,
-    selectPackNameForSearch,
-    selectPacks,
-    selectPackUserId, selectPageCountForPacks, selectPageForPacks, selectSortForPacks,
+import {selectCardPacksTotalCount, selectMaxForCards, selectMinForCards, selectPackNameForSearch,
+    selectPacks, selectPackUserId, selectPageCountForPacks, selectPageForPacks, selectSortForPacks,
 } from '../../../selectors/selectors';
 import {Paginator} from '../../Paginator/Paginator';
 

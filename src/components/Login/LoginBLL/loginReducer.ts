@@ -2,6 +2,9 @@ import {profileActions} from '../../../bll/profile-reducer';
 import {AppThunk, InferActionTypes} from '../../../bll/store';
 import {loginAPI, LoginType} from '../LoginAPI/login-api';
 import axios from 'axios';
+import {packsActions} from '../../../bll/packs-reducer';
+import {cardsActions} from '../../../bll/cards-reducer';
+import {UserType} from '../../Profile/profile-api';
 
 export const loginInitialState = {
     isLoggedIn: false,
@@ -53,6 +56,9 @@ export const logout = (): AppThunk => async dispatch => {
         await loginAPI.logout()
         dispatch(profileActions.setEditModeProfile(false))
         dispatch(loginActions.setIsLoggedIn(false))
+        dispatch(profileActions.setUserData({} as UserType))
+        dispatch(packsActions.setPacks([]))
+        dispatch(cardsActions.setCards([]))
     } catch (e) {
 
     }

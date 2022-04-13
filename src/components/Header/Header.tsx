@@ -32,6 +32,8 @@ export const Header = () => {
             <div className={s.links}>
                 <NavLink to={PATH.PROFILE}
                          className={({isActive}) => isActive ? s.active : s.nav}>Profile</NavLink>
+                {isLoggedIn && <NavLink to={PATH.PACKS}
+                                         className={({isActive}) => isActive ? s.active : s.nav}>Packs List</NavLink>}
                 {!isLoggedIn && <NavLink to={PATH.REGISTRATION}
                                          className={({isActive}) => isActive ? s.active : s.nav}>Registration</NavLink>}
                 {!isLoggedIn && <NavLink to={PATH.PASSWORD_RECOVERY}

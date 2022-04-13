@@ -4,7 +4,7 @@ import {CardsPackAddType, packsAPI, PackType} from '../api/packs-api';
 
 const packsInitialState = {
     packs: [] as PackType[],
-    error: '',
+    errorPacks: '',
     isLoading: false,
     minCardsCount: 0,
     maxCardsCount: 103,
@@ -27,8 +27,8 @@ export const packsReducer = (state: PacksInitialStateType = packsInitialState, a
         case 'PACKS/SET_PACKS_ERROR':
         case 'PACKS/SET_PACKS_IS_LOADING':
         case 'PACKS/SET_CARD_PACKS_TOTAL_COUNT':
-        case 'PACKS/SET_PACKS_MIN_CARDS_COUNT':
         case 'PACKS/SET_STATUS':
+        case 'PACKS/SET_PACKS_MIN_CARDS_COUNT':
         case 'PACKS/SET_PACKS_MAX_CARDS_COUNT':
             return {...state, ...action.payload}
         case 'PACKS/SET_CURRENT_PAGE':
@@ -89,7 +89,6 @@ export const deletePack = (packId: string): AppThunk => async (dispatch) => {
         dispatch(packsActions.setStatus("deleted successfully"))
         dispatch(packsActions.setCurrentPage(1))
         dispatch(getPacks())
-
     } catch (e) {
         if (axios.isAxiosError(e)) {
             dispatch(packsActions.setPacksError(e.response ? e.response.data.error : e.message))
@@ -98,7 +97,9 @@ export const deletePack = (packId: string): AppThunk => async (dispatch) => {
         }
     } finally {
         dispatch(packsActions.setPacksIsLoading(false))
-        // dispatch(packsActions.setStatus(""))
+        setTimeout(()=> {
+            dispatch(packsActions.setStatus(""))
+        }, 3000)
     }
 }
 
@@ -109,6 +110,7 @@ export const addPack = (cardsPack: CardsPackAddType): AppThunk => async (dispatc
         dispatch(packsActions.setStatus("successfully added"))
         dispatch(packsActions.setCurrentPage(1))
         dispatch(getPacks())
+
     } catch (e) {
         if (axios.isAxiosError(e)) {
             dispatch(packsActions.setPacksError(e.response ? e.response.data.error : e.message))
@@ -117,6 +119,9 @@ export const addPack = (cardsPack: CardsPackAddType): AppThunk => async (dispatc
         }
     } finally {
         dispatch(packsActions.setPacksIsLoading(false))
+        setTimeout(()=> {
+            dispatch(packsActions.setStatus(""))
+        }, 3000)
 
     }
 }

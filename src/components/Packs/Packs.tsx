@@ -32,6 +32,8 @@ export const Packs = () => {
     const maxCardsCount = useAppSelector(state => state.packs.maxCardsCount)
     const isLoggedIn = useAppSelector(selectIsLoggedIn)
     const status = useAppSelector(state => state.packs.status)
+    const error = useAppSelector(selectLoginError)
+    const errorPacks = useAppSelector(state => state.packs.errorPacks)
     const dispatch = useDispatch()
 
     const [valueFromArray, setValueFromArray] = useState(arr[0])
@@ -104,6 +106,8 @@ export const Packs = () => {
                 </div>
                 <div className={c.table}><PacksTable/></div>
                 <div>{status}</div>
+                <div>{errorPacks}</div>
+                <div className={s.error}>{error}</div>
                 <div className={c.pagination}>
                     <Paginator onPageChanged={onPageChanged}
                                itemsTotalCount={cardPacksTotalCount}

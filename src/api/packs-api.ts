@@ -7,7 +7,7 @@ export const packsAPI = {
         return instance.get<any, AxiosResponse<PacksResponseType>, PacksParamsType>('cards/pack', {params}).then(res => res.data)
     },
     addPack(cardsPack: CardsPackAddType) {
-        return instance.post<CardsPackAddType>('cards/pack', {cardsPack})
+        return instance.post('cards/pack', {cardsPack})
     },
     deletePack(_id: string) {
         return instance.delete(`cards/pack?id=${_id}`)
@@ -56,3 +56,4 @@ export type CardsPackAddType = {
     deckCover: string,
     private: boolean
 }
+

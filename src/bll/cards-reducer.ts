@@ -1,10 +1,11 @@
-import {cardsAPI, CardType} from '../api/cards-api';
+import {cardsAPI, CardType, NewCardType} from '../api/cards-api';
 import {AppThunk, InferActionTypes} from './store';
 import axios from 'axios';
+import {packsActions} from "./packs-reducer";
 
 const cardsInitialState = {
     cards: [] as CardType[],
-    error: '',
+    errorCards: '',
     isLoading: false,
     params: {
         cardAnswer: '',
@@ -18,6 +19,7 @@ const cardsInitialState = {
     } as CardsParamsType,
     cardsTotalCount: 0,
     packName: '',
+    statusCard: '' as RequestStatusCardType
 }
 
 export const cardsReducer = (state: CardsInitialStateType = cardsInitialState, action: CardsActionTypes): CardsInitialStateType => {
@@ -26,6 +28,7 @@ export const cardsReducer = (state: CardsInitialStateType = cardsInitialState, a
         case 'CARDS/SET_CARDS_ERROR':
         case 'CARDS/SET_CARDS_IS_LOADING':
         case 'CARDS/SET_CARDS_TOTAL_COUNT':
+        case 'CARDS/SET_STATUS':
         case 'CARDS/SET_PACK_NAME':
             return {...state, ...action.payload}
         case 'CARDS/SET_CURRENT_PAGE':
@@ -41,7 +44,7 @@ export const cardsReducer = (state: CardsInitialStateType = cardsInitialState, a
 
 export const cardsActions = {
     setCards: (cards: CardType[]) => ({type: 'CARDS/SET_CARDS', payload: {cards}} as const),
-    setCardsError: (error: string) => ({type: 'CARDS/SET_CARDS_ERROR', payload: {error}} as const),
+    setCardsError: (errorCards: string) => ({type: 'CARDS/SET_CARDS_ERROR', payload: {errorCards}} as const),
     setCardsIsLoading: (isLoading: boolean) => ({type: 'CARDS/SET_CARDS_IS_LOADING', payload: {isLoading}} as const),
     setCardsTotalCount: (cardsTotalCount: number) =>
         ({type: 'CARDS/SET_CARDS_TOTAL_COUNT', payload: {cardsTotalCount}} as const),
@@ -51,9 +54,10 @@ export const cardsActions = {
     setSortParameters: (sortCards: string) => ({type: 'CARDS/SET_SORT_PARAMETERS', payload: {sortCards}} as const),
     setPackId: (cardsPack_id: string) => ({type: 'CARDS/SET_PACK_ID', payload: {cardsPack_id}} as const),
     setPackName: (packName: string) => ({type: 'CARDS/SET_PACK_NAME', payload: {packName}} as const),
+    setStatus: (statusCard: RequestStatusCardType)=> ({type: 'CARDS/SET_STATUS', payload: {statusCard}} as const),
 }
 
-//thunk
+//thunks
 export const getCards = (): AppThunk => async (dispatch, getState) => {
     const params = getState().cards.params
     dispatch(cardsActions.setCardsIsLoading(true))
@@ -73,6 +77,27 @@ export const getCards = (): AppThunk => async (dispatch, getState) => {
     }
 }
 
+export const addCard = (card: NewCardType): AppThunk => async (dispatch) => {
+    dispatch(packsActions.setPacksIsLoading(true))
+    try {
+        await cardsAPI.addCard(card)
+        dispatch(cardsActions.setStatus("successfully added"))
+        dispatch(cardsActions.setCurrentPage(1))
+        dispatch(getCards())
+    } catch (e) {
+        if (axios.isAxiosError(e)) {
+            dispatch(packsActions.setPacksError(e.response ? e.response.data.error : e.message))
+        } else {
+            dispatch(packsActions.setPacksError('Some error occurred'))
+        }
+    } finally {
+        dispatch(packsActions.setPacksIsLoading(false))
+        setTimeout(()=> {
+            dispatch(cardsActions.setStatus(''))
+        }, 3000)
+    }
+}
+
 //types
 export type CardsInitialStateType = typeof cardsInitialState
 export type CardsActionTypes = InferActionTypes<typeof cardsActions>
@@ -86,5 +111,10 @@ export type CardsParamsType = {
     page: number
     pageCount: number
 }
+export type RequestStatusCardType = 'deleted successfully'
+    | 'successfully added'
+    | 'add error'
+    | 'deletion error' |''
+
 //export type SortValuesType = 'name' | 'cardsCount' | 'updated' | 'user_name'
 //export type SortOrderType = '0' | '1'

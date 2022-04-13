@@ -87,7 +87,6 @@ export const deletePack = (packId: string): AppThunk => async (dispatch) => {
     try {
         await packsAPI.deletePack(packId)
         dispatch(packsActions.setStatus("deleted successfully"))
-        dispatch(packsActions.setCurrentPage(1))
         dispatch(getPacks())
     } catch (e) {
         if (axios.isAxiosError(e)) {

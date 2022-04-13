@@ -5,9 +5,10 @@ import {
     packsReducer, RequestStatusType,
 } from './packs-reducer';
 import {PackType} from "../api/packs-api";
+import {login} from "../components/Login/LoginBLL/loginReducer";
 
 let startState: PacksInitialStateType
-
+let data: Date
 beforeEach(() => {
     startState = {
         packs: [] as PackType[],
@@ -27,6 +28,8 @@ beforeEach(() => {
         cardPacksTotalCount: 0,
         status: '' as RequestStatusType
     }
+
+    data = new Date()
 })
 
 test('setCurrentPage should be changed', () => {
@@ -106,43 +109,34 @@ test('packs total count should be change', () => {
 
     expect(endState.cardPacksTotalCount).toBe(103)
 })
-// test('packs must be added', () => {
-//
-//     let packs: PackType[] = [{cardsCount: 3,
-//         created: "08.10.2021T13:48:30",
-//         grade: 0,
-//         more_id: "5eecf82a3ed8f700042f1186",
-//         name: "tst",
-//         path: "/def",
-//         private: false,
-//         rating: 0,
-//         shots: 0,
-//         type: "pack",
-//         updated: "08-10-2021T13:48:30.737Z",
-//         user_id: "5eecf82a3ed8f700042f1186",
-//         user_name: "Hello",
-//         __v: 0,
-//         _id: "61604c2e8832c210d81dffd4"}, {cardsCount: 3,
-//         created: "08.10.2021",
-//         grade: 0,
-//         more_id: "5eecf82a3ed8f700042f1186",
-//         name: "tst",
-//         path: "/def",
-//         private: false,
-//         rating: 0,
-//         shots: 0,
-//         type: "pack",
-//         updated: "2021-10-08T13:48:30.737Z",
-//         user_id: "5eecf82a3ed8f700042f1186",
-//         user_name: "Hello",
-//         __v: 0,
-//         _id: "61604c2e8832c210d81dffd4"},]
-//
-//     const action = packsActions.setPacks(packs);
-//     const endState = packsReducer(startState, action)
-//
-//     expect(endState.packs).toBe(packs)
-// })
+test('packs must be added', () => {
+
+    let packs: PackType[] = [
+        {
+            cardsCount: 3,
+            grade: 0,
+            created: data,
+            updated: data,
+            more_id: '6249b622996fe2155c584ed9',
+            name: "tst",
+            path: "/def",
+            private: false,
+            rating: 0,
+            shots: 0,
+            type: "pack",
+            user_id: "5eecf82a3ed8f700042f1186",
+            user_name: "Hello",
+            __v: 0,
+            _id: "61604c2e8832c210d81dffd4",
+            deckCover: null
+        }
+    ]
+
+    const action = packsActions.setPacks(packs);
+    const endState = packsReducer(startState, action)
+
+    expect(endState.packs).toBe(packs)
+})
 
 test('should be sorted by value', () => {
 

@@ -1,94 +1,73 @@
-import {cardsActions, cardsReducer, CardsStateType} from './cards-reducer'
+import {cardsActions, CardsInitialStateType, CardsParamsType, cardsReducer} from './cards-reducer'
 import {CardType} from '../api/cards-api'
 
-let state: CardsStateType
+let state: CardsInitialStateType
 
 beforeEach(() => {
-    state = {
-        cardPacks: [
-            {
-                answer: 'Polar bear',
-                question: 'The biggest predator',
+        state = {
+            cards: [
+                {
+                    answer: 'Bobby',
+                    question: 'Who is who',
+                    cardsPack_id: '5',
+                    grade: 4.987525071790364,
+                    shots: 1,
+                    user_id: '5_5',
+                    created: new Date('2020-05-13T11:05:44.867Z'),
+                    updated: new Date('2020-05-13T11:05:44.867Z'),
+                    _id: '5_5_5'
+                }
+            ] as CardType[],
+            error: '',
+            isLoading: false,
+            params: {
+                cardAnswer: '',
+                cardQuestion: '',
                 cardsPack_id: '',
-                grade: 4.987525071790364,
-                shots: 1,
-                user_id: '',
-                created: '2020-05-13T11:05:44.867Z',
-                updated: '2020-05-13T11:05:44.867Z',
-                _id: '5_5_5'
-            }
-        ] as CardType[],
-        cardsTotalCount: 3,
-        maxGrade: 4.987525071790364,
-        minGrade: 2.0100984354076568,
-        page: 1,
-        pageCount: 4,
-        packUserId: '',
-
-        params: {
-            cardAnswer: '',
-            cardQuestion: '',
-            cardsPack_id: '',
-            min: 1,
-            max: 10,
-            sortCards: '0updated',
-            page: 1,
-            pageCount: 10
-        },
-
-        error: '',
-        isLoading: false
+                min: 0,
+                max: 5,
+                sortCards: '0grade',
+                page: 1,
+                pageCount: 7
+            } as CardsParamsType,
+            cardsTotalCount: 0,
+            packName: ''
+        }
     }
-})
+)
 
 test('set cards data to state', () => {
 
-    const cardsData = {
-        cardPacks: [
-            {
-                answer: 'Network',
-                question: 'Who',
-                cardsPack_id: '1',
-                grade: 4.987525071790364,
-                shots: 1,
-                user_id: '1_1',
-                created: '2020-05-13T11:05:44.867Z',
-                updated: '2020-05-13T11:05:44.867Z',
-                _id: '1_1_1'
-            },
-            {
-                answer: 'Bob',
-                question: 'What',
-                cardsPack_id: '1',
-                grade: 4.987525071790364,
-                shots: 1,
-                user_id: '1_1',
-                created: '2020-05-13T11:05:44.867Z',
-                updated: '2020-05-13T11:05:44.867Z',
-                _id: '2_2_2'
-            }
-        ],
-        cardsTotalCount: 2,
-        maxGrade: 5,
-        minGrade: 1,
-        page: 1,
-        pageCount: 10,
-        packUserId: '3_3_3'
-    }
+    const cards: CardType[] = [
+        {
+            answer: 'Network',
+            question: 'Who',
+            cardsPack_id: '1',
+            grade: 4.987525071790364,
+            shots: 1,
+            user_id: '1_1',
+            created: new Date('2020-05-13T11:05:44.867Z'),
+            updated: new Date('2020-05-13T11:05:44.867Z'),
+            _id: '1_1_1'
+        },
+        {
+            answer: 'Tom',
+            question: 'What',
+            cardsPack_id: '1',
+            grade: 4.987525071790364,
+            shots: 1,
+            user_id: '1_1',
+            created: new Date('2020-05-13T11:05:44.867Z'),
+            updated: new Date('2020-05-13T11:05:44.867Z'),
+            _id: '2_2_2'
+        }
+    ]
 
-    const endState = cardsReducer(state, cardsActions.setCards(cardsData))
 
-    expect(endState.cardPacks).not.toEqual(state.cardPacks)
-    expect(endState.cardPacks.length).toBe(2)
-    expect(endState.cardsTotalCount).toBe(2)
-    expect(endState.params).toBeDefined()
-})
+    const endState = cardsReducer(state, cardsActions.setCards(cards))
 
-test('set current page', () => {
-
-    const endState = cardsReducer(state, cardsActions.setCurrentPage(3))
-
-    expect(endState.page).toBe(3)
+    expect(endState.cards.length).toBe(2)
+    expect(endState.cards[0].answer).toBe('Network')
 })
 
 test('set card error', () => {
@@ -112,70 +91,44 @@ test('set total count of cards', () => {
     expect(endState.cardsTotalCount).toBe(7)
 })
 
+test('set current page', () => {
+
+    const endState = cardsReducer(state, cardsActions.setCurrentPage(3))
+
+    expect(endState.params.page).toBe(3)
+})
+
 test('set current title of answer', () => {
 
-    const endState = cardsReducer(state, cardsActions.setAnswerTitleForSearch('yo'))
+    const endState = cardsReducer(state, cardsActions.setAnswerForSearch('yo'))
 
     expect(endState.params.cardAnswer).toBe('yo')
 })
 
 test('set current title of question', () => {
 
-    const endState = cardsReducer(state, cardsActions.setQuestionTitleForSearch('Go'))
+    const endState = cardsReducer(state, cardsActions.setQuestionForSearch('Go'))
 
     expect(endState.params.cardQuestion).toBe('Go')
 })
 
-test('add card', () => {
+test('set sorting parameter', () => {
 
-    const card = {
-        answer: 'Russia',
-        question: 'The biggest country',
-        cardsPack_id: '3',
-        grade: 4.987525071790364,
-        shots: 1,
-        user_id: '',
-        created: '2020-05-13T11:05:44.867Z',
-        updated: '2020-05-13T11:05:44.867Z',
-        _id: '4_4_4'
-    }
+    const endState = cardsReducer(state, cardsActions.setSortParameters('0answer'))
 
-    const endState = cardsReducer(state, cardsActions.addCard(card))
-
-    expect(endState.cardPacks[0].answer).toBe('Russia')
-    expect(endState.cardPacks[1].answer).toBe('Polar bear')
-    expect(endState.cardPacks.length).toBe(2)
+    expect(endState.params.sortCards).toBe('0answer')
 })
 
-test('delete card', () => {
+test('set pack id', () => {
 
-    const endState = cardsReducer(state, cardsActions.deleteCard('5_5_5'))
+    const endState = cardsReducer(state, cardsActions.setPackId('6_6'))
 
-    expect(endState.cardPacks.length).toBe(0)
-    expect(endState.cardsTotalCount).toBeDefined()
-    expect(endState.params).toBeDefined()
+    expect(endState.params.cardsPack_id).toBe('6_6')
 })
 
-test('update card', () => {
+test('set pack name', () => {
 
-    const editedCard = {
-        // answer: 'Russia',
-        question: 'The biggest country',
-        // cardsPack_id: '3',
-        // grade: 4.987525071790364,
-        shots: 1,
-        user_id: '',
-        created: '2020-05-13T11:05:44.867Z',
-        updated: '2020-05-13T11:05:44.867Z',
-        // _id: '5_5_5'
-    }
+    const endState = cardsReducer(state, cardsActions.setPackName('PackName'))
 
-    const endState = cardsReducer(state, cardsActions.updateCard('5_5_5', editedCard))
-
-    expect(endState.cardPacks.length).toBe(1)
-    expect(endState.cardPacks[0].question).toBe('The biggest country')
-    expect(endState.cardPacks[0].answer).toBe('Polar bear')
-
-    expect(endState.cardsTotalCount).toBeDefined()
-    expect(endState.params).toBeDefined()
+    expect(endState.packName).toBe('PackName')
 })

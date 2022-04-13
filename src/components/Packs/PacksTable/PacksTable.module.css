@@ -42,15 +42,15 @@
 }
 
 .name {
-    max-width: 17%;
+    width: 17%;
 }
 
 .cards {
-    max-width: 10%;
+    width: 10%;
 }
 
 .updated {
-    max-width: 17%;
+    width: 17%;
 }
 
 .creator {
@@ -58,7 +58,7 @@
 }
 
 .actions {
-    max-width: 22%;
+    width: 15%;
 }
 
 .pagination {

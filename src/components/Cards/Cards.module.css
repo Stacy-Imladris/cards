@@ -1,7 +1,7 @@
 .cardsContainer {
     display: flex;
     justify-content: center;
-    padding-top: 20px;
+    padding: 20px 0;
 }
 
 .cardsTable {
@@ -15,7 +15,7 @@
 
 .rowElements {
     display: flex;
-    justify-cntent: flex-start;
+    justify-content: flex-start;
     margin-bottom: 10px;
 }
 

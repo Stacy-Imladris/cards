@@ -33,11 +33,10 @@
     }
 }
 
-
 .mainContainer {
     display: flex;
     justify-content: center;
-    padding-top: 20px;
+    padding: 20px 0;
 }
 
 .num {
@@ -46,7 +45,7 @@
     text-align: center;
 }
 
-.addPack {
+.addItem {
     min-width: 120px;
     width: 120px;
 }
@@ -62,12 +61,6 @@
     align-content: center;
     align-items: center;
 }
-
-
-
-
-
-
 
 .table {
     height: 75%;

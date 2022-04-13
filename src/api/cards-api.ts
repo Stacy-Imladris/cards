@@ -7,13 +7,13 @@ export const cardsAPI = {
         return instance.get<any, AxiosResponse<CardsResponseType>, CardsParamsType>('cards/card', {params}).then(res => res.data)
     },
     addCard(card: NewCardType) {
-        return instance.post('cards/card', {card})
+        return instance.post<any, AxiosResponse<AdditionalCardResponse & Pick<CardResponses, 'newCard'>>, {card: NewCardType}>('cards/card', {card})
     },
     deleteCard(cardId: string) {
-        return instance.delete(`cards/card?id=${cardId}`)
+        return instance.delete<any, AxiosResponse<AdditionalCardResponse & Pick<CardResponses, 'deletedCard'>>>(`cards/card?id=${cardId}`)
     },
     updateCard(payload: UpdateCardPayload) {
-        return instance.put(`cards/card`, {payload})
+        return instance.put<any, AxiosResponse<AdditionalCardResponse & Pick<CardResponses, 'updatedCard'>>, UpdateCardPayload>(`cards/card`, payload)
     }
 }
 
@@ -53,4 +53,13 @@ export type NewCardType = {
 }
 export type UpdateCardPayload = {
     _id: string
+}
+export type CardResponses = {
+    newCard: CardType
+    deletedCard: CardType
+    updatedCard: CardType
+}
+export type AdditionalCardResponse = {
+    token: string
+    tokenDeathTime: number
 }

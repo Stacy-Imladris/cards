@@ -16,6 +16,7 @@ import {
     selectPackName,
     selectTheme
 } from '../../selectors/selectors';
+import {Preloader} from '../../common/preloader/Preloader';
 
 
 export const Cards = () => {
@@ -41,21 +42,18 @@ export const Cards = () => {
         dispatch(cardsActions.setAnswerForSearch(title))
     }, [dispatch])
 
-
-    const card = {
-        cardsPack_id: cardsPack_id,
-        question: "no question",
-        answer: "no answer",
-        grade: 0,
-        shots: 0,
-        answerImg: "url or base 64",
-        questionImg: "url or base 64",
-        questionVideo: "url or base 64",
-        answerVideo: "url or base 64",
-    }
-
     const addNewCard = () => {
-        dispatch(addCard(card))
+        dispatch(addCard({
+            cardsPack_id: cardsPack_id,
+            question: "no question",
+            answer: "no answer",
+            grade: 0,
+            shots: 0,
+            answerImg: "url or base 64",
+            questionImg: "url or base 64",
+            questionVideo: "url or base 64",
+            answerVideo: "url or base 64",
+        }))
     }
 
     if (!isLoggedIn) {
@@ -73,7 +71,6 @@ export const Cards = () => {
                         </SuperButton>
                         <div className={c.title}>{packName}</div>
                     </div>
-                    <SuperButton onClick={addNewCard}>Add new card</SuperButton>
                     <div className={s.rowElements}>
                         <div>
                             <SearchField value={cardQuestion} placeholder={'Enter question'}
@@ -83,6 +80,7 @@ export const Cards = () => {
                             <SearchField value={cardAnswer} placeholder={'Enter answer'}
                                          onChangeWithDebounce={onChangeDebounceAnswerRequest}/>
                         </div>
+                        <SuperButton className={c.addItem} onClick={addNewCard}>Add card</SuperButton>
                     </div>
                     <div className={c.table}><CardsTable/></div>
                     <div className={s.error}>{errorCards}</div>

@@ -5,10 +5,10 @@ import {
     packsReducer, RequestStatusType,
 } from './packs-reducer';
 import {PackType} from "../api/packs-api";
-import {login} from "../components/Login/LoginBLL/loginReducer";
 
 let startState: PacksInitialStateType
 let data: Date
+
 beforeEach(() => {
     startState = {
         packs: [] as PackType[],
@@ -28,7 +28,6 @@ beforeEach(() => {
         cardPacksTotalCount: 0,
         status: '' as RequestStatusType
     }
-
     data = new Date()
 })
 

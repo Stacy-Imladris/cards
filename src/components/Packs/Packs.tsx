@@ -38,6 +38,7 @@ export const Packs = () => {
     const [valueFromArray, setValueFromArray] = useState(arr[0])
     const [value1Range, setValue1] = useState(minCardsCount)
     const [value2Range, setValue2] = useState(maxCardsCount)
+    const [timerId, setTimerId] = useState<number>(0)
 
     const onChangeOption = useCallback((value: string) => {
         setValueFromArray(value)
@@ -50,23 +51,27 @@ export const Packs = () => {
 
     const changeTwoValue = useCallback((value: [number, number] | number[]) => {
         setValue1(value[0])
-        dispatch(packsActions.setPacksMin(value[0]))
         setValue2(value[1])
-        dispatch(packsActions.setPacksMax(value[1]))
-    }, [])
+        clearTimeout(timerId)
+        const id = +setTimeout(() => {
+            dispatch(packsActions.setPacksMin(value[0]))
+            dispatch(packsActions.setPacksMax(value[1]))
+        }, 500)
+        setTimerId(id)
+    }, [timerId])
 
     const onChangeDebounceRequest = useCallback((title: string) => {
         dispatch(packsActions.setCurrentPage(1))
         dispatch(packsActions.setTitleForSearch(title))
+
     }, [dispatch])
 
-    const cardsPack = {
-        name: "no Name",
-        deckCover: "url or base64",
-        private: true
-    }
     const addNewPack = () => {
-        dispatch(addPack(cardsPack))
+        dispatch(addPack({
+            name: "no Name",
+            deckCover: "url or base64",
+            private: true
+        }))
     }
 
     if (!isLoggedIn) {
@@ -98,7 +103,7 @@ export const Packs = () => {
                         <SearchField onChangeWithDebounce={onChangeDebounceRequest}
                                      value={packName} wide
                                      placeholder={'Enter pack\'s title for search'}/>
-                        <SuperButton className={c.addPack} onClick={addNewPack}>Add pack</SuperButton>
+                        <SuperButton className={c.addItem} onClick={addNewPack}>Add pack</SuperButton>
                     </div>
                     <div className={c.table}><PacksTable/></div>
                     <div>{status}</div>

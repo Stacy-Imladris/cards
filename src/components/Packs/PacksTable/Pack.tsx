@@ -7,7 +7,7 @@ import {useDispatch} from 'react-redux';
 import {cardsActions} from '../../../bll/cards-reducer';
 import {useNavigate} from 'react-router-dom';
 import {PATH} from '../../../app/AllRoutes';
-import {selectUser_id} from '../../../selectors/selectors';
+import {selectLoginError, selectUser_id} from '../../../selectors/selectors';
 
 type PackPropsType = {
     pack: PackType
@@ -34,7 +34,7 @@ export const Pack: FC<PackPropsType> = memo(({pack}) => {
         <td>{lastUpdate}</td>
         <td>{pack.user_name}</td>
         <td>
-            <PackActions isMyPacks={pack.user_id === userId} userId={userId}/>
+            <PackActions isMyPacks={pack.user_id === userId} userId={userId} packId={pack._id}/>
         </td>
     </tr>
 })

@@ -1,10 +1,10 @@
 import {AppThunk, InferActionTypes} from './store';
 import axios from 'axios';
-import {packsAPI, PackType} from '../api/packs-api';
+import {CardsPackAddType, packsAPI, PackType} from '../api/packs-api';
 
 const packsInitialState = {
     packs: [] as PackType[],
-    error: '',
+    errorPacks: '',
     isLoading: false,
     minCardsCount: 0,
     maxCardsCount: 103,
@@ -18,6 +18,7 @@ const packsInitialState = {
         user_id: '',
     } as PacksParamsType,
     cardPacksTotalCount: 0,
+    status: '' as RequestStatusType
 }
 
 export const packsReducer = (state: PacksInitialStateType = packsInitialState, action: PacksActionTypes): PacksInitialStateType => {
@@ -26,6 +27,7 @@ export const packsReducer = (state: PacksInitialStateType = packsInitialState, a
         case 'PACKS/SET_PACKS_ERROR':
         case 'PACKS/SET_PACKS_IS_LOADING':
         case 'PACKS/SET_CARD_PACKS_TOTAL_COUNT':
+        case 'PACKS/SET_STATUS':
         case 'PACKS/SET_PACKS_MIN_CARDS_COUNT':
         case 'PACKS/SET_PACKS_MAX_CARDS_COUNT':
             return {...state, ...action.payload}
@@ -57,9 +59,10 @@ export const packsActions = {
     setMinCardsCount: (minCardsCount: number)=> ({type: 'PACKS/SET_PACKS_MIN_CARDS_COUNT', payload: {minCardsCount}} as const),
     setMaxCardsCount: (maxCardsCount: number)=> ({type: 'PACKS/SET_PACKS_MAX_CARDS_COUNT', payload: {maxCardsCount}} as const),
     setPacksPageCount: (pageCount: number)=> ({type: 'PACKS/SET_PACKS_PAGE_COUNT', payload: {pageCount}} as const),
+    setStatus: (status: RequestStatusType)=> ({type: 'PACKS/SET_STATUS', payload: {status}} as const),
 }
 
-//thunk
+//thunks
 export const getPacks = (): AppThunk => async (dispatch, getState) => {
     const params = getState().packs.params
     dispatch(packsActions.setPacksIsLoading(true))
@@ -81,6 +84,49 @@ export const getPacks = (): AppThunk => async (dispatch, getState) => {
     }
 }
 
+export const deletePack = (packId: string): AppThunk => async (dispatch) => {
+    dispatch(packsActions.setPacksIsLoading(true))
+    try {
+        await packsAPI.deletePack(packId)
+        dispatch(packsActions.setStatus("deleted successfully"))
+        dispatch(getPacks())
+    } catch (e) {
+        if (axios.isAxiosError(e)) {
+            dispatch(packsActions.setPacksError(e.response ? e.response.data.error : e.message))
+        } else {
+            dispatch(packsActions.setPacksError('Some error occurred'))
+        }
+    } finally {
+        dispatch(packsActions.setPacksIsLoading(false))
+        setTimeout(()=> {
+            dispatch(packsActions.setStatus(""))
+        }, 3000)
+    }
+}
+
+export const addPack = (cardsPack: CardsPackAddType): AppThunk => async (dispatch) => {
+    dispatch(packsActions.setPacksIsLoading(true))
+    try {
+        await packsAPI.addPack(cardsPack)
+        dispatch(packsActions.setStatus("successfully added"))
+        dispatch(packsActions.setCurrentPage(1))
+        dispatch(getPacks())
+
+    } catch (e) {
+        if (axios.isAxiosError(e)) {
+            dispatch(packsActions.setPacksError(e.response ? e.response.data.error : e.message))
+        } else {
+            dispatch(packsActions.setPacksError('Some error occurred'))
+        }
+    } finally {
+        dispatch(packsActions.setPacksIsLoading(false))
+        setTimeout(()=> {
+            dispatch(packsActions.setStatus(""))
+        }, 3000)
+
+    }
+}
+
 //types
 export type PacksInitialStateType = typeof packsInitialState
 export type PacksActionTypes = InferActionTypes<typeof packsActions>
@@ -95,3 +141,8 @@ export type PacksParamsType = {
 }
 export type SortValuesType = 'name' | 'cardsCount' | 'updated' | 'user_name'
 export type SortOrderType = '0' | '1'
+
+export type RequestStatusType = 'deleted successfully'
+    | 'successfully added'
+    | 'add error'
+    | 'deletion error' |''

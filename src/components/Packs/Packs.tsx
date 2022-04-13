@@ -8,7 +8,7 @@ import {AlternativeSuperDoubleRange} from '../../common/super-components/c8-Supe
 import {SearchField} from '../SearchField/SearchField';
 import {SuperRadio} from '../../common/super-components/c6-SuperRadio/SuperRadio';
 import {useDispatch} from 'react-redux';
-import {packsActions} from '../../bll/packs-reducer';
+import {addPack, getPacks, packsActions} from '../../bll/packs-reducer';
 import {
     selectMaxCardsCount,
     selectMinCardsCount,
@@ -16,6 +16,9 @@ import {
     selectTheme,
     selectUser_id,
 } from '../../selectors/selectors';
+import {Navigate} from "react-router-dom";
+import {PATH} from "../../app/AllRoutes";
+import {loginActions} from "../Login/LoginBLL/loginReducer";
 
 const arr = ['All', 'My']
 
@@ -25,6 +28,10 @@ export const Packs = () => {
     const packName = useAppSelector(selectPackNameForSearch)
     const minCardsCount = useAppSelector(selectMinCardsCount)
     const maxCardsCount = useAppSelector(selectMaxCardsCount)
+    const isLoggedIn = useAppSelector(selectIsLoggedIn)
+    const status = useAppSelector(state => state.packs.status)
+    const error = useAppSelector(selectLoginError)
+    const errorPacks = useAppSelector(state => state.packs.errorPacks)
 
     const dispatch = useDispatch()
 
@@ -53,6 +60,20 @@ export const Packs = () => {
         dispatch(packsActions.setTitleForSearch(title))
     }, [dispatch])
 
+    const cardsPack = {
+        name: "no Name",
+        deckCover: "url or base64",
+        private: true
+    }
+    const addNewPack = () => {
+        dispatch(addPack(cardsPack))
+    }
+
+    if (!isLoggedIn) {
+        return <Navigate to={PATH.LOGIN}/>
+    }
+
+
     return (
         <div className={c.mainContainer}>
             <div className={`${c.container} ${t[theme + '-text']}`}>
@@ -77,9 +98,12 @@ export const Packs = () => {
                         <SearchField onChangeWithDebounce={onChangeDebounceRequest}
                                      value={packName} wide
                                      placeholder={'Enter pack\'s title for search'}/>
-                        <SuperButton className={c.addPack}>Add pack</SuperButton>
+                        <SuperButton className={c.addPack} onClick={addNewPack}>Add pack</SuperButton>
                     </div>
                     <div className={c.table}><PacksTable/></div>
+                    <div>{status}</div>
+                    <div>{errorPacks}</div>
+                    <div className={s.error}>{error}</div>
                 </div>
             </div>
         </div>

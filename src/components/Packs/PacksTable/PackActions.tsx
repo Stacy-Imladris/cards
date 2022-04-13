@@ -1,9 +1,8 @@
 import {FC, memo} from 'react'
 import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton'
 import s from './PacksTable.module.css'
-import {deletePack, packsActions} from '../../../bll/packs-reducer';
-import {useDispatch} from "react-redux";
-import {useAppSelector} from "../../../bll/store";
+import {deletePack} from '../../../bll/packs-reducer';
+import {useDispatch} from 'react-redux';
 
 type PackActionsType = {
     isMyPacks: boolean

@@ -19,6 +19,7 @@ import {
 } from '../../selectors/selectors';
 import {Navigate} from "react-router-dom";
 import {PATH} from "../../app/AllRoutes";
+import {AddNewCardType} from '../../api/packs-api';
 
 const arr = ['All', 'My']
 
@@ -67,11 +68,7 @@ export const Packs = () => {
     }, [dispatch])
 
     const addNewPack = () => {
-        dispatch(addPack({
-            name: "no Name",
-            deckCover: "url or base64",
-            private: true
-        }))
+        dispatch(addPack({} as AddNewCardType))
     }
 
     if (!isLoggedIn) {

@@ -43,17 +43,7 @@ export const Cards = () => {
     }, [dispatch])
 
     const addNewCard = () => {
-        dispatch(addCard({
-            cardsPack_id: cardsPack_id,
-            question: "no question",
-            answer: "no answer",
-            grade: 0,
-            shots: 0,
-            answerImg: "url or base 64",
-            questionImg: "url or base 64",
-            questionVideo: "url or base 64",
-            answerVideo: "url or base 64",
-        }))
+        dispatch(addCard({cardsPack_id: cardsPack_id}))
     }
 
     if (!isLoggedIn) {

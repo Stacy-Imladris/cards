@@ -19,7 +19,7 @@ export const SearchField = memo(({onChangeWithDebounce, value, wide}: SearchFiel
         clearTimeout(timerId)
         const id: number = +setTimeout(onChangeWithDebounce, 500, title)
         setTimerId(id)
-    }, [onChangeWithDebounce, timerId, title])
+    }, [onChangeWithDebounce, timerId])
 
     const searchFieldClassName = `${s.searchField} ${wide ? s.wideSearchField : s.narrowSearchField}`
 

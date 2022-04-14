@@ -8,9 +8,9 @@ import {
     selectCards,
     selectCardsAnswer,
     selectCardsQuestion,
-    selectCardsTotalCount,
+    selectCardsTotalCount, selectPackUserId,
     selectPageCountForCards,
-    selectPageForCards, selectSortCards
+    selectPageForCards, selectSortCards, selectUser_id
 } from '../../../selectors/selectors';
 import {Paginator} from '../../Paginator/Paginator';
 import {CardsTableHeader} from './CardsTableHeader/CardsTableHeader';
@@ -23,6 +23,8 @@ export const CardsTable = () => {
     const page = useAppSelector(selectPageForCards)
     const pageCount = useAppSelector(selectPageCountForCards)
     const sortCards = useAppSelector(selectSortCards)
+    const userId = useAppSelector(selectUser_id)
+    const packUserId = useAppSelector(selectPackUserId)
 
     const dispatch = useDispatch()
 

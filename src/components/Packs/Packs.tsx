@@ -4,6 +4,8 @@ import c from '../../common/styles/Container.module.css'
 import {useAppSelector} from '../../bll/store';
 import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton';
 import {useCallback, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
+import {AlternativeSuperDoubleRange} from '../../common/super-components/c8-SuperDoubleRange/AlternativeSuperDoubleRange';
 import {SearchField} from '../SearchField/SearchField';
 import {SuperRadio} from '../../common/super-components/c6-SuperRadio/SuperRadio';
 import {useDispatch} from 'react-redux';
@@ -11,6 +13,10 @@ import {addPack, packsActions} from '../../bll/packs-reducer';
 import {
     selectLoginError,
     selectPackNameForSearch,
+    selectIsLoggedIn, selectLoginError,
+    selectMaxCardsCount,
+    selectMinCardsCount,
+    selectPackNameForSearch, selectPackUserId,
     selectTheme,
     selectUser_id,
 } from '../../selectors/selectors';

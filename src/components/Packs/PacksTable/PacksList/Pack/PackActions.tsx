@@ -7,7 +7,6 @@ import {UpdatePackType} from '../../../../../api/packs-api';
 
 type PackActionsType = {
     isMyPacks: boolean
-    userId: string
     packId: string
 }
 

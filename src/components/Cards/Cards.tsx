@@ -13,8 +13,8 @@ import {addCard, cardsActions} from '../../bll/cards-reducer';
 import {
     selectCardAnswer,
     selectCardQuestion, selectIsLoggedIn, selectLoginError,
-    selectPackName,
-    selectTheme
+    selectPackName, selectPackUserId,
+    selectTheme, selectUser_id
 } from '../../selectors/selectors';
 
 
@@ -30,6 +30,8 @@ export const Cards = () => {
     const errorCards = useAppSelector(state=> state.cards.errorCards)
     const statusCard = useAppSelector(state=> state.cards.statusCard)
     const error = useAppSelector(selectLoginError)
+    const userId = useAppSelector(selectUser_id)
+    const packUserId = useAppSelector(selectPackUserId)
 
     const onChangeDebounceQuestionRequest = useCallback((title: string) => {
         dispatch(cardsActions.setCurrentPage(1))
@@ -69,7 +71,7 @@ export const Cards = () => {
                             <SearchField value={cardAnswer} placeholder={'Enter answer'}
                                          onChangeWithDebounce={onChangeDebounceAnswerRequest}/>
                         </div>
-                        <SuperButton className={c.addItem} onClick={addNewCard}>Add card</SuperButton>
+                        {userId ===packUserId && <SuperButton className={c.addItem} onClick={addNewCard}>Add card</SuperButton>}
                     </div>
                     <div className={c.table}><CardsTable/></div>
                     <div className={s.error}>{errorCards}</div>

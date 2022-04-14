@@ -100,6 +100,26 @@ export const addCard = (card: NewCardType): AppThunk => async (dispatch) => {
     }
 }
 
+export const deleteCard = (id: string): AppThunk => async (dispatch) => {
+    dispatch(packsActions.setPacksIsLoading(true))
+    try {
+        await cardsAPI.deleteCard(id)
+        dispatch(cardsActions.setStatus("deleted successfully"))
+        dispatch(getCards())
+    } catch (e) {
+        if (axios.isAxiosError(e)) {
+            dispatch(packsActions.setPacksError(e.response ? e.response.data.error : e.message))
+        } else {
+            dispatch(packsActions.setPacksError('Some error occurred'))
+        }
+    } finally {
+        dispatch(packsActions.setPacksIsLoading(false))
+        setTimeout(()=> {
+            dispatch(cardsActions.setStatus(""))
+        }, 3000)
+    }
+}
+
 export const updateCard = (updatingCard: UpdateCardPayload): AppThunk => async (dispatch) => {
     dispatch(packsActions.setPacksIsLoading(true))
     try {

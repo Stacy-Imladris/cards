@@ -35,6 +35,10 @@ export const PacksTable = () => {
         dispatch(getPacks())
     }, [dispatch, packName, user_id, sortPacks, min, max, pageCount])
 
+    useEffect(() => {
+        dispatch(packsActions.setPacksForUser(""))
+    }, [])
+
     const onPageChanged = useCallback((page: number) => {
         dispatch(packsActions.setCurrentPage(page))
         dispatch(getPacks())

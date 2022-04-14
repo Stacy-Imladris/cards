@@ -1,6 +1,7 @@
 import {AppThunk, InferActionTypes} from './store';
 import axios from 'axios';
 import {AddNewCardType, packsAPI, PackType, UpdatePackType} from '../api/packs-api'
+import {cardsActions} from "./cards-reducer";
 
 const packsInitialState = {
     packs: [] as PackType[],

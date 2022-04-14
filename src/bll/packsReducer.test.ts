@@ -145,55 +145,6 @@ test('should be sorted by value', () => {
     expect(endState.params.sortPacks).toBe('name')
 })
 
-test('correct pack should be updated', () => {
-
-    const packsArr = [
-        {
-            _id: '1_1',
-            user_id: '1_1_1',
-            user_name: 'Bro',
-            private: false,
-            name: 'Pack_1',
-            path: '',
-            grade: 0,
-            shots: 0,
-            cardsCount: 3,
-            type: '',
-            rating: 5,
-            created: new Date('2020-05-09T15:40:40.339Z'),
-            updated: new Date('2020-05-09T15:40:40.339Z'),
-            more_id: '',
-            __v: 0,
-            deckCover: null
-        },
-        {
-            _id: '2_2',
-            user_id: '2_2_2',
-            user_name: 'Prom',
-            private: false,
-            name: 'Pack_2_yo',
-            path: '',
-            grade: 0,
-            shots: 0,
-            cardsCount: 3,
-            type: '',
-            rating: 5,
-            created: new Date('2020-05-09T15:40:40.339Z'),
-            updated: new Date('2020-05-09T15:40:40.339Z'),
-            more_id: '',
-            __v: 0,
-            deckCover: null
-        }
-    ]
-    const copyState = {...startState, packs: packsArr}
-
-    const action = packsActions.updatePackName('2_2', 'NewPackName');
-    const endState = packsReducer(copyState, action)
-
-    expect(endState.packs.length).toBe(2)
-    expect(endState.packs[1].name).toBe('NewPackName')
-    expect(endState.packs[0].name).toBe('Pack_1')
-})
 
 
 

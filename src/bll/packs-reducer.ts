@@ -39,8 +39,6 @@ export const packsReducer = (state: PacksInitialStateType = packsInitialState, a
         case 'PACKS/SET_PACKS_MAX':
         case 'PACKS/SET_PACKS_PAGE_COUNT':
             return {...state, params: {...state.params, ...action.payload}}
-        case 'PACKS/UPDATE_PACK_NAME':
-            return {...state, packs: state.packs.map(pack => pack._id === action.payload.packId ? {...pack, name: action.payload.name} : pack)}
         default:
             return state
     }
@@ -62,7 +60,6 @@ export const packsActions = {
     setMaxCardsCount: (maxCardsCount: number)=> ({type: 'PACKS/SET_PACKS_MAX_CARDS_COUNT', payload: {maxCardsCount}} as const),
     setPacksPageCount: (pageCount: number)=> ({type: 'PACKS/SET_PACKS_PAGE_COUNT', payload: {pageCount}} as const),
     setStatus: (status: RequestStatusType)=> ({type: 'PACKS/SET_STATUS', payload: {status}} as const),
-    updatePackName: (packId: string, name: string)=> ({type: 'PACKS/UPDATE_PACK_NAME', payload: {packId, name}} as const),
 }
 
 //thunks
@@ -131,9 +128,9 @@ export const addPack = (cardsPack: AddNewCardType): AppThunk => async (dispatch)
 export const updatePack = (editingPack: UpdatePackType): AppThunk => async (dispatch) => {
     dispatch(packsActions.setPacksIsLoading(true))
     try {
-        const data = await packsAPI.updatePack(editingPack)
+        await packsAPI.updatePack(editingPack)
         dispatch(packsActions.setPacksError(''))
-        dispatch(packsActions.updatePackName(editingPack._id, data.data.updatedCardsPack.name))
+        dispatch(getPacks())
     } catch (e) {
         if (axios.isAxiosError(e)) {
             dispatch(packsActions.setPacksError(e.response ? e.response.data.error : e.message))

@@ -3,7 +3,7 @@ import {getLastUpdatedDate} from '../../../../../utils/date-helpers'
 import {CardType, UpdateCardPayload} from '../../../../../api/cards-api';
 import c from '../../../../../common/styles/TableLine.module.css'
 import {useDispatch} from 'react-redux'
-import {updateCard} from '../../../bll/cards-reducer'
+import {updateCard} from '../../../../../bll/cards-reducer';
 
 type CardPropsType = {
     card: CardType
@@ -18,40 +18,29 @@ export const Card: FC<CardPropsType> = memo(({card}) => {
     const lastUpdate = getLastUpdatedDate(card.updated)
     const dispatch = useDispatch()
 
-    const uploadChanges = (title: string, param: 'question' | 'answer') => {
-        setIsEditAnswer(false)
+    const uploadChanges = (param: 'question' | 'answer') => {
         let updatedCard: UpdateCardPayload
-
         if(param === 'question') {
-            updatedCard = {
-                card: {
-                    _id: card._id,
-                    question: title
-                }
-            }
+            setIsEditQuestion(false)
+            updatedCard = { _id: card._id, question: question}
         } else {
-            updatedCard= {
-                card: {
-                    _id: card._id,
-                    answer: title
-                }
-            }
+            setIsEditAnswer(false)
+            updatedCard = { _id: card._id, answer: answer}
         }
-
         dispatch(updateCard(updatedCard))
     }
 
     return <tr>
         {isEditQuestion
-            ? <td><input onChange={(e) => setQuestion(e.currentTarget.value)}
-                         onBlur={ () => uploadChanges(question, 'question')}
+            ? <td><input onChange={(e) => {setQuestion(e.currentTarget.value)}}
+                         onBlur={() => uploadChanges('question')}
                          value={question}/>
             </td>
             : <td onDoubleClick={() => setIsEditQuestion(true)} className={c.mainColumn}>{question}</td>
         }
         {isEditAnswer
             ? <td><input onChange={(e) => setAnswer(e.currentTarget.value)}
-                         onBlur={() => uploadChanges(question, 'answer')}
+                         onBlur={() => uploadChanges('answer')}
                          value={answer}/>
             </td>
             : <td onDoubleClick={() => setIsEditAnswer(true)} className={c.mainColumn}>{answer}</td>

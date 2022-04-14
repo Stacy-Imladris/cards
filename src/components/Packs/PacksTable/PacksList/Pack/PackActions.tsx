@@ -1,9 +1,9 @@
 import {FC, memo} from 'react'
 import {SuperButton} from '../../../../../common/super-components/c2-SuperButton/SuperButton'
 import s from '../../PacksTable.module.css'
-import {deletePack} from '../../../../../bll/packs-reducer';
+import {deletePack, updatePack} from '../../../../../bll/packs-reducer';
 import {useDispatch} from 'react-redux';
-import {UpdatePackType} from '../../../api/packs-api'
+import {UpdatePackType} from '../../../../../api/packs-api';
 
 type PackActionsType = {
     isMyPacks: boolean
@@ -11,7 +11,7 @@ type PackActionsType = {
     packId: string
 }
 
-export const PackActions: FC<PackActionsType> = memo(({isMyPacks, userId, packId}) => {
+export const PackActions: FC<PackActionsType> = memo(({isMyPacks, packId}) => {
 
     const dispatch = useDispatch()
 

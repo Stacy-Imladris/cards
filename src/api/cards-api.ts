@@ -7,13 +7,13 @@ export const cardsAPI = {
         return instance.get<any, AxiosResponse<CardsResponseType>, CardsParamsType>('cards/card', {params}).then(res => res.data)
     },
     addCard(card: NewCardType) {
-        return instance.post<any, AxiosResponse<AdditionalCardResponse & Pick<CardResponses, 'newCard'>>, {card: NewCardType}>('cards/card', {card})
+        return instance.post<any, AxiosResponse<AdditionalCardResponse & Pick<CardResponses, 'newCard'>>, { card: NewCardType }>('cards/card', {card})
     },
     deleteCard(cardId: string) {
         return instance.delete<any, AxiosResponse<AdditionalCardResponse & Pick<CardResponses, 'deletedCard'>>>(`cards/card?id=${cardId}`)
     },
-    updateCard(payload: UpdateCardPayload) {
-        return instance.put<any, AxiosResponse<AdditionalCardResponse & Pick<CardResponses, 'updatedCard'>>, UpdateCardPayload>(`cards/card`, payload)
+    updateCard(card: UpdateCardPayload) {
+        return instance.put<any, AxiosResponse<AdditionalCardResponse & Pick<CardResponses, 'updatedCard'>>, {card: UpdateCardPayload}>(`cards/card`, {card})
     }
 }
 
@@ -52,17 +52,15 @@ export type NewCardType = {
     answerVideo?: string
 }
 export type UpdateCardPayload = {
-    card: {
-        _id: string
-        answer?: string
-        question?: string
-        cardsPack_id?: string
-        grade?: number
-        shots?: number
-        user_id?: string
-        created?: Date
-        updated?: Date
-    }
+    _id: string
+    answer?: string
+    question?: string
+    cardsPack_id?: string
+    grade?: number
+    shots?: number
+    user_id?: string
+    created?: Date
+    updated?: Date
 }
 export type CardResponses = {
     newCard: CardType

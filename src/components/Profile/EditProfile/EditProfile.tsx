@@ -12,10 +12,11 @@ import {
     selectProfileEditMode,
     selectProfileError,
     selectProfileIsFetching,
-    selectProfileUser, selectTheme
-} from '../../../selectors/selectors';
-import {Profile} from '../Profile';
-import {Logo} from '../../../common/logo/Logo';
+    selectProfileUser,
+    selectTheme
+} from '../../../selectors/selectors'
+import {Profile} from '../Profile'
+import {Logo} from '../../../common/logo/Logo'
 
 export const EditProfile = () => {
     const theme = useAppSelector(selectTheme)

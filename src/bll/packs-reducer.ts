@@ -1,6 +1,7 @@
 import {AppThunk, InferActionTypes} from './store';
 import axios from 'axios';
 import {AddNewCardType, packsAPI, PackType} from '../api/packs-api';
+import {cardsActions} from "./cards-reducer";
 
 const packsInitialState = {
     packs: [] as PackType[],
@@ -68,11 +69,13 @@ export const getPacks = (): AppThunk => async (dispatch, getState) => {
     dispatch(packsActions.setPacksIsLoading(true))
     try {
         const data = await packsAPI.getPacks(params)
+        debugger
         dispatch(packsActions.setPacksError(''))
         dispatch(packsActions.setCardPacksTotalCount(data.cardPacksTotalCount))
         dispatch(packsActions.setPacks(data.cardPacks))
         dispatch(packsActions.setMaxCardsCount(data.maxCardsCount))
         dispatch(packsActions.setMinCardsCount(data.minCardsCount))
+        dispatch(cardsActions.setCurrentPage(1))
     } catch (e) {
         if (axios.isAxiosError(e)) {
             dispatch(packsActions.setPacksError(e.response ? e.response.data.error : e.message))

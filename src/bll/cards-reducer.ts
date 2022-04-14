@@ -69,6 +69,7 @@ export const getCards = (): AppThunk => async (dispatch, getState) => {
         dispatch(cardsActions.setCardsError(''))
         dispatch(cardsActions.setCardsTotalCount(data.cardsTotalCount))
         dispatch(cardsActions.setCards(data.cards))
+        dispatch(cardsActions.setCurrentPage(1))
     } catch (e) {
         if (axios.isAxiosError(e)) {
             dispatch(cardsActions.setCardsError(e.response ? e.response.data.error : e.message))

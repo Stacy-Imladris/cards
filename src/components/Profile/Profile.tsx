@@ -11,24 +11,31 @@ import {useAppSelector} from '../../bll/store';
 import {EditProfile} from './EditProfile/EditProfile';
 import {
     selectIsLoggedIn,
-    selectPackNameForSearch,
+    selectPackNameForSearch, selectPackUserId,
     selectProfileEditMode,
     selectProfileUserName,
-    selectTheme
+    selectTheme, selectUser_id
 } from '../../selectors/selectors';
-import {useCallback} from 'react';
+import {useCallback, useEffect} from 'react';
 import {SearchField} from '../SearchField/SearchField';
 import {PacksTable} from '../Packs/PacksTable/PacksTable';
-import {packsActions} from '../../bll/packs-reducer';
+import {getPacks, packsActions} from '../../bll/packs-reducer';
 
 export const Profile = () => {
+    debugger
     const isLoggedIn = useAppSelector(selectIsLoggedIn)
     const name = useAppSelector(selectProfileUserName)
     const theme = useAppSelector(selectTheme)
     const editMode = useAppSelector(selectProfileEditMode)
     const packName = useAppSelector(selectPackNameForSearch)
-
     const dispatch = useDispatch()
+    const userId = useAppSelector(selectUser_id)
+
+    useEffect(() => {
+        debugger
+        dispatch(packsActions.setPacksForUser(userId))
+    }, [])
+
 
     const editProfile = useCallback(() => {
         dispatch(profileActions.setEditModeProfile(true))

@@ -14,6 +14,7 @@ beforeEach(() => {
         packs: [] as PackType[],
         errorPacks: '',
         isLoading: false,
+
         minCardsCount: 0,
         maxCardsCount: 103,
         params: {

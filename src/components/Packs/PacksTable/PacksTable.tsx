@@ -9,6 +9,7 @@ import {selectCardPacksTotalCount, selectMaxForCards, selectMinForCards, selectP
     selectPacks, selectPackUserId, selectPageCountForPacks, selectPageForPacks, selectSortForPacks,
 } from '../../../selectors/selectors';
 import {Paginator} from '../../Paginator/Paginator';
+import {arr} from "../Packs";
 
 export const PacksTable = () => {
     const [sortField, setSortField] = useState<SortValuesType>('updated')
@@ -30,6 +31,10 @@ export const PacksTable = () => {
         dispatch(getPacks())
     }, [dispatch, packName, user_id, sortPacks, min, max, pageCount])
 
+    useEffect(() => {
+        debugger
+        dispatch(packsActions.setPacksForUser(""))
+    }, [])
     const changeSortField = (fieldToSort: SortValuesType) => {
         setSortField(fieldToSort)
         setSortValuesToStore(dispatch, sortValue, fieldToSort)

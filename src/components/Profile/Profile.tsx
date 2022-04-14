@@ -1,58 +1,105 @@
-import React from 'react'
 import s from './Profile.module.css'
-import profile_ava from '../../assets/profile_ava.png'
-import SuperButton from '../../common/super-components/c2-SuperButton/SuperButton'
-import SuperInputText from '../../common/super-components/c1-SuperInputText/SuperInputText'
-import {useDispatch, useSelector} from 'react-redux'
-import {AppRootStateType} from '../../bll/store'
-import {profileActions} from '../../bll/profileReducer'
-import {EditProfile} from './EditProfile'
+import c from '../../common/styles/Container.module.css';
+import t from '../../common/styles/Themes.module.css';
+import profileAva from '../../assets/images/profile_ava.png'
+import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton'
+import {Navigate} from 'react-router-dom';
+import {PATH} from '../../app/AllRoutes';
+import {profileActions} from '../../bll/profile-reducer';
+import {useDispatch} from 'react-redux';
+import {useAppSelector} from '../../bll/store';
+import {EditProfile} from './EditProfile/EditProfile';
+import {
+    selectIsLoggedIn,
+    selectPackNameForSearch,
+    selectProfileEditMode,
+    selectProfileUserName,
+    selectTheme
+} from '../../selectors/selectors';
+import {useCallback} from 'react';
+import {SearchField} from '../SearchField/SearchField';
+import {PacksTable} from '../Packs/PacksTable/PacksTable';
+import {packsActions} from '../../bll/packs-reducer';
 
 export const Profile = () => {
-    const name = useSelector<AppRootStateType, string>(state => state.profile.user.name)
-    const editMode = useSelector<AppRootStateType, boolean>(state => state.profile.editMode)
+    const isLoggedIn = useAppSelector(selectIsLoggedIn)
+    const name = useAppSelector(selectProfileUserName)
+    const theme = useAppSelector(selectTheme)
+    const editMode = useAppSelector(selectProfileEditMode)
+    const packName = useAppSelector(selectPackNameForSearch)
+
     const dispatch = useDispatch()
-    const editProfile = () => dispatch(profileActions.setEditModeProfileAC(true))
+
+    const editProfile = useCallback(() => {
+        dispatch(profileActions.setEditModeProfile(true))
+        dispatch(profileActions.setProfileError(''))
+    }, [dispatch])
+
+    const onChangeDebounceRequest = useCallback((title: string) => {
+        dispatch(packsActions.setCurrentPage(1))
+        dispatch(packsActions.setTitleForSearch(title))
+    }, [dispatch])
+
     if (editMode) {
         return <EditProfile/>
     }
-    return (
-        <div className={s.profileWrapper}>
-            <div className={s.profilePage}>
-                <div className={s.profileContent}>
-                    <div className={s.profileBlock}>
-                        <div className={s.profile__avatar}>
-                            <img src={profile_ava} alt={'avatar'}/>
-                        </div>
-                        <div className={s.profile_name}>{name}</div>
-                        <div className={s.profile_job}>Front-end developer</div>
-                        <div className={s.profile_edit}>
-                            <SuperButton onClick={editProfile}>Edit profile</SuperButton>
-                        </div>
-                    </div>
-                    <div className={s.profile_filter}>
-                        <h3>Number of cards</h3>
-                    </div>
-                </div>
 
-                <div className={s.profilePacks}>
-                    profilePacks
-                    <h1>My packs list</h1>
-                    <div className={s.profilePacks_search}>
-                        profilePacks_search
-                        <div>
-                            <SuperInputText placeholder={'search'}/>
+    if (!isLoggedIn) {
+        return <Navigate to={PATH.LOGIN}/>
+    }
+
+    return (
+        <div className={c.mainContainer}>
+            <div className={`${c.container} ${t[theme + '-text']}`}>
+                <div className={c.settings}>
+                    <div className={s.profile}>
+                        <div className={s.profileAvatar}>
+                            <img src={profileAva} alt={'avatar'}/>
                         </div>
+                        <div className={c.text}>{name}</div>
+                        <div className={s.profileJob}>Front-end developer</div>
+                        <SuperButton onClick={editProfile} className={s.edit}>
+                            Edit profile
+                        </SuperButton>
                     </div>
-                    <div className={s.profilePacks_packsTable}>
-                        profilePacks_packsTable
-                    </div>
-                    <div className={s.profilePacks_pagination}>
-                        profilePacks_pagination
-                        <div>1 2 3 4...</div>
+                    <div className={c.text}>Number of cards</div>
+                    {/*<DoubleRange/>*/}
+                    {/*<div className={c.doubleRange}>
+                        <div className={c.num}>{value1Range}</div>
+                        <AlternativeSuperDoubleRange value={[value1Range, value2Range]}
+                                                     onChangeRange={changeTwoValue}
+                                                     min={minCardsCount}
+                                                     max={maxCardsCount}/>
+                        <div className={c.num}>{value2Range}</div>
+                    </div>*/}
+                </div>
+                <div className={c.performance}>
+                    <div className={c.title}>My packs list</div>
+                    <div>
+                        <div className={c.rowElements}>
+                            <SearchField onChangeWithDebounce={onChangeDebounceRequest}
+                                         value={packName} wide
+                                         placeholder={'Enter pack\'s title for search'}/>
+                            <SuperButton className={c.addPack}>Add pack</SuperButton>
+                        </div>
+                        <div className={c.table}><PacksTable/></div>
                     </div>
                 </div>
             </div>
         </div>
     )
 }
+
+/*
+export const DoubleRange = () => {
+
+
+    return <div className={c.doubleRange}>
+        <div className={c.num}>{value1Range}</div>
+        <AlternativeSuperDoubleRange value={[value1Range, value2Range]}
+                                     onChangeRange={changeTwoValue}
+                                     min={minCardsCount}
+                                     max={maxCardsCount}/>
+        <div className={c.num}>{value2Range}</div>
+    </div>
+}*/

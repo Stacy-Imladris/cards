@@ -1,7 +1,8 @@
-import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes} from 'react'
+import {ChangeEvent, DetailedHTMLProps, FC, InputHTMLAttributes, memo} from 'react'
 import s from './SuperRadio.module.css'
 import t from '../../styles/Themes.module.css'
 import {useAppSelector} from '../../../bll/store';
+import {selectTheme} from '../../../selectors/selectors';
 
 type DefaultRadioPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
@@ -10,7 +11,7 @@ type SuperRadioPropsType = DefaultRadioPropsType & {
     onChangeOption?: (option: any) => void
 }
 
-const SuperRadio: React.FC<SuperRadioPropsType> = (
+export const SuperRadio: FC<SuperRadioPropsType> = memo((
     {
         type, name,
         options, value,
@@ -18,7 +19,7 @@ const SuperRadio: React.FC<SuperRadioPropsType> = (
         ...restProps
     }
 ) => {
-    const theme = useAppSelector(state => state.theme.theme)
+    const theme = useAppSelector(selectTheme)
 
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
         onChange && onChange(e)
@@ -44,6 +45,4 @@ const SuperRadio: React.FC<SuperRadioPropsType> = (
             {mappedOptions}
         </div>
     )
-}
-
-export default SuperRadio
+})

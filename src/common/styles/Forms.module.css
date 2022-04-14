@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+    min-width: 270px;
+    min-height: 70%;
+    padding: 15px 20px;
+    text-align: center;
+    border: 5px #077517 solid;
+    border-radius: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 27px 27px 0 rgba(0,0,0,0.2), 0 27px 27px 0 rgba(0,0,0,0.19);
+}
+
+.mainText {
+    font-weight: bold;
+    font-size: 24px;
+    margin: 10px auto;
+}
+
+.container span {
+    font-size: 16px;
+    margin-top: 2px;
+}
+
+.preloader {
+    height: 40px;
+}
+
+.buttons {
+    margin: 10px auto;
+}
+
+.error {
+    color: #e82323;
+    font-size: 16px;
+    margin: 10px 0 25px 0;
+    height: 10px;
+}
+
+.link {
+    display: inline-block;
+    padding-bottom: 5px;
+    text-decoration: none;
+    border-bottom-style: groove;
+    margin-bottom: 10px;
+}

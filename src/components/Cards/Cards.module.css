@@ -1,0 +1,33 @@
+.cardsContainer {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.cardsTable {
+    width: 100%;
+}
+
+.backAndTitle {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.rowElements {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 760px) {
+    .rowElements {
+        flex-direction: column;
+    }
+}
+
+.backIcon {
+    width: 40px;
+    height: 40px;
+    padding: 2px;
+    border-radius: 17px;
+}

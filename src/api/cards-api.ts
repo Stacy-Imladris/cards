@@ -52,7 +52,17 @@ export type NewCardType = {
     answerVideo?: string
 }
 export type UpdateCardPayload = {
-    _id: string
+    card: {
+        _id: string
+        answer?: string
+        question?: string
+        cardsPack_id?: string
+        grade?: number
+        shots?: number
+        user_id?: string
+        created?: Date
+        updated?: Date
+    }
 }
 export type CardResponses = {
     newCard: CardType

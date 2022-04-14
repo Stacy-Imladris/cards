@@ -8,6 +8,7 @@ import {RecoveryContainer} from '../components/Recovery/RecoveryUI/RecoveryConta
 import {NewPasswordContainer} from '../components/NewPassword/NewPasswordUI/NewPasswordContainer'
 import {Packs} from '../components/Packs/Packs'
 import {Cards} from '../components/Cards/Cards';
+import {LoginNavigate} from '../HOC/LoginNavigate'
 
 export enum PATH {
     LOGIN = '/login',
@@ -25,13 +26,13 @@ export const AllRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<Navigate to={PATH.PROFILE}/>}/>
-            <Route path={PATH.PROFILE} element={<Profile/>}/>
+            <Route path={PATH.PROFILE} element={<LoginNavigate><Profile/></LoginNavigate>}/>
             <Route path={PATH.LOGIN} element={<Login/>}/>
             <Route path={PATH.REGISTRATION} element={<RegistrationContainer/>}/>
             <Route path={PATH.PASSWORD_RECOVERY} element={<RecoveryContainer/>}/>
             <Route path={PATH.NEW_PASSWORD} element={<NewPasswordContainer/>}/>
-            <Route path={PATH.PACKS} element={<Packs/>}/>
-            <Route path={PATH.CARDS} element={<Cards/>}/>
+            <Route path={PATH.PACKS} element={<LoginNavigate><Packs/></LoginNavigate>}/>
+            <Route path={PATH.CARDS} element={<LoginNavigate><Cards/></LoginNavigate>}/>
             <Route path={PATH.ERROR_404} element={<Error404/>}/>
             <Route path={PATH.TEST} element={<Test/>}/>
             <Route path="*" element={<Navigate to={PATH.ERROR_404}/>}/>

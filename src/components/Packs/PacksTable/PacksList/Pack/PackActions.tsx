@@ -3,6 +3,7 @@ import {SuperButton} from '../../../../../common/super-components/c2-SuperButton
 import s from '../../PacksTable.module.css'
 import {deletePack} from '../../../../../bll/packs-reducer';
 import {useDispatch} from 'react-redux';
+import {UpdatePackType} from '../../../api/packs-api'
 
 type PackActionsType = {
     isMyPacks: boolean
@@ -18,13 +19,23 @@ export const PackActions: FC<PackActionsType> = memo(({isMyPacks, userId, packId
         dispatch(deletePack(packId))
     }
 
+    const onClickUpdatePack = () => {
+        const editingPack: UpdatePackType = {
+            cardsPack: {
+                _id: packId,
+                name: 'NewPackName'
+            }
+        }
+        dispatch(updatePack(editingPack))
+    }
+
     return <div className={s.packsActionsButtons}>
         {
             isMyPacks
             && <>
                 <SuperButton red onClick={onClickDeletePack}>Delete</SuperButton>
                 <SuperButton
-                  // onClick={updatePack}
+                  onClick={onClickUpdatePack}
                 >Edit</SuperButton>
             </>
         }

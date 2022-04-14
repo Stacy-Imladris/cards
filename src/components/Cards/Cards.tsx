@@ -1,9 +1,9 @@
-import {CardsTable} from './CardsTable/CardsTable';
-import t from '../../common/styles/Themes.module.css';
+import {CardsTable} from './CardsTable/CardsTable'
+import t from '../../common/styles/Themes.module.css'
 import s from './Cards.module.css'
 import c from '../../common/styles/Container.module.css'
 import {useAppSelector} from '../../bll/store';
-import React, {useCallback} from 'react';
+import {useCallback} from 'react';
 import {SearchField} from '../SearchField/SearchField';
 import {Navigate, useNavigate} from 'react-router-dom';
 import {PATH} from '../../app/AllRoutes';

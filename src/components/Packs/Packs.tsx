@@ -1,5 +1,5 @@
-import {PacksTable} from './PacksTable/PacksTable';
-import t from '../../common/styles/Themes.module.css';
+import {PacksTable} from './PacksTable/PacksTable'
+import t from '../../common/styles/Themes.module.css'
 import c from '../../common/styles/Container.module.css'
 import {useAppSelector} from '../../bll/store';
 import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton';
@@ -9,14 +9,11 @@ import {SuperRadio} from '../../common/super-components/c6-SuperRadio/SuperRadio
 import {useDispatch} from 'react-redux';
 import {addPack, packsActions} from '../../bll/packs-reducer';
 import {
-    selectIsLoggedIn,
     selectLoginError,
     selectPackNameForSearch,
     selectTheme,
     selectUser_id,
 } from '../../selectors/selectors';
-import {Navigate} from 'react-router-dom';
-import {PATH} from '../../app/AllRoutes';
 import {AddNewCardType} from '../../api/packs-api';
 import {DoubleRange} from '../DoubleRange/DoubleRange';
 
@@ -26,7 +23,6 @@ export const Packs = () => {
     const theme = useAppSelector(selectTheme)
     const user_id = useAppSelector(selectUser_id)
     const packName = useAppSelector(selectPackNameForSearch)
-    const isLoggedIn = useAppSelector(selectIsLoggedIn)
     const status = useAppSelector(state => state.packs.status)
     const error = useAppSelector(selectLoginError)
     const errorPacks = useAppSelector(state => state.packs.errorPacks)
@@ -52,11 +48,6 @@ export const Packs = () => {
     const addNewPack = () => {
         dispatch(addPack({} as AddNewCardType))
     }
-
-    if (!isLoggedIn) {
-        return <Navigate to={PATH.LOGIN}/>
-    }
-
 
     return (
         <div className={c.mainContainer}>

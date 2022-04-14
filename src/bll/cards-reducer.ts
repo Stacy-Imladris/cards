@@ -1,4 +1,4 @@
-import {cardsAPI, CardType, NewCardType} from '../api/cards-api';
+import {cardsAPI, CardType, NewCardType, UpdateCardPayload} from '../api/cards-api'
 import {AppThunk, InferActionTypes} from './store';
 import axios from 'axios';
 import {packsActions} from "./packs-reducer";
@@ -97,6 +97,23 @@ export const addCard = (card: NewCardType): AppThunk => async (dispatch) => {
         setTimeout(()=> {
             dispatch(cardsActions.setStatus(''))
         }, 3000)
+    }
+}
+
+export const updateCard = (updatingCard: UpdateCardPayload): AppThunk => async (dispatch) => {
+    dispatch(packsActions.setPacksIsLoading(true))
+    try {
+        await cardsAPI.updateCard(updatingCard)
+        dispatch(cardsActions.setCardsError(''))
+        dispatch(getCards())
+    } catch (e) {
+        if (axios.isAxiosError(e)) {
+            dispatch(packsActions.setPacksError(e.response ? e.response.data.error : e.message))
+        } else {
+            dispatch(packsActions.setPacksError('Some error occurred'))
+        }
+    } finally {
+        dispatch(packsActions.setPacksIsLoading(false))
     }
 }
 

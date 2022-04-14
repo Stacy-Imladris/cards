@@ -1,6 +1,6 @@
 import {AppThunk, InferActionTypes} from './store';
 import axios from 'axios';
-import {AddNewCardType, packsAPI, PackType} from '../api/packs-api';
+import {AddNewCardType, packsAPI, PackType, UpdatePackType} from '../api/packs-api'
 
 const packsInitialState = {
     packs: [] as PackType[],
@@ -122,6 +122,23 @@ export const addPack = (cardsPack: AddNewCardType): AppThunk => async (dispatch)
         setTimeout(()=> {
             dispatch(packsActions.setStatus(""))
         }, 3000)
+    }
+}
+
+export const updatePack = (editingPack: UpdatePackType): AppThunk => async (dispatch) => {
+    dispatch(packsActions.setPacksIsLoading(true))
+    try {
+        await packsAPI.updatePack(editingPack)
+        dispatch(packsActions.setPacksError(''))
+        dispatch(getPacks())
+    } catch (e) {
+        if (axios.isAxiosError(e)) {
+            dispatch(packsActions.setPacksError(e.response ? e.response.data.error : e.message))
+        } else {
+            dispatch(packsActions.setPacksError('Some error occurred'))
+        }
+    } finally {
+        dispatch(packsActions.setPacksIsLoading(false))
     }
 }
 

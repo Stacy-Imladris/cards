@@ -5,14 +5,13 @@ import c from '../../common/styles/Container.module.css'
 import {useAppSelector} from '../../bll/store';
 import {useCallback} from 'react';
 import {SearchField} from '../SearchField/SearchField';
-import {Navigate, useNavigate} from 'react-router-dom';
-import {PATH} from '../../app/AllRoutes';
+import {useNavigate} from 'react-router-dom';
 import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton';
 import {useDispatch} from 'react-redux';
 import {addCard, cardsActions} from '../../bll/cards-reducer';
 import {
     selectCardAnswer,
-    selectCardQuestion, selectIsLoggedIn, selectLoginError,
+    selectCardQuestion, selectLoginError,
     selectPackName, selectPackUserId,
     selectTheme, selectUser_id
 } from '../../selectors/selectors';
@@ -23,15 +22,15 @@ export const Cards = () => {
     const packName = useAppSelector(selectPackName)
     const cardQuestion = useAppSelector(selectCardQuestion)
     const cardAnswer = useAppSelector(selectCardAnswer)
-    const isLoggedIn = useAppSelector(selectIsLoggedIn)
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
     const cardsPack_id = useAppSelector(state=> state.cards.params.cardsPack_id)
     const errorCards = useAppSelector(state=> state.cards.errorCards)
     const statusCard = useAppSelector(state=> state.cards.statusCard)
     const error = useAppSelector(selectLoginError)
     const userId = useAppSelector(selectUser_id)
     const packUserId = useAppSelector(selectPackUserId)
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const onChangeDebounceQuestionRequest = useCallback((title: string) => {
         dispatch(cardsActions.setCurrentPage(1))
@@ -45,10 +44,6 @@ export const Cards = () => {
 
     const addNewCard = () => {
         dispatch(addCard({cardsPack_id: cardsPack_id}))
-    }
-
-    if (!isLoggedIn) {
-        return <Navigate to={PATH.LOGIN}/>
     }
 
     return (
@@ -71,7 +66,7 @@ export const Cards = () => {
                             <SearchField value={cardAnswer} placeholder={'Enter answer'}
                                          onChangeWithDebounce={onChangeDebounceAnswerRequest}/>
                         </div>
-                        {userId ===packUserId && <SuperButton className={c.addItem} onClick={addNewCard}>Add card</SuperButton>}
+                        {userId === packUserId && <SuperButton className={c.addItem} onClick={addNewCard}>Add card</SuperButton>}
                     </div>
                     <div className={c.table}><CardsTable/></div>
                     <div className={s.error}>{errorCards}</div>

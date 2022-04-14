@@ -2,20 +2,28 @@ import {FC, memo, useState} from 'react'
 import {getLastUpdatedDate} from '../../../../../utils/date-helpers'
 import {CardType, UpdateCardPayload} from '../../../../../api/cards-api';
 import c from '../../../../../common/styles/TableLine.module.css'
+import s from '../../../Cards.module.css'
 import {useDispatch} from 'react-redux'
-import {updateCard} from '../../../../../bll/cards-reducer';
+import {deleteCard, updateCard} from '../../../../../bll/cards-reducer';
+import {SuperButton} from '../../../../../common/super-components/c2-SuperButton/SuperButton';
+import {useAppSelector} from '../../../../../bll/store';
+import {selectPackUserId, selectUser_id} from '../../../../../selectors/selectors';
 
 type CardPropsType = {
     card: CardType
+    id: string
 }
 
-export const Card: FC<CardPropsType> = memo(({card}) => {
+export const Card: FC<CardPropsType> = memo(({card, id}) => {
     const [isEditQuestion, setIsEditQuestion] = useState<boolean>(false)
     const [question, setQuestion] = useState<string>(card.question)
     const [isEditAnswer, setIsEditAnswer] = useState<boolean>(false)
     const [answer, setAnswer] = useState<string>(card.answer)
 
     const lastUpdate = getLastUpdatedDate(card.updated)
+    const userId = useAppSelector(selectUser_id)
+    const packUserId = useAppSelector(selectPackUserId)
+
     const dispatch = useDispatch()
 
     const uploadChanges = (param: 'question' | 'answer') => {
@@ -29,6 +37,11 @@ export const Card: FC<CardPropsType> = memo(({card}) => {
         }
         dispatch(updateCard(updatedCard))
     }
+
+    const onClickDeleteCard = () => {
+        dispatch(deleteCard(id))
+    }
+
 
     return <tr>
         {isEditQuestion
@@ -47,5 +60,11 @@ export const Card: FC<CardPropsType> = memo(({card}) => {
         }
         <td>{lastUpdate}</td>
         <td>{card.grade}</td>
+        {userId === packUserId && <td>
+          <div className={s.buttons}>
+            <SuperButton>✎</SuperButton>
+            <SuperButton red onClick={onClickDeleteCard}>✘</SuperButton>
+          </div>
+        </td>}
     </tr>
 })

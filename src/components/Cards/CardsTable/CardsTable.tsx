@@ -49,6 +49,11 @@ export const CardsTable = () => {
                 <CardsTableHeader text={'Answer'} param={'answer'}/>
                 <CardsTableHeader text={'Updated'} param={'updated'}/>
                 <CardsTableHeader text={'Grade'} param={'grade'}/>
+                {userId === packUserId && <th>
+                    <span>
+                        Actions
+                    </span>
+                </th>}
             </tr>
             </thead>
             <tbody>

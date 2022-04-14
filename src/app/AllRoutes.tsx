@@ -8,7 +8,7 @@ import {RecoveryContainer} from '../components/Recovery/RecoveryUI/RecoveryConta
 import {NewPasswordContainer} from '../components/NewPassword/NewPasswordUI/NewPasswordContainer'
 import {Packs} from '../components/Packs/Packs'
 import {Cards} from '../components/Cards/Cards';
-import {LoginNavigate} from '../HOC/LoginNavigate'
+import {LoginNavigate} from '../hoc/LoginNavigate'
 
 export enum PATH {
     LOGIN = '/login',

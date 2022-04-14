@@ -9,8 +9,6 @@ import {useAppSelector} from '../../bll/store'
 import {EditProfile} from './EditProfile/EditProfile'
 import {
     selectPackNameForSearch,
-    selectIsLoggedIn,
-    selectPackNameForSearch, selectPackUserId,
     selectProfileEditMode,
     selectProfileUserName,
     selectTheme, selectUser_id
@@ -29,10 +27,6 @@ export const Profile = () => {
     const userId = useAppSelector(selectUser_id)
 
     const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(packsActions.setPacksForUser(userId))
-    }, [])
 
     const editProfile = useCallback(() => {
         dispatch(profileActions.setEditModeProfile(true))

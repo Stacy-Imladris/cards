@@ -128,12 +128,12 @@ export const addPack = (cardsPack: AddNewCardType): AppThunk => async (dispatch)
     }
 }
 
-export const updatePack = (editedPack: UpdatePackType): AppThunk => async (dispatch) => {
+export const updatePack = (editingPack: UpdatePackType): AppThunk => async (dispatch) => {
     dispatch(packsActions.setPacksIsLoading(true))
     try {
-        const data = await packsAPI.updatePack(editedPack)
+        const data = await packsAPI.updatePack(editingPack)
         dispatch(packsActions.setPacksError(''))
-        dispatch(packsActions.updatePackName(editedPack._id, data.data.updatedCardsPack.name))
+        dispatch(packsActions.updatePackName(editingPack._id, data.data.updatedCardsPack.name))
     } catch (e) {
         if (axios.isAxiosError(e)) {
             dispatch(packsActions.setPacksError(e.response ? e.response.data.error : e.message))

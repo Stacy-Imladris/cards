@@ -17,7 +17,8 @@
 }
 
 .table th {
-    background: #4CAF50
+    background: #4CAF50;
+    cursor: pointer;
 }
 
 .table th:first-child, td:first-child {
@@ -34,31 +35,6 @@
     padding: 3px 5px;
     margin: 0 2px;
     border-radius: 4px;
-}
-
-.triangle {
-    display: inline-block;
-    width: 10px;
-}
-
-.name {
-    width: 17%;
-}
-
-.cards {
-    width: 10%;
-}
-
-.updated {
-    width: 17%;
-}
-
-.creator {
-    max-width: 23%;
-}
-
-.actions {
-    width: 15%;
 }
 
 .pagination {

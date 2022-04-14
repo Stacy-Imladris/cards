@@ -137,10 +137,9 @@ export type PacksParamsType = {
     pageCount: number
     user_id: string
 }
-export type SortValuesType = 'name' | 'cardsCount' | 'updated' | 'user_name'
+export type PacksSortFieldsType = 'name' | 'cardsCount' | 'updated' | 'user_name'
 export type SortOrderType = '0' | '1'
-
 export type RequestStatusType = 'deleted successfully'
     | 'successfully added'
     | 'add error'
-    | 'deletion error' |''
+    | 'deletion error' | ''

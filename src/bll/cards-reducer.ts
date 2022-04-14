@@ -117,6 +117,4 @@ export type RequestStatusCardType = 'deleted successfully'
     | 'successfully added'
     | 'add error'
     | 'deletion error' |''
-
-//export type SortValuesType = 'name' | 'cardsCount' | 'updated' | 'user_name'
-//export type SortOrderType = '0' | '1'
+export type CardsSortFieldsType = 'answer' | 'question' | 'updated' | 'grade'

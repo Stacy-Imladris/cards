@@ -39,12 +39,6 @@
     padding: 20px 0;
 }
 
-.num {
-    display: inline-block;
-    width: 33px;
-    text-align: center;
-}
-
 .addItem {
     min-width: 120px;
     width: 120px;
@@ -54,12 +48,6 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-}
-
-.doubleRange {
-    display: flex;
-    align-content: center;
-    align-items: center;
 }
 
 .table {

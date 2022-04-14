@@ -1,0 +1,17 @@
+.doubleRange {
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+.num {
+    display: inline-block;
+    width: 33px;
+    text-align: center;
+}
+
+.text {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 15px 10px 15px 10px;
+}

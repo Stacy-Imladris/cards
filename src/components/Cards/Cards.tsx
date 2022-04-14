@@ -16,7 +16,6 @@ import {
     selectPackName,
     selectTheme
 } from '../../selectors/selectors';
-import {Preloader} from '../../common/preloader/Preloader';
 
 
 export const Cards = () => {

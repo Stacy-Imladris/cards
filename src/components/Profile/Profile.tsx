@@ -20,6 +20,7 @@ import {useCallback} from 'react';
 import {SearchField} from '../SearchField/SearchField';
 import {PacksTable} from '../Packs/PacksTable/PacksTable';
 import {packsActions} from '../../bll/packs-reducer';
+import {DoubleRange} from '../DoubleRange/DoubleRange';
 
 export const Profile = () => {
     const isLoggedIn = useAppSelector(selectIsLoggedIn)
@@ -62,16 +63,7 @@ export const Profile = () => {
                             Edit profile
                         </SuperButton>
                     </div>
-                    <div className={c.text}>Number of cards</div>
-                    {/*<DoubleRange/>*/}
-                    {/*<div className={c.doubleRange}>
-                        <div className={c.num}>{value1Range}</div>
-                        <AlternativeSuperDoubleRange value={[value1Range, value2Range]}
-                                                     onChangeRange={changeTwoValue}
-                                                     min={minCardsCount}
-                                                     max={maxCardsCount}/>
-                        <div className={c.num}>{value2Range}</div>
-                    </div>*/}
+                    <DoubleRange/>
                 </div>
                 <div className={c.performance}>
                     <div className={c.title}>My packs list</div>
@@ -89,17 +81,3 @@ export const Profile = () => {
         </div>
     )
 }
-
-/*
-export const DoubleRange = () => {
-
-
-    return <div className={c.doubleRange}>
-        <div className={c.num}>{value1Range}</div>
-        <AlternativeSuperDoubleRange value={[value1Range, value2Range]}
-                                     onChangeRange={changeTwoValue}
-                                     min={minCardsCount}
-                                     max={maxCardsCount}/>
-        <div className={c.num}>{value2Range}</div>
-    </div>
-}*/

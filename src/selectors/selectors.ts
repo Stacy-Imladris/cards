@@ -35,6 +35,7 @@ export const selectCardAnswer = (state: AppRootStateType) => state.cards.params.
 export const selectCards = (state: AppRootStateType) => state.cards.cards
 export const selectCardsQuestion = (state: AppRootStateType) => state.cards.params.cardQuestion
 export const selectCardsAnswer = (state: AppRootStateType) => state.cards.params.cardAnswer
+export const selectSortCards = (state: AppRootStateType) => state.cards.params.sortCards
 
 export const selectCardPacksTotalCount = (state: AppRootStateType) => state.packs.cardPacksTotalCount
 export const selectPageForPacks = (state: AppRootStateType) => state.packs.params.page

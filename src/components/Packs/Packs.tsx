@@ -4,22 +4,21 @@ import c from '../../common/styles/Container.module.css'
 import {useAppSelector} from '../../bll/store';
 import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton';
 import {useCallback, useState} from 'react';
-import {AlternativeSuperDoubleRange} from '../../common/super-components/c8-SuperDoubleRange/AlternativeSuperDoubleRange';
 import {SearchField} from '../SearchField/SearchField';
 import {SuperRadio} from '../../common/super-components/c6-SuperRadio/SuperRadio';
 import {useDispatch} from 'react-redux';
 import {addPack, packsActions} from '../../bll/packs-reducer';
 import {
-    selectIsLoggedIn, selectLoginError,
-    selectMaxCardsCount,
-    selectMinCardsCount,
+    selectIsLoggedIn,
+    selectLoginError,
     selectPackNameForSearch,
     selectTheme,
     selectUser_id,
 } from '../../selectors/selectors';
-import {Navigate} from "react-router-dom";
-import {PATH} from "../../app/AllRoutes";
+import {Navigate} from 'react-router-dom';
+import {PATH} from '../../app/AllRoutes';
 import {AddNewCardType} from '../../api/packs-api';
+import {DoubleRange} from '../DoubleRange/DoubleRange';
 
 const arr = ['All', 'My']
 
@@ -27,8 +26,6 @@ export const Packs = () => {
     const theme = useAppSelector(selectTheme)
     const user_id = useAppSelector(selectUser_id)
     const packName = useAppSelector(selectPackNameForSearch)
-    const minCardsCount = useAppSelector(selectMinCardsCount)
-    const maxCardsCount = useAppSelector(selectMaxCardsCount)
     const isLoggedIn = useAppSelector(selectIsLoggedIn)
     const status = useAppSelector(state => state.packs.status)
     const error = useAppSelector(selectLoginError)
@@ -37,9 +34,6 @@ export const Packs = () => {
     const dispatch = useDispatch()
 
     const [valueFromArray, setValueFromArray] = useState(arr[0])
-    const [value1Range, setValue1] = useState(minCardsCount)
-    const [value2Range, setValue2] = useState(maxCardsCount)
-    const [timerId, setTimerId] = useState<number>(0)
 
     const onChangeOption = useCallback((value: string) => {
         setValueFromArray(value)
@@ -50,21 +44,9 @@ export const Packs = () => {
         }
     }, [dispatch, user_id])
 
-    const changeTwoValue = useCallback((value: [number, number] | number[]) => {
-        setValue1(value[0])
-        setValue2(value[1])
-        clearTimeout(timerId)
-        const id = +setTimeout(() => {
-            dispatch(packsActions.setPacksMin(value[0]))
-            dispatch(packsActions.setPacksMax(value[1]))
-        }, 500)
-        setTimerId(id)
-    }, [timerId])
-
     const onChangeDebounceRequest = useCallback((title: string) => {
         dispatch(packsActions.setCurrentPage(1))
         dispatch(packsActions.setTitleForSearch(title))
-
     }, [dispatch])
 
     const addNewPack = () => {
@@ -84,15 +66,7 @@ export const Packs = () => {
                     <SuperRadio name={'radio'} options={arr}
                                 value={valueFromArray} onChangeOption={onChangeOption}
                     />
-                    <div className={c.text}>Number of cards</div>
-                    <div className={c.doubleRange}>
-                        <div className={c.num}>{value1Range}</div>
-                        <AlternativeSuperDoubleRange value={[value1Range, value2Range]}
-                                                     onChangeRange={changeTwoValue}
-                                                     min={minCardsCount}
-                                                     max={maxCardsCount}/>
-                        <div className={c.num}>{value2Range}</div>
-                    </div>
+                    <DoubleRange/>
                 </div>
                 <div className={c.performance}>
                     <div className={c.title}>Packs list</div>

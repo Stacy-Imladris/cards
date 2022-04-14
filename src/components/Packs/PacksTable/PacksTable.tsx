@@ -31,9 +31,7 @@ export const PacksTable = () => {
 
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(getPacks())
-    }, [dispatch, packName, user_id, sortPacks, min, max, pageCount])
+
 
     const onPageChanged = useCallback((page: number) => {
         dispatch(packsActions.setCurrentPage(page))
@@ -43,6 +41,14 @@ export const PacksTable = () => {
     const onChangeSetAmountOfPacks = useCallback((amountOfPacks: number) => {
         dispatch(packsActions.setPacksPageCount(amountOfPacks))
     }, [dispatch])
+
+    useEffect(() => {
+        debugger
+        setTimeout(()=> {
+            dispatch(getPacks())
+        }, 100)
+    }, [dispatch, packName, user_id, sortPacks, min, max, pageCount])
+
 
     return <div className={s.packsTableContainer}>
         <table className={s.table}>

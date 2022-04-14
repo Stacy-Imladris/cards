@@ -15,6 +15,7 @@ import {
     selectPackName, selectPackUserId,
     selectTheme, selectUser_id
 } from '../../selectors/selectors';
+import {Notification} from "../../common/notification/Notification";
 
 
 export const Cards = () => {
@@ -69,9 +70,9 @@ export const Cards = () => {
                         {userId === packUserId && <SuperButton className={c.addItem} onClick={addNewCard}>Add card</SuperButton>}
                     </div>
                     <div className={c.table}><CardsTable/></div>
-                    <div className={s.error}>{errorCards}</div>
-                    <div>{statusCard}</div>
-                    <div className={s.error}>{error}</div>
+                    {errorCards&&<Notification text={errorCards}/>}
+                    {error&&<Notification text={error}/>}
+                    {statusCard&&<Notification text={statusCard}/>}
                 </div>
             </div>
         </div>

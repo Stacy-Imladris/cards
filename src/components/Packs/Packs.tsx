@@ -15,11 +15,13 @@ import {
     selectTheme,
     selectUser_id
 } from '../../selectors/selectors';
-import {useCallback, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
+import {Notification} from "../../common/notification/Notification";
 
 const arr = ['All', 'My']
 
 export const Packs = () => {
+    debugger
     const theme = useAppSelector(selectTheme)
     const user_id = useAppSelector(selectUser_id)
     const packName = useAppSelector(selectPackNameForSearch)
@@ -28,6 +30,10 @@ export const Packs = () => {
     const errorPacks = useAppSelector(state => state.packs.errorPacks)
 
     const dispatch = useDispatch()
+
+    useEffect(()=> {
+        dispatch(packsActions.setPacksForUser(""))
+    }, [user_id])
 
     const [valueFromArray, setValueFromArray] = useState(arr[0])
 
@@ -68,9 +74,9 @@ export const Packs = () => {
                         <SuperButton className={c.addItem} onClick={addNewPack}>Add pack</SuperButton>
                     </div>
                     <div className={c.table}><PacksTable/></div>
-                    <div>{status}</div>
-                    <div>{errorPacks}</div>
-                    <div>{error}</div>
+                    {errorPacks&&<Notification text={errorPacks}/>}
+                    {error&&<Notification text={error}/>}
+                    {status&&<Notification text={status}/>}
                 </div>
             </div>
         </div>

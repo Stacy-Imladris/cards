@@ -62,7 +62,10 @@ export const Card: FC<CardPropsType> = memo(({card, id}) => {
         <td>{card.grade}</td>
         {userId === packUserId && <td>
           <div className={s.buttons}>
-            <SuperButton>✎</SuperButton>
+            <SuperButton onClick={() => {
+                setQuestion('onClick Question')
+                dispatch(updateCard({ _id: card._id, question: 'onClick Question'}))
+            }}>✎</SuperButton>
             <SuperButton red onClick={onClickDeleteCard}>✘</SuperButton>
           </div>
         </td>}

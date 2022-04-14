@@ -1,7 +1,6 @@
 import {AppThunk, InferActionTypes} from './store';
 import axios from 'axios';
 import {AddNewCardType, packsAPI, PackType, UpdatePackType} from '../api/packs-api'
-import {cardsActions} from "./cards-reducer";
 
 const packsInitialState = {
     packs: [] as PackType[],
@@ -50,7 +49,7 @@ export const packsActions = {
     setPacksForUser: (user_id: string) => ({type: 'PACKS/SET_PACKS_FOR_USER', payload: {user_id}} as const),
     setPacksMin: (min: number) => ({type: 'PACKS/SET_PACKS_MIN', payload: {min}} as const),
     setPacksMax: (max: number) => ({type: 'PACKS/SET_PACKS_MAX', payload: {max}} as const),
-    setPacksError: (error: string) => ({type: 'PACKS/SET_PACKS_ERROR', payload: {error}} as const),
+    setPacksError: (errorPacks: string) => ({type: 'PACKS/SET_PACKS_ERROR', payload: {errorPacks}} as const),
     setPacksIsLoading: (isLoading: boolean) => ({type: 'PACKS/SET_PACKS_IS_LOADING', payload: {isLoading}} as const),
     setCardPacksTotalCount: (cardPacksTotalCount: number) =>
         ({type: 'PACKS/SET_CARD_PACKS_TOTAL_COUNT', payload: {cardPacksTotalCount}} as const),

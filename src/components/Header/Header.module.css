@@ -1,12 +1,11 @@
 .main {
     display: flex;
     flex-direction: column;
-    transition-duration: 500ms;
-    transform: translate(0, -36px);
     font-family: "Times New Roman";
     position: sticky;
     top: 0;
     color: white;
+    z-index: 1;
 }
 
 .main:hover {

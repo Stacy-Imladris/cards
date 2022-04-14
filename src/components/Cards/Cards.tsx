@@ -4,33 +4,33 @@ import s from './Cards.module.css'
 import c from '../../common/styles/Container.module.css'
 import {useAppSelector} from '../../bll/store';
 import React, {useCallback} from 'react';
-import {Paginator} from '../Paginator/Paginator';
 import {SearchField} from '../SearchField/SearchField';
-import {useNavigate} from 'react-router-dom';
+import {Navigate, useNavigate} from 'react-router-dom';
 import {PATH} from '../../app/AllRoutes';
 import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton';
 import {useDispatch} from 'react-redux';
-import {cardsActions, getCards} from '../../bll/cards-reducer';
-import {selectCardAnswer, selectCardQuestion, selectCardsTotalCount,
-    selectPackName, selectPageForCards, selectPageCountForCards, selectTheme
+import {addCard, cardsActions} from '../../bll/cards-reducer';
+import {
+    selectCardAnswer,
+    selectCardQuestion, selectIsLoggedIn, selectLoginError,
+    selectPackName,
+    selectTheme
 } from '../../selectors/selectors';
+import {Preloader} from '../../common/preloader/Preloader';
+
 
 export const Cards = () => {
     const theme = useAppSelector(selectTheme)
     const packName = useAppSelector(selectPackName)
-    const cardsTotalCount = useAppSelector(selectCardsTotalCount)
-    const page = useAppSelector(selectPageForCards)
-    const pageCount = useAppSelector(selectPageCountForCards)
     const cardQuestion = useAppSelector(selectCardQuestion)
     const cardAnswer = useAppSelector(selectCardAnswer)
-
+    const isLoggedIn = useAppSelector(selectIsLoggedIn)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-
-    const onPageChanged = useCallback((page: number) => {
-        dispatch(cardsActions.setCurrentPage(page))
-        dispatch(getCards())
-    }, [dispatch])
+    const cardsPack_id = useAppSelector(state=> state.cards.params.cardsPack_id)
+    const errorCards = useAppSelector(state=> state.cards.errorCards)
+    const statusCard = useAppSelector(state=> state.cards.statusCard)
+    const error = useAppSelector(selectLoginError)
 
     const onChangeDebounceQuestionRequest = useCallback((title: string) => {
         dispatch(cardsActions.setCurrentPage(1))
@@ -42,27 +42,40 @@ export const Cards = () => {
         dispatch(cardsActions.setAnswerForSearch(title))
     }, [dispatch])
 
+    const addNewCard = () => {
+        dispatch(addCard({cardsPack_id: cardsPack_id}))
+    }
+
+    if (!isLoggedIn) {
+        return <Navigate to={PATH.LOGIN}/>
+    }
+
     return (
-        <div className={`${c.container} ${t[theme + '-text']}`}>
-            <div className={c.performance}>
-                <div className={s.rowElements}>
-                    <SuperButton className={s.backIcon}
-                                 onClick={() => navigate(PATH.PACKS)}>
-                        ←
-                    </SuperButton>
-                    <div className={c.title}>{packName}</div>
-                </div>
-                <div className={s.rowElements}>
-                    <SearchField onChangeWithDebounce={onChangeDebounceQuestionRequest}
-                                 value={cardQuestion}/>
-                    <SearchField onChangeWithDebounce={onChangeDebounceAnswerRequest}
-                                 value={cardAnswer}/>
-                </div>
-                <div className={c.table}><CardsTable/></div>
-                <div className={c.pagination}>
-                    <Paginator onPageChanged={onPageChanged}
-                               itemsTotalCount={cardsTotalCount}
-                               pageCount={pageCount} page={page}/>
+        <div className={s.cardsContainer}>
+            <div className={`${c.container} ${t[theme + '-text']}`}>
+                <div className={s.cardsTable}>
+                    <div className={s.backAndTitle}>
+                        <SuperButton className={s.backIcon}
+                                     onClick={() => navigate(PATH.PACKS)}>
+                            ←
+                        </SuperButton>
+                        <div className={c.title}>{packName}</div>
+                    </div>
+                    <div className={s.rowElements}>
+                        <div>
+                            <SearchField value={cardQuestion} placeholder={'Enter question'}
+                                         onChangeWithDebounce={onChangeDebounceQuestionRequest}/>
+                        </div>
+                        <div>
+                            <SearchField value={cardAnswer} placeholder={'Enter answer'}
+                                         onChangeWithDebounce={onChangeDebounceAnswerRequest}/>
+                        </div>
+                        <SuperButton className={c.addItem} onClick={addNewCard}>Add card</SuperButton>
+                    </div>
+                    <div className={c.table}><CardsTable/></div>
+                    <div className={s.error}>{errorCards}</div>
+                    <div>{statusCard}</div>
+                    <div className={s.error}>{error}</div>
                 </div>
             </div>
         </div>

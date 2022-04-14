@@ -1,47 +1,81 @@
 .container {
     display: flex;
-    width: 80%;
-    height: 80%;
-    padding: 20px 20px;
+    min-width: 80%;
+    padding: 10px 20px 0 20px;
     border: 5px #077517 solid;
     border-radius: 30px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     box-shadow: 0 27px 27px 0 rgba(0,0,0,0.2), 0 27px 27px 0 rgba(0,0,0,0.19);
+    min-height: 80vh;
 }
 
 .settings {
-    max-width: 22%;
     min-width: 22%;
 }
 
 .performance {
     padding: 0 10px;
-    max-width: 74%;
-    min-width: 74%;
+    min-width: 75%;
+}
+
+@media screen and (max-width: 940px) {
+    .container {
+        flex-direction: column;
+    }
+    .settings {
+        display: flex;
+        align-items: center;
+        max-width: 80%;
+    }
+    .performance {
+        padding: 0 10px;
+        max-width: 100%;
+        min-width: 75%;
+    }
+}
+
+.mainContainer {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.num {
+    display: inline-block;
+    width: 33px;
+    text-align: center;
+}
+
+.addItem {
+    min-width: 120px;
+    width: 120px;
+}
+
+.rowElements {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.doubleRange {
+    display: flex;
+    align-content: center;
+    align-items: center;
 }
 
 .table {
     height: 75%;
-    max-height: 75%;
     width: 100%;
-    max-width: 100%;
+    position: relative;
 }
 
 .title {
     font-weight: bold;
     font-size: 28px;
-    margin: 10px auto;
+    margin: 10px 20px;
 }
 
 .text {
     font-weight: bold;
     font-size: 20px;
-    margin: 25px auto;
-}
-
-.pagination {
-    margin-top: 10px;
+    margin: 15px 10px 15px 10px;
 }

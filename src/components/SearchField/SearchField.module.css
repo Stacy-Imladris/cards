@@ -1,20 +1,11 @@
 .searchBlock {
-    position: relative;
     display: flex;
-    width: 500px;
-}
-
-.loupe {
-    position: absolute;
-    padding: 15px 0;
+    align-items: center;
+    margin-right: 20px;
 }
 
 .searchField {
-    width: 380px;
-}
-
-.searchField:focus {
-    width: 400px;
+    margin: 0 -15px;
 }
 
 .searchField::placeholder{
@@ -22,8 +13,32 @@
     opacity: 70%;
 }
 
+.wideSearchField {
+    width: 440px;
+}
+
+.wideSearchField:focus {
+    width: 440px;
+}
+
+@media screen and (max-width: 1235px) {
+    .wideSearchField {
+        width: 155px;
+    }
+    .wideSearchField:focus {
+        width: 155px;
+    }
+}
+
+.narrowSearchField {
+    width: 155px;
+}
+
+.narrowSearchField:focus {
+    width: 155px;
+}
+
 .deleteIcon {
-    padding: 9px;
     cursor: pointer;
     border-radius: 20px;
     box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2), 0 3px 3px 0 rgba(0,0,0,0.19);

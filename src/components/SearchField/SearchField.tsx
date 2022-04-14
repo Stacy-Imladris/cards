@@ -1,4 +1,4 @@
-import {KeyboardEvent, memo, useCallback, useState} from 'react';
+import {memo, useCallback, useState} from 'react';
 import s from './SearchField.module.css';
 import {SuperInputText}
     from '../../common/super-components/c1-SuperInputText/SuperInputText';
@@ -7,37 +7,30 @@ import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperBut
 type SearchFieldPropsType = {
     onChangeWithDebounce: (title: string) => void
     value: string
+    wide?: boolean
+    placeholder?: string
 }
 
-export const SearchField = memo(({onChangeWithDebounce, value}: SearchFieldPropsType) => {
+export const SearchField = memo(({onChangeWithDebounce, value, wide, placeholder}: SearchFieldPropsType) => {
     const [title, setTitle] = useState<string>(value)
     const [timerId, setTimerId] = useState<number>(0)
 
     const onChangeText = useCallback((title: string) => {
         setTitle(title)
         clearTimeout(timerId)
-        const id: number = +setTimeout(onChangeWithDebounce, 700, title)
+        const id: number = +setTimeout(onChangeWithDebounce, 500, title)
         setTimerId(id)
     }, [onChangeWithDebounce, timerId])
 
-    const deleteTextForSearch = useCallback(() => {
-        setTitle('')
-    }, [])
-
-    const onKeyStartSearching = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {
-            onChangeWithDebounce(title)
-        }
-    }, [onChangeWithDebounce])
+    const searchFieldClassName = `${s.searchField} ${wide ? s.wideSearchField : s.narrowSearchField}`
 
     return (
         <div className={s.searchBlock}>
-            <div className={s.loupe}>🔍︎</div>
+            <div>🔍︎</div>
             <SuperInputText value={title} onChangeText={onChangeText}
-                            onKeyPress={onKeyStartSearching}
-                            placeholder={'Enter title for search'}
-                            className={s.searchField}/>
-            <SuperButton className={s.deleteIcon} onClick={deleteTextForSearch}>
+                            placeholder={placeholder}
+                            className={searchFieldClassName}/>
+            <SuperButton className={s.deleteIcon} onClick={() => onChangeText('')}>
                 ✘
             </SuperButton>
         </div>

@@ -1,15 +1,25 @@
 import s from './Paginator.module.css';
 import {getPagesForRender} from '../../utils/page-helper';
 import {memo} from 'react';
+import {SuperSelect} from '../../common/super-components/c5-SuperSelect/SuperSelect';
 
 type PaginatorPropsType = {
+    onChangeSetAmountOfItems: (amountOfItems: number) => void
     onPageChanged: (page: number) => void
     itemsTotalCount: number
     page: number
     pageCount: number
 }
 
-export const Paginator = memo(({onPageChanged, itemsTotalCount, page, pageCount}: PaginatorPropsType) => {
+const itemsPerPage = [10, 20, 30]
+
+export const Paginator = memo(({
+                                   onChangeSetAmountOfItems,
+                                   onPageChanged,
+                                   itemsTotalCount,
+                                   page,
+                                   pageCount
+                               }: PaginatorPropsType) => {
     const pagesCount = Math.ceil(itemsTotalCount / pageCount)
 
     const pages = []
@@ -26,43 +36,46 @@ export const Paginator = memo(({onPageChanged, itemsTotalCount, page, pageCount}
     return (
         itemsTotalCount ?
             <div className={s.paginatorContainer}>
-                <div className={s.container}>
-                    <div>
-                        {page > 3 && (
-                            <>
-                                <button
-                                    onClick={() => onClickPageChanged(page - 1)}>Previous
-                                </button>
-                                <button className={page === 1 ? s.selectedPage : ''}
-                                        onClick={() => onClickPageChanged(1)}> 1
-                                </button>
-                                <span>...</span>
-                            </>
-                        )}
-                    </div>
-                    <div>
-                        {pagesForRender.map(p => (
-                            <button className={page === p ? s.selectedPage : ''}
-                                    onClick={() => onClickPageChanged(p)}
-                                    key={p}> {p} </button>))}
-                    </div>
-                    <div>
-                        {page < pages.length - 2 && (
-                            <>
-                                <span>...</span>
-                                <button
-                                    className={page === pages.length ? s.selectedPage : ''}
-                                    onClick={() => onClickPageChanged(pages.length)}>
-                                    {pages.length}
-                                </button>
-                                <button onClick={() => onClickPageChanged(page + 1)}>
-                                    Next
-                                </button>
-                            </>
-                        )}
+                    <div className={s.container}>
+                        <div className={s.edge}>
+                            {page > 3 && (
+                                <>
+                                    <button onClick={() => onClickPageChanged(page - 1)}>
+                                        ◁
+                                    </button>
+                                    <button className={page === 1 ? s.selectedPage : ''}
+                                            onClick={() => onClickPageChanged(1)}> 1
+                                    </button>
+                                    <span>...</span>
+                                </>
+                            )}
+                        </div>
+                        <div className={s.center}>
+                            {pagesForRender.map(p => (
+                                <button className={page === p ? s.selectedPage : ''}
+                                        onClick={() => onClickPageChanged(p)}
+                                        key={p}> {p} </button>))}
+                        </div>
+                        <div className={s.edge}>
+                            {page < pages.length - 2 && (
+                                <>
+                                    <span>...</span>
+                                    <button
+                                        className={page === pages.length ? s.selectedPage : ''}
+                                        onClick={() => onClickPageChanged(pages.length)}>
+                                        {pages.length}
+                                    </button>
+                                    <button onClick={() => onClickPageChanged(page + 1)}>
+                                        ▷
+                                    </button>
+                                </>
+                            )}
+                        </div>
+                        <div className={s.show}><span>Show </span><SuperSelect options={itemsPerPage} value={pageCount}
+                                                                               onChangeOption={onChangeSetAmountOfItems}/>
+                        </div>
                     </div>
                 </div>
-            </div>
-            : <div>Nothing was found</div>
+            : <div className={s.emptyAnswer}>Nothing was found</div>
     )
 })

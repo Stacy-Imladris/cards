@@ -11,10 +11,7 @@ import t from '../../../common/styles/Themes.module.css'
 import {Logo} from '../../../common/logo/Logo';
 import {Preloader} from "../../../common/preloader/Preloader";
 import {SuperCheckbox} from "../../../common/super-components/c3-SuperCheckbox/SuperCheckbox";
-import {
-    selectIsLoggedIn,
-    selectLoginError, selectLoginIsLoading,
-    selectTheme
+import {selectIsLoggedIn, selectLoginError, selectLoginIsLoading, selectTheme
 } from '../../../selectors/selectors';
 import {login, loginActions} from '../LoginBLL/loginReducer';
 
@@ -66,12 +63,14 @@ export const Login = () => {
                 name="email"
                 value={email}
                 onChangeText={onChangeEmail}
+                onEnter={onClickLogin}
                 className={s.email}
             />
             <span>Password</span>
             <div className={s.password}><SuperInputText
                 value={password}
                 onChangeText={onChangePassword}
+                onEnter={onClickLogin}
                 className={s.password}
                 eye
             />

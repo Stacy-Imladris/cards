@@ -8,6 +8,7 @@ import {useDispatch} from 'react-redux'
 import {useAppSelector} from '../../bll/store'
 import {EditProfile} from './EditProfile/EditProfile'
 import {
+    selectLoginError,
     selectPackNameForSearch,
     selectProfileEditMode,
     selectProfileUserName,
@@ -16,8 +17,10 @@ import {
 import {useCallback, useEffect} from 'react';
 import {SearchField} from '../SearchField/SearchField';
 import {PacksTable} from '../Packs/PacksTable/PacksTable';
-import {packsActions} from '../../bll/packs-reducer';
+import {addPack, packsActions} from '../../bll/packs-reducer';
 import {DoubleRange} from '../DoubleRange/DoubleRange';
+import {Notification} from "../../common/notification/Notification";
+import {AddNewCardType} from "../../api/packs-api";
 
 export const Profile = () => {
     const name = useAppSelector(selectProfileUserName)
@@ -25,8 +28,14 @@ export const Profile = () => {
     const editMode = useAppSelector(selectProfileEditMode)
     const packName = useAppSelector(selectPackNameForSearch)
     const userId = useAppSelector(selectUser_id)
-
+    const error = useAppSelector(selectLoginError)
+    const status = useAppSelector(state => state.packs.status)
     const dispatch = useDispatch()
+
+    useEffect(()=> {
+        dispatch(packsActions.setPacksForUser(userId))
+    })
+
 
     const editProfile = useCallback(() => {
         dispatch(profileActions.setEditModeProfile(true))
@@ -41,6 +50,12 @@ export const Profile = () => {
     if (editMode) {
         return <EditProfile/>
     }
+
+    const addNewPack = () => {
+        dispatch(addPack({} as AddNewCardType))
+    }
+
+
 
     return (
         <div className={c.mainContainer}>
@@ -65,12 +80,15 @@ export const Profile = () => {
                             <SearchField onChangeWithDebounce={onChangeDebounceRequest}
                                          value={packName} wide
                                          placeholder={'Enter pack\'s title for search'}/>
-                            <SuperButton className={c.addPack}>Add pack</SuperButton>
+                            <SuperButton className={c.addPack}  onClick={addNewPack}>Add pack</SuperButton>
                         </div>
                         <div className={c.table}><PacksTable/></div>
                     </div>
+                    {error&&<Notification text={error}/>}
+                    {status&&<Notification text={status}/>}
                 </div>
             </div>
+
         </div>
     )
 }

@@ -1,0 +1,13 @@
+.notification {
+    border: 3px solid #077517;
+    width: 800px;
+    height: 50px;
+    font-weight: bold;
+    border-radius: 20px;
+    text-align: center;
+    vertical-align: center;
+    font-size: 25px;
+    margin-inline: auto;
+
+
+}

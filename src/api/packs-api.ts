@@ -46,7 +46,7 @@ export type PackType = {
     __v: number
     deckCover: null | string
 }
-type UpdatePackType = {
+export type UpdatePackType = {
     _id: string
     name?: string
 }

@@ -1,13 +1,14 @@
 import {FC, memo} from 'react'
 import {PackActions} from './PackActions'
-import {useAppSelector} from '../../../bll/store'
-import {PackType} from '../../../api/packs-api';
-import {getLastUpdatedDate} from '../../../utils/date-helpers'
+import {useAppSelector} from '../../../../../bll/store'
+import {PackType} from '../../../../../api/packs-api';
+import {getLastUpdatedDate} from '../../../../../utils/date-helpers'
 import {useDispatch} from 'react-redux';
-import {cardsActions} from '../../../bll/cards-reducer';
+import {cardsActions} from '../../../../../bll/cards-reducer';
 import {useNavigate} from 'react-router-dom';
-import {PATH} from '../../../app/AllRoutes';
-import {selectLoginError, selectUser_id} from '../../../selectors/selectors';
+import {PATH} from '../../../../../app/AllRoutes';
+import {selectUser_id} from '../../../../../selectors/selectors';
+import c from '../../../../../common/styles/TableLine.module.css';
 
 type PackPropsType = {
     pack: PackType
@@ -29,7 +30,7 @@ export const Pack: FC<PackPropsType> = memo(({pack}) => {
     }
 
     return <tr>
-        <td onClick={openCard}>{pack.name}</td>
+        <td onClick={openCard} className={c.mainColumn}>{pack.name}</td>
         <td>{pack.cardsCount}</td>
         <td>{lastUpdate}</td>
         <td>{pack.user_name}</td>

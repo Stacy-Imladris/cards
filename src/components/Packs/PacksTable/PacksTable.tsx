@@ -1,4 +1,4 @@
-import {PacksList} from './PacksList'
+import {PacksList} from './PacksList/PacksList'
 import {getPacks, packsActions} from '../../../bll/packs-reducer'
 import {useDispatch} from 'react-redux'
 import {useAppSelector} from '../../../bll/store'
@@ -47,7 +47,7 @@ export const PacksTable = () => {
     return <div className={s.packsTableContainer}>
         <table className={s.table}>
             <thead>
-            <tr>
+            <tr className={s.headers}>
                 <PacksTableHeader text={'Name'} param={'name'}/>
                 <PacksTableHeader text={'Cards'} param={'cardsCount'}/>
                 <PacksTableHeader text={'Updated'} param={'updated'}/>

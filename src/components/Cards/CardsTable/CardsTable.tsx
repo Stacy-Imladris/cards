@@ -1,6 +1,6 @@
 import {useDispatch} from 'react-redux';
 import React, {useCallback, useEffect} from 'react';
-import {CardsList} from './CardsList';
+import {CardsList} from './CardsList/CardsList';
 import s from './CardsTable.module.css'
 import {useAppSelector} from '../../../bll/store';
 import {cardsActions, getCards} from '../../../bll/cards-reducer';
@@ -42,7 +42,7 @@ export const CardsTable = () => {
     return <div className={s.cardsTableContainer}>
         <table className={s.table}>
             <thead>
-            <tr>
+            <tr className={s.headers}>
                 <CardsTableHeader text={'Question'} param={'question'}/>
                 <CardsTableHeader text={'Answer'} param={'answer'}/>
                 <CardsTableHeader text={'Updated'} param={'updated'}/>

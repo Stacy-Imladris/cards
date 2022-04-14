@@ -55,7 +55,7 @@ export const Cards = () => {
                 <div className={s.cardsTable}>
                     <div className={s.backAndTitle}>
                         <SuperButton className={s.backIcon}
-                                     onClick={() => navigate(PATH.PACKS)}>
+                                     onClick={() => navigate(-1)}>
                             ←
                         </SuperButton>
                         <div className={c.title}>{packName}</div>

@@ -1,7 +1,7 @@
 import {FC, memo} from 'react'
-import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton'
-import s from './PacksTable.module.css'
-import {deletePack} from '../../../bll/packs-reducer';
+import {SuperButton} from '../../../../../common/super-components/c2-SuperButton/SuperButton'
+import s from '../../PacksTable.module.css'
+import {deletePack} from '../../../../../bll/packs-reducer';
 import {useDispatch} from 'react-redux';
 
 type PackActionsType = {

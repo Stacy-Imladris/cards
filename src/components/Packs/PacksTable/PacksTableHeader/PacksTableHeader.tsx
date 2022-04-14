@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {packsActions, PacksSortFieldsType, SortOrderType,} from '../../../../bll/packs-reducer';
 import {useDispatch} from 'react-redux';
-import s from '../../../../common/styles/TableHeader.module.css';
+import c from '../../../../common/styles/TableHeader.module.css';
 
 type PacksTableHeaderPropsType = {
     text: string
@@ -24,9 +24,9 @@ export const PacksTableHeader = ({text, param}: PacksTableHeaderPropsType) => {
     }
 
     return <th>
-        <div className={s.container}>
+        <div className={c.container}>
             <div onClick={() => changeSortField(param)}>{text}</div>
-            <div className={s.triangle}>
+            <div className={c.triangle}>
                 <div onClick={() => changeSortOrder('0')}>▲</div>
                 <div onClick={() => changeSortOrder('1')}>▼</div>
             </div>

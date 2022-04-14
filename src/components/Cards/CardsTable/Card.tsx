@@ -17,39 +17,40 @@ export const Card: FC<CardPropsType> = memo(({card}) => {
     const lastUpdate = getLastUpdatedDate(card.updated)
     const dispatch = useDispatch()
 
-    const uploadQuestionChanges = () => {
-        setIsEditQuestion(false)
-        const updatedCard: UpdateCardPayload = {
-            card: {
-                _id: card._id,
-                question
-            }
-        }
-        dispatch(updateCard(updatedCard))
-    }
-
-    const uploadAnswerChanges = () => {
+    const uploadChanges = (title: string, param: 'question' | 'answer') => {
         setIsEditAnswer(false)
-        const updatedCard: UpdateCardPayload = {
-            card: {
-                _id: card._id,
-                answer
+        let updatedCard: UpdateCardPayload
+
+        if(param === 'question') {
+            updatedCard = {
+                card: {
+                    _id: card._id,
+                    question: title
+                }
+            }
+        } else {
+            updatedCard= {
+                card: {
+                    _id: card._id,
+                    answer: title
+                }
             }
         }
+
         dispatch(updateCard(updatedCard))
     }
 
     return <tr>
         {isEditQuestion
             ? <td><input onChange={(e) => setQuestion(e.currentTarget.value)}
-                         onBlur={uploadQuestionChanges}
+                         onBlur={ () => uploadChanges(question, 'question')}
                          value={question}/>
             </td>
             : <td onDoubleClick={() => setIsEditQuestion(true)}>{question}</td>
         }
         {isEditAnswer
             ? <td><input onChange={(e) => setAnswer(e.currentTarget.value)}
-                         onBlur={uploadAnswerChanges}
+                         onBlur={() => uploadChanges(question, 'answer')}
                          value={answer}/>
             </td>
             : <td onDoubleClick={() => setIsEditAnswer(true)}>{answer}</td>

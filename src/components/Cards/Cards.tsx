@@ -1,22 +1,22 @@
-import {CardsTable} from './CardsTable/CardsTable';
-import t from '../../common/styles/Themes.module.css';
+import {CardsTable} from './CardsTable/CardsTable'
+import t from '../../common/styles/Themes.module.css'
 import s from './Cards.module.css'
 import c from '../../common/styles/Container.module.css'
-import {useAppSelector} from '../../bll/store';
-import React, {useCallback} from 'react';
-import {SearchField} from '../SearchField/SearchField';
-import {Navigate, useNavigate} from 'react-router-dom';
-import {PATH} from '../../app/AllRoutes';
-import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton';
-import {useDispatch} from 'react-redux';
-import {addCard, cardsActions} from '../../bll/cards-reducer';
+import {useAppSelector} from '../../bll/store'
+import React, {useCallback} from 'react'
+import {SearchField} from '../SearchField/SearchField'
+import {useNavigate} from 'react-router-dom'
+import {PATH} from '../../app/AllRoutes'
+import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton'
+import {useDispatch} from 'react-redux'
+import {addCard, cardsActions} from '../../bll/cards-reducer'
 import {
     selectCardAnswer,
-    selectCardQuestion, selectIsLoggedIn, selectLoginError,
+    selectCardQuestion,
+    selectLoginError,
     selectPackName,
     selectTheme
-} from '../../selectors/selectors';
-import {Preloader} from '../../common/preloader/Preloader';
+} from '../../selectors/selectors'
 
 
 export const Cards = () => {
@@ -24,7 +24,6 @@ export const Cards = () => {
     const packName = useAppSelector(selectPackName)
     const cardQuestion = useAppSelector(selectCardQuestion)
     const cardAnswer = useAppSelector(selectCardAnswer)
-    const isLoggedIn = useAppSelector(selectIsLoggedIn)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const cardsPack_id = useAppSelector(state=> state.cards.params.cardsPack_id)
@@ -44,10 +43,6 @@ export const Cards = () => {
 
     const addNewCard = () => {
         dispatch(addCard({cardsPack_id: cardsPack_id}))
-    }
-
-    if (!isLoggedIn) {
-        return <Navigate to={PATH.LOGIN}/>
     }
 
     return (

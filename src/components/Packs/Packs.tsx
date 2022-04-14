@@ -1,25 +1,23 @@
-import {PacksTable} from './PacksTable/PacksTable';
-import t from '../../common/styles/Themes.module.css';
+import {PacksTable} from './PacksTable/PacksTable'
+import t from '../../common/styles/Themes.module.css'
 import c from '../../common/styles/Container.module.css'
-import {useAppSelector} from '../../bll/store';
-import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton';
-import {useCallback, useState} from 'react';
-import {AlternativeSuperDoubleRange} from '../../common/super-components/c8-SuperDoubleRange/AlternativeSuperDoubleRange';
-import {SearchField} from '../SearchField/SearchField';
-import {SuperRadio} from '../../common/super-components/c6-SuperRadio/SuperRadio';
-import {useDispatch} from 'react-redux';
-import {addPack, packsActions} from '../../bll/packs-reducer';
+import {useAppSelector} from '../../bll/store'
+import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton'
+import {useCallback, useState} from 'react'
+import {AlternativeSuperDoubleRange} from '../../common/super-components/c8-SuperDoubleRange/AlternativeSuperDoubleRange'
+import {SearchField} from '../SearchField/SearchField'
+import {SuperRadio} from '../../common/super-components/c6-SuperRadio/SuperRadio'
+import {useDispatch} from 'react-redux'
+import {addPack, packsActions} from '../../bll/packs-reducer'
 import {
-    selectIsLoggedIn, selectLoginError,
+    selectLoginError,
     selectMaxCardsCount,
     selectMinCardsCount,
     selectPackNameForSearch,
     selectTheme,
-    selectUser_id,
-} from '../../selectors/selectors';
-import {Navigate} from "react-router-dom";
-import {PATH} from "../../app/AllRoutes";
-import {AddNewCardType} from '../../api/packs-api';
+    selectUser_id
+} from '../../selectors/selectors'
+import {AddNewCardType} from '../../api/packs-api'
 
 const arr = ['All', 'My']
 
@@ -29,7 +27,6 @@ export const Packs = () => {
     const packName = useAppSelector(selectPackNameForSearch)
     const minCardsCount = useAppSelector(selectMinCardsCount)
     const maxCardsCount = useAppSelector(selectMaxCardsCount)
-    const isLoggedIn = useAppSelector(selectIsLoggedIn)
     const status = useAppSelector(state => state.packs.status)
     const error = useAppSelector(selectLoginError)
     const errorPacks = useAppSelector(state => state.packs.errorPacks)
@@ -70,11 +67,6 @@ export const Packs = () => {
     const addNewPack = () => {
         dispatch(addPack({} as AddNewCardType))
     }
-
-    if (!isLoggedIn) {
-        return <Navigate to={PATH.LOGIN}/>
-    }
-
 
     return (
         <div className={c.mainContainer}>

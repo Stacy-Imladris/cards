@@ -1,28 +1,24 @@
 import s from './Profile.module.css'
-import c from '../../common/styles/Container.module.css';
-import t from '../../common/styles/Themes.module.css';
+import c from '../../common/styles/Container.module.css'
+import t from '../../common/styles/Themes.module.css'
 import profileAva from '../../assets/images/profile_ava.png'
 import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton'
-import {Navigate} from 'react-router-dom';
-import {PATH} from '../../app/AllRoutes';
-import {profileActions} from '../../bll/profile-reducer';
-import {useDispatch} from 'react-redux';
-import {useAppSelector} from '../../bll/store';
-import {EditProfile} from './EditProfile/EditProfile';
+import {profileActions} from '../../bll/profile-reducer'
+import {useDispatch} from 'react-redux'
+import {useAppSelector} from '../../bll/store'
+import {EditProfile} from './EditProfile/EditProfile'
 import {
-    selectIsLoggedIn,
     selectPackNameForSearch,
     selectProfileEditMode,
     selectProfileUserName,
     selectTheme
-} from '../../selectors/selectors';
-import {useCallback} from 'react';
-import {SearchField} from '../SearchField/SearchField';
-import {PacksTable} from '../Packs/PacksTable/PacksTable';
-import {packsActions} from '../../bll/packs-reducer';
+} from '../../selectors/selectors'
+import {useCallback} from 'react'
+import {SearchField} from '../SearchField/SearchField'
+import {PacksTable} from '../Packs/PacksTable/PacksTable'
+import {packsActions} from '../../bll/packs-reducer'
 
 export const Profile = () => {
-    const isLoggedIn = useAppSelector(selectIsLoggedIn)
     const name = useAppSelector(selectProfileUserName)
     const theme = useAppSelector(selectTheme)
     const editMode = useAppSelector(selectProfileEditMode)
@@ -42,10 +38,6 @@ export const Profile = () => {
 
     if (editMode) {
         return <EditProfile/>
-    }
-
-    if (!isLoggedIn) {
-        return <Navigate to={PATH.LOGIN}/>
     }
 
     return (

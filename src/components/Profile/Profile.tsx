@@ -30,12 +30,12 @@ export const Profile = () => {
     const userId = useAppSelector(selectUser_id)
     const error = useAppSelector(selectLoginError)
     const status = useAppSelector(state => state.packs.status)
+
     const dispatch = useDispatch()
 
     useEffect(()=> {
         dispatch(packsActions.setPacksForUser(userId))
     })
-
 
     const editProfile = useCallback(() => {
         dispatch(profileActions.setEditModeProfile(true))
@@ -54,8 +54,6 @@ export const Profile = () => {
     const addNewPack = () => {
         dispatch(addPack({} as AddNewCardType))
     }
-
-
 
     return (
         <div className={c.mainContainer}>
@@ -84,11 +82,10 @@ export const Profile = () => {
                         </div>
                         <div className={c.table}><PacksTable/></div>
                     </div>
-                    {error&&<Notification text={error}/>}
-                    {status&&<Notification text={status}/>}
+                    {error && <Notification text={error}/>}
+                    {status && <Notification text={status}/>}
                 </div>
             </div>
-
         </div>
     )
 }

@@ -21,7 +21,6 @@ import {Notification} from "../../common/notification/Notification";
 const arr = ['All', 'My']
 
 export const Packs = () => {
-    debugger
     const theme = useAppSelector(selectTheme)
     const user_id = useAppSelector(selectUser_id)
     const packName = useAppSelector(selectPackNameForSearch)

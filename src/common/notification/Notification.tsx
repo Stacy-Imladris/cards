@@ -8,11 +8,14 @@ type NotificationPropsType = {
     text: string
 }
 
-export const Notification =(props: NotificationPropsType)=> {
+export const Notification =({text}: NotificationPropsType)=> {
     const theme = useAppSelector(selectTheme)
+
+    if (text === 'you are not authorized /ᐠ-ꞈ-ᐟ\\') return <></>
+
     return (
         <div className={t[theme + '-text']}>
-            <div className={s.notification}>{props.text}</div>
+            <div className={s.notification}>{text}</div>
         </div>
     )
 }

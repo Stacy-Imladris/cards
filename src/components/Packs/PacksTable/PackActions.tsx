@@ -21,8 +21,10 @@ export const PackActions: FC<PackActionsType> = memo(({isMyPacks, userId, packId
 
     const onClickUpdatePack = () => {
         const editingPack: UpdatePackType = {
-            _id: packId,
-            name: 'NewPackName'
+            cardsPack: {
+                _id: packId,
+                name: 'NewPackName'
+            }
         }
         dispatch(updatePack(editingPack))
     }

@@ -17,7 +17,6 @@ import {
 } from '../../selectors/selectors';
 import {Notification} from "../../common/notification/Notification";
 
-
 export const Cards = () => {
     const theme = useAppSelector(selectTheme)
     const packName = useAppSelector(selectPackName)

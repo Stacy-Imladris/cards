@@ -4,7 +4,7 @@ import {AddNewCardType, packsAPI, PackType, UpdatePackType} from '../../api/pack
 import {appActions} from '../../bll/appReducer';
 import {handleServerNetworkError} from '../../utils/error-handler';
 
-export const packsInitialState = {
+const packsInitialState = {
     packs: [] as PackType[],
     minCardsCount: 0,
     maxCardsCount: 103,
@@ -63,8 +63,8 @@ export const getPacks = (): AppThunk => async (dispatch, getState) => {
         const data = await packsAPI.getPacks(params)
         dispatch(packsActions.setCardPacksTotalCount(data.cardPacksTotalCount))
         dispatch(packsActions.setPacks(data.cardPacks))
-        dispatch(packsActions.setMaxCardsCount(data.maxCardsCount))
-        dispatch(packsActions.setMinCardsCount(data.minCardsCount))
+        //dispatch(packsActions.setMaxCardsCount(data.maxCardsCount))
+        //dispatch(packsActions.setMinCardsCount(data.minCardsCount))
     } catch (e) {
         handleServerNetworkError(dispatch, e as Error)
     } finally {

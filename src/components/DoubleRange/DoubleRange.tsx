@@ -1,8 +1,8 @@
 import {useAppSelector} from '../../bll/store';
 import {selectMaxCardsCount, selectMinCardsCount} from '../../selectors/selectors';
 import {useDispatch} from 'react-redux';
-import {useCallback, useEffect, useState} from 'react';
-import {packsActions, packsInitialState} from '../Packs/packs-reducer';
+import {useCallback, useState} from 'react';
+import {packsActions} from '../Packs/packs-reducer';
 import s from './DoubleRange.module.css';
 import {AlternativeSuperDoubleRange} from '../../common/super-components/c8-SuperDoubleRange/AlternativeSuperDoubleRange';
 
@@ -26,11 +26,6 @@ export const DoubleRange = () => {
         }, 500)
         setTimerId(id)
     }, [dispatch, timerId])
-
-    useEffect(()=> {
-        dispatch(packsActions.setMinCardsCount(packsInitialState.minCardsCount))
-        dispatch(packsActions.setMaxCardsCount(packsInitialState.maxCardsCount))
-    }, [minCardsCount, maxCardsCount])
 
     return <div>
         <div className={s.text}>Number of cards</div>

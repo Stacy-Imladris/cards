@@ -4,7 +4,7 @@ import {AddNewCardType, packsAPI, PackType, UpdatePackType} from '../../api/pack
 import {appActions} from '../../bll/appReducer';
 import {handleServerNetworkError} from '../../utils/error-handler';
 
-const packsInitialState = {
+export const packsInitialState = {
     packs: [] as PackType[],
     minCardsCount: 0,
     maxCardsCount: 103,

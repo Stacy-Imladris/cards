@@ -3,6 +3,7 @@ import {profileAPI, UserType} from './profile-api'
 import axios from 'axios'
 import {loginActions} from '../Login/LoginBLL/loginReducer';
 import {appActions} from '../../bll/appReducer';
+import {handleServerNetworkError} from '../../utils/error-handler';
 
 const initialState = {
     user: {} as UserType,
@@ -39,10 +40,7 @@ export const updateProfile = (name: string, avatar: string): AppThunk => async d
         dispatch(profileActions.setUserData(response.data.updatedUser))
         dispatch(profileActions.setEditModeProfile(false))
     } catch (e) {
-        if (axios.isAxiosError(e)) {
-            const error = e.response ? e.response.data.error : (e.message + ', more details in the console')
-            dispatch(appActions.setAppError(error))
-        }
+        handleServerNetworkError(dispatch, e as Error)
     } finally {
         dispatch(profileActions.setIsFetchingProfile(false))
     }
@@ -55,10 +53,7 @@ export const auth = (): AppThunk => async dispatch => {
         dispatch(profileActions.setUserData(response.data))
         dispatch(loginActions.setIsLoggedIn(true))
     } catch (e) {
-        if (axios.isAxiosError(e)) {
-            const error = e.response ? e.response.data.error : (e.message + ', more details in the console')
-            dispatch(appActions.setAppError(error))
-        }
+        handleServerNetworkError(dispatch, e as Error)
     } finally {
         dispatch(profileActions.setIsFetchingProfile(false))
         dispatch(profileActions.setIsInitialized(true))

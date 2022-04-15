@@ -3,6 +3,7 @@ import {AppThunk, InferActionTypes} from '../../bll/store';
 import axios from 'axios';
 import {packsActions} from "../Packs/packs-reducer";
 import {appActions} from '../../bll/appReducer';
+import {handleServerNetworkError} from '../../utils/error-handler';
 
 const cardsInitialState = {
     cards: [] as CardType[],
@@ -60,11 +61,7 @@ export const getCards = (): AppThunk => async (dispatch, getState) => {
         dispatch(cardsActions.setCardsTotalCount(data.cardsTotalCount))
         dispatch(cardsActions.setCards(data.cards))
     } catch (e) {
-        if (axios.isAxiosError(e)) {
-            dispatch(appActions.setAppError(e.response ? e.response.data.error : e.message))
-        } else {
-            dispatch(appActions.setAppError('Some error occurred'))
-        }
+        handleServerNetworkError(dispatch, e as Error)
     } finally {
         dispatch(appActions.setAppIsLoading(false))
     }
@@ -77,11 +74,7 @@ export const addCard = (card: NewCardType): AppThunk => async (dispatch) => {
         dispatch(appActions.setAppStatus("New card successfully added"))
         dispatch(getCards())
     } catch (e) {
-        if (axios.isAxiosError(e)) {
-            dispatch(appActions.setAppError(e.response ? e.response.data.error : e.message))
-        } else {
-            dispatch(appActions.setAppError('Some error occurred'))
-        }
+        handleServerNetworkError(dispatch, e as Error)
     } finally {
         dispatch(appActions.setAppIsLoading(false))
     }
@@ -94,11 +87,7 @@ export const deleteCard = (id: string): AppThunk => async (dispatch) => {
         dispatch(appActions.setAppStatus("Card successfully deleted"))
         dispatch(getCards())
     } catch (e) {
-        if (axios.isAxiosError(e)) {
-            dispatch(appActions.setAppError(e.response ? e.response.data.error : e.message))
-        } else {
-            dispatch(appActions.setAppError('Some error occurred'))
-        }
+        handleServerNetworkError(dispatch, e as Error)
     } finally {
         dispatch(appActions.setAppIsLoading(false))
     }
@@ -111,11 +100,7 @@ export const updateCard = (updatingCard: UpdateCardPayload): AppThunk => async (
         appActions.setAppStatus("Card successfully edited")
         dispatch(getCards())
     } catch (e) {
-        if (axios.isAxiosError(e)) {
-            dispatch(appActions.setAppError(e.response ? e.response.data.error : e.message))
-        } else {
-            dispatch(appActions.setAppError('Some error occurred'))
-        }
+        handleServerNetworkError(dispatch, e as Error)
     } finally {
         dispatch(appActions.setAppIsLoading(false))
     }

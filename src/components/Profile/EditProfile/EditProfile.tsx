@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState} from 'react'
+import {useCallback, useState} from 'react'
 import s from '../../../common/styles/Forms.module.css'
 import t from '../../../common/styles/Themes.module.css'
 import profile_ava from '../../../assets/images/profile_ava.png'
@@ -10,7 +10,6 @@ import {profileActions, updateProfile} from '../profile-reducer'
 import {Preloader} from '../../../common/preloader/Preloader'
 import {
     selectProfileEditMode,
-    selectProfileError,
     selectProfileIsFetching,
     selectProfileUser,
     selectTheme
@@ -21,7 +20,6 @@ import {Logo} from '../../../common/logo/Logo'
 export const EditProfile = () => {
     const theme = useAppSelector(selectTheme)
     const userData = useAppSelector(selectProfileUser)
-    const error = useAppSelector(selectProfileError)
     const isFetching = useAppSelector(selectProfileIsFetching)
     const editMode = useAppSelector(selectProfileEditMode)
 
@@ -29,11 +27,11 @@ export const EditProfile = () => {
 
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        return () => {
-            dispatch(profileActions.setProfileError(''))
-        }
-    }, [dispatch])
+    // useEffect(() => {
+    //     return () => {
+    //         dispatch(appActions.setAppError(''))
+    //     }
+    // }, [dispatch])
 
     const navigateToProfile = useCallback(() => {
         dispatch(profileActions.setEditModeProfile(false))
@@ -59,7 +57,7 @@ export const EditProfile = () => {
             <div className={s.profile__avatar}><img src={profile_ava} alt="avatar"/></div>
             <div><SuperInputText value={name} onChangeText={changeNameHandle}/></div>
             <div><SuperInputText value={userData.email}/></div>
-            <div className={s.error}>{error && error}</div>
+            {/*<div className={s.error}>{error && error}</div>*/}
             <div className={s.buttons}>
                 <SuperButton onClick={navigateToProfile}>Cancel</SuperButton>
                 <SuperButton onClick={updateData}>Save</SuperButton>

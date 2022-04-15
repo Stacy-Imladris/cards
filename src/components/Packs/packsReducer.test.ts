@@ -2,7 +2,7 @@ import {
     packsActions,
     PacksInitialStateType,
     PacksParamsType,
-    packsReducer, RequestStatusType,
+    packsReducer,
 } from './packs-reducer';
 import {PackType} from "../../api/packs-api";
 
@@ -12,8 +12,6 @@ let data: Date
 beforeEach(() => {
     startState = {
         packs: [] as PackType[],
-        errorPacks: '',
-        isLoading: false,
         minCardsCount: 0,
         maxCardsCount: 103,
         params: {
@@ -26,7 +24,6 @@ beforeEach(() => {
             user_id: '',
         } as PacksParamsType,
         cardPacksTotalCount: 0,
-        status: '' as RequestStatusType
     }
     data = new Date()
 })
@@ -37,13 +34,6 @@ test('setCurrentPage should be changed', () => {
 
     const endState = packsReducer(startState, action)
     expect(endState.params.page).toBe(10);
-})
-test('correct error message should be set', () => {
-
-    const action = packsActions.setPacksError('Some error occurred');
-    const endState = packsReducer(startState, action)
-
-    expect(endState.errorPacks).toBe('Some error occurred')
 })
 test('correct quantity should be displayed maxCardsCount', () => {
 
@@ -73,13 +63,6 @@ test('correct quantity should be displayed max cards', () => {
 
     expect(endState.params.max).toBe(1)
 })
-test('current status needs to be changed', () => {
-
-    const action = packsActions.setStatus('deleted successfully');
-    const endState = packsReducer(startState, action)
-
-    expect(endState.status).toBe('deleted successfully')
-})
 test('title for search must change', () => {
 
     const action = packsActions.setTitleForSearch('english');
@@ -93,13 +76,6 @@ test('user id should be displayed', () => {
     const endState = packsReducer(startState, action)
 
     expect(endState.params.user_id).toBe('5eb543f6bea3ad21480f1ee7')
-})
-test('is loading should be change', () => {
-
-    const action = packsActions.setPacksIsLoading(true);
-    const endState = packsReducer(startState, action)
-
-    expect(endState.isLoading).toBe(true)
 })
 test('packs total count should be change', () => {
 

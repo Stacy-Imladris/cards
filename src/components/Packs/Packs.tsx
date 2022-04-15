@@ -24,9 +24,7 @@ export const Packs = () => {
     const theme = useAppSelector(selectTheme)
     const user_id = useAppSelector(selectUser_id)
     const packName = useAppSelector(selectPackNameForSearch)
-    const status = useAppSelector(state => state.packs.status)
     const error = useAppSelector(selectLoginError)
-    const errorPacks = useAppSelector(state => state.packs.errorPacks)
 
     const dispatch = useDispatch()
 
@@ -73,9 +71,7 @@ export const Packs = () => {
                         <SuperButton className={c.addItem} onClick={addNewPack}>Add pack</SuperButton>
                     </div>
                     <div className={c.table}><PacksTable/></div>
-                    {errorPacks&&<Notification text={errorPacks}/>}
                     {error&&<Notification text={error}/>}
-                    {status&&<Notification text={status}/>}
                 </div>
             </div>
         </div>

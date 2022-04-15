@@ -18,8 +18,6 @@ beforeEach(() => {
                     _id: '5_5_5'
                 }
             ] as CardType[],
-            errorCards: '',
-            isLoading: false,
             params: {
                 cardAnswer: '',
                 cardQuestion: '',
@@ -32,7 +30,6 @@ beforeEach(() => {
             } as CardsParamsType,
             cardsTotalCount: 0,
             packName: '',
-            statusCard: '',
         }
     }
 )
@@ -69,20 +66,6 @@ test('set cards data to state', () => {
 
     expect(endState.cards.length).toBe(2)
     expect(endState.cards[0].answer).toBe('Network')
-})
-
-test('set card error', () => {
-
-    const endState = cardsReducer(state, cardsActions.setCardsError('Error'))
-
-    expect(endState.errorCards).toBe('Error')
-})
-
-test('set isLoading status of process', () => {
-
-    const endState = cardsReducer(state, cardsActions.setCardsIsLoading(true))
-
-    expect(endState.isLoading).toBe(true)
 })
 
 test('set total count of cards', () => {
@@ -139,11 +122,4 @@ test('set cards page count', () => {
     const endState = cardsReducer(state, cardsActions.setCardsPageCount(3))
 
     expect(endState.params.pageCount).toBe(3)
-})
-
-test('set status', () => {
-
-    const endState = cardsReducer(state, cardsActions.setStatus('successfully added'))
-
-    expect(endState.statusCard).toBe('successfully added')
 })

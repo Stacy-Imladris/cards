@@ -24,8 +24,6 @@ export const Cards = () => {
     const cardQuestion = useAppSelector(selectCardQuestion)
     const cardAnswer = useAppSelector(selectCardAnswer)
     const cardsPack_id = useAppSelector(state=> state.cards.params.cardsPack_id)
-    const errorCards = useAppSelector(state=> state.cards.errorCards)
-    const statusCard = useAppSelector(state=> state.cards.statusCard)
     const error = useAppSelector(selectLoginError)
     const userId = useAppSelector(selectUser_id)
     const packUserId = useAppSelector(selectPackUserId)
@@ -70,9 +68,7 @@ export const Cards = () => {
                         {userId === packUserId && <SuperButton className={c.addItem} onClick={addNewCard}>Add card</SuperButton>}
                     </div>
                     <div className={c.table}><CardsTable/></div>
-                    {errorCards&&<Notification text={errorCards}/>}
                     {error&&<Notification text={error}/>}
-                    {statusCard&&<Notification text={statusCard}/>}
                 </div>
             </div>
         </div>

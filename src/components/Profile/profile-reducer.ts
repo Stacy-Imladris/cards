@@ -2,10 +2,10 @@ import {AppThunk, InferActionTypes} from '../../bll/store'
 import {profileAPI, UserType} from './profile-api'
 import axios from 'axios'
 import {loginActions} from '../Login/LoginBLL/loginReducer';
+import {appActions} from '../../bll/appReducer';
 
 const initialState = {
     user: {} as UserType,
-    error: '' as string | undefined,
     editMode: false,
     isFetching: false,
     isInitialized: false,
@@ -16,7 +16,6 @@ export const profileReducer = (state: ProfileStateType = initialState, action: P
         case 'profile/SET_USER_DATA':
         case 'profile/SET_EDIT_MODE_PROFILE':
         case 'profile/SET_IS_FETCHING_PROFILE':
-        case 'profile/SET_PROFILE_ERROR':
         case 'profile/SET_IS_INITIALIZED':
             return {...state, ...action.payload}
         default:
@@ -28,7 +27,6 @@ export const profileActions = {
     setEditModeProfile: (editMode: boolean) => ({type: 'profile/SET_EDIT_MODE_PROFILE', payload: {editMode}} as const),
     setIsFetchingProfile: (isFetching: boolean) => ({type: 'profile/SET_IS_FETCHING_PROFILE', payload: {isFetching}} as const),
     setUserData: (user: UserType) => ({type: 'profile/SET_USER_DATA', payload: {user}} as const),
-    setProfileError: (error: string) => ({type: 'profile/SET_PROFILE_ERROR', payload: {error}} as const),
     setIsInitialized: (isInitialized: boolean) => ({type: 'profile/SET_IS_INITIALIZED', payload: {isInitialized}} as const)
 }
 
@@ -42,7 +40,7 @@ export const updateProfile = (name: string, avatar: string): AppThunk => async d
     } catch (e) {
         if (axios.isAxiosError(e)) {
             const error = e.response ? e.response.data.error : (e.message + ', more details in the console')
-            dispatch(profileActions.setProfileError(error))
+            dispatch(appActions.setAppError(error))
         }
     } finally {
         dispatch(profileActions.setIsFetchingProfile(false))
@@ -58,7 +56,7 @@ export const auth = (): AppThunk => async dispatch => {
     } catch (e) {
         if (axios.isAxiosError(e)) {
             const error = e.response ? e.response.data.error : (e.message + ', more details in the console')
-            dispatch(profileActions.setProfileError(error))
+            dispatch(appActions.setAppError(error))
         }
     } finally {
         dispatch(profileActions.setIsFetchingProfile(false))

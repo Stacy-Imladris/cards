@@ -16,7 +16,6 @@ beforeEach(() => {
             verified: false,
             rememberMe: false,
         },
-        error: '',
         editMode: false,
         isFetching: false,
         isInitialized: false,
@@ -60,13 +59,6 @@ test('set isFetching to show Preloader or not', () => {
 
     expect(endState.isFetching).toBe(true)
     expect(endState2.isFetching).toBe(false)
-})
-
-test('set profile error', () => {
-
-    const endState = profileReducer(state, profileActions.setProfileError('error'))
-
-    expect(endState.error).toBe('error')
 })
 
 test('set isInitialized value', () => {

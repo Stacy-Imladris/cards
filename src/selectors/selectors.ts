@@ -6,7 +6,6 @@ export const selectIsInitialized = (state: AppRootStateType) => state.profile.is
 export const selectUser_id = (state: AppRootStateType) => state.profile.user._id
 export const selectProfileEditMode = (state: AppRootStateType) => state.profile.editMode
 export const selectProfileUserName = (state: AppRootStateType) => state.profile.user.name
-export const selectProfileError = (state: AppRootStateType) => state.profile.error
 export const selectProfileUser = (state: AppRootStateType) => state.profile.user
 export const selectProfileIsFetching = (state: AppRootStateType) => state.profile.isFetching
 

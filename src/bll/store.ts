@@ -13,7 +13,7 @@ import {NewPasswordActionTypes, newPasswordReducer
 import {loadValue} from '../utils/localstorage';
 import {PacksActionTypes, packsReducer} from '../components/Packs/packs-reducer';
 import {CardsActionTypes, cardsReducer} from '../components/Cards/cards-reducer';
-import {appReducer} from './appReducer';
+import {AppActionTypes, appReducer} from './appReducer';
 
 const rootReducer = combineReducers({
     theme: themeReducer,
@@ -35,7 +35,7 @@ export type AppRootStateType = ReturnType<typeof store.getState>
 export type InferActionTypes<T> = T extends { [keys: string]: (...args: any[]) => infer U } ? U : never
 export type ActionsType = RegistrationActionTypes | RecoveryActionTypes
     | NewPasswordActionTypes | LoginActionsType | ProfileActionTypes
-    | PacksActionTypes | CardsActionTypes
+    | PacksActionTypes | CardsActionTypes | AppActionTypes
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppRootStateType, unknown, ActionsType>
 export const useAppSelector: TypedUseSelectorHook<AppRootStateType> = useSelector
 

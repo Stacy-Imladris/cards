@@ -41,9 +41,7 @@ export const PacksTable = () => {
     }, [dispatch])
 
     useEffect(() => {
-        setTimeout(()=> {
-            dispatch(getPacks())
-        }, 1000)
+        dispatch(getPacks())
     }, [dispatch, packName, user_id, sortPacks, min, max, pageCount])
 
 

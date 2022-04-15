@@ -28,10 +28,6 @@ export const Packs = () => {
 
     const dispatch = useDispatch()
 
-    useEffect(()=> {
-        dispatch(packsActions.setPacksForUser(""))
-    }, [user_id])
-
     const [valueFromArray, setValueFromArray] = useState(arr[0])
 
     const onChangeOption = useCallback((value: string) => {

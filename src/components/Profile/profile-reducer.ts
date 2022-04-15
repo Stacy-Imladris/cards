@@ -1,7 +1,7 @@
-import {AppThunk, InferActionTypes} from './store'
-import {profileAPI, UserType} from '../components/Profile/profile-api'
+import {AppThunk, InferActionTypes} from '../../bll/store'
+import {profileAPI, UserType} from './profile-api'
 import axios from 'axios'
-import {loginActions} from '../components/Login/LoginBLL/loginReducer';
+import {loginActions} from '../Login/LoginBLL/loginReducer';
 
 const initialState = {
     user: {} as UserType,

@@ -6,7 +6,7 @@ import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperBut
 import {SearchField} from '../SearchField/SearchField';
 import {SuperRadio} from '../../common/super-components/c6-SuperRadio/SuperRadio';
 import {useDispatch} from 'react-redux';
-import {addPack, packsActions} from '../../bll/packs-reducer';
+import {addPack, packsActions} from './packs-reducer';
 import {AddNewCardType} from '../../api/packs-api';
 import {DoubleRange} from '../DoubleRange/DoubleRange';
 import {

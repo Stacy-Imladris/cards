@@ -3,7 +3,7 @@ import React, {useCallback, useEffect} from 'react';
 import {CardsList} from './CardsList/CardsList';
 import s from './CardsTable.module.css'
 import {useAppSelector} from '../../../bll/store';
-import {cardsActions, getCards} from '../../../bll/cards-reducer';
+import {cardsActions, getCards} from '../cards-reducer';
 import {
     selectCards,
     selectCardsAnswer,

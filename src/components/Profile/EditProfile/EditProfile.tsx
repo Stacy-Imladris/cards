@@ -6,7 +6,7 @@ import {SuperInputText} from '../../../common/super-components/c1-SuperInputText
 import {useDispatch} from 'react-redux'
 import {useAppSelector} from '../../../bll/store'
 import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton'
-import {profileActions, updateProfile} from '../../../bll/profile-reducer'
+import {profileActions, updateProfile} from '../profile-reducer'
 import {Preloader} from '../../../common/preloader/Preloader'
 import {
     selectProfileEditMode,

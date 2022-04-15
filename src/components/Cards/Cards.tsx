@@ -8,7 +8,7 @@ import {SearchField} from '../SearchField/SearchField';
 import {useNavigate} from 'react-router-dom';
 import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton';
 import {useDispatch} from 'react-redux';
-import {addCard, cardsActions} from '../../bll/cards-reducer';
+import {addCard, cardsActions} from './cards-reducer';
 import {
     selectCardAnswer,
     selectCardQuestion, selectLoginError,

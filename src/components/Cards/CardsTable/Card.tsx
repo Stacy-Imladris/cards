@@ -5,8 +5,8 @@ import {SuperButton} from "../../../common/super-components/c2-SuperButton/Super
 import s from '../Cards.module.css';
 import {useAppSelector} from "../../../bll/store";
 import {selectPackUserId, selectUser_id} from "../../../selectors/selectors";
-import {deletePack} from "../../../bll/packs-reducer";
-import {deleteCard} from "../../../bll/cards-reducer";
+import {deletePack} from "../../Packs/packs-reducer";
+import {deleteCard} from "../cards-reducer";
 import {useDispatch} from "react-redux";
 
 type CardPropsType = {

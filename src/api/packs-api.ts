@@ -1,5 +1,5 @@
 import {AxiosResponse} from 'axios';
-import {PacksParamsType} from '../bll/packs-reducer';
+import {PacksParamsType} from '../components/Packs/packs-reducer';
 import {instance} from './instance';
 
 export const packsAPI = {

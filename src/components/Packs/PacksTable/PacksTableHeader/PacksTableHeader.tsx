@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {packsActions, PacksSortFieldsType, SortOrderType,} from '../../../../bll/packs-reducer';
+import {packsActions, PacksSortFieldsType, SortOrderType,} from '../../packs-reducer';
 import {useDispatch} from 'react-redux';
 import c from '../../../../common/styles/TableHeader.module.css';
 

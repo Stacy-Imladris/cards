@@ -1,7 +1,7 @@
-import {cardsAPI, CardType, NewCardType, UpdateCardPayload} from '../api/cards-api'
-import {AppThunk, InferActionTypes} from './store';
+import {cardsAPI, CardType, NewCardType, UpdateCardPayload} from '../../api/cards-api'
+import {AppThunk, InferActionTypes} from '../../bll/store';
 import axios from 'axios';
-import {packsActions} from "./packs-reducer";
+import {packsActions} from "../Packs/packs-reducer";
 
 const cardsInitialState = {
     cards: [] as CardType[],

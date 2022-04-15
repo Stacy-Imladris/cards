@@ -1,6 +1,6 @@
-import {AppThunk, InferActionTypes} from './store';
+import {AppThunk, InferActionTypes} from '../../bll/store';
 import axios from 'axios';
-import {AddNewCardType, packsAPI, PackType, UpdatePackType} from '../api/packs-api'
+import {AddNewCardType, packsAPI, PackType, UpdatePackType} from '../../api/packs-api'
 
 const packsInitialState = {
     packs: [] as PackType[],

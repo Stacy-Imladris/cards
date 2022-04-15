@@ -3,7 +3,7 @@ import c from '../../common/styles/Container.module.css'
 import t from '../../common/styles/Themes.module.css'
 import profileAva from '../../assets/images/profile_ava.png'
 import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton'
-import {profileActions} from '../../bll/profile-reducer'
+import {profileActions} from './profile-reducer'
 import {useDispatch} from 'react-redux'
 import {useAppSelector} from '../../bll/store'
 import {EditProfile} from './EditProfile/EditProfile'
@@ -17,7 +17,7 @@ import {
 import {useCallback, useEffect} from 'react';
 import {SearchField} from '../SearchField/SearchField';
 import {PacksTable} from '../Packs/PacksTable/PacksTable';
-import {addPack, packsActions} from '../../bll/packs-reducer';
+import {addPack, packsActions} from '../Packs/packs-reducer';
 import {DoubleRange} from '../DoubleRange/DoubleRange';
 import {Notification} from "../../common/notification/Notification";
 import {AddNewCardType} from "../../api/packs-api";

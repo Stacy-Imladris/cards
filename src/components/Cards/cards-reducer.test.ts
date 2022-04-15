@@ -1,5 +1,5 @@
 import {cardsActions, CardsInitialStateType, CardsParamsType, cardsReducer} from './cards-reducer'
-import {CardType} from '../api/cards-api'
+import {CardType} from '../../api/cards-api'
 
 let state: CardsInitialStateType
 

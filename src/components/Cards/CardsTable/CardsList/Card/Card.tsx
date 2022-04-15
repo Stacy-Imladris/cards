@@ -4,7 +4,7 @@ import {CardType, UpdateCardPayload} from '../../../../../api/cards-api';
 import c from '../../../../../common/styles/TableLine.module.css'
 import s from '../../../Cards.module.css'
 import {useDispatch} from 'react-redux'
-import {deleteCard, updateCard} from '../../../../../bll/cards-reducer';
+import {deleteCard, updateCard} from '../../../cards-reducer';
 import {SuperButton} from '../../../../../common/super-components/c2-SuperButton/SuperButton';
 import {useAppSelector} from '../../../../../bll/store';
 import {selectPackUserId, selectUser_id} from '../../../../../selectors/selectors';

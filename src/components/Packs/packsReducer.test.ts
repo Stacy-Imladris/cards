@@ -4,7 +4,7 @@ import {
     PacksParamsType,
     packsReducer, RequestStatusType,
 } from './packs-reducer';
-import {PackType} from "../api/packs-api";
+import {PackType} from "../../api/packs-api";
 
 let startState: PacksInitialStateType
 let data: Date

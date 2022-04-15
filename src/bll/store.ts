@@ -2,7 +2,7 @@ import {applyMiddleware, combineReducers, createStore} from 'redux';
 import thunk, {ThunkAction} from 'redux-thunk';
 import {themeReducer} from './themeReducer';
 import {TypedUseSelectorHook, useSelector} from 'react-redux';
-import {ProfileActionTypes, profileReducer} from './profile-reducer'
+import {ProfileActionTypes, profileReducer} from '../components/Profile/profile-reducer'
 import {RegistrationActionTypes, registrationReducer
 } from '../components/Registration/RegistrationBLL/registration-reducer';
 import {LoginActionsType, loginReducer} from '../components/Login/LoginBLL/loginReducer';
@@ -11,8 +11,9 @@ import {RecoveryActionTypes, recoveryReducer
 import {NewPasswordActionTypes, newPasswordReducer
 } from '../components/NewPassword/NewPasswordBLL/new-password-reducer';
 import {loadValue} from '../utils/localstorage';
-import {PacksActionTypes, packsReducer} from './packs-reducer';
-import {CardsActionTypes, cardsReducer} from './cards-reducer';
+import {PacksActionTypes, packsReducer} from '../components/Packs/packs-reducer';
+import {CardsActionTypes, cardsReducer} from '../components/Cards/cards-reducer';
+import {appReducer} from './appReducer';
 
 const rootReducer = combineReducers({
     theme: themeReducer,
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
     login: loginReducer,
     packs: packsReducer,
     cards: cardsReducer,
+    app: appReducer,
 })
 
 const preloadedState = {theme: {theme: loadValue() ? loadValue() : 'day'}}

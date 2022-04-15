@@ -1,5 +1,5 @@
 import {instance} from './instance';
-import {CardsParamsType} from '../bll/cards-reducer';
+import {CardsParamsType} from '../components/Cards/cards-reducer';
 import {AxiosResponse} from 'axios';
 
 export const cardsAPI = {

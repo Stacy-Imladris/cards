@@ -27,12 +27,6 @@ export const EditProfile = () => {
 
     const dispatch = useDispatch()
 
-    // useEffect(() => {
-    //     return () => {
-    //         dispatch(appActions.setAppError(''))
-    //     }
-    // }, [dispatch])
-
     const navigateToProfile = useCallback(() => {
         dispatch(profileActions.setEditModeProfile(false))
     }, [dispatch])
@@ -57,7 +51,6 @@ export const EditProfile = () => {
             <div className={s.profile__avatar}><img src={profile_ava} alt="avatar"/></div>
             <div><SuperInputText value={name} onChangeText={changeNameHandle}/></div>
             <div><SuperInputText value={userData.email}/></div>
-            {/*<div className={s.error}>{error && error}</div>*/}
             <div className={s.buttons}>
                 <SuperButton onClick={navigateToProfile}>Cancel</SuperButton>
                 <SuperButton onClick={updateData}>Save</SuperButton>

@@ -68,7 +68,7 @@ export const Cards = () => {
                         {userId === packUserId && <SuperButton className={c.addItem} onClick={addNewCard}>Add card</SuperButton>}
                     </div>
                     <div className={c.table}><CardsTable/></div>
-                    {error&&<Notification text={error}/>}
+                    {error && <Notification text={error}/>}
                 </div>
             </div>
         </div>

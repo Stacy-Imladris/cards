@@ -29,7 +29,6 @@ export const Profile = () => {
     const packName = useAppSelector(selectPackNameForSearch)
     const userId = useAppSelector(selectUser_id)
     const error = useAppSelector(selectLoginError)
-    //const status = useAppSelector(state => state.packs.status)
 
     const dispatch = useDispatch()
 
@@ -39,7 +38,6 @@ export const Profile = () => {
 
     const editProfile = useCallback(() => {
         dispatch(profileActions.setEditModeProfile(true))
-        //dispatch(profileActions.setProfileError(''))
     }, [dispatch])
 
     const onChangeDebounceRequest = useCallback((title: string) => {

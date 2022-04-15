@@ -35,6 +35,7 @@ export const updateProfile = (name: string, avatar: string): AppThunk => async d
     dispatch(profileActions.setIsFetchingProfile(true))
     try {
         const response = await profileAPI.update(name, avatar)
+        dispatch(appActions.setAppStatus('Profile successfully edited'))
         dispatch(profileActions.setUserData(response.data.updatedUser))
         dispatch(profileActions.setEditModeProfile(false))
     } catch (e) {

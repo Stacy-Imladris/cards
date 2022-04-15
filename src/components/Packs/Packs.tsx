@@ -71,7 +71,7 @@ export const Packs = () => {
                         <SuperButton className={c.addItem} onClick={addNewPack}>Add pack</SuperButton>
                     </div>
                     <div className={c.table}><PacksTable/></div>
-                    {error&&<Notification text={error}/>}
+                    {error && <Notification text={error}/>}
                 </div>
             </div>
         </div>

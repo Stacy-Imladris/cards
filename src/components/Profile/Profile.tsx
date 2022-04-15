@@ -27,14 +27,9 @@ export const Profile = () => {
     const theme = useAppSelector(selectTheme)
     const editMode = useAppSelector(selectProfileEditMode)
     const packName = useAppSelector(selectPackNameForSearch)
-    const userId = useAppSelector(selectUser_id)
     const error = useAppSelector(selectLoginError)
 
     const dispatch = useDispatch()
-
-    useEffect(()=> {
-        dispatch(packsActions.setPacksForUser(userId))
-    })
 
     const editProfile = useCallback(() => {
         dispatch(profileActions.setEditModeProfile(true))

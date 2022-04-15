@@ -11,7 +11,7 @@ import {AddNewCardType} from '../../api/packs-api';
 import {DoubleRange} from '../DoubleRange/DoubleRange';
 import {
     selectLoginError,
-    selectPackNameForSearch,
+    selectPackNameForSearch, selectPackUserId,
     selectTheme,
     selectUser_id
 } from '../../selectors/selectors';
@@ -25,10 +25,11 @@ export const Packs = () => {
     const user_id = useAppSelector(selectUser_id)
     const packName = useAppSelector(selectPackNameForSearch)
     const error = useAppSelector(selectLoginError)
+    const Id = useAppSelector(selectPackUserId)
 
     const dispatch = useDispatch()
 
-    const [valueFromArray, setValueFromArray] = useState(arr[1])
+    const [valueFromArray, setValueFromArray] = useState(Id ? 'My' : 'All')
 
     const onChangeOption = useCallback((value: string) => {
         setValueFromArray(value)

@@ -15,7 +15,7 @@ import {
     selectTheme,
     selectUser_id
 } from '../../selectors/selectors';
-import {useCallback, useEffect, useState} from 'react';
+import {useCallback, useState} from 'react';
 import {Notification} from "../../common/notification/Notification";
 
 const arr = ['All', 'My']
@@ -28,7 +28,7 @@ export const Packs = () => {
 
     const dispatch = useDispatch()
 
-    const [valueFromArray, setValueFromArray] = useState(arr[0])
+    const [valueFromArray, setValueFromArray] = useState(arr[1])
 
     const onChangeOption = useCallback((value: string) => {
         setValueFromArray(value)

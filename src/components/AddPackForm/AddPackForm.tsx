@@ -5,7 +5,6 @@ import {Modal} from '../Modal/Modal'
 import {SuperInputText} from '../../common/super-components/c1-SuperInputText/SuperInputText'
 import {SuperCheckbox} from '../../common/super-components/c3-SuperCheckbox/SuperCheckbox'
 import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton'
-import s from './AddPackForm.module.css'
 
 type AddPackFormPropsType = {
     onClickNotOpen: () => void
@@ -28,13 +27,13 @@ export const AddPackForm: FC<AddPackFormPropsType> = memo(({onClickNotOpen, isOp
         setIsPrivate(false)
     }
 
-    return <Modal onClickNotOpen={onClickCleanUpStates} width={350} height={270}
+    return <Modal onClickNotOpen={onClickCleanUpStates} width={350} height={290}
                   isOpen={isOpen}>
         <div>Add new pack</div>
         <SuperInputText value={name} placeholder={'Enter pack name'}
                         onChangeText={setName}/>
         <SuperCheckbox checked={isPrivate} onChangeChecked={setIsPrivate}>
-            <span>Make private</span>
+            Make private
         </SuperCheckbox>
         <div>
             <SuperButton onClick={onClickCleanUpStates}>Cancel</SuperButton>

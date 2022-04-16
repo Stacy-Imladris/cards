@@ -26,10 +26,9 @@ export const Modal: FC<ModalPropsType> = memo(({onClickNotOpen, isOpen, width,
     return ReactDOM.createPortal(
         <>
             <div style={{...backgroundStyle}} className={s.background} onClick={onClickNotOpen}/>
-            <div style={{background: `${theme === 'day' ? '#d0eca1' : '#022507'}`, top, left,
-                width, height, ...modalStyle}} className={`${s.modal} ${t[theme + '-text']}`}>
+            <div style={{top, left, width, height, ...modalStyle}}
+                 className={`${s.modal} ${t[theme]} ${t[theme + '-text']}`}>
                 {children}
             </div>
-        </>,
-        document.body)
+        </>, document.body)
 })

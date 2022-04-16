@@ -3,8 +3,6 @@ import {useDispatch} from 'react-redux';
 import {deletePack} from '../Packs/packs-reducer';
 import {Modal} from '../Modal/Modal';
 import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton';
-import {useAppSelector} from '../../bll/store';
-import {selectTheme} from '../../selectors/selectors';
 
 type DeletePackFormPropsType = {
     onClickNotOpen: () => void
@@ -13,7 +11,6 @@ type DeletePackFormPropsType = {
     name: string
 }
 export const DeletePackForm: FC<DeletePackFormPropsType> = memo(({onClickNotOpen, isOpen, name, packId}) => {
-    const theme = useAppSelector(selectTheme)
 
     const dispatch = useDispatch()
 

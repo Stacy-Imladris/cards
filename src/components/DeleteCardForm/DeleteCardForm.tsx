@@ -9,7 +9,11 @@ type DeleteCardFormPropsType = {
     isOpen: boolean
     cardId: string
 }
-export const DeleteCardForm: FC<DeleteCardFormPropsType> = memo(({onClickNotOpen, isOpen, cardId}) => {
+export const DeleteCardForm: FC<DeleteCardFormPropsType> = memo(({
+                                                                     onClickNotOpen,
+                                                                     isOpen,
+                                                                     cardId
+                                                                 }) => {
     const dispatch = useDispatch()
 
     const onClickDeleteCard = useCallback(() => {
@@ -17,10 +21,12 @@ export const DeleteCardForm: FC<DeleteCardFormPropsType> = memo(({onClickNotOpen
         onClickNotOpen()
     }, [dispatch, onClickNotOpen, cardId])
 
-    return <Modal onClickNotOpen={onClickNotOpen} width={400} height={300}
+    return <Modal onClickNotOpen={onClickNotOpen} width={400} height={200}
                   isOpen={isOpen}>
         <div>Do you really want to remove card?</div>
-        <SuperButton onClick={onClickNotOpen}>Cancel</SuperButton>
-        <SuperButton onClick={onClickDeleteCard} red>Delete</SuperButton>
+        <div>
+            <SuperButton onClick={onClickNotOpen}>Cancel</SuperButton>
+            <SuperButton onClick={onClickDeleteCard} red>Delete</SuperButton>
+        </div>
     </Modal>
 })

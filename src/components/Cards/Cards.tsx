@@ -4,7 +4,7 @@ import s from './Cards.module.css'
 import c from '../../common/styles/Container.module.css'
 import {useAppSelector} from '../../bll/store';
 import {useCallback, useState} from 'react';
-import {SearchField} from '../SearchField/SearchField';
+import {SearchField} from '../Features/SearchField/SearchField';
 import {useNavigate, useParams} from 'react-router-dom';
 import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton';
 import {useDispatch} from 'react-redux';
@@ -18,7 +18,7 @@ import {
     selectUser_id
 } from '../../selectors/selectors';
 import {Notification} from '../../common/notification/Notification';
-import {AddCardForm} from '../AddCardForm/AddCardForm';
+import {AddCardForm} from '../Modals/AddCardForm/AddCardForm';
 
 export const Cards = () => {
     const [isAddingOpen, setIsAddingOpen] = useState<boolean>(false)

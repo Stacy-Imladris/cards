@@ -8,7 +8,7 @@ import {themeActions, ThemeType} from '../../bll/themeReducer';
 import {SuperSelect} from '../../common/super-components/c5-SuperSelect/SuperSelect';
 import {saveState} from '../../utils/localstorage';
 import {selectIsLoggedIn, selectTheme} from '../../selectors/selectors';
-import {logout} from '../Login/LoginBLL/loginReducer';
+import {logout} from '../Auth/Login/LoginBLL/loginReducer';
 import {packsActions} from "../Packs/packs-reducer";
 
 const themes = ['day', 'night']

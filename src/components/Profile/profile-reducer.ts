@@ -1,7 +1,7 @@
 import {AppThunk, InferActionTypes} from '../../bll/store'
 import {profileAPI, UserType} from './profile-api'
 import axios from 'axios'
-import {loginActions} from '../Login/LoginBLL/loginReducer';
+import {loginActions} from '../Auth/Login/LoginBLL/loginReducer';
 import {appActions} from '../../bll/appReducer';
 import {handleServerNetworkError} from '../../utils/error-handler';
 

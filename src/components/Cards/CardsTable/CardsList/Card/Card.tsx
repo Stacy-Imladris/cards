@@ -6,8 +6,8 @@ import a from '../../../../../common/styles/Actions.module.css'
 import {SuperButton} from '../../../../../common/super-components/c2-SuperButton/SuperButton'
 import {useAppSelector} from '../../../../../bll/store'
 import {selectUser_id} from '../../../../../selectors/selectors'
-import {DeleteCardForm} from '../../../../DeleteCardForm/DeleteCardForm'
-import {EditCardForm} from '../../../../EditCardForm/EditCardForm'
+import {DeleteCardForm} from '../../../../Modals/DeleteCardForm/DeleteCardForm'
+import {EditCardForm} from '../../../../Modals/EditCardForm/EditCardForm'
 import {useParams} from 'react-router-dom'
 
 type CardPropsType = {

@@ -4,12 +4,12 @@ import {themeReducer} from './themeReducer';
 import {TypedUseSelectorHook, useSelector} from 'react-redux';
 import {ProfileActionTypes, profileReducer} from '../components/Profile/profile-reducer'
 import {RegistrationActionTypes, registrationReducer
-} from '../components/Registration/RegistrationBLL/registration-reducer';
-import {LoginActionsType, loginReducer} from '../components/Login/LoginBLL/loginReducer';
+} from '../components/Auth/Registration/RegistrationBLL/registration-reducer';
+import {LoginActionsType, loginReducer} from '../components/Auth/Login/LoginBLL/loginReducer';
 import {RecoveryActionTypes, recoveryReducer
-} from '../components/Recovery/RecoveryBLL/recovery-reducer';
+} from '../components/Auth/Recovery/RecoveryBLL/recovery-reducer';
 import {NewPasswordActionTypes, newPasswordReducer
-} from '../components/NewPassword/NewPasswordBLL/new-password-reducer';
+} from '../components/Auth/NewPassword/NewPasswordBLL/new-password-reducer';
 import {loadValue} from '../utils/localstorage';
 import {PacksActionTypes, packsReducer} from '../components/Packs/packs-reducer';
 import {CardsActionTypes, cardsReducer} from '../components/Cards/cards-reducer';

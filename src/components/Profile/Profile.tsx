@@ -15,12 +15,12 @@ import {
     selectTheme
 } from '../../selectors/selectors';
 import {useCallback, useState} from 'react';
-import {SearchField} from '../SearchField/SearchField';
+import {SearchField} from '../Features/SearchField/SearchField';
 import {PacksTable} from '../Packs/PacksTable/PacksTable';
 import {packsActions} from '../Packs/packs-reducer';
-import {DoubleRange} from '../DoubleRange/DoubleRange';
+import {DoubleRange} from '../Features/DoubleRange/DoubleRange';
 import {Notification} from '../../common/notification/Notification';
-import {AddPackForm} from '../AddPackForm/AddPackForm';
+import {AddPackForm} from '../Modals/AddPackForm/AddPackForm';
 
 export const Profile = () => {
     const [isAddingOpen, setIsAddingOpen] = useState<boolean>(false)

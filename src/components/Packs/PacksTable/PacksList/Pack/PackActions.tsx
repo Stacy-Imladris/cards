@@ -1,8 +1,8 @@
 import {FC, memo, useState} from 'react'
 import {SuperButton} from '../../../../../common/super-components/c2-SuperButton/SuperButton'
 import s from '../../PacksTable.module.css'
-import {DeletePackForm} from '../../../../DeletePackForm/DeletePackForm'
-import {EditPackForm} from '../../../../EditPackForm/EditPackForm'
+import {DeletePackForm} from '../../../../Modals/DeletePackForm/DeletePackForm'
+import {EditPackForm} from '../../../../Modals/EditPackForm/EditPackForm'
 import a from '../../../../../common/styles/Actions.module.css'
 
 type PackActionsType = {

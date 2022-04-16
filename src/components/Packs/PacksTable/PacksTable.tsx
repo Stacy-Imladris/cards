@@ -16,7 +16,7 @@ import {
     selectPageForPacks,
     selectSortForPacks,
 } from '../../../selectors/selectors';
-import {Paginator} from '../../Paginator/Paginator';
+import {Paginator} from '../../Features/Paginator/Paginator';
 import {PacksTableHeader} from './PacksTableHeader/PacksTableHeader';
 
 export const PacksTable = () => {

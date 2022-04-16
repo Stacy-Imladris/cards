@@ -15,7 +15,7 @@ import {
     selectSortCards,
     selectUser_id
 } from '../../../selectors/selectors';
-import {Paginator} from '../../Paginator/Paginator';
+import {Paginator} from '../../Features/Paginator/Paginator';
 import {CardsTableHeader} from './CardsTableHeader/CardsTableHeader';
 import {useParams} from 'react-router-dom';
 

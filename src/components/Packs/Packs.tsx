@@ -3,11 +3,11 @@ import t from '../../common/styles/Themes.module.css'
 import c from '../../common/styles/Container.module.css'
 import {useAppSelector} from '../../bll/store';
 import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton';
-import {SearchField} from '../SearchField/SearchField';
+import {SearchField} from '../Features/SearchField/SearchField';
 import {SuperRadio} from '../../common/super-components/c6-SuperRadio/SuperRadio';
 import {useDispatch} from 'react-redux';
 import {packsActions} from './packs-reducer';
-import {DoubleRange} from '../DoubleRange/DoubleRange';
+import {DoubleRange} from '../Features/DoubleRange/DoubleRange';
 import {
     selectLoginError,
     selectPackNameForSearch,
@@ -17,7 +17,7 @@ import {
 } from '../../selectors/selectors';
 import {useCallback, useState} from 'react';
 import {Notification} from '../../common/notification/Notification';
-import {AddPackForm} from '../AddPackForm/AddPackForm';
+import {AddPackForm} from '../Modals/AddPackForm/AddPackForm';
 
 const arr = ['All', 'My']
 

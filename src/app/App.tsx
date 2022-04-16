@@ -8,7 +8,7 @@ import {useDispatch} from 'react-redux'
 import {auth} from '../components/Profile/profile-reducer'
 import {Preloader} from '../common/preloader/Preloader';
 import {selectIsInitialized, selectTheme} from '../selectors/selectors';
-import {AppSnackbar} from '../components/AppSnackbar/AppSnackbar';
+import {AppSnackbar} from '../components/Features/AppSnackbar/AppSnackbar';
 
 export const App = () => {
     const theme = useAppSelector(selectTheme)

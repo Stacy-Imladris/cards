@@ -10,7 +10,11 @@ type AddCardFormPropsType = {
     isOpen: boolean
     cardsPack_id: string
 }
-export const AddCardForm: FC<AddCardFormPropsType> = memo(({onClickNotOpen, isOpen,cardsPack_id}) => {
+export const AddCardForm: FC<AddCardFormPropsType> = memo(({
+                                                               onClickNotOpen,
+                                                               isOpen,
+                                                               cardsPack_id
+                                                           }) => {
     const [question, setQuestion] = useState<string>('')
     const [answer, setAnswer] = useState<string>('')
 
@@ -23,14 +27,16 @@ export const AddCardForm: FC<AddCardFormPropsType> = memo(({onClickNotOpen, isOp
         setAnswer('')
     }, [dispatch, onClickNotOpen, question, answer])
 
-    return <Modal onClickNotOpen={onClickNotOpen} width={400} height={300}
+    return <Modal onClickNotOpen={onClickNotOpen} width={350} height={330}
                   isOpen={isOpen}>
         <div>Add new card</div>
         <SuperInputText value={question} placeholder={'Enter card question'}
                         onChangeText={setQuestion}/>
         <SuperInputText value={answer} placeholder={'Enter card answer'}
                         onChangeText={setAnswer}/>
-        <SuperButton onClick={onClickNotOpen}>Cancel</SuperButton>
-        <SuperButton onClick={addNewCard}>Save</SuperButton>
+        <div>
+            <SuperButton onClick={onClickNotOpen}>Cancel</SuperButton>
+            <SuperButton onClick={addNewCard}>Save</SuperButton>
+        </div>
     </Modal>
 })

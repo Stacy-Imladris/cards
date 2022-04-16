@@ -23,7 +23,7 @@ export const AddPackForm: FC<AddPackFormPropsType> = memo(({onClickNotOpen, isOp
         setIsPrivate(false)
     }, [dispatch, onClickNotOpen, name, isPrivate])
 
-    return <Modal onClickNotOpen={onClickNotOpen} width={400} height={300}
+    return <Modal onClickNotOpen={onClickNotOpen} width={350} height={270}
                   isOpen={isOpen}>
         <div>Add new pack</div>
         <SuperInputText value={name} placeholder={'Enter pack name'}
@@ -31,7 +31,9 @@ export const AddPackForm: FC<AddPackFormPropsType> = memo(({onClickNotOpen, isOp
         <SuperCheckbox checked={isPrivate} onChangeChecked={setIsPrivate}>
             Make private
         </SuperCheckbox>
-        <SuperButton onClick={onClickNotOpen}>Cancel</SuperButton>
-        <SuperButton onClick={onClickAddPack}>Save</SuperButton>
+        <div>
+            <SuperButton onClick={onClickNotOpen}>Cancel</SuperButton>
+            <SuperButton onClick={onClickAddPack}>Save</SuperButton>
+        </div>
     </Modal>
 })

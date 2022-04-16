@@ -4,9 +4,10 @@ import {CardType} from '../../../../../api/cards-api';
 import s from '../../../Cards.module.css'
 import {SuperButton} from '../../../../../common/super-components/c2-SuperButton/SuperButton';
 import {useAppSelector} from '../../../../../bll/store';
-import {selectPackUserId, selectUser_id} from '../../../../../selectors/selectors';
+import {selectUser_id} from '../../../../../selectors/selectors';
 import {DeleteCardForm} from '../../../../DeleteCardForm/DeleteCardForm';
 import {EditCardForm} from '../../../../EditCardForm/EditCardForm';
+import {useParams} from 'react-router-dom'
 
 type CardPropsType = {
     card: CardType
@@ -17,7 +18,8 @@ export const Card: FC<CardPropsType> = memo(({card}) => {
     const [isEditingOpen, setIsEditingOpen] = useState<boolean>(false)
 
     const userId = useAppSelector(selectUser_id)
-    const packUserId = useAppSelector(selectPackUserId)
+
+    const {packUserId} = useParams()
 
     const deleteCardOff = () => {
         setIsDeletingOpen(false)

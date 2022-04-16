@@ -60,6 +60,7 @@ export const logout = (): AppThunk => async dispatch => {
         dispatch(profileActions.setUserData({} as UserType))
         dispatch(packsActions.setPacks([]))
         dispatch(cardsActions.setCards([]))
+        dispatch(packsActions.setTitleForSearch(''))
     } catch (e) {
         if (axios.isAxiosError(e)) {
             dispatch(loginActions.setLoginError(e.response ? e.response.data.error : e.message))

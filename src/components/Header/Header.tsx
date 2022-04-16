@@ -9,7 +9,6 @@ import {SuperSelect} from '../../common/super-components/c5-SuperSelect/SuperSel
 import {saveState} from '../../utils/localstorage';
 import {selectIsLoggedIn, selectTheme} from '../../selectors/selectors';
 import {logout} from '../Auth/Login/LoginBLL/loginReducer';
-import {packsActions} from "../Packs/packs-reducer";
 
 const themes = ['day', 'night']
 

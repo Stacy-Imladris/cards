@@ -8,7 +8,7 @@ export const loginAPI = {
             .then(data => data.data)
     },
     logout() {
-        return instance.delete<any, AxiosResponse<ResponseDeleteType>>('auth/me')
+        return instance.delete<any, AxiosResponse<LogoutResponseType>>('auth/me')
     },
 }
 
@@ -19,7 +19,7 @@ export type LoginType = {
     rememberMe: boolean
 }
 
-type ResponseDeleteType = {
+type LogoutResponseType = {
     info: string
     error?: string
 }

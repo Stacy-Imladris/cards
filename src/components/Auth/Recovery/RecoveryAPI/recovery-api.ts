@@ -1,6 +1,6 @@
 import {AxiosResponse} from 'axios';
-import {ResponseType} from '../../Registration/RegistrationAPI/registration-api';
 import {instance} from '../../../../api/instance';
+import {ResponseType} from '../../Registration/RegistrationAPI/registration-api';
 
 export const recoveryAPI = {
     toSendInstructions(email: string) {

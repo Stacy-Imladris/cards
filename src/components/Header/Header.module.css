@@ -4,9 +4,10 @@
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     justify-content: space-around;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 22px;
     margin-bottom: 20px;
     padding-right: 140px;
+    border-radius: 0 0 20px 20px;
 }
 
 .nav {
@@ -43,7 +44,7 @@
 
 .select {
     position: absolute;
-    right: 0;
+    right: 10px;
     display: flex;
     align-items: center;
 }

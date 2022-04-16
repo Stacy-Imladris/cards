@@ -8,7 +8,6 @@ import {cardsActions} from '../../../../Cards/cards-reducer';
 import {useNavigate} from 'react-router-dom';
 import {PATH} from '../../../../../app/AllRoutes';
 import {selectUser_id} from '../../../../../selectors/selectors';
-import c from '../../../../../common/styles/TableLine.module.css';
 
 type PackPropsType = {
     pack: PackType
@@ -30,12 +29,12 @@ export const Pack: FC<PackPropsType> = memo(({pack}) => {
     }
 
     return <tr>
-        <td onClick={openCard} className={c.mainColumn}>{pack.name}</td>
+        <td onClick={openCard} style={{cursor: 'pointer'}}>{pack.name}</td>
         <td>{pack.cardsCount}</td>
         <td>{lastUpdate}</td>
         <td>{pack.user_name}</td>
         <td>
-            <PackActions isMyPacks={pack.user_id === userId} packId={pack._id}/>
+            <PackActions isMyPacks={pack.user_id === userId} packId={pack._id} name={pack.name}/>
         </td>
     </tr>
 })

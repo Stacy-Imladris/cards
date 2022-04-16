@@ -10,31 +10,27 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 })
 
-export const ErrorSnackbar = () => {
+export const AppSnackbar = () => {
     const error = useAppSelector(state => state.app.error)
     const status = useAppSelector(state => state.app.status)
 
     const dispatch = useDispatch()
 
-    const handleErrorClose = (event?: SyntheticEvent | Event, reason?: string) => {
+    const handleClose = (event?: SyntheticEvent | Event, reason?: string) => {
         if (reason === 'clickaway') return
         dispatch(appActions.setAppError(''))
-    }
-
-    const handleStatusClose = (event?: SyntheticEvent | Event, reason?: string) => {
-        if (reason === 'clickaway') return
         dispatch(appActions.setAppStatus(''))
     }
 
     return (
         <>
-            <Snackbar open={!!error && error !== 'you are not authorized /ᐠ-ꞈ-ᐟ\\'} autoHideDuration={7000} onClose={handleErrorClose}>
-                <Alert onClose={handleErrorClose} severity="error" sx={{width: '100%'}}>
+            <Snackbar open={!!error && error !== 'you are not authorized /ᐠ-ꞈ-ᐟ\\'} autoHideDuration={3000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="error">
                     {error}
                 </Alert>
             </Snackbar>
-            <Snackbar open={!!status} autoHideDuration={7000} onClose={handleStatusClose}>
-                <Alert onClose={handleStatusClose} severity="success" sx={{width: '100%'}}>
+            <Snackbar open={!!status} autoHideDuration={3000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="success">
                     {status}
                 </Alert>
             </Snackbar>

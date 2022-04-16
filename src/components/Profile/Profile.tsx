@@ -12,17 +12,19 @@ import {
     selectPackNameForSearch,
     selectProfileEditMode,
     selectProfileUserName,
-    selectTheme, selectUser_id
+    selectTheme
 } from '../../selectors/selectors';
-import {useCallback, useEffect} from 'react';
+import {useCallback, useState} from 'react';
 import {SearchField} from '../SearchField/SearchField';
 import {PacksTable} from '../Packs/PacksTable/PacksTable';
-import {addPack, packsActions} from '../Packs/packs-reducer';
+import {packsActions} from '../Packs/packs-reducer';
 import {DoubleRange} from '../DoubleRange/DoubleRange';
-import {Notification} from "../../common/notification/Notification";
-import {AddNewCardType} from "../../api/packs-api";
+import {Notification} from '../../common/notification/Notification';
+import {AddPackForm} from '../AddPackForm/AddPackForm';
 
 export const Profile = () => {
+    const [isAddingOpen, setIsAddingOpen] = useState<boolean>(false)
+
     const name = useAppSelector(selectProfileUserName)
     const theme = useAppSelector(selectTheme)
     const editMode = useAppSelector(selectProfileEditMode)
@@ -44,12 +46,17 @@ export const Profile = () => {
         return <EditProfile/>
     }
 
-    const addNewPack = () => {
-        dispatch(addPack({} as AddNewCardType))
+    const addPackOff = () => {
+        setIsAddingOpen(false)
+    }
+
+    const addPackOn = () => {
+        setIsAddingOpen(true)
     }
 
     return (
         <div className={c.mainContainer}>
+            <AddPackForm onClickNotOpen={addPackOff} isOpen={isAddingOpen}/>
             <div className={`${c.container} ${t[theme + '-text']}`}>
                 <div className={c.settings}>
                     <div className={s.profile}>
@@ -71,7 +78,9 @@ export const Profile = () => {
                             <SearchField onChangeWithDebounce={onChangeDebounceRequest}
                                          value={packName} wide
                                          placeholder={'Enter pack\'s title for search'}/>
-                            <SuperButton className={c.addPack}  onClick={addNewPack}>Add pack</SuperButton>
+                            <SuperButton className={c.addPack} onClick={addPackOn}>
+                                Add pack
+                            </SuperButton>
                         </div>
                         <div className={c.table}><PacksTable/></div>
                     </div>

@@ -72,12 +72,12 @@ export const getPacks = (): AppThunk => async (dispatch, getState) => {
     }
 }
 
-export const deletePack = (packId: string): AppThunk => async (dispatch) => {
+export const deletePack = (packId: string, name: string): AppThunk => async (dispatch) => {
     dispatch(appActions.setAppIsLoading(true))
     try {
         await packsAPI.deletePack(packId)
-        dispatch(appActions.setAppStatus("Pack successfully deleted"))
-        dispatch(getPacks())
+        await dispatch(getPacks())
+        dispatch(appActions.setAppStatus(`Pack '${name}' successfully deleted`))
     } catch (e) {
         handleServerNetworkError(dispatch, e as Error)
     } finally {
@@ -85,13 +85,14 @@ export const deletePack = (packId: string): AppThunk => async (dispatch) => {
     }
 }
 
-export const addPack = (cardsPack: AddNewCardType): AppThunk => async (dispatch) => {
+export const addPack = (name: string, isPrivate: boolean, deckCover: string = ''): AppThunk => async (dispatch) => {
+    const cardsPack: AddNewCardType = {cardsPack: {name, deckCover, private: isPrivate}}
     dispatch(appActions.setAppIsLoading(true))
     try {
         await packsAPI.addPack(cardsPack)
-        dispatch(appActions.setAppStatus("New pack successfully added"))
+        await dispatch(getPacks())
         dispatch(packsActions.setCurrentPage(1))
-        dispatch(getPacks())
+        dispatch(appActions.setAppStatus(`Pack '${name}' successfully added`))
     } catch (e) {
         handleServerNetworkError(dispatch, e as Error)
     } finally {
@@ -99,12 +100,13 @@ export const addPack = (cardsPack: AddNewCardType): AppThunk => async (dispatch)
     }
 }
 
-export const updatePack = (editingPack: UpdatePackType): AppThunk => async (dispatch) => {
+export const updatePack = (_id: string, name: string, oldName: string): AppThunk => async (dispatch) => {
+    const cardsPack: UpdatePackType = {cardsPack: {_id, name}}
     dispatch(appActions.setAppIsLoading(true))
     try {
-        await packsAPI.updatePack(editingPack)
-        dispatch(appActions.setAppStatus("Card successfully edited"))
-        dispatch(getPacks())
+        await packsAPI.updatePack(cardsPack)
+        await dispatch(getPacks())
+        dispatch(appActions.setAppStatus(`Pack '${oldName}' successfully renamed to '${name}'`))
     } catch (e) {
         handleServerNetworkError(dispatch, e as Error)
     } finally {

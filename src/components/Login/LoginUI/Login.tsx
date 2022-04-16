@@ -16,9 +16,9 @@ import {selectIsLoggedIn, selectLoginError, selectLoginIsLoading, selectTheme
 import {login, loginActions} from '../LoginBLL/loginReducer';
 
 export const Login = () => {
-    let [email, setEmail] = useState<string>("")
-    let [password, setPassword] = useState<string>("")
-    let [rememberMe, setRememberMe] = useState<boolean>(false)
+    const [email, setEmail] = useState<string>("")
+    const [password, setPassword] = useState<string>("")
+    const [rememberMe, setRememberMe] = useState<boolean>(false)
 
     const error = useAppSelector(selectLoginError)
     const theme = useAppSelector(selectTheme)
@@ -32,18 +32,6 @@ export const Login = () => {
             dispatch(loginActions.setLoginError(''))
         }
     }, [dispatch])
-
-    const onChangeEmail = useCallback((value: string) => {
-        setEmail(value)
-    }, [])
-
-    const onChangePassword = useCallback((value: string) => {
-        setPassword(value)
-    }, [])
-
-    const onChangeRememberMe = useCallback((isChecked: boolean) => {
-        setRememberMe(isChecked)
-    }, [])
 
     const onClickLogin = useCallback(() => {
         dispatch(login({email, password, rememberMe}))
@@ -62,20 +50,21 @@ export const Login = () => {
             <SuperInputText
                 name="email"
                 value={email}
-                onChangeText={onChangeEmail}
+                onChangeText={setEmail}
                 onEnter={onClickLogin}
                 className={s.email}
             />
             <span>Password</span>
             <div className={s.password}><SuperInputText
                 value={password}
-                onChangeText={onChangePassword}
+                onChangeText={setPassword}
                 onEnter={onClickLogin}
                 className={s.password}
                 eye
             />
             </div>
-            <span><SuperCheckbox checked={rememberMe} onChangeChecked={onChangeRememberMe}>
+            <span><SuperCheckbox checked={rememberMe}
+                                 onChangeChecked={setRememberMe}>
                 <span className={t[theme + '-text']}>Remember me</span>
             </SuperCheckbox></span>
             <div className={s.error}>{error}</div>

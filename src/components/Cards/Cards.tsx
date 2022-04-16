@@ -3,26 +3,32 @@ import t from '../../common/styles/Themes.module.css'
 import s from './Cards.module.css'
 import c from '../../common/styles/Container.module.css'
 import {useAppSelector} from '../../bll/store';
-import {useCallback} from 'react';
+import {useCallback, useState} from 'react';
 import {SearchField} from '../SearchField/SearchField';
 import {useNavigate} from 'react-router-dom';
 import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton';
 import {useDispatch} from 'react-redux';
-import {addCard, cardsActions} from './cards-reducer';
+import {cardsActions} from './cards-reducer';
 import {
     selectCardAnswer,
-    selectCardQuestion, selectLoginError,
-    selectPackName, selectPackUserId,
-    selectTheme, selectUser_id
+    selectCardQuestion,
+    selectLoginError,
+    selectPackName,
+    selectPackUserId,
+    selectTheme,
+    selectUser_id
 } from '../../selectors/selectors';
-import {Notification} from "../../common/notification/Notification";
+import {Notification} from '../../common/notification/Notification';
+import {AddCardForm} from '../AddCardForm/AddCardForm';
 
 export const Cards = () => {
+    const [isAddingOpen, setIsAddingOpen] = useState<boolean>(false)
+
     const theme = useAppSelector(selectTheme)
     const packName = useAppSelector(selectPackName)
     const cardQuestion = useAppSelector(selectCardQuestion)
     const cardAnswer = useAppSelector(selectCardAnswer)
-    const cardsPack_id = useAppSelector(state=> state.cards.params.cardsPack_id)
+    const cardsPack_id = useAppSelector(state => state.cards.params.cardsPack_id)
     const error = useAppSelector(selectLoginError)
     const userId = useAppSelector(selectUser_id)
     const packUserId = useAppSelector(selectPackUserId)
@@ -40,12 +46,17 @@ export const Cards = () => {
         dispatch(cardsActions.setAnswerForSearch(title))
     }, [dispatch])
 
-    const addNewCard = () => {
-        dispatch(addCard({cardsPack_id: cardsPack_id}))
+    const addCardOff = () => {
+        setIsAddingOpen(false)
+    }
+
+    const addCardOn = () => {
+        setIsAddingOpen(true)
     }
 
     return (
         <div className={s.cardsContainer}>
+            <AddCardForm onClickNotOpen={addCardOff} isOpen={isAddingOpen} cardsPack_id={cardsPack_id}/>
             <div className={`${c.container} ${t[theme + '-text']}`}>
                 <div className={s.cardsTable}>
                     <div className={s.backAndTitle}>
@@ -57,14 +68,20 @@ export const Cards = () => {
                     </div>
                     <div className={s.rowElements}>
                         <div>
-                            <SearchField value={cardQuestion} placeholder={'Enter question'}
+                            <SearchField value={cardQuestion}
+                                         placeholder={'Enter question'}
                                          onChangeWithDebounce={onChangeDebounceQuestionRequest}/>
                         </div>
                         <div>
                             <SearchField value={cardAnswer} placeholder={'Enter answer'}
                                          onChangeWithDebounce={onChangeDebounceAnswerRequest}/>
                         </div>
-                        {userId === packUserId && <SuperButton className={c.addItem} onClick={addNewCard}>Add card</SuperButton>}
+                        {
+                            userId === packUserId &&
+                            <SuperButton className={c.addItem} onClick={addCardOn}>
+                              Add card
+                            </SuperButton>
+                        }
                     </div>
                     <div className={c.table}><CardsTable/></div>
                     {error && <Notification text={error}/>}

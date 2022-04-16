@@ -7,13 +7,13 @@ export const cardsAPI = {
         return instance.get<any, AxiosResponse<CardsResponseType>, CardsParamsType>('cards/card', {params}).then(res => res.data)
     },
     addCard(card: NewCardType) {
-        return instance.post<any, AxiosResponse<AdditionalCardResponse & Pick<CardResponses, 'newCard'>>, { card: NewCardType }>('cards/card', {card})
+        return instance.post<any, AxiosResponse<AdditionalCardResponse & Pick<CardResponses, 'newCard'>>, NewCardType>('cards/card', card)
     },
     deleteCard(cardId: string) {
         return instance.delete<any, AxiosResponse<AdditionalCardResponse & Pick<CardResponses, 'deletedCard'>>>(`cards/card?id=${cardId}`)
     },
     updateCard(card: UpdateCardPayload) {
-        return instance.put<any, AxiosResponse<AdditionalCardResponse & Pick<CardResponses, 'updatedCard'>>, {card: UpdateCardPayload}>(`cards/card`, {card})
+        return instance.put<any, AxiosResponse<AdditionalCardResponse & Pick<CardResponses, 'updatedCard'>>, UpdateCardPayload>(`cards/card`, card)
     }
 }
 
@@ -41,26 +41,30 @@ export type CardType = {
     _id: string
 }
 export type NewCardType = {
-    cardsPack_id: string
-    question?: string
-    answer?: string
-    grade?: number
-    shots?: number
-    answerImg?: string
-    questionImg?: string
-    questionVideo?: string
-    answerVideo?: string
+    card: {
+        cardsPack_id: string
+        question?: string
+        answer?: string
+        grade?: number
+        shots?: number
+        answerImg?: string
+        questionImg?: string
+        questionVideo?: string
+        answerVideo?: string
+    }
 }
 export type UpdateCardPayload = {
-    _id: string
-    answer?: string
-    question?: string
-    cardsPack_id?: string
-    grade?: number
-    shots?: number
-    user_id?: string
-    created?: Date
-    updated?: Date
+    card: {
+        _id: string
+        answer?: string
+        question?: string
+        cardsPack_id?: string
+        grade?: number
+        shots?: number
+        user_id?: string
+        created?: Date
+        updated?: Date
+    }
 }
 export type CardResponses = {
     newCard: CardType

@@ -6,30 +6,33 @@ import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperBut
 import {SearchField} from '../SearchField/SearchField';
 import {SuperRadio} from '../../common/super-components/c6-SuperRadio/SuperRadio';
 import {useDispatch} from 'react-redux';
-import {addPack, packsActions} from './packs-reducer';
-import {AddNewCardType} from '../../api/packs-api';
+import {packsActions} from './packs-reducer';
 import {DoubleRange} from '../DoubleRange/DoubleRange';
 import {
     selectLoginError,
-    selectPackNameForSearch, selectPackUserId,
+    selectPackNameForSearch,
+    selectPackUserId,
     selectTheme,
     selectUser_id
 } from '../../selectors/selectors';
 import {useCallback, useState} from 'react';
-import {Notification} from "../../common/notification/Notification";
+import {Notification} from '../../common/notification/Notification';
+import {AddPackForm} from '../AddPackForm/AddPackForm';
 
 const arr = ['All', 'My']
 
 export const Packs = () => {
+    const [isAddingOpen, setIsAddingOpen] = useState<boolean>(false)
+
     const theme = useAppSelector(selectTheme)
     const user_id = useAppSelector(selectUser_id)
     const packName = useAppSelector(selectPackNameForSearch)
     const error = useAppSelector(selectLoginError)
-    const Id = useAppSelector(selectPackUserId)
+    const packUserId = useAppSelector(selectPackUserId)
 
     const dispatch = useDispatch()
 
-    const [valueFromArray, setValueFromArray] = useState(Id ? 'My' : 'All')
+    const [valueFromArray, setValueFromArray] = useState(packUserId ? 'My' : 'All')
 
     const onChangeOption = useCallback((value: string) => {
         setValueFromArray(value)
@@ -45,12 +48,17 @@ export const Packs = () => {
         dispatch(packsActions.setTitleForSearch(title))
     }, [dispatch])
 
-    const addNewPack = () => {
-        dispatch(addPack({} as AddNewCardType))
+    const addPackOff = () => {
+        setIsAddingOpen(false)
+    }
+
+    const addPackOn = () => {
+        setIsAddingOpen(true)
     }
 
     return (
         <div className={c.mainContainer}>
+            <AddPackForm onClickNotOpen={addPackOff} isOpen={isAddingOpen}/>
             <div className={`${c.container} ${t[theme + '-text']}`}>
                 <div className={c.settings}>
                     <div className={c.text}>Show packs cards</div>
@@ -65,7 +73,9 @@ export const Packs = () => {
                         <SearchField onChangeWithDebounce={onChangeDebounceRequest}
                                      value={packName} wide
                                      placeholder={'Enter pack\'s title for search'}/>
-                        <SuperButton className={c.addItem} onClick={addNewPack}>Add pack</SuperButton>
+                        <SuperButton className={c.addItem} onClick={addPackOn}>
+                            Add pack
+                        </SuperButton>
                     </div>
                     <div className={c.table}><PacksTable/></div>
                     {error && <Notification text={error}/>}

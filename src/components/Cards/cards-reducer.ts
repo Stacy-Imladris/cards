@@ -4,6 +4,7 @@ import axios from 'axios';
 import {packsActions} from "../Packs/packs-reducer";
 import {appActions} from '../../bll/appReducer';
 import {handleServerNetworkError} from '../../utils/error-handler';
+import {UpdatePackType} from '../../api/packs-api';
 
 const cardsInitialState = {
     cards: [] as CardType[],
@@ -67,25 +68,12 @@ export const getCards = (): AppThunk => async (dispatch, getState) => {
     }
 }
 
-export const addCard = (card: NewCardType): AppThunk => async (dispatch) => {
-    dispatch(appActions.setAppIsLoading(true))
-    try {
-        await cardsAPI.addCard(card)
-        dispatch(appActions.setAppStatus("New card successfully added"))
-        dispatch(getCards())
-    } catch (e) {
-        handleServerNetworkError(dispatch, e as Error)
-    } finally {
-        dispatch(appActions.setAppIsLoading(false))
-    }
-}
-
 export const deleteCard = (id: string): AppThunk => async (dispatch) => {
     dispatch(appActions.setAppIsLoading(true))
     try {
         await cardsAPI.deleteCard(id)
+        await dispatch(getCards())
         dispatch(appActions.setAppStatus("Card successfully deleted"))
-        dispatch(getCards())
     } catch (e) {
         handleServerNetworkError(dispatch, e as Error)
     } finally {
@@ -93,12 +81,27 @@ export const deleteCard = (id: string): AppThunk => async (dispatch) => {
     }
 }
 
-export const updateCard = (updatingCard: UpdateCardPayload): AppThunk => async (dispatch) => {
+export const addCard = (cardsPack_id: string, question: string, answer: string): AppThunk => async (dispatch) => {
+    const card: NewCardType = {card: {cardsPack_id, question, answer}}
     dispatch(appActions.setAppIsLoading(true))
     try {
-        await cardsAPI.updateCard(updatingCard)
+        await cardsAPI.addCard(card)
+        await dispatch(getCards())
+        dispatch(appActions.setAppStatus("New card successfully added"))
+    } catch (e) {
+        handleServerNetworkError(dispatch, e as Error)
+    } finally {
+        dispatch(appActions.setAppIsLoading(false))
+    }
+}
+
+export const updateCard = (_id: string, question: string, answer: string): AppThunk => async (dispatch) => {
+    const card: UpdateCardPayload = {card: {_id, question, answer}}
+    dispatch(appActions.setAppIsLoading(true))
+    try {
+        await cardsAPI.updateCard(card)
+        await dispatch(getCards())
         appActions.setAppStatus("Card successfully edited")
-        dispatch(getCards())
     } catch (e) {
         handleServerNetworkError(dispatch, e as Error)
     } finally {

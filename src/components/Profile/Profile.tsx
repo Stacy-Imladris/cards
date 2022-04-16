@@ -21,6 +21,7 @@ import {addPack, packsActions} from '../Packs/packs-reducer';
 import {DoubleRange} from '../DoubleRange/DoubleRange';
 import {Notification} from "../../common/notification/Notification";
 import {AddNewCardType} from "../../api/packs-api";
+import {Scroll} from "../../common/scroll/Scroll";
 
 export const Profile = () => {
     const name = useAppSelector(selectProfileUserName)
@@ -78,6 +79,7 @@ export const Profile = () => {
                     {error && <Notification text={error}/>}
                 </div>
             </div>
+            <Scroll/>
         </div>
     )
 }

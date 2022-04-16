@@ -17,6 +17,7 @@ import {
 } from '../../selectors/selectors';
 import {useCallback, useState} from 'react';
 import {Notification} from "../../common/notification/Notification";
+import {Scroll} from "../../common/scroll/Scroll";
 
 const arr = ['All', 'My']
 
@@ -71,6 +72,7 @@ export const Packs = () => {
                     {error && <Notification text={error}/>}
                 </div>
             </div>
+            <Scroll/>
         </div>
     )
 }

@@ -3,6 +3,8 @@ import {useDispatch} from 'react-redux';
 import {deletePack} from '../Packs/packs-reducer';
 import {Modal} from '../Modal/Modal';
 import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton';
+import {useAppSelector} from '../../bll/store';
+import {selectTheme} from '../../selectors/selectors';
 
 type DeletePackFormPropsType = {
     onClickNotOpen: () => void
@@ -11,6 +13,8 @@ type DeletePackFormPropsType = {
     name: string
 }
 export const DeletePackForm: FC<DeletePackFormPropsType> = memo(({onClickNotOpen, isOpen, name, packId}) => {
+    const theme = useAppSelector(selectTheme)
+
     const dispatch = useDispatch()
 
     const onClickDeletePack = useCallback(() => {
@@ -18,8 +22,7 @@ export const DeletePackForm: FC<DeletePackFormPropsType> = memo(({onClickNotOpen
         onClickNotOpen()
     }, [dispatch, onClickNotOpen, packId, name])
 
-    return <Modal onClickNotOpen={onClickNotOpen} width={400} height={300}
-                  isOpen={isOpen}>
+    return <Modal onClickNotOpen={onClickNotOpen} width={400} height={300} isOpen={isOpen}>
         <div>Do you really want to remove pack '{name}'?</div>
         <div>All cards will be excluded from this course.</div>
         <SuperButton onClick={onClickNotOpen}>Cancel</SuperButton>

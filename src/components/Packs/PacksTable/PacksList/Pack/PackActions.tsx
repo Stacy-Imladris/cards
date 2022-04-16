@@ -8,9 +8,10 @@ type PackActionsType = {
     isMyPacks: boolean
     packId: string
     name: string
+    cardsCount: number
 }
 
-export const PackActions: FC<PackActionsType> = memo(({isMyPacks, packId, name}) => {
+export const PackActions: FC<PackActionsType> = memo(({isMyPacks, packId, name, cardsCount}) => {
     const [isDeletingOpen, setIsDeletingOpen] = useState<boolean>(false)
     const [isEditingOpen, setIsEditingOpen] = useState<boolean>(false)
 
@@ -40,8 +41,9 @@ export const PackActions: FC<PackActionsType> = memo(({isMyPacks, packId, name})
               <SuperButton onClick={editPackOn}>Edit</SuperButton>
             </>
         }
-        <SuperButton>Learn</SuperButton>
+        {
+            cardsCount > 0
+            && <SuperButton>Learn</SuperButton>
+        }
     </div>
 })
-
-

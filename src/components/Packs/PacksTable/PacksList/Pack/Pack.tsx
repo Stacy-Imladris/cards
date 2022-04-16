@@ -25,7 +25,6 @@ export const Pack: FC<PackPropsType> = memo(({pack}) => {
         dispatch(cardsActions.setAnswerForSearch(''))
         dispatch(cardsActions.setPackName(pack.name))
         dispatch(cardsActions.setPackId(pack._id))
-        //navigate(`/cards/${pack.user_id}`)
         navigate(`${PATH.CARDS}/${pack.user_id}`)
     }
 
@@ -35,7 +34,7 @@ export const Pack: FC<PackPropsType> = memo(({pack}) => {
         <td>{lastUpdate}</td>
         <td>{pack.user_name}</td>
         <td>
-            <PackActions isMyPacks={pack.user_id === userId} packId={pack._id} name={pack.name}/>
+            <PackActions isMyPacks={pack.user_id === userId} cardsCount={pack.cardsCount} packId={pack._id} name={pack.name}/>
         </td>
     </tr>
 })

@@ -14,7 +14,6 @@ import {
     selectCardQuestion,
     selectLoginError,
     selectPackName,
-    selectPackUserId,
     selectTheme,
     selectUser_id
 } from '../../selectors/selectors';
@@ -54,6 +53,11 @@ export const Cards = () => {
         setIsAddingOpen(true)
     }
 
+    const onBackPage = () => {
+        navigate(-1)
+        dispatch(cardsActions.setCards([]))
+    }
+
     return (
         <div className={s.cardsContainer}>
             <AddCardForm onClickNotOpen={addCardOff} isOpen={isAddingOpen} cardsPack_id={cardsPack_id}/>
@@ -61,7 +65,7 @@ export const Cards = () => {
                 <div className={s.cardsTable}>
                     <div className={s.backAndTitle}>
                         <SuperButton className={s.backIcon}
-                                     onClick={() => navigate(-1)}>
+                                     onClick={onBackPage}>
                             ←
                         </SuperButton>
                         <div className={c.title}>{packName}</div>

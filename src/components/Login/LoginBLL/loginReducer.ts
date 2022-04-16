@@ -38,9 +38,9 @@ export const login = (login: LoginType): AppThunk => async dispatch => {
     dispatch(loginActions.setIsLoading(true))
     try {
         const res = await loginAPI.login(login)
-        dispatch(packsActions.setPacksForUser(res.data._id))
+        dispatch(packsActions.setPacksForUser(res._id))
         dispatch(loginActions.setIsLoggedIn(true))
-        dispatch(profileActions.setUserData(res.data))
+        dispatch(profileActions.setUserData(res))
     } catch (e) {
         if (axios.isAxiosError(e)) {
             dispatch(loginActions.setLoginError(e.response ? e.response.data.error : e.message))

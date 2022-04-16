@@ -16,10 +16,14 @@
     justify-content: center;
     position: fixed;
     z-index: 2;
-
     padding: 15px 20px;
     text-align: center;
     border: 5px #077517 solid;
     border-radius: 30px;
     box-shadow: 0 27px 27px 0 rgba(0,0,0,0.2), 0 27px 27px 0 rgba(0,0,0,0.19);
+}
+
+.modal div {
+    margin-bottom: 10px;
+    font-weight: bold;
 }

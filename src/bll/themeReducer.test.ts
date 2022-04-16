@@ -4,12 +4,12 @@ let themeStartState: ThemeInitialStateType
 
 beforeEach(() => {
     themeStartState = {
-        theme: 'day'
+        theme: '☀',
     }
 })
 
 test('correct theme should be set', () => {
-    const endState = themeReducer(themeStartState, themeActions.changeTheme('night'))
+    const endState = themeReducer(themeStartState, themeActions.changeTheme('☽'))
 
-    expect(endState.theme).toBe('night')
+    expect(endState.theme).toBe('☽')
 })

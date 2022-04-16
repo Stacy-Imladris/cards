@@ -10,7 +10,7 @@ import {saveState} from '../../utils/localstorage';
 import {selectIsLoggedIn, selectTheme} from '../../selectors/selectors';
 import {logout} from '../Auth/Login/LoginBLL/loginReducer';
 
-const themes = ['day', 'night']
+const themes = ['☀', '☽']
 
 export const Header = () => {
     const theme = useAppSelector(selectTheme)
@@ -27,42 +27,45 @@ export const Header = () => {
     }, [dispatch])
 
     return (
-        <nav className={s.main}>
-            <div className={s.links}>
-                <NavLink to={PATH.PROFILE}
-                         className={({isActive}) => isActive ? s.active : s.nav}>Profile</NavLink>
-                {
-                    isLoggedIn &&
-                    <><NavLink to={PATH.PACKS}
-                             className={({isActive}) => isActive ? s.active : s.nav}>
-                      Packs List
-                    </NavLink>
-                    <span onClick={logOut} className={isLoggedIn ? s.nav : s.active}>
+        <nav className={s.links}>
+            <NavLink to={PATH.PROFILE}
+                     className={({isActive}) => isActive ? s.active : s.nav}>
+                Profile
+            </NavLink>
+            {
+                isLoggedIn &&
+                <>
+                  <NavLink to={PATH.PACKS}
+                           className={({isActive}) => isActive ? s.active : s.nav}>
+                    Packs List
+                  </NavLink>
+                  <span onClick={logOut} className={s.nav}>
                     Log Out
-                    </span></>
-                }
-                {
-                    !isLoggedIn &&
-                    <><NavLink to={PATH.REGISTRATION}
-                             className={({isActive}) => isActive ? s.active : s.nav}>
-                      Registration
-                    </NavLink>
-                    <NavLink to={PATH.PASSWORD_RECOVERY}
-                    className={({isActive}) => isActive ? s.active : s.nav}>
+                  </span>
+                </>
+            }
+            {
+                !isLoggedIn &&
+                <>
+                  <NavLink to={PATH.REGISTRATION}
+                           className={({isActive}) => isActive ? s.active : s.nav}>
+                    Registration
+                  </NavLink>
+                  <NavLink to={PATH.PASSWORD_RECOVERY}
+                           className={({isActive}) => isActive ? s.active : s.nav}>
                     Password recovery
-                    </NavLink>
-                    <NavLink to={PATH.LOGIN}
-                    className={({isActive}) => isActive ? s.active : s.nav}>
+                  </NavLink>
+                  <NavLink to={PATH.LOGIN}
+                           className={({isActive}) => isActive ? s.active : s.nav}>
                     Log In
-                    </NavLink></>
-                }
-                <div className={s.select}>
-                    <span className={s.text}>Theme</span>
-                    <SuperSelect options={themes} value={theme}
-                                 onChangeOption={onChangeCallback}/>
-                </div>
+                  </NavLink>
+                </>
+            }
+            <div className={s.select}>
+                <span className={s.text}>Theme</span>
+                <SuperSelect options={themes} value={theme}
+                             onChangeOption={onChangeCallback}/>
             </div>
-            <div className={s.menu}>Menu</div>
         </nav>
     )
 }

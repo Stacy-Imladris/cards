@@ -4,7 +4,7 @@ import {CardType} from '../../../api/cards-api';
 import {SuperButton} from "../../../common/super-components/c2-SuperButton/SuperButton";
 import s from '../Cards.module.css';
 import {useAppSelector} from "../../../bll/store";
-import {selectPackUserId, selectUser_id} from "../../../selectors/selectors";
+import {selectUser_id} from "../../../selectors/selectors";
 import {deleteCard} from "../cards-reducer";
 import {useDispatch} from "react-redux";
 import {useParams} from 'react-router-dom';

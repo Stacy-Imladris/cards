@@ -8,9 +8,10 @@ import {UpdatePackType} from '../../../../../api/packs-api';
 type PackActionsType = {
     isMyPacks: boolean
     packId: string
+    cardsCount: number
 }
 
-export const PackActions: FC<PackActionsType> = memo(({isMyPacks, packId}) => {
+export const PackActions: FC<PackActionsType> = memo(({isMyPacks, packId, cardsCount}) => {
 
     const dispatch = useDispatch()
 
@@ -38,6 +39,10 @@ export const PackActions: FC<PackActionsType> = memo(({isMyPacks, packId}) => {
                 >Edit</SuperButton>
             </>
         }
-        <SuperButton>Learn</SuperButton>
+        {
+            cardsCount > 0
+            && <SuperButton>Learn</SuperButton>
+        }
+
     </div>
 })

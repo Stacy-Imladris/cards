@@ -58,3 +58,8 @@
     font-size: 18px;
     font-weight: bold;
 }
+
+.select {
+    display: flex;
+    align-items: center;
+}

@@ -23,7 +23,7 @@ export const DeletePackForm: FC<DeletePackFormPropsType> = memo(({
         onClickNotOpen()
     }, [dispatch, onClickNotOpen, packId, name])
 
-    return <Modal onClickNotOpen={onClickNotOpen} width={450} height={230}
+    return <Modal onClickNotOpen={onClickNotOpen} width={450} height={220}
                   isOpen={isOpen}>
         <div>Do you really want to remove pack '{name}'?</div>
         <div>All cards will be excluded from this course.</div>

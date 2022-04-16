@@ -1,14 +1,13 @@
 import {FC, memo} from 'react'
 import {PackActions} from './PackActions'
 import {useAppSelector} from '../../../../../bll/store'
-import {PackType} from '../../../../../api/packs-api';
+import {PackType} from '../../../../../api/packs-api'
 import {getLastUpdatedDate} from '../../../../../utils/date-helpers'
-import {useDispatch} from 'react-redux';
-import {cardsActions} from '../../../../Cards/cards-reducer';
-import {useNavigate} from 'react-router-dom';
-import {PATH} from '../../../../../app/AllRoutes';
-import {selectUser_id} from '../../../../../selectors/selectors';
-import c from '../../../../../common/styles/TableLine.module.css';
+import {useDispatch} from 'react-redux'
+import {cardsActions} from '../../../../Cards/cards-reducer'
+import {useNavigate} from 'react-router-dom'
+import {selectUser_id} from '../../../../../selectors/selectors'
+import c from '../../../../../common/styles/TableLine.module.css'
 
 type PackPropsType = {
     pack: PackType
@@ -26,7 +25,7 @@ export const Pack: FC<PackPropsType> = memo(({pack}) => {
         dispatch(cardsActions.setAnswerForSearch(''))
         dispatch(cardsActions.setPackName(pack.name))
         dispatch(cardsActions.setPackId(pack._id))
-        navigate(PATH.CARDS)
+        navigate(`/cards/${pack.user_id}`)
     }
 
     return <tr>

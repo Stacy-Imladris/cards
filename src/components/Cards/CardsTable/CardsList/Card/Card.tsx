@@ -3,18 +3,19 @@ import {getLastUpdatedDate} from '../../../../../utils/date-helpers'
 import {CardType, UpdateCardPayload} from '../../../../../api/cards-api';
 import c from '../../../../../common/styles/TableLine.module.css'
 import s from '../../../Cards.module.css'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {deleteCard, updateCard} from '../../../cards-reducer';
 import {SuperButton} from '../../../../../common/super-components/c2-SuperButton/SuperButton';
-import {useAppSelector} from '../../../../../bll/store';
+import {AppRootStateType, useAppSelector} from '../../../../../bll/store'
 import {selectPackUserId, selectUser_id} from '../../../../../selectors/selectors';
+import {useParams} from 'react-router-dom'
 
 type CardPropsType = {
     card: CardType
-    id: string
+    cardId: string
 }
 
-export const Card: FC<CardPropsType> = memo(({card, id}) => {
+export const Card: FC<CardPropsType> = memo(({card, cardId}) => {
     const [isEditQuestion, setIsEditQuestion] = useState<boolean>(false)
     const [question, setQuestion] = useState<string>(card.question)
     const [isEditAnswer, setIsEditAnswer] = useState<boolean>(false)
@@ -22,8 +23,8 @@ export const Card: FC<CardPropsType> = memo(({card, id}) => {
 
     const lastUpdate = getLastUpdatedDate(card.updated)
     const userId = useAppSelector(selectUser_id)
-    const packUserId = useAppSelector(selectPackUserId)
 
+    const {packUserId} = useParams()
     const dispatch = useDispatch()
 
     const uploadChanges = (param: 'question' | 'answer') => {
@@ -39,9 +40,8 @@ export const Card: FC<CardPropsType> = memo(({card, id}) => {
     }
 
     const onClickDeleteCard = () => {
-        dispatch(deleteCard(id))
+        dispatch(deleteCard(cardId))
     }
-
 
     return <tr>
         {isEditQuestion

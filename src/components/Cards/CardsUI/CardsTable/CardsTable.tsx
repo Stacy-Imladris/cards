@@ -48,7 +48,7 @@ export const CardsTable = () => {
     return <div className={s.cardsTableContainer}>
         <table className={s.table}>
             <thead>
-            <tr className={s.headers}>
+            <tr>
                 <CardsTableHeader text={'Question'} param={'question'}/>
                 <CardsTableHeader text={'Answer'} param={'answer'}/>
                 <CardsTableHeader text={'Updated'} param={'updated'}/>

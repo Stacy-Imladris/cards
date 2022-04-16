@@ -12,12 +12,10 @@ import {cardsActions} from '../CardsBLL/cards-reducer';
 import {
     selectCardAnswer,
     selectCardQuestion,
-    selectLoginError,
     selectPackName,
     selectTheme,
     selectUser_id
 } from '../../../selectors/selectors';
-import {Notification} from '../../../common/notification/Notification';
 import {AddCardForm} from '../../Modals/AddCardForm/AddCardForm';
 
 export const Cards = () => {
@@ -28,7 +26,6 @@ export const Cards = () => {
     const cardQuestion = useAppSelector(selectCardQuestion)
     const cardAnswer = useAppSelector(selectCardAnswer)
     const cardsPack_id = useAppSelector(state => state.cards.params.cardsPack_id)
-    const error = useAppSelector(selectLoginError)
     const userId = useAppSelector(selectUser_id)
 
     const dispatch = useDispatch()
@@ -94,7 +91,6 @@ export const Cards = () => {
                         </div>
                     </div>
                     <div className={c.table}><CardsTable/></div>
-                    {error && <Notification text={error}/>}
                 </div>
             </div>
         </div>

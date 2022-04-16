@@ -8,15 +8,12 @@ import {SuperRadio} from '../../../common/super-components/c6-SuperRadio/SuperRa
 import {useDispatch} from 'react-redux';
 import {packsActions} from '../PacksBLL/packs-reducer';
 import {DoubleRange} from '../../Features/DoubleRange/DoubleRange';
-import {
-    selectLoginError,
-    selectPackNameForSearch,
+import {selectPackNameForSearch,
     selectPackUserId,
     selectTheme,
     selectUser_id
 } from '../../../selectors/selectors';
 import {useCallback, useState} from 'react';
-import {Notification} from '../../../common/notification/Notification';
 import {AddPackForm} from '../../Modals/AddPackForm/AddPackForm';
 
 const arr = ['All', 'My']
@@ -27,7 +24,6 @@ export const Packs = () => {
     const theme = useAppSelector(selectTheme)
     const user_id = useAppSelector(selectUser_id)
     const packName = useAppSelector(selectPackNameForSearch)
-    const error = useAppSelector(selectLoginError)
     const packUserId = useAppSelector(selectPackUserId)
 
     const dispatch = useDispatch()
@@ -78,7 +74,6 @@ export const Packs = () => {
                         </SuperButton>
                     </div>
                     <div className={c.table}><PacksTable/></div>
-                    {error && <Notification text={error}/>}
                 </div>
             </div>
         </div>

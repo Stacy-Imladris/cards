@@ -8,7 +8,6 @@ import {useDispatch} from 'react-redux'
 import {useAppSelector} from '../../../bll/store'
 import {EditProfile} from './EditProfile/EditProfile'
 import {
-    selectLoginError,
     selectPackNameForSearch,
     selectProfileEditMode,
     selectProfileUserName,
@@ -19,7 +18,6 @@ import {SearchField} from '../../Features/SearchField/SearchField';
 import {PacksTable} from '../../Packs/PacksUI/PacksTable/PacksTable';
 import {packsActions} from '../../Packs/PacksBLL/packs-reducer';
 import {DoubleRange} from '../../Features/DoubleRange/DoubleRange';
-import {Notification} from '../../../common/notification/Notification';
 import {AddPackForm} from '../../Modals/AddPackForm/AddPackForm';
 
 export const Profile = () => {
@@ -29,7 +27,6 @@ export const Profile = () => {
     const theme = useAppSelector(selectTheme)
     const editMode = useAppSelector(selectProfileEditMode)
     const packName = useAppSelector(selectPackNameForSearch)
-    const error = useAppSelector(selectLoginError)
 
     const dispatch = useDispatch()
 
@@ -84,7 +81,6 @@ export const Profile = () => {
                         </div>
                         <div className={c.table}><PacksTable/></div>
                     </div>
-                    {error && <Notification text={error}/>}
                 </div>
             </div>
         </div>

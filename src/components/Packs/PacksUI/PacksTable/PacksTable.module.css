@@ -18,7 +18,6 @@
 
 .table th {
     background: #4CAF50;
-    cursor: pointer;
 }
 
 .table th:first-child, td:first-child {

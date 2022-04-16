@@ -22,12 +22,16 @@ export const AddCardForm: FC<AddCardFormPropsType> = memo(({
 
     const addNewCard = useCallback(() => {
         dispatch(addCard(cardsPack_id, question, answer))
+        onClickCleanUpStates()
+    }, [dispatch, onClickNotOpen, question, answer])
+
+    const onClickCleanUpStates = () => {
         onClickNotOpen()
         setQuestion('')
         setAnswer('')
-    }, [dispatch, onClickNotOpen, question, answer])
+    }
 
-    return <Modal onClickNotOpen={onClickNotOpen} width={350} height={330}
+    return <Modal onClickNotOpen={onClickCleanUpStates} width={350} height={330}
                   isOpen={isOpen}>
         <div>Add new card</div>
         <SuperInputText value={question} placeholder={'Enter card question'}
@@ -35,7 +39,7 @@ export const AddCardForm: FC<AddCardFormPropsType> = memo(({
         <SuperInputText value={answer} placeholder={'Enter card answer'}
                         onChangeText={setAnswer}/>
         <div>
-            <SuperButton onClick={onClickNotOpen}>Cancel</SuperButton>
+            <SuperButton onClick={onClickCleanUpStates}>Cancel</SuperButton>
             <SuperButton onClick={addNewCard}>Save</SuperButton>
         </div>
     </Modal>

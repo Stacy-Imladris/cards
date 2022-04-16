@@ -8,12 +8,15 @@ import {
     selectCards,
     selectCardsAnswer,
     selectCardsQuestion,
-    selectCardsTotalCount, selectPackUserId,
+    selectCardsTotalCount,
     selectPageCountForCards,
-    selectPageForCards, selectSortCards, selectUser_id
+    selectPageForCards,
+    selectSortCards,
+    selectUser_id
 } from '../../../selectors/selectors';
 import {Paginator} from '../../Paginator/Paginator';
 import {CardsTableHeader} from './CardsTableHeader/CardsTableHeader';
+import {useParams} from 'react-router-dom';
 
 export const CardsTable = () => {
     const cards = useAppSelector(selectCards)
@@ -24,9 +27,9 @@ export const CardsTable = () => {
     const pageCount = useAppSelector(selectPageCountForCards)
     const sortCards = useAppSelector(selectSortCards)
     const userId = useAppSelector(selectUser_id)
-    const packUserId = useAppSelector(selectPackUserId)
 
     const dispatch = useDispatch()
+    const {packUserId} = useParams()
 
     useEffect(() => {
         dispatch(getCards())

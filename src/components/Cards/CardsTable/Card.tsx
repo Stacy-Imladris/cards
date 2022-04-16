@@ -5,9 +5,9 @@ import {SuperButton} from "../../../common/super-components/c2-SuperButton/Super
 import s from '../Cards.module.css';
 import {useAppSelector} from "../../../bll/store";
 import {selectPackUserId, selectUser_id} from "../../../selectors/selectors";
-import {deletePack} from "../../Packs/packs-reducer";
 import {deleteCard} from "../cards-reducer";
 import {useDispatch} from "react-redux";
+import {useParams} from 'react-router-dom';
 
 type CardPropsType = {
     card: CardType
@@ -17,13 +17,13 @@ type CardPropsType = {
 export const Card: FC<CardPropsType> = memo(({card, id}) => {
     const lastUpdate = getLastUpdatedDate(card.updated)
     const userId = useAppSelector(selectUser_id)
-    const packUserId = useAppSelector(selectPackUserId)
+
     const dispatch = useDispatch()
+    const {packUserId} = useParams()
 
     const onClickDeleteCard = () => {
         dispatch(deleteCard(id))
     }
-
 
     return <tr>
         <td>{card.question}</td>

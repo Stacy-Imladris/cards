@@ -32,7 +32,7 @@ export const AllRoutes = () => {
             <Route path={PATH.PASSWORD_RECOVERY} element={<RecoveryContainer/>}/>
             <Route path={PATH.NEW_PASSWORD} element={<NewPasswordContainer/>}/>
             <Route path={PATH.PACKS} element={<LoginNavigate><Packs/></LoginNavigate>}/>
-            <Route path={'/cards/:packUserId'} element={<LoginNavigate><Cards/></LoginNavigate>}/>
+            <Route path={`${PATH.CARDS}/:packUserId`} element={<LoginNavigate><Cards/></LoginNavigate>}/>
             <Route path={PATH.ERROR_404} element={<Error404/>}/>
             <Route path={PATH.TEST} element={<Test/>}/>
             <Route path="*" element={<Navigate to={PATH.ERROR_404}/>}/>

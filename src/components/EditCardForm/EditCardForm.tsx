@@ -24,12 +24,16 @@ export const EditCardForm: FC<EditCardFormPropsType> = memo(({
 
     const onClickUpdateCard = useCallback(() => {
         dispatch(updateCard(cardId, newQuestion, newAnswer))
-        onClickNotOpen()
-        setNewQuestion('')
-        setNewAnswer('')
+        onClickCleanUpStates()
     }, [dispatch, onClickNotOpen, cardId, newQuestion, newAnswer])
 
-    return <Modal onClickNotOpen={onClickNotOpen} width={350} height={330}
+    const onClickCleanUpStates = () => {
+        onClickNotOpen()
+        setNewQuestion(question)
+        setNewAnswer(answer)
+    }
+
+    return <Modal onClickNotOpen={onClickCleanUpStates} width={350} height={330}
                   isOpen={isOpen}>
         <div>Card info</div>
         <SuperInputText value={newQuestion} placeholder={'Enter new question'}
@@ -37,7 +41,7 @@ export const EditCardForm: FC<EditCardFormPropsType> = memo(({
         <SuperInputText value={newAnswer} placeholder={'Enter new answer'}
                         onChangeText={setNewAnswer}/>
         <div>
-            <SuperButton onClick={onClickNotOpen}>Cancel</SuperButton>
+            <SuperButton onClick={onClickCleanUpStates}>Cancel</SuperButton>
             <SuperButton onClick={onClickUpdateCard}>Save</SuperButton>
         </div>
     </Modal>

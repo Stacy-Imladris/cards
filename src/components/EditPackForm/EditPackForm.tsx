@@ -23,17 +23,21 @@ export const EditPackForm: FC<EditPackFormPropsType> = memo(({
 
     const onClickUpdatePack = useCallback(() => {
         dispatch(updatePack(packId, newName, name))
-        onClickNotOpen()
-        setNewName('')
+        onClickCleanUpStates()
     }, [dispatch, onClickNotOpen, packId, newName, name])
 
-    return <Modal onClickNotOpen={onClickNotOpen} width={350} height={260}
+    const onClickCleanUpStates = () => {
+        onClickNotOpen()
+        setNewName(name)
+    }
+
+    return <Modal onClickNotOpen={onClickCleanUpStates} width={350} height={260}
                   isOpen={isOpen}>
         <div>Pack name</div>
         <SuperInputText value={newName} placeholder={'Enter new name'}
                         onChangeText={setNewName}/>
         <div>
-            <SuperButton onClick={onClickNotOpen}>Cancel</SuperButton>
+            <SuperButton onClick={onClickCleanUpStates}>Cancel</SuperButton>
             <SuperButton onClick={onClickUpdatePack}>Save</SuperButton>
         </div>
     </Modal>

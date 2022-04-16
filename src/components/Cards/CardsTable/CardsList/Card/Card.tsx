@@ -43,24 +43,30 @@ export const Card: FC<CardPropsType> = memo(({card, cardId}) => {
         dispatch(deleteCard(cardId))
     }
 
+    const identityOfUsersId = userId === packUserId
+
     return <tr>
-        {isEditQuestion
+        {isEditQuestion && identityOfUsersId
             ? <td><input onChange={(e) => {setQuestion(e.currentTarget.value)}}
                          onBlur={() => uploadChanges('question')}
-                         value={question}/>
+                         value={question}
+                         autoFocus
+            />
             </td>
             : <td onDoubleClick={() => setIsEditQuestion(true)} className={c.mainColumn}>{question}</td>
         }
-        {isEditAnswer
+        {isEditAnswer && identityOfUsersId
             ? <td><input onChange={(e) => setAnswer(e.currentTarget.value)}
                          onBlur={() => uploadChanges('answer')}
-                         value={answer}/>
+                         value={answer}
+                         autoFocus
+            />
             </td>
             : <td onDoubleClick={() => setIsEditAnswer(true)} className={c.mainColumn}>{answer}</td>
         }
         <td>{lastUpdate}</td>
         <td>{card.grade}</td>
-        {userId === packUserId && <td className={s.actions}>
+        {identityOfUsersId && <td className={s.actions}>
           <div className={s.buttons}>
             <SuperButton onClick={() => {
                 setQuestion('onClick Question')

@@ -28,6 +28,7 @@ export const Modal: FC<ModalPropsType> = memo(({onClickNotOpen, isOpen, width,
             <div style={{...backgroundStyle}} className={s.background} onClick={onClickNotOpen}/>
             <div style={{top, left, width, height, ...modalStyle}}
                  className={`${s.modal} ${t[theme]} ${t[theme + '-text']}`}>
+                <div className={s.escape}><div onClick={onClickNotOpen}>✘</div></div>
                 {children}
             </div>
         </>, document.body)

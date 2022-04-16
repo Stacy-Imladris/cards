@@ -1,6 +1,6 @@
 import {FC, memo, useCallback, useState} from 'react'
 import {useDispatch} from 'react-redux'
-import {addPack} from '../../Packs/packs-reducer'
+import {addPack} from '../../Packs/PacksBLL/packs-reducer'
 import {Modal} from '../Modal/Modal'
 import {SuperInputText} from '../../../common/super-components/c1-SuperInputText/SuperInputText'
 import {SuperCheckbox} from '../../../common/super-components/c3-SuperCheckbox/SuperCheckbox'

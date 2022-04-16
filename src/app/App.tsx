@@ -5,7 +5,7 @@ import t from '../common/styles/Themes.module.css'
 import s from './App.module.css'
 import {AllRoutes} from './AllRoutes'
 import {useDispatch} from 'react-redux'
-import {auth} from '../components/Profile/profile-reducer'
+import {auth} from '../components/Profile/ProfileBLL/profile-reducer'
 import {Preloader} from '../common/preloader/Preloader';
 import {selectIsInitialized, selectTheme} from '../selectors/selectors';
 import {AppSnackbar} from '../components/Features/AppSnackbar/AppSnackbar';

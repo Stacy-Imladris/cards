@@ -1,5 +1,5 @@
 import {AxiosResponse} from 'axios'
-import {UserType} from "../../../Profile/profile-api";
+import {UserType} from "../../../Profile/ProfileAPI/profile-api";
 import {instance} from '../../../../api/instance';
 
 export const loginAPI = {

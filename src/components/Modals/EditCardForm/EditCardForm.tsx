@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux';
 import {Modal} from '../Modal/Modal';
 import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton';
 import {SuperInputText} from '../../../common/super-components/c1-SuperInputText/SuperInputText';
-import {updateCard} from '../../Cards/cards-reducer';
+import {updateCard} from '../../Cards/CardsBLL/cards-reducer';
 
 type EditCardFormPropsType = {
     onClickNotOpen: () => void

@@ -1,10 +1,10 @@
-import {profileActions} from '../../../Profile/profile-reducer';
+import {profileActions} from '../../../Profile/ProfileBLL/profile-reducer';
 import {AppThunk, InferActionTypes} from '../../../../bll/store';
 import {loginAPI, LoginType} from '../LoginAPI/login-api';
 import axios from 'axios';
-import {packsActions} from '../../../Packs/packs-reducer';
-import {cardsActions} from '../../../Cards/cards-reducer';
-import {UserType} from '../../../Profile/profile-api';
+import {packsActions} from '../../../Packs/PacksBLL/packs-reducer';
+import {cardsActions} from '../../../Cards/CardsBLL/cards-reducer';
+import {UserType} from '../../../Profile/ProfileAPI/profile-api';
 
 export const loginInitialState = {
     isLoggedIn: false,

@@ -2,7 +2,7 @@ import {applyMiddleware, combineReducers, createStore} from 'redux';
 import thunk, {ThunkAction} from 'redux-thunk';
 import {themeReducer} from './themeReducer';
 import {TypedUseSelectorHook, useSelector} from 'react-redux';
-import {ProfileActionTypes, profileReducer} from '../components/Profile/profile-reducer'
+import {ProfileActionTypes, profileReducer} from '../components/Profile/ProfileBLL/profile-reducer'
 import {RegistrationActionTypes, registrationReducer
 } from '../components/Auth/Registration/RegistrationBLL/registration-reducer';
 import {LoginActionsType, loginReducer} from '../components/Auth/Login/LoginBLL/loginReducer';
@@ -11,8 +11,8 @@ import {RecoveryActionTypes, recoveryReducer
 import {NewPasswordActionTypes, newPasswordReducer
 } from '../components/Auth/NewPassword/NewPasswordBLL/new-password-reducer';
 import {loadValue} from '../utils/localstorage';
-import {PacksActionTypes, packsReducer} from '../components/Packs/packs-reducer';
-import {CardsActionTypes, cardsReducer} from '../components/Cards/cards-reducer';
+import {PacksActionTypes, packsReducer} from '../components/Packs/PacksBLL/packs-reducer';
+import {CardsActionTypes, cardsReducer} from '../components/Cards/CardsBLL/cards-reducer';
 import {AppActionTypes, appReducer} from './appReducer';
 
 const rootReducer = combineReducers({

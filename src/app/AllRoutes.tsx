@@ -1,12 +1,12 @@
 import {Navigate, Route, Routes} from 'react-router-dom'
 import {Login} from '../components/Auth/Login/LoginUI/Login'
-import {Profile} from '../components/Profile/Profile'
+import {Profile} from '../components/Profile/ProfileUI/Profile'
 import {Error404} from '../components/Error404/Error404'
 import {RegistrationContainer} from '../components/Auth/Registration/RegistrationUI/RegistrationContainer'
 import {RecoveryContainer} from '../components/Auth/Recovery/RecoveryUI/RecoveryContainer'
 import {NewPasswordContainer} from '../components/Auth/NewPassword/NewPasswordUI/NewPasswordContainer'
-import {Packs} from '../components/Packs/Packs'
-import {Cards} from '../components/Cards/Cards';
+import {Packs} from '../components/Packs/PacksUI/Packs'
+import {Cards} from '../components/Cards/CardsUI/Cards';
 import {LoginNavigate} from '../hoc/LoginNavigate'
 
 export enum PATH {

@@ -1,6 +1,6 @@
 import {FC, memo, useCallback} from 'react';
 import {useDispatch} from 'react-redux';
-import {deletePack} from '../../Packs/packs-reducer';
+import {deletePack} from '../../Packs/PacksBLL/packs-reducer';
 import {Modal} from '../Modal/Modal';
 import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton';
 

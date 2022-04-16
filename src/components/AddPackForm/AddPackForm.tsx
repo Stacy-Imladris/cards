@@ -32,8 +32,8 @@ export const AddPackForm: FC<AddPackFormPropsType> = memo(({onClickNotOpen, isOp
         <div>Add new pack</div>
         <SuperInputText value={name} placeholder={'Enter pack name'}
                         onChangeText={setName}/>
-        <SuperCheckbox checked={isPrivate} onChangeChecked={setIsPrivate}>
-            Make private
+        <SuperCheckbox checked={isPrivate} onChangeChecked={setIsPrivate} className={s.checkbox}>
+            <span>Make private</span>
         </SuperCheckbox>
         <div>
             <SuperButton onClick={onClickCleanUpStates}>Cancel</SuperButton>

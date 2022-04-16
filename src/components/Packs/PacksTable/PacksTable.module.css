@@ -32,19 +32,3 @@
 .headers {
     cursor: pointer;
 }
-
-.actions {
-    width: 15%;
-}
-
-.packsActionsButtons {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.packsActionsButtons button {
-    font-size: 16px;
-    padding: 3px 5px;
-    margin: 0 2px;
-    border-radius: 4px;
-}

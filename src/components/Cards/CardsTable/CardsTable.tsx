@@ -2,6 +2,7 @@ import {useDispatch} from 'react-redux';
 import React, {useCallback, useEffect} from 'react';
 import {CardsList} from './CardsList/CardsList';
 import s from './CardsTable.module.css'
+import a from '../../../common/styles/Actions.module.css'
 import {useAppSelector} from '../../../bll/store';
 import {cardsActions, getCards} from '../cards-reducer';
 import {
@@ -29,7 +30,7 @@ export const CardsTable = () => {
     const userId = useAppSelector(selectUser_id)
 
     const dispatch = useDispatch()
-    const {packUserId} = useParams()
+    const {packUserId} = useParams<'packUserId'>()
 
     useEffect(() => {
         dispatch(getCards())
@@ -52,11 +53,12 @@ export const CardsTable = () => {
                 <CardsTableHeader text={'Answer'} param={'answer'}/>
                 <CardsTableHeader text={'Updated'} param={'updated'}/>
                 <CardsTableHeader text={'Grade'} param={'grade'}/>
-                {userId === packUserId && <th>
-                    <span>
-                        Actions
-                    </span>
-                </th>}
+                {
+                    userId === packUserId &&
+                    <th className={a.actions}>
+                      <span>Actions</span>
+                    </th>
+                }
             </tr>
             </thead>
             <tbody>

@@ -33,7 +33,7 @@ export const Cards = () => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const {packUserId} = useParams()
+    const {packUserId} = useParams<'packUserId'>()
 
     const onChangeDebounceQuestionRequest = useCallback((title: string) => {
         dispatch(cardsActions.setCurrentPage(1))
@@ -60,7 +60,8 @@ export const Cards = () => {
 
     return (
         <div className={s.cardsContainer}>
-            <AddCardForm onClickNotOpen={addCardOff} isOpen={isAddingOpen} cardsPack_id={cardsPack_id}/>
+            <AddCardForm onClickNotOpen={addCardOff} isOpen={isAddingOpen}
+                         cardsPack_id={cardsPack_id}/>
             <div className={`${c.container} ${t[theme + '-text']}`}>
                 <div className={s.cardsTable}>
                     <div className={s.backAndTitle}>
@@ -71,21 +72,26 @@ export const Cards = () => {
                         <div className={c.title}>{packName}</div>
                     </div>
                     <div className={s.rowElements}>
-                        <div>
-                            <SearchField value={cardQuestion}
-                                         placeholder={'Enter question'}
-                                         onChangeWithDebounce={onChangeDebounceQuestionRequest}/>
+                        <div className={s.searchFields}>
+                            <div>
+                                <SearchField value={cardQuestion}
+                                             placeholder={'Enter question'}
+                                             onChangeWithDebounce={onChangeDebounceQuestionRequest}/>
+                            </div>
+                            <div>
+                                <SearchField value={cardAnswer}
+                                             placeholder={'Enter answer'}
+                                             onChangeWithDebounce={onChangeDebounceAnswerRequest}/>
+                            </div>
                         </div>
                         <div>
-                            <SearchField value={cardAnswer} placeholder={'Enter answer'}
-                                         onChangeWithDebounce={onChangeDebounceAnswerRequest}/>
+                            {
+                                userId === packUserId &&
+                                <SuperButton className={c.addItem} onClick={addCardOn}>
+                                  Add card
+                                </SuperButton>
+                            }
                         </div>
-                        {
-                            userId === packUserId &&
-                            <SuperButton className={c.addItem} onClick={addCardOn}>
-                              Add card
-                            </SuperButton>
-                        }
                     </div>
                     <div className={c.table}><CardsTable/></div>
                     {error && <Notification text={error}/>}

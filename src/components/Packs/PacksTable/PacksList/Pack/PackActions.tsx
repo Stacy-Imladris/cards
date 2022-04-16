@@ -1,8 +1,9 @@
 import {FC, memo, useState} from 'react'
 import {SuperButton} from '../../../../../common/super-components/c2-SuperButton/SuperButton'
 import s from '../../PacksTable.module.css'
-import {DeletePackForm} from '../../../../DeletePackForm/DeletePackForm';
-import {EditPackForm} from '../../../../EditPackForm/EditPackForm';
+import {DeletePackForm} from '../../../../DeletePackForm/DeletePackForm'
+import {EditPackForm} from '../../../../EditPackForm/EditPackForm'
+import a from '../../../../../common/styles/Actions.module.css'
 
 type PackActionsType = {
     isMyPacks: boolean
@@ -31,19 +32,19 @@ export const PackActions: FC<PackActionsType> = memo(({isMyPacks, packId, name, 
         setIsEditingOpen(true)
     }
 
-    return <div className={s.packsActionsButtons}>
+    return <div className={a.actionButtons}>
         <DeletePackForm onClickNotOpen={deletePackOff} isOpen={isDeletingOpen} packId={packId} name={name}/>
         <EditPackForm onClickNotOpen={editPackOff} isOpen={isEditingOpen} packId={packId} name={name}/>
         {
-            isMyPacks &&
-            <>
-              <SuperButton red onClick={deletePackOn}>Delete</SuperButton>
-              <SuperButton onClick={editPackOn}>Edit</SuperButton>
-            </>
+            cardsCount > 0
+            && <SuperButton>🕮</SuperButton>
         }
         {
-            cardsCount > 0
-            && <SuperButton>Learn</SuperButton>
+            isMyPacks &&
+            <>
+              <SuperButton red onClick={deletePackOn} className={s.button}>✘</SuperButton>
+              <SuperButton onClick={editPackOn} className={s.button}>✎</SuperButton>
+            </>
         }
     </div>
 })

@@ -4,6 +4,7 @@ import {useDispatch} from 'react-redux'
 import {useAppSelector} from '../../../bll/store'
 import {useCallback, useEffect} from 'react'
 import s from './PacksTable.module.css'
+import a from '../../../common/styles/Actions.module.css'
 import {
     selectCardPacksTotalCount,
     selectMaxForCards,
@@ -53,7 +54,7 @@ export const PacksTable = () => {
                 <PacksTableHeader text={'Cards'} param={'cardsCount'}/>
                 <PacksTableHeader text={'Updated'} param={'updated'}/>
                 <PacksTableHeader text={'Creator'} param={'user_name'}/>
-                <th className={s.actions}>
+                <th className={a.actions}>
                     <span>Actions</span>
                 </th>
             </tr>

@@ -15,8 +15,12 @@
 
 .rowElements {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     margin-bottom: 10px;
+}
+
+.searchFields {
+    display: flex;
 }
 
 @media screen and (max-width: 760px) {
@@ -26,23 +30,8 @@
 }
 
 .backIcon {
-    width: 40px;
-    height: 40px;
-    padding: 2px;
+    margin-bottom: 15px;
+    padding: 5px 20px;
+    font-size: 20px;
     border-radius: 17px;
-}
-
-.buttons {
-    display: flex;
-    flex-direction: row;
-}
-
-.button {
-    cursor: pointer;
-    border-radius: 20px;
-    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2), 0 3px 3px 0 rgba(0,0,0,0.19);
-}
-
-.actions {
-    width: 17%;
 }

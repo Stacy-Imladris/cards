@@ -1,12 +1,13 @@
 import {FC, memo, useState} from 'react'
 import {getLastUpdatedDate} from '../../../../../utils/date-helpers'
-import {CardType} from '../../../../../api/cards-api';
+import {CardType} from '../../../../../api/cards-api'
 import s from '../../../Cards.module.css'
-import {SuperButton} from '../../../../../common/super-components/c2-SuperButton/SuperButton';
-import {useAppSelector} from '../../../../../bll/store';
-import {selectUser_id} from '../../../../../selectors/selectors';
-import {DeleteCardForm} from '../../../../DeleteCardForm/DeleteCardForm';
-import {EditCardForm} from '../../../../EditCardForm/EditCardForm';
+import a from '../../../../../common/styles/Actions.module.css'
+import {SuperButton} from '../../../../../common/super-components/c2-SuperButton/SuperButton'
+import {useAppSelector} from '../../../../../bll/store'
+import {selectUser_id} from '../../../../../selectors/selectors'
+import {DeleteCardForm} from '../../../../DeleteCardForm/DeleteCardForm'
+import {EditCardForm} from '../../../../EditCardForm/EditCardForm'
 import {useParams} from 'react-router-dom'
 
 type CardPropsType = {
@@ -19,7 +20,7 @@ export const Card: FC<CardPropsType> = memo(({card}) => {
 
     const userId = useAppSelector(selectUser_id)
 
-    const {packUserId} = useParams()
+    const {packUserId} = useParams<'packUserId'>()
 
     const deleteCardOff = () => {
         setIsDeletingOpen(false)
@@ -47,7 +48,7 @@ export const Card: FC<CardPropsType> = memo(({card}) => {
         <td>{lastUpdate}</td>
         <td>{card.grade}</td>
         {userId === packUserId && <td className={s.actions}>
-          <div className={s.buttons}>
+          <div className={a.actionButtons}>
             <SuperButton onClick={editCardOn} className={s.button}>✎</SuperButton>
             <SuperButton red onClick={deleteCardOn} className={s.button}>✘</SuperButton>
           </div>

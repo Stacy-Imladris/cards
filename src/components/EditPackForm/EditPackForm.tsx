@@ -11,7 +11,12 @@ type EditPackFormPropsType = {
     packId: string
     name: string
 }
-export const EditPackForm: FC<EditPackFormPropsType> = memo(({onClickNotOpen, isOpen, name, packId}) => {
+export const EditPackForm: FC<EditPackFormPropsType> = memo(({
+                                                                 onClickNotOpen,
+                                                                 isOpen,
+                                                                 name,
+                                                                 packId
+                                                             }) => {
     const [newName, setNewName] = useState<string>(name)
 
     const dispatch = useDispatch()
@@ -22,12 +27,14 @@ export const EditPackForm: FC<EditPackFormPropsType> = memo(({onClickNotOpen, is
         setNewName('')
     }, [dispatch, onClickNotOpen, packId, newName, name])
 
-    return <Modal onClickNotOpen={onClickNotOpen} width={400} height={300}
+    return <Modal onClickNotOpen={onClickNotOpen} width={350} height={260}
                   isOpen={isOpen}>
         <div>Pack name</div>
         <SuperInputText value={newName} placeholder={'Enter new name'}
                         onChangeText={setNewName}/>
-        <SuperButton onClick={onClickNotOpen}>Cancel</SuperButton>
-        <SuperButton onClick={onClickUpdatePack}>Save</SuperButton>
+        <div>
+            <SuperButton onClick={onClickNotOpen}>Cancel</SuperButton>
+            <SuperButton onClick={onClickUpdatePack}>Save</SuperButton>
+        </div>
     </Modal>
 })

@@ -12,9 +12,11 @@ type EditCardFormPropsType = {
     question: string
     answer: string
 }
-export const EditCardForm: FC<EditCardFormPropsType> = memo(({onClickNotOpen,
+export const EditCardForm: FC<EditCardFormPropsType> = memo(({
+                                                                 onClickNotOpen,
                                                                  isOpen, question,
-                                                                 answer, cardId}) => {
+                                                                 answer, cardId
+                                                             }) => {
     const [newQuestion, setNewQuestion] = useState<string>(question)
     const [newAnswer, setNewAnswer] = useState<string>(answer)
 
@@ -27,12 +29,16 @@ export const EditCardForm: FC<EditCardFormPropsType> = memo(({onClickNotOpen,
         setNewAnswer('')
     }, [dispatch, onClickNotOpen, cardId, newQuestion, newAnswer])
 
-    return <Modal onClickNotOpen={onClickNotOpen} width={400} height={300}
+    return <Modal onClickNotOpen={onClickNotOpen} width={350} height={330}
                   isOpen={isOpen}>
         <div>Card info</div>
-        <SuperInputText value={newQuestion} placeholder={'Enter new question'} onChangeText={setNewQuestion}/>
-        <SuperInputText value={newAnswer} placeholder={'Enter new answer'} onChangeText={setNewAnswer}/>
-        <SuperButton onClick={onClickNotOpen}>Cancel</SuperButton>
-        <SuperButton onClick={onClickUpdateCard}>Save</SuperButton>
+        <SuperInputText value={newQuestion} placeholder={'Enter new question'}
+                        onChangeText={setNewQuestion}/>
+        <SuperInputText value={newAnswer} placeholder={'Enter new answer'}
+                        onChangeText={setNewAnswer}/>
+        <div>
+            <SuperButton onClick={onClickNotOpen}>Cancel</SuperButton>
+            <SuperButton onClick={onClickUpdateCard}>Save</SuperButton>
+        </div>
     </Modal>
 })

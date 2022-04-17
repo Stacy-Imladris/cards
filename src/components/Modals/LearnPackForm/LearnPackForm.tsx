@@ -2,6 +2,8 @@ import {FC, memo, useCallback, useState} from 'react';
 import {Modal} from '../Modal/Modal';
 import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton';
 import {AnswerForm} from '../AnswerForm/AnswerForm';
+import {useAppSelector} from '../../../bll/store';
+import {selectTheme} from '../../../selectors/selectors';
 
 type LearnPackFormPropsType = {
     onClickLearnPackOn: () => void
@@ -15,6 +17,8 @@ export const LearnPackForm: FC<LearnPackFormPropsType> = memo(({
                                                                    isOpen,
                                                                    name
                                                                }) => {
+    const theme = useAppSelector(selectTheme)
+
     const [isAnswerOpen, setIsAnswerOpen] = useState<boolean>(false)
 
     const AnswerOff = useCallback(() => {
@@ -29,7 +33,9 @@ export const LearnPackForm: FC<LearnPackFormPropsType> = memo(({
     return <>
         <AnswerForm onClickNotOpen={AnswerOff} isOpen={isAnswerOpen} name={name}
                     onClickLearnPackOn={onClickLearnPackOn}/>
-        <Modal onClickNotOpen={onClickNotOpen} width={460} height={220} isOpen={isOpen}>
+        <Modal onClickNotOpen={onClickNotOpen} width={460} height={220} isOpen={isOpen}
+               backgroundStyle={{background: `${theme === '☀' ? '#d0eca1' : '#022507'}`,
+                   opacity: 1}}>
             <div>Learn '{name}'</div>
             <div>Question: '{}'</div>
             <div>

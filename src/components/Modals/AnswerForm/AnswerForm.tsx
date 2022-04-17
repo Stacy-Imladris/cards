@@ -4,6 +4,8 @@ import {Modal} from '../Modal/Modal';
 import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton';
 import {SuperRadio} from '../../../common/super-components/c6-SuperRadio/SuperRadio';
 import {Logo} from '../../../common/logo/Logo';
+import {useAppSelector} from '../../../bll/store';
+import {selectTheme} from '../../../selectors/selectors';
 
 type AnswerFormPropsType = {
     onClickLearnPackOn: () => void
@@ -28,6 +30,8 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
                                                              isOpen,
                                                              name
                                                          }) => {
+    const theme = useAppSelector(selectTheme)
+
     const dispatch = useDispatch()
 
     const learnPackOn = useCallback(() => {
@@ -43,7 +47,9 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
     }, [])
 
     return <Modal onClickNotOpen={onClickNotOpen} width={460} height={530}
-                  isOpen={isOpen}>
+                  isOpen={isOpen}
+                  backgroundStyle={{background: `${theme === '☀' ? '#d0eca1' : '#022507'}`,
+        opacity: 1}}>
         <div>
             <div>Learn '{name}'</div>
             <div>Question: '{}'</div>

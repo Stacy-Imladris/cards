@@ -43,7 +43,8 @@ export const PackActions: FC<PackActionsType> = memo(({isMyPacks, packId, name, 
     }
 
     return <div className={a.actionButtons}>
-        <LearnPackForm onClickNotOpen={learnPackOff} isOpen={isLearningOpen}/>
+        <LearnPackForm onClickNotOpen={learnPackOff} isOpen={isLearningOpen} name={name}
+                       onClickLearnPackOn={learnPackOn}/>
         <EditPackForm onClickNotOpen={editPackOff} isOpen={isEditingOpen} packId={packId} name={name}/>
         <DeletePackForm onClickNotOpen={deletePackOff} isOpen={isDeletingOpen} packId={packId} name={name}/>
         {

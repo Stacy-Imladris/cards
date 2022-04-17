@@ -38,7 +38,7 @@ export const Paginator = memo(({
             <div className={s.paginatorContainer}>
                     <div className={s.container}>
                         <div className={s.edge}>
-                            {page > 3 && (
+                            {page > 3 && pagesCount > 5 && (
                                 <>
                                     <button onClick={() => onClickPageChanged(page - 1)}>
                                         ◁
@@ -57,7 +57,7 @@ export const Paginator = memo(({
                                         key={p}> {p} </button>))}
                         </div>
                         <div className={s.edge}>
-                            {page < pages.length - 2 && (
+                            {page < pages.length - 2 && pagesCount > 5 && (
                                 <>
                                     <span>...</span>
                                     <button

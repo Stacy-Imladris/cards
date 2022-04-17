@@ -1,0 +1,47 @@
+.searchBlock {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.searchField {
+    margin: 0 -15px;
+}
+
+.searchField::placeholder{
+    color: white;
+    opacity: 70%;
+}
+
+.wideSearchField {
+    width: 440px;
+}
+
+.wideSearchField:focus {
+    width: 440px;
+}
+
+@media screen and (max-width: 1235px) {
+    .wideSearchField {
+        width: 155px;
+    }
+    .wideSearchField:focus {
+        width: 155px;
+    }
+}
+
+.narrowSearchField {
+    width: 155px;
+}
+
+.narrowSearchField:focus {
+    width: 155px;
+}
+
+.deleteIcon {
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 10px;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2), 0 3px 3px 0 rgba(0,0,0,0.19);
+}

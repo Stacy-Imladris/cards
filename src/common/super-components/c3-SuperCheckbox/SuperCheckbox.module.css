@@ -1,8 +1,16 @@
-.checkbox {
-    max-width: 20px;
-    max-height: 20px;
-    vertical-align: top;
-    margin-right: 5px;
-    /*box-shadow: inset 0px 1px 1px #4CAF50, 0px 1px 3px rgba(7,111,23,0.5);*/
+.checkboxContainer {
+    display: flex;
 }
 
+.checkbox {
+    width: 20px;
+    max-width: 20px;
+    height: 20px;
+    max-height: 20px;
+    margin: 0 15px 0 0;
+    box-shadow: inset 0 1px 1px #4CAF50, 0 1px 3px rgba(7,111,23,0.5);
+}
+
+.spanClassName {
+    display: inline-block;
+}

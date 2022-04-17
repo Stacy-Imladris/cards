@@ -29,14 +29,17 @@ export const SuperCheckbox: FC<SuperCheckboxPropsType> = memo((
 
     return (
         <label>
-            <input
-                type={'checkbox'}
-                onChange={onChangeCallback}
-                className={finalInputClassName}
-
-                {...restProps} // отдаём инпуту остальные пропсы если они есть (checked например там внутри)
-            />
-            {children && <span className={s.spanClassName}>{children}</span>}
+            <div className={s.checkboxContainer}>
+                <div>
+                    <input
+                        type={'checkbox'}
+                        onChange={onChangeCallback}
+                        className={finalInputClassName}
+                        {...restProps} // отдаём инпуту остальные пропсы если они есть (checked например там внутри)
+                    />
+                </div>
+                <span className={s.spanClassName}>{children && children}</span>
+            </div>
         </label> // благодаря label нажатие на спан передастся в инпут
     )
 })

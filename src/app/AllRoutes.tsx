@@ -1,13 +1,12 @@
 import {Navigate, Route, Routes} from 'react-router-dom'
-import {Login} from '../components/Login/LoginUI/Login'
-import {Profile} from '../components/Profile/Profile'
-import {Test} from '../components/Test/Test'
+import {Login} from '../components/Auth/Login/LoginUI/Login'
+import {Profile} from '../components/Profile/ProfileUI/Profile'
 import {Error404} from '../components/Error404/Error404'
-import {RegistrationContainer} from '../components/Registration/RegistrationUI/RegistrationContainer'
-import {RecoveryContainer} from '../components/Recovery/RecoveryUI/RecoveryContainer'
-import {NewPasswordContainer} from '../components/NewPassword/NewPasswordUI/NewPasswordContainer'
-import {Packs} from '../components/Packs/Packs'
-import {Cards} from '../components/Cards/Cards';
+import {RegistrationContainer} from '../components/Auth/Registration/RegistrationUI/RegistrationContainer'
+import {RecoveryContainer} from '../components/Auth/Recovery/RecoveryUI/RecoveryContainer'
+import {NewPasswordContainer} from '../components/Auth/NewPassword/NewPasswordUI/NewPasswordContainer'
+import {Packs} from '../components/Packs/PacksUI/Packs'
+import {Cards} from '../components/Cards/CardsUI/Cards';
 import {LoginNavigate} from '../hoc/LoginNavigate'
 
 export enum PATH {
@@ -17,7 +16,6 @@ export enum PATH {
     ERROR_404 = '/error-404',
     PASSWORD_RECOVERY = '/password-recovery',
     NEW_PASSWORD = '/new-password/:resetPasswordToken',
-    TEST = '/test',
     PACKS = '/packs',
     CARDS = '/cards',
 }
@@ -32,9 +30,8 @@ export const AllRoutes = () => {
             <Route path={PATH.PASSWORD_RECOVERY} element={<RecoveryContainer/>}/>
             <Route path={PATH.NEW_PASSWORD} element={<NewPasswordContainer/>}/>
             <Route path={PATH.PACKS} element={<LoginNavigate><Packs/></LoginNavigate>}/>
-            <Route path={'/cards/:packUserId'} element={<LoginNavigate><Cards/></LoginNavigate>}/>
+            <Route path={`${PATH.CARDS}/:packUserId`} element={<LoginNavigate><Cards/></LoginNavigate>}/>
             <Route path={PATH.ERROR_404} element={<Error404/>}/>
-            <Route path={PATH.TEST} element={<Test/>}/>
             <Route path="*" element={<Navigate to={PATH.ERROR_404}/>}/>
         </Routes>
     )

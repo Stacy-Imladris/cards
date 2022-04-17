@@ -1,0 +1,43 @@
+.cardsContainer {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.cardsTable {
+    width: 100%;
+}
+
+.backAndTitle {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.rowElements {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.searchFields {
+    display: flex;
+}
+
+@media screen and (max-width: 885px) {
+    .rowElements {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 710px) {
+    .searchFields {
+        flex-direction: column;
+    }
+}
+
+.backIcon {
+    margin-bottom: 15px;
+    padding: 5px 20px;
+    font-size: 20px;
+    border-radius: 17px;
+}

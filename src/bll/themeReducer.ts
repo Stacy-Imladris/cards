@@ -1,7 +1,7 @@
 import {InferActionTypes} from './store';
 
 const themeInitialState = {
-    theme: 'day' as ThemeType
+    theme: '☀' as ThemeType
 }
 
 export const themeReducer = (state: ThemeInitialStateType = themeInitialState, action: ThemeActionTypes): ThemeInitialStateType => {
@@ -17,6 +17,6 @@ export const themeActions = {
     changeTheme: (theme: ThemeType) => ({type: 'THEME/CHANGE_THEME', payload: {theme}} as const),
 }
 
-export type ThemeType = 'day' | 'night'
+export type ThemeType = '☀' | '☽'
 export type ThemeInitialStateType = typeof themeInitialState
 export type ThemeActionTypes = InferActionTypes<typeof themeActions>

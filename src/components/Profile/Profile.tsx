@@ -8,13 +8,14 @@ import {useDispatch} from 'react-redux'
 import {useAppSelector} from '../../bll/store'
 import {EditProfile} from './EditProfile/EditProfile'
 import {
+    selectIsInitialized,
     selectLoginError,
     selectPackNameForSearch,
-    selectProfileEditMode,
+    selectProfileEditMode, selectProfileUser,
     selectProfileUserName,
     selectTheme, selectUser_id
 } from '../../selectors/selectors';
-import {useCallback, useEffect} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import {SearchField} from '../SearchField/SearchField';
 import {PacksTable} from '../Packs/PacksTable/PacksTable';
 import {addPack, packsActions} from '../Packs/packs-reducer';
@@ -22,6 +23,7 @@ import {DoubleRange} from '../DoubleRange/DoubleRange';
 import {Notification} from "../../common/notification/Notification";
 import {AddNewCardType} from "../../api/packs-api";
 import {Scroll} from "../../common/scroll/Scroll";
+import {useLocation} from "react-router-dom";
 
 export const Profile = () => {
     const name = useAppSelector(selectProfileUserName)
@@ -29,9 +31,11 @@ export const Profile = () => {
     const editMode = useAppSelector(selectProfileEditMode)
     const packName = useAppSelector(selectPackNameForSearch)
     const error = useAppSelector(selectLoginError)
+    const isInitialized = useAppSelector(selectIsInitialized)
+    const user_id = useAppSelector(selectUser_id)
 
     const dispatch = useDispatch()
-
+    let location = useLocation()
     const editProfile = useCallback(() => {
         dispatch(profileActions.setEditModeProfile(true))
     }, [dispatch])
@@ -44,6 +48,11 @@ export const Profile = () => {
     if (editMode) {
         return <EditProfile/>
     }
+
+   if (location.pathname === "/profile") {
+       dispatch(packsActions.setPacksForUser(user_id))
+       dispatch(packsActions.setPacksType("All"))
+   }
 
     const addNewPack = () => {
         dispatch(addPack({} as AddNewCardType))

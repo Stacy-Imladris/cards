@@ -15,9 +15,10 @@ import {
     selectTheme,
     selectUser_id
 } from '../../selectors/selectors';
-import {useCallback, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import {Notification} from "../../common/notification/Notification";
 import {Scroll} from "../../common/scroll/Scroll";
+import {useLocation} from "react-router-dom";
 
 const arr = ['All', 'My']
 
@@ -26,17 +27,23 @@ export const Packs = () => {
     const user_id = useAppSelector(selectUser_id)
     const packName = useAppSelector(selectPackNameForSearch)
     const error = useAppSelector(selectLoginError)
-    const Id = useAppSelector(selectPackUserId)
 
     const dispatch = useDispatch()
 
-    const [valueFromArray, setValueFromArray] = useState(Id ? 'My' : 'All')
+    const type = useAppSelector(state=> state.packs.packsType)
+
+    {type === "All" ? dispatch(packsActions.setPacksForUser("")): dispatch(packsActions.setPacksForUser(user_id))}
+
+    const [valueFromArray, setValueFromArray] = useState(arr[0])
+
 
     const onChangeOption = useCallback((value: string) => {
         setValueFromArray(value)
         if (value === 'All') {
+            dispatch(packsActions.setPacksType(value))
             dispatch(packsActions.setPacksForUser(''))
         } else {
+            dispatch(packsActions.setPacksType(value))
             dispatch(packsActions.setPacksForUser(user_id))
         }
     }, [dispatch, user_id])
@@ -49,6 +56,8 @@ export const Packs = () => {
     const addNewPack = () => {
         dispatch(addPack({} as AddNewCardType))
     }
+
+
 
     return (
         <div className={c.mainContainer}>

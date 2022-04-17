@@ -14,7 +14,6 @@ export const App = () => {
     const theme = useAppSelector(selectTheme)
     const isInitialized = useAppSelector(selectIsInitialized)
     const isLoading = useAppSelector(state => state.app.isLoading)
-
     const dispatch = useDispatch()
 
     useEffect(() => {

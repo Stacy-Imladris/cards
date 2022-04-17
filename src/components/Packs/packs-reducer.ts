@@ -8,6 +8,7 @@ const packsInitialState = {
     packs: [] as PackType[],
     minCardsCount: 0,
     maxCardsCount: 103,
+    packsType: "All",
     params: {
         packName: '',
         min: 0,
@@ -35,6 +36,8 @@ export const packsReducer = (state: PacksInitialStateType = packsInitialState, a
         case 'PACKS/SET_PACKS_MAX':
         case 'PACKS/SET_PACKS_PAGE_COUNT':
             return {...state, params: {...state.params, ...action.payload}}
+        case 'PACKS/SET_PACKS_TYPE':
+            return {...state, packsType: action.payload.packsType}
         default:
             return state
     }
@@ -52,12 +55,13 @@ export const packsActions = {
     setSortParameters: (sortPacks: string) => ({type: 'PACKS/SET_SORT_PARAMETERS', payload: {sortPacks}} as const),
     setMinCardsCount: (minCardsCount: number)=> ({type: 'PACKS/SET_PACKS_MIN_CARDS_COUNT', payload: {minCardsCount}} as const),
     setMaxCardsCount: (maxCardsCount: number)=> ({type: 'PACKS/SET_PACKS_MAX_CARDS_COUNT', payload: {maxCardsCount}} as const),
+    setPacksType: (packsType: string)=> ({type: 'PACKS/SET_PACKS_TYPE', payload: {packsType}} as const),
     setPacksPageCount: (pageCount: number)=> ({type: 'PACKS/SET_PACKS_PAGE_COUNT', payload: {pageCount}} as const),
 }
 
 //thunks
 export const getPacks = (): AppThunk => async (dispatch, getState) => {
-    const params = getState().packs.params
+    const params = getState().packs.params;
     dispatch(appActions.setAppIsLoading(true))
     try {
         const data = await packsAPI.getPacks(params)
@@ -126,3 +130,4 @@ export type PacksParamsType = {
 }
 export type PacksSortFieldsType = 'name' | 'cardsCount' | 'updated' | 'user_name'
 export type SortOrderType = '0' | '1'
+type PacksType = "All" | "My"

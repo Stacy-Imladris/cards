@@ -28,8 +28,9 @@ export const PacksTable = () => {
     const cardPacksTotalCount = useAppSelector(selectCardPacksTotalCount)
     const page = useAppSelector(selectPageForPacks)
     const pageCount = useAppSelector(selectPageCountForPacks)
-
+    const Id = useAppSelector(selectPackUserId)
     const dispatch = useDispatch()
+
 
     const onPageChanged = useCallback((page: number) => {
         dispatch(packsActions.setCurrentPage(page))
@@ -42,7 +43,7 @@ export const PacksTable = () => {
 
     useEffect(() => {
         dispatch(getPacks())
-    }, [dispatch, packName, user_id, sortPacks, min, max, pageCount])
+    }, [dispatch, packName, user_id, sortPacks, min, max, pageCount, Id])
 
 
     return <div className={s.packsTableContainer}>

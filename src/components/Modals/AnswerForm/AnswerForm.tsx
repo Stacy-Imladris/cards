@@ -30,6 +30,8 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
                                                              isOpen,
                                                              name
                                                          }) => {
+    const [value, setValue] = useState<string>('Did not know')
+
     const theme = useAppSelector(selectTheme)
 
     const dispatch = useDispatch()
@@ -39,8 +41,6 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
         onClickLearnPackOn()
         //dispatch(rate(Grades[value]))
     }, [dispatch, onClickLearnPackOn, onClickNotOpen])
-
-    const [value, setValue] = useState<string>('Did not know')
 
     const onChangeOption = useCallback((value: string) => {
         setValue(value)

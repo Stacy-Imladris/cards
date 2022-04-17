@@ -1,0 +1,26 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.profileAvatar {
+    margin-top: 20px;
+}
+
+.profileAvatar img {
+    border-radius: 50%;
+    width: 100px;
+}
+
+.profileJob {
+    margin-top: -10px;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.edit {
+    margin: 10px auto;
+}

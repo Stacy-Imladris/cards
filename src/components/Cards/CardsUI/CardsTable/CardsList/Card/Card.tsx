@@ -1,4 +1,4 @@
-import {FC, memo, useState} from 'react'
+import {FC, memo, useCallback, useState} from 'react'
 import {getLastUpdatedDate} from '../../../../../../utils/date-helpers'
 import {CardType} from '../../../../CardsAPI/cards-api'
 import s from '../../../Cards.module.css'
@@ -22,21 +22,21 @@ export const Card: FC<CardPropsType> = memo(({card}) => {
 
     const {packUserId} = useParams<'packUserId'>()
 
-    const deleteCardOff = () => {
+    const deleteCardOff = useCallback(() => {
         setIsDeletingOpen(false)
-    }
+    }, [])
 
-    const deleteCardOn = () => {
+    const deleteCardOn = useCallback(() => {
         setIsDeletingOpen(true)
-    }
+    }, [])
 
-    const editCardOff = () => {
+    const editCardOff = useCallback(() => {
         setIsEditingOpen(false)
-    }
+    }, [])
 
-    const editCardOn = () => {
+    const editCardOn = useCallback(() => {
         setIsEditingOpen(true)
-    }
+    }, [])
 
     const lastUpdate = getLastUpdatedDate(card.updated)
 

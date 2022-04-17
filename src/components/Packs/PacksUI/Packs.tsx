@@ -44,13 +44,13 @@ export const Packs = () => {
         dispatch(packsActions.setTitleForSearch(title))
     }, [dispatch])
 
-    const addPackOff = () => {
+    const addPackOff = useCallback(() => {
         setIsAddingOpen(false)
-    }
+    }, [])
 
-    const addPackOn = () => {
+    const addPackOn = useCallback(() => {
         setIsAddingOpen(true)
-    }
+    }, [])
 
     return (
         <div className={c.mainContainer}>

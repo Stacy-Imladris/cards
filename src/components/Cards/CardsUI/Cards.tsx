@@ -42,18 +42,17 @@ export const Cards = () => {
         dispatch(cardsActions.setAnswerForSearch(title))
     }, [dispatch])
 
-    const addCardOff = () => {
+    const addCardOff = useCallback(() => {
         setIsAddingOpen(false)
-    }
+    }, [])
 
-    const addCardOn = () => {
+    const addCardOn = useCallback(() => {
         setIsAddingOpen(true)
-    }
+    }, [])
 
-    const onBackPage = () => {
+    const onBackPage = useCallback(() => {
         navigate(-1)
-        dispatch(cardsActions.setCards([]))
-    }
+    }, [navigate])
 
     return (
         <div className={s.cardsContainer}>

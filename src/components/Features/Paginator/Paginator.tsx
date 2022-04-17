@@ -71,8 +71,10 @@ export const Paginator = memo(({
                                 </>
                             )}
                         </div>
-                        <div className={s.show}><span>Show </span><SuperSelect options={itemsPerPage} value={pageCount}
-                                                                               onChangeOption={onChangeSetAmountOfItems}/>
+                        <div className={s.show}>
+                            <span>Show </span>
+                            <SuperSelect options={itemsPerPage} value={pageCount}
+                                         onChangeOption={onChangeSetAmountOfItems}/>
                         </div>
                     </div>
                 </div>

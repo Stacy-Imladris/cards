@@ -3,6 +3,7 @@ import {useDispatch} from 'react-redux';
 import {Modal} from '../Modal/Modal';
 import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton';
 import {SuperRadio} from '../../../common/super-components/c6-SuperRadio/SuperRadio';
+import {Logo} from '../../../common/logo/Logo';
 
 type AnswerFormPropsType = {
     onClickLearnPackOn: () => void
@@ -29,32 +30,31 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
                                                          }) => {
     const dispatch = useDispatch()
 
-    const onClick = useCallback(() => {
-        //dispatch()
+    const learnPackOn = useCallback(() => {
         onClickNotOpen()
-    }, [dispatch, onClickNotOpen])
+        onClickLearnPackOn()
+        //dispatch(rate(Grades[value]))
+    }, [dispatch, onClickLearnPackOn, onClickNotOpen])
 
     const [value, setValue] = useState<string>('Did not know')
 
     const onChangeOption = useCallback((value: string) => {
         setValue(value)
-        //dispatch(rate(Grades[value]))
-    }, [dispatch])
+    }, [])
 
-    const learnPackOn = () => {
-        onClickNotOpen()
-        onClickLearnPackOn()
-    }
-
-    return <Modal onClickNotOpen={onClickNotOpen} width={460} height={420}
+    return <Modal onClickNotOpen={onClickNotOpen} width={460} height={530}
                   isOpen={isOpen}>
-        <div>Learn '{name}'</div>
-        <div>Question: '{}'</div>
-        <div>Answer: '{}'</div>
-        <div>Rate yourself:</div>
-        <SuperRadio name={'radio'} options={arr}
-                    value={value} onChangeOption={onChangeOption}
-        />
+        <div>
+            <div>Learn '{name}'</div>
+            <div>Question: '{}'</div>
+            <div>Answer: '{}'</div>
+        </div>
+        <div>
+            <div>Rate yourself:</div>
+            <SuperRadio name={'radio'} options={arr}
+                        value={value} onChangeOption={onChangeOption}
+            />
+        </div>
         <div>
             <SuperButton onClick={onClickNotOpen}>Cancel</SuperButton>
             <SuperButton onClick={learnPackOn}>Next</SuperButton>

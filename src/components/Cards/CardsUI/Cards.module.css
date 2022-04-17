@@ -23,8 +23,14 @@
     display: flex;
 }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 885px) {
     .rowElements {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 710px) {
+    .searchFields {
         flex-direction: column;
     }
 }

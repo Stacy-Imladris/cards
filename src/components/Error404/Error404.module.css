@@ -6,11 +6,11 @@
 }
 
 .error {
-    font-size: 300px;
+    font-size: 250px;
 }
 
 .text {
-    font-size: 150px;
+    font-size: 120px;
     margin: 0 0 30px 0;
 }
 
@@ -20,18 +20,15 @@
 }
 
 .textNav {
-    font-size: 50px;
+    font-size: 40px;
     margin: 0 0 30px 0;
 }
 
-.joke {
-    display:inline-block;
-    transition-duration: 500ms;
-    transform: translate(0, 0);
-    font-family: "Times New Roman";
+.lastLine {
+    padding-right: 70px;
 }
 
-.joke:hover {
-    transition-duration: 500ms;
-    transform: translate(300px, 300px);
+.joke {
+    position: absolute;
+    transition: 0.1s;
 }

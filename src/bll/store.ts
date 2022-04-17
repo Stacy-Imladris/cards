@@ -27,7 +27,7 @@ const rootReducer = combineReducers({
     app: appReducer,
 })
 
-const preloadedState = {theme: {theme: loadValue() ? loadValue() : 'day'}}
+const preloadedState = {theme: {theme: loadValue() ? loadValue() : '☀'}}
 
 export const store = createStore(rootReducer, preloadedState, applyMiddleware(thunk))
 

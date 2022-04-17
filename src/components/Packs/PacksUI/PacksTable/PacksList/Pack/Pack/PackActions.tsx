@@ -5,18 +5,21 @@ import {DeletePackForm} from '../../../../../../Modals/DeletePackForm/DeletePack
 import {EditPackForm} from '../../../../../../Modals/EditPackForm/EditPackForm'
 import a from '../../../../../../../common/styles/Actions.module.css'
 import {LearnPackForm} from '../../../../../../Modals/LearnPackForm/LearnPackForm';
+import {useDispatch} from 'react-redux'
+import {cardsActions} from '../../../../../../Cards/CardsBLL/cards-reducer'
+import {PackType} from '../../../../../PacksAPI/packs-api'
 
 type PackActionsType = {
     isMyPacks: boolean
-    packId: string
-    name: string
-    cardsCount: number
+    pack: PackType
 }
 
-export const PackActions: FC<PackActionsType> = memo(({isMyPacks, packId, name, cardsCount}) => {
+export const PackActions: FC<PackActionsType> = memo(({isMyPacks, pack}) => {
     const [isLearningOpen, setIsLearningOpen] = useState<boolean>(false)
     const [isDeletingOpen, setIsDeletingOpen] = useState<boolean>(false)
     const [isEditingOpen, setIsEditingOpen] = useState<boolean>(false)
+
+    const dispatch = useDispatch()
 
     const deletePackOff = useCallback(() => {
         setIsDeletingOpen(false)
@@ -40,22 +43,23 @@ export const PackActions: FC<PackActionsType> = memo(({isMyPacks, packId, name, 
 
     const learnPackOn = useCallback(() => {
         setIsLearningOpen(true)
+        dispatch(cardsActions.setPackId(pack._id))
     }, [])
 
     return <div className={a.actionButtons}>
-        <LearnPackForm onClickNotOpen={learnPackOff} isOpen={isLearningOpen} name={name}
+        <LearnPackForm onClickNotOpen={learnPackOff} isOpen={isLearningOpen} name={pack.name}
                        onClickLearnPackOn={learnPackOn}/>
-        <EditPackForm onClickNotOpen={editPackOff} isOpen={isEditingOpen} packId={packId} name={name}/>
-        <DeletePackForm onClickNotOpen={deletePackOff} isOpen={isDeletingOpen} packId={packId} name={name}/>
+        <EditPackForm onClickNotOpen={editPackOff} isOpen={isEditingOpen} packId={pack._id} name={pack.name}/>
+        <DeletePackForm onClickNotOpen={deletePackOff} isOpen={isDeletingOpen} packId={pack._id} name={pack.name}/>
         {
-            cardsCount > 0 &&
+            pack.cardsCount > 0 &&
             <SuperButton onClick={learnPackOn}>🕮</SuperButton>
         }
         {
             isMyPacks &&
             <>
-              <SuperButton onClick={editPackOn} className={s.button}>✎</SuperButton>
-              <SuperButton red onClick={deletePackOn} className={s.button}>✘</SuperButton>
+                <SuperButton onClick={editPackOn} className={s.button}>✎</SuperButton>
+                <SuperButton red onClick={deletePackOn} className={s.button}>✘</SuperButton>
             </>
         }
     </div>

@@ -6,7 +6,7 @@ import {EditPackForm} from '../../../../../../Modals/EditPackForm/EditPackForm'
 import a from '../../../../../../../common/styles/Actions.module.css'
 import {LearnPackForm} from '../../../../../../Modals/LearnPackForm/LearnPackForm';
 import {useDispatch} from 'react-redux'
-import {cardsActions} from '../../../../../../Cards/CardsBLL/cards-reducer'
+import {cardsActions, getCards} from '../../../../../../Cards/CardsBLL/cards-reducer'
 import {PackType} from '../../../../../PacksAPI/packs-api'
 
 type PackActionsType = {
@@ -44,6 +44,7 @@ export const PackActions: FC<PackActionsType> = memo(({isMyPacks, pack}) => {
     const learnPackOn = useCallback(() => {
         setIsLearningOpen(true)
         dispatch(cardsActions.setPackId(pack._id))
+        dispatch(getCards())
     }, [])
 
     return <div className={a.actionButtons}>

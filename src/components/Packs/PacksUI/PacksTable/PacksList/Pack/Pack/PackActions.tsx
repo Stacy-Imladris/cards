@@ -4,6 +4,7 @@ import s from '../../../PacksTable.module.css'
 import {DeletePackForm} from '../../../../../../Modals/DeletePackForm/DeletePackForm'
 import {EditPackForm} from '../../../../../../Modals/EditPackForm/EditPackForm'
 import a from '../../../../../../../common/styles/Actions.module.css'
+import {LearnPackForm} from '../../../../../../Modals/LearnPackForm/LearnPackForm';
 
 type PackActionsType = {
     isMyPacks: boolean
@@ -13,6 +14,7 @@ type PackActionsType = {
 }
 
 export const PackActions: FC<PackActionsType> = memo(({isMyPacks, packId, name, cardsCount}) => {
+    const [isLearningOpen, setIsLearningOpen] = useState<boolean>(false)
     const [isDeletingOpen, setIsDeletingOpen] = useState<boolean>(false)
     const [isEditingOpen, setIsEditingOpen] = useState<boolean>(false)
 
@@ -32,12 +34,21 @@ export const PackActions: FC<PackActionsType> = memo(({isMyPacks, packId, name, 
         setIsEditingOpen(true)
     }
 
+    const learnPackOff = () => {
+        setIsLearningOpen(false)
+    }
+
+    const learnPackOn = () => {
+        setIsLearningOpen(true)
+    }
+
     return <div className={a.actionButtons}>
-        <DeletePackForm onClickNotOpen={deletePackOff} isOpen={isDeletingOpen} packId={packId} name={name}/>
+        <LearnPackForm onClickNotOpen={learnPackOff} isOpen={isLearningOpen}/>
         <EditPackForm onClickNotOpen={editPackOff} isOpen={isEditingOpen} packId={packId} name={name}/>
+        <DeletePackForm onClickNotOpen={deletePackOff} isOpen={isDeletingOpen} packId={packId} name={name}/>
         {
-            cardsCount > 0
-            && <SuperButton>🕮</SuperButton>
+            cardsCount > 0 &&
+            <SuperButton onClick={learnPackOn}>🕮</SuperButton>
         }
         {
             isMyPacks &&

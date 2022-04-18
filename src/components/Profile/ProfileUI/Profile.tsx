@@ -11,7 +11,7 @@ import {
     selectPackNameForSearch,
     selectProfileEditMode,
     selectProfileUserName,
-    selectTheme
+    selectTheme, selectUser_id
 } from '../../../selectors/selectors';
 import {useCallback, useState} from 'react';
 import {SearchField} from '../../Features/SearchField/SearchField';
@@ -19,6 +19,7 @@ import {PacksTable} from '../../Packs/PacksUI/PacksTable/PacksTable';
 import {packsActions} from '../../Packs/PacksBLL/packs-reducer';
 import {DoubleRange} from '../../Features/DoubleRange/DoubleRange';
 import {AddPackForm} from '../../Modals/AddPackForm/AddPackForm';
+import {useLocation} from 'react-router-dom';
 
 export const Profile = () => {
     const [isAddingOpen, setIsAddingOpen] = useState<boolean>(false)
@@ -27,8 +28,10 @@ export const Profile = () => {
     const theme = useAppSelector(selectTheme)
     const editMode = useAppSelector(selectProfileEditMode)
     const packName = useAppSelector(selectPackNameForSearch)
+    const user_id = useAppSelector(selectUser_id)
 
     const dispatch = useDispatch()
+    const location = useLocation()
 
     const editProfile = useCallback(() => {
         dispatch(profileActions.setEditModeProfile(true))
@@ -49,6 +52,11 @@ export const Profile = () => {
 
     const addPackOn = () => {
         setIsAddingOpen(true)
+    }
+
+    if (location.pathname === "/profile") {
+        dispatch(packsActions.setPacksForUser(user_id))
+        dispatch(packsActions.setPacksType("All"))
     }
 
     return (

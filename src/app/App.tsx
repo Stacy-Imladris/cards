@@ -9,6 +9,7 @@ import {auth} from '../components/Profile/ProfileBLL/profile-reducer'
 import {Preloader} from '../common/preloader/Preloader';
 import {selectIsInitialized, selectTheme} from '../selectors/selectors';
 import {AppSnackbar} from '../components/Features/AppSnackbar/AppSnackbar';
+import {Scroll} from '../common/scroll/Scroll';
 
 export const App = () => {
     const theme = useAppSelector(selectTheme)
@@ -30,6 +31,7 @@ export const App = () => {
             <Header/>
             <AppSnackbar/>
             {isLoading && <div className={s.appProgress}><Preloader/></div>}
+            <Scroll/>
             <AllRoutes/>
         </div>
     )

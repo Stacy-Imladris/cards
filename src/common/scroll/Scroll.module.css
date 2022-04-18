@@ -1,0 +1,21 @@
+.scroll {
+    width: 40px;
+    height: 40px;
+    background-color: #077517;
+    border-radius: 50%;
+    line-height: 0;
+    border: none;
+    text-transform: none;
+    overflow: visible;
+    position: fixed;
+    right: 5px;
+    bottom: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    opacity: 0.7;
+}
+
+.scroll:hover {
+    cursor: pointer;
+    opacity: 1;
+}

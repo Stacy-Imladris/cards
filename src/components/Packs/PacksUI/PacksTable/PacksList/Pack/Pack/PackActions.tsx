@@ -4,10 +4,12 @@ import s from '../../../PacksTable.module.css'
 import {DeletePackForm} from '../../../../../../Modals/DeletePackForm/DeletePackForm'
 import {EditPackForm} from '../../../../../../Modals/EditPackForm/EditPackForm'
 import a from '../../../../../../../common/styles/Actions.module.css'
-import {LearnPackForm} from '../../../../../../Modals/LearnPackForm/LearnPackForm';
+import {LearnPackForm} from '../../../../../../Modals/LearnPackForm/LearnPackForm'
 import {useDispatch} from 'react-redux'
 import {cardsActions, getCards} from '../../../../../../Cards/CardsBLL/cards-reducer'
 import {PackType} from '../../../../../PacksAPI/packs-api'
+import {learnCard} from '../../../../../../../bll/learn-reducer'
+import {useAppSelector} from '../../../../../../../bll/store'
 
 type PackActionsType = {
     isMyPacks: boolean
@@ -38,13 +40,13 @@ export const PackActions: FC<PackActionsType> = memo(({isMyPacks, pack}) => {
     }, [])
 
     const learnPackOff = useCallback(() => {
+        dispatch(cardsActions.setCards([]))
         setIsLearningOpen(false)
     }, [])
 
     const learnPackOn = useCallback(() => {
+        dispatch(learnCard(pack._id))
         setIsLearningOpen(true)
-        dispatch(cardsActions.setPackId(pack._id))
-        dispatch(getCards())
     }, [])
 
     return <div className={a.actionButtons}>

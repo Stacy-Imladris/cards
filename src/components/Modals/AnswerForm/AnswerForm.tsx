@@ -6,12 +6,15 @@ import {SuperRadio} from '../../../common/super-components/c6-SuperRadio/SuperRa
 import {Logo} from '../../../common/logo/Logo';
 import {useAppSelector} from '../../../bll/store';
 import {selectTheme} from '../../../selectors/selectors';
+import {CardType} from '../../Cards/CardsAPI/cards-api'
+import {estimate} from '../../../bll/learn-reducer'
 
 type AnswerFormPropsType = {
     onClickLearnPackOn: () => void
     onClickNotOpen: () => void
     isOpen: boolean
     name: string
+    card: CardType
 }
 
 export enum Grades {
@@ -28,9 +31,12 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
                                                              onClickLearnPackOn,
                                                              onClickNotOpen,
                                                              isOpen,
-                                                             name
+                                                             name,
+                                                             card
                                                          }) => {
     const [value, setValue] = useState<string>('Did not know')
+//@ts-ignore
+    const grade: number = Grades[value]
 
     const theme = useAppSelector(selectTheme)
 
@@ -39,7 +45,8 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
     const learnPackOn = useCallback(() => {
         onClickNotOpen()
         onClickLearnPackOn()
-        //dispatch(rate(Grades[value]))
+        //@ts-ignore
+        dispatch(estimate(Grades[value]))
     }, [dispatch, onClickLearnPackOn, onClickNotOpen])
 
     const onChangeOption = useCallback((value: string) => {
@@ -52,8 +59,8 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
         opacity: 1}}>
         <div>
             <div>Learn '{name}'</div>
-            <div>Question: '{}'</div>
-            <div>Answer: '{}'</div>
+            <div>Question: '{card.question}'</div>
+            <div>Answer: '{card.answer}'</div>
         </div>
         <div>
             <div>Rate yourself:</div>

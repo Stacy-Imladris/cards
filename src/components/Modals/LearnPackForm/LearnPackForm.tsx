@@ -5,8 +5,6 @@ import {AnswerForm} from '../AnswerForm/AnswerForm';
 import {useAppSelector} from '../../../bll/store';
 import {selectTheme} from '../../../selectors/selectors';
 import {Preloader} from '../../../common/preloader/Preloader'
-import {useDispatch} from 'react-redux'
-import {cardsActions} from '../../Cards/CardsBLL/cards-reducer'
 
 type LearnPackFormPropsType = {
     onClickLearnPackOn: () => void
@@ -37,7 +35,7 @@ export const LearnPackForm: FC<LearnPackFormPropsType> = memo(({
 
 
     return <>
-        <AnswerForm onClickNotOpen={AnswerOff} isOpen={isAnswerOpen} name={name}
+        <AnswerForm onClickNotOpen={AnswerOff} isOpen={isAnswerOpen} name={name} card={card}
                     onClickLearnPackOn={onClickLearnPackOn}/>
         <Modal onClickNotOpen={onClickNotOpen} width={460} height={220} isOpen={isOpen}
                backgroundStyle={{background: `${theme === '☀' ? '#d0eca1' : '#022507'}`,

@@ -17,6 +17,7 @@ export const cardsAPI = {
     },
     rate(payload: RateType) {
         return instance.put<any, AxiosResponse<RateResponseType>, RateType>(`cards/grade`, payload)
+            .then(res => res.data.updatedGrade.grade)
     },
 }
 

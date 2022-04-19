@@ -3,7 +3,6 @@ import {useDispatch} from 'react-redux';
 import {Modal} from '../Modal/Modal';
 import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton';
 import {SuperRadio} from '../../../common/super-components/c6-SuperRadio/SuperRadio';
-import {Logo} from '../../../common/logo/Logo';
 import {useAppSelector} from '../../../bll/store';
 import {selectTheme} from '../../../selectors/selectors';
 
@@ -12,14 +11,6 @@ type AnswerFormPropsType = {
     onClickNotOpen: () => void
     isOpen: boolean
     name: string
-}
-
-export enum Grades {
-    'Did not know' = 1,
-    'Forgot' = 2,
-    'A lot of thought' = 3,
-    'Confused' = 4,
-    'Knew the answer' = 5,
 }
 
 const arr = ['Did not know', 'Forgot', 'A lot of thought', 'Confused', 'Knew the answer']

@@ -6,10 +6,6 @@ import {useAppSelector} from '../bll/store'
 
 export const LoginNavigate: FC = ({children}) => {
     const isLoggedIn = useAppSelector(selectIsLoggedIn)
-    if (!isLoggedIn) {
-        return <Navigate to={PATH.LOGIN} />
-    }
+    if (!isLoggedIn) return <Navigate to={PATH.LOGIN} />
     return <>{children}</>
 }
-
-

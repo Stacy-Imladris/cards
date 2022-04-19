@@ -1,13 +1,12 @@
-import {FC, memo, useCallback, useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {Modal} from '../Modal/Modal';
-import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton';
-import {SuperRadio} from '../../../common/super-components/c6-SuperRadio/SuperRadio';
-import {Logo} from '../../../common/logo/Logo';
-import {useAppSelector} from '../../../bll/store';
-import {selectTheme} from '../../../selectors/selectors';
+import {FC, memo, useCallback, useState} from 'react'
+import {useDispatch} from 'react-redux'
+import {Modal} from '../Modal/Modal'
+import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton'
+import {SuperRadio} from '../../../common/super-components/c6-SuperRadio/SuperRadio'
+import {useAppSelector} from '../../../bll/store'
+import {selectTheme} from '../../../selectors/selectors'
 import {CardType} from '../../Cards/CardsAPI/cards-api'
-import {estimate} from '../../../bll/learn-reducer'
+import {rate} from '../../../bll/learn-reducer'
 
 type AnswerFormPropsType = {
     onClickLearnPackOn: () => void
@@ -17,15 +16,29 @@ type AnswerFormPropsType = {
     card: CardType
 }
 
-export enum Grades {
-    'Did not know' = 1,
-    'Forgot' = 2,
-    'A lot of thought' = 3,
-    'Confused' = 4,
-    'Knew the answer' = 5,
+enum GRADES {
+    ONE = 'Did not know',
+    TWO = 'Forgot',
+    THREE = 'A lot of thought',
+    FOUR = 'Confused',
+    FIVE = 'Knew the answer'
 }
 
-const arr = ['Did not know', 'Forgot', 'A lot of thought', 'Confused', 'Knew the answer']
+type GradesType = GRADES.ONE | GRADES.TWO | GRADES.THREE | GRADES.FOUR | GRADES.FIVE
+
+type GradesObjectType = {
+    [key in GradesType]: number
+}
+
+export const Grades: GradesObjectType = {
+    [GRADES.ONE]: 1,
+    [GRADES.TWO]: 2,
+    [GRADES.THREE]: 3,
+    [GRADES.FOUR]: 4,
+    [GRADES.FIVE]: 5,
+}
+
+const arr = [GRADES.ONE, GRADES.TWO, GRADES.THREE, GRADES.FOUR, GRADES.FIVE]
 
 export const AnswerForm: FC<AnswerFormPropsType> = memo(({
                                                              onClickLearnPackOn,
@@ -34,9 +47,7 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
                                                              name,
                                                              card
                                                          }) => {
-    const [value, setValue] = useState<string>('Did not know')
-//@ts-ignore
-    const grade: number = Grades[value]
+    const [value, setValue] = useState<GradesType>(GRADES.ONE)
 
     const theme = useAppSelector(selectTheme)
 
@@ -45,18 +56,19 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
     const learnPackOn = useCallback(() => {
         onClickNotOpen()
         onClickLearnPackOn()
-        //@ts-ignore
-        dispatch(estimate(Grades[value]))
-    }, [dispatch, onClickLearnPackOn, onClickNotOpen])
+        dispatch(rate(Grades[value]))
+    }, [dispatch, onClickLearnPackOn, onClickNotOpen, value])
 
     const onChangeOption = useCallback((value: string) => {
-        setValue(value)
+        setValue(value as GradesType)
     }, [])
 
     return <Modal onClickNotOpen={onClickNotOpen} width={460} height={530}
                   isOpen={isOpen}
-                  backgroundStyle={{background: `${theme === '☀' ? '#d0eca1' : '#022507'}`,
-        opacity: 1}}>
+                  backgroundStyle={{
+                      background: `${theme === '☀' ? '#d0eca1' : '#022507'}`,
+                      opacity: 1
+                  }}>
         <div>
             <div>Learn '{name}'</div>
             <div>Question: '{card.question}'</div>

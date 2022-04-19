@@ -66,7 +66,9 @@ export const Login = () => {
                     Remember me
                 </SuperCheckbox>
             </div>
-            <Link to="/password-recovery" className={`${s.link} ${t[theme + '-text']}`}>Forgot Password</Link>
+            <Link to="/password-recovery" className={`${s.link} ${t[theme + '-text']}`}>
+                Forgot Password
+            </Link>
             <SuperButton onClick={onClickLogin} className={s.login}>Login</SuperButton>
             <span>Don't have an account?</span>
             <Link to="/registration" className={`${s.link} ${t[theme + '-text']}`}>Sign Up</Link>

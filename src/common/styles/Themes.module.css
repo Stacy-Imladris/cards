@@ -1,5 +1,5 @@
 .☽ {
-    background: #022507;
+    background: linear-gradient(to bottom right, #022507, #0c4612);
 }
 
 .☽-text {
@@ -7,7 +7,7 @@
 }
 
 .☀ {
-    background: #d0eca1;
+    background: linear-gradient(to bottom right, #d0eca1, #f3faec);
 }
 
 .☀-text {

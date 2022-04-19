@@ -71,7 +71,9 @@ export const Login = () => {
             </Link>
             <SuperButton onClick={onClickLogin} className={s.login}>Login</SuperButton>
             <span>Don't have an account?</span>
-            <Link to="/registration" className={`${s.link} ${t[theme + '-text']}`}>Sign Up</Link>
+            <Link to="/registration" className={`${s.link} ${t[theme + '-text']}`}>
+                Sign Up
+            </Link>
             <div className={s.error}>{error}</div>
         </div>
     )

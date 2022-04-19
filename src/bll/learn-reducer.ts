@@ -14,8 +14,9 @@ export const learnReducer = (state: InitialStateType = InitialState, action: Lea
 
         case 'LEARN/SET_IS_LOADING':
         case 'LEARN/SET_RANDOM_CARD':
-        case 'LEARN/SET_GRAGE':
             return {...state, ...action.payload}
+        case 'LEARN/SET_GRADE':
+            return {...state, randomCard: {...state.randomCard, grade: action.grade}}
         default:
             return state
     }
@@ -27,7 +28,7 @@ export const learnActions = {
         type: 'LEARN/SET_IS_LOADING',
         payload: {isLearnLoading}
     } as const),
-    setGrade: (grade: number) => ({type: 'LEARN/SET_GRAGE', payload: {grade}} as const),
+    setGrade: (grade: number) => ({type: 'LEARN/SET_GRADE', grade } as const),
     setAppError: (error: string) => ({type: 'APP/SET_ERROR', payload: {error}} as const)
 }
 
@@ -48,7 +49,7 @@ export const learnCard = (packId: string): AppThunk => async (dispatch, getState
     }
 }
 
-export const estimate = (grade: number): AppThunk => async (dispatch, getState) => {
+export const rate = (grade: number): AppThunk => async (dispatch, getState) => {
     const card_id = getState().learn.randomCard._id
     dispatch(learnActions.setLearnIsLoading(true))
     try {

@@ -5,7 +5,7 @@ import {instance} from '../../../../api/instance';
 export const loginAPI = {
     login(login: LoginType) {
         return instance.post<any, AxiosResponse<UserType>, LoginType>('auth/login', login)
-            .then(data => data.data)
+            .then(res => res.data)
     },
     logout() {
         return instance.delete<any, AxiosResponse<LogoutResponseType>>('auth/me')

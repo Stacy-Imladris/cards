@@ -17,7 +17,14 @@ type RecoveryPropsType = {
     theme: string
 }
 
-export const Recovery = memo(({setEmail, email, toSendInstructions, isLoading, error, check, theme
+export const Recovery = memo(({
+                                  setEmail,
+                                  email,
+                                  toSendInstructions,
+                                  isLoading,
+                                  error,
+                                  check,
+                                  theme
                               }: RecoveryPropsType) => {
     return check
         ? <div className={`${s.container} ${t[theme + '-text']}`}>
@@ -30,13 +37,22 @@ export const Recovery = memo(({setEmail, email, toSendInstructions, isLoading, e
             <div className={s.preloader}>{isLoading && <Preloader/>}</div>
             <div className={s.mainText}>Forgot your password?</div>
             <span>Email</span>
-            <div><SuperInputText value={email} onChangeText={setEmail} onEnter={toSendInstructions}/></div>
+            <div>
+                <SuperInputText value={email} onChangeText={setEmail}
+                                onEnter={toSendInstructions}/>
+            </div>
             <span>Enter your email address and we will send you further instructions</span>
             <div className={s.buttons}>
-                <SuperButton disabled={isLoading} onClick={toSendInstructions}>Send instructions</SuperButton>
+                <SuperButton disabled={isLoading} onClick={toSendInstructions}>
+                    Send instructions
+                </SuperButton>
             </div>
             <span>Did you remember your password?</span>
             <div className={s.error}>{error}</div>
-            <div><Link to="/login" className={`${s.link} ${t[theme + '-text']}`}>Try logging in</Link></div>
+            <div>
+                <Link to="/login" className={`${s.link} ${t[theme + '-text']}`}>
+                    Try logging in
+                </Link>
+            </div>
         </div>
 })

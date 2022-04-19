@@ -6,7 +6,7 @@ interface IModalUp {
     speed?: number
 }
 
-export const Scroll: FC<IModalUp> = ({speed = 3}) => {
+export const Scroll: FC<IModalUp> = ({speed = 10}) => {
     const [show, setShow] = useState(false);
 
     const handleScroll = () => {
@@ -15,8 +15,8 @@ export const Scroll: FC<IModalUp> = ({speed = 3}) => {
     };
 
     const scrollFunction = () => {
-        window.scrollTo({top: 0, behavior: 'smooth'})
-        /*const step = window.scrollY / speed;
+        // window.scrollTo({top: 0, behavior: 'smooth'}) // !!!
+        const step = window.scrollY / speed;
         let lastState = window.scrollY;
 
         const innerTimer = setInterval(() => {
@@ -25,7 +25,7 @@ export const Scroll: FC<IModalUp> = ({speed = 3}) => {
 
             window.scroll(0, lastState - step);
             if (window.scrollY === 0) clearInterval(innerTimer);
-        }, 50);*/
+        }, 50);
     };
 
     useEffect(() => {

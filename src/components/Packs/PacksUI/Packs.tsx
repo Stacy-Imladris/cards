@@ -75,7 +75,7 @@ export const Packs = () => {
                     <div className={c.rowElements}>
                         <SearchField onChangeWithDebounce={onChangeDebounceRequest}
                                      value={packName} wide
-                                     placeholder={'Enter pack\'s title for search'}/>
+                                     placeholder={'Enter search title'}/>
                         <SuperButton className={c.addItem} onClick={addPackOn}>
                             Add pack
                         </SuperButton>

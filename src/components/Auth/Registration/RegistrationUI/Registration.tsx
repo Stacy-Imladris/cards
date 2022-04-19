@@ -21,21 +21,42 @@ type RegistrationPropsType = {
     navigate: NavigateFunction
 }
 
-export const Registration = memo(({signUp, email, setEmail, password, setPassword, password2, setPassword2,
-                                 error, isLoading, theme, navigate}: RegistrationPropsType) => {
+export const Registration = memo(({
+                                      signUp,
+                                      email,
+                                      setEmail,
+                                      password,
+                                      setPassword,
+                                      password2,
+                                      setPassword2,
+                                      error,
+                                      isLoading,
+                                      theme,
+                                      navigate
+                                  }: RegistrationPropsType) => {
     return (
         <div className={`${s.container} ${t[theme + '-text']}`}>
             <Logo/>
             <div className={s.preloader}>{isLoading && <Preloader/>}</div>
             <div className={s.mainText}>Sign up</div>
             <span>Email</span>
-            <div><SuperInputText value={email} onChangeText={setEmail} onEnter={signUp}/></div>
+            <div>
+                <SuperInputText value={email} onChangeText={setEmail} onEnter={signUp}/>
+            </div>
             <span>Password</span>
-            <div><SuperInputText value={password} onChangeText={setPassword} onEnter={signUp} eye/></div>
+            <div>
+                <SuperInputText value={password} onChangeText={setPassword}
+                                onEnter={signUp} eye/>
+            </div>
             <span>Confirm password</span>
-            <div><SuperInputText value={password2} onChangeText={setPassword2} onEnter={signUp} eye/></div>
+            <div>
+                <SuperInputText value={password2} onChangeText={setPassword2}
+                                onEnter={signUp} eye/>
+            </div>
             <div className={s.buttons}>
-                <SuperButton disabled={isLoading} onClick={() => navigate('/login')}>Cancel</SuperButton>
+                <SuperButton disabled={isLoading} onClick={() => navigate('/login')}>
+                    Cancel
+                </SuperButton>
                 <SuperButton disabled={isLoading} onClick={signUp}>Register</SuperButton>
             </div>
             <div className={s.error}>{error}</div>

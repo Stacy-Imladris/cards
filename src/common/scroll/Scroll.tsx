@@ -1,13 +1,12 @@
 import {FC, useEffect, useState} from 'react';
 import s from './Scroll.module.css'
-import {SuperButton} from "../super-components/c2-SuperButton/SuperButton";
-
+import {SuperButton} from '../super-components/c2-SuperButton/SuperButton';
 
 interface IModalUp {
     speed?: number
 }
 
-export const Scroll: FC<IModalUp>=({speed = 10})=> {
+export const Scroll: FC<IModalUp> = ({speed = 3}) => {
     const [show, setShow] = useState(false);
 
     const handleScroll = () => {
@@ -16,7 +15,8 @@ export const Scroll: FC<IModalUp>=({speed = 10})=> {
     };
 
     const scrollFunction = () => {
-        const step = window.scrollY / speed;
+        window.scrollTo({top: 0, behavior: 'smooth'})
+        /*const step = window.scrollY / speed;
         let lastState = window.scrollY;
 
         const innerTimer = setInterval(() => {
@@ -25,18 +25,14 @@ export const Scroll: FC<IModalUp>=({speed = 10})=> {
 
             window.scroll(0, lastState - step);
             if (window.scrollY === 0) clearInterval(innerTimer);
-        }, 50);
+        }, 50);*/
     };
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
     }, []);
 
-    return (<>
-            {show &&
-            <SuperButton className={s.scroll} onClick={scrollFunction}>
-              ⃤
-            </SuperButton>}
-        </>
-    );
+    return <>
+        {show && <SuperButton className={s.scroll} onClick={scrollFunction}>⃤</SuperButton>}
+    </>
 }

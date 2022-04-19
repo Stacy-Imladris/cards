@@ -55,6 +55,7 @@ export const login = (login: LoginType): AppThunk => async dispatch => {
 export const logout = (): AppThunk => async dispatch => {
     try {
         await loginAPI.logout()
+        dispatch(loginActions.setLoginError(''))
         dispatch(profileActions.setEditModeProfile(false))
         dispatch(loginActions.setIsLoggedIn(false))
         dispatch(profileActions.setUserData({} as UserType))

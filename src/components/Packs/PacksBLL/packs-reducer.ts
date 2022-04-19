@@ -89,7 +89,6 @@ export const packsActions = {
         payload: {pageCount}
     } as const),
     setPacksType: (packsType: string)=> ({type: 'PACKS/SET_PACKS_TYPE', payload: {packsType}} as const),
-
 }
 
 //thunks

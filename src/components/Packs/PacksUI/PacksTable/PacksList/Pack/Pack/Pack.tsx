@@ -2,12 +2,12 @@ import {FC, memo} from 'react'
 import {PackActions} from './PackActions'
 import {useAppSelector} from '../../../../../../../bll/store'
 import {PackType} from '../../../../../PacksAPI/packs-api'
-import {getLastUpdatedDate} from '../../../../../../../utils/date-helpers'
 import {useDispatch} from 'react-redux';
 import {cardsActions} from '../../../../../../Cards/CardsBLL/cards-reducer';
 import {useNavigate} from 'react-router-dom';
 import {PATH} from '../../../../../../../app/AllRoutes';
 import {selectUser_id} from '../../../../../../../selectors/selectors';
+import {getLastUpdatedDate} from '../../../../../../../utils/getLastUpdatedDate';
 
 type PackPropsType = {
     pack: PackType

@@ -1,5 +1,4 @@
 import {FC, memo, useCallback, useState} from 'react'
-import {getLastUpdatedDate} from '../../../../../../utils/date-helpers'
 import {CardType} from '../../../../CardsAPI/cards-api'
 import s from '../../../Cards.module.css'
 import a from '../../../../../../common/styles/Actions.module.css'
@@ -9,6 +8,7 @@ import {selectUser_id} from '../../../../../../selectors/selectors'
 import {DeleteCardForm} from '../../../../../Modals/DeleteCardForm/DeleteCardForm'
 import {EditCardForm} from '../../../../../Modals/EditCardForm/EditCardForm'
 import {useParams} from 'react-router-dom'
+import {getLastUpdatedDate} from '../../../../../../utils/getLastUpdatedDate';
 
 type CardPropsType = {
     card: CardType

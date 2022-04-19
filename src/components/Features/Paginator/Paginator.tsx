@@ -1,7 +1,7 @@
 import s from './Paginator.module.css';
-import {getPagesForRender} from '../../../utils/page-helper';
 import {memo} from 'react';
 import {SuperSelect} from '../../../common/super-components/c5-SuperSelect/SuperSelect';
+import {getPages} from '../../../utils/getPages';
 
 type PaginatorPropsType = {
     onChangeSetAmountOfItems: (amountOfItems: number) => void
@@ -27,7 +27,7 @@ export const Paginator = memo(({
         pages.push(i)
     }
 
-    const pagesForRender = getPagesForRender(pages, page, pagesCount)
+    const pagesForRender = getPages(pages, page, pagesCount)
 
     const onClickPageChanged = (page: number) => {
         onPageChanged(page)

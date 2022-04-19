@@ -1,8 +1,7 @@
 import {AppThunk, InferActionTypes} from '../../../bll/store';
-import axios from 'axios';
 import {AddNewCardType, packsAPI, PackType, UpdatePackType} from '../PacksAPI/packs-api'
 import {appActions} from '../../../bll/appReducer';
-import {handleServerNetworkError} from '../../../utils/error-handler';
+import {handleServerNetworkError} from '../../../utils/handleServerNetworkError';
 
 const packsInitialState = {
     packs: [] as PackType[],

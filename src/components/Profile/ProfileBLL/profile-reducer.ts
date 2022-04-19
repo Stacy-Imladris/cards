@@ -1,9 +1,8 @@
 import {AppThunk, InferActionTypes} from '../../../bll/store'
 import {profileAPI, UserType} from '../ProfileAPI/profile-api'
-import axios from 'axios'
 import {loginActions} from '../../Auth/Login/LoginBLL/loginReducer';
 import {appActions} from '../../../bll/appReducer';
-import {handleServerNetworkError} from '../../../utils/error-handler';
+import {handleServerNetworkError} from '../../../utils/handleServerNetworkError';
 
 const initialState = {
     user: {} as UserType,

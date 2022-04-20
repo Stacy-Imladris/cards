@@ -54,9 +54,9 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
     const dispatch = useDispatch()
 
     const next = useCallback(() => {
+        dispatch(setRandomCard())
         onClickNotOpen()
         onClickLearnPackOn()
-        dispatch(setRandomCard())
     }, [dispatch, onClickLearnPackOn, onClickNotOpen])
 
     const estimate = useCallback(() => {

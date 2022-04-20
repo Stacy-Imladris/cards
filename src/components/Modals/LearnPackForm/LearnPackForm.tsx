@@ -1,13 +1,12 @@
-import {FC, memo, useCallback, useState} from 'react';
-import {Modal} from '../Modal/Modal';
-import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton';
-import {AnswerForm} from '../AnswerForm/AnswerForm';
-import {useAppSelector} from '../../../bll/store';
-import {selectTheme} from '../../../selectors/selectors';
+import {FC, memo, useCallback, useState} from 'react'
+import {Modal} from '../Modal/Modal'
+import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton'
+import {AnswerForm} from '../AnswerForm/AnswerForm'
+import {useAppSelector} from '../../../bll/store'
+import {selectTheme} from '../../../selectors/selectors'
 import {Preloader} from '../../../common/preloader/Preloader'
 import {useDispatch} from 'react-redux'
-import {learnActions} from '../../../bll/learn-reducer'
-import {CardType} from '../../Cards/CardsAPI/cards-api'
+import {cleanLearnState} from '../../../bll/learn-reducer'
 
 type LearnPackFormPropsType = {
     onClickLearnPackOn: () => void
@@ -39,8 +38,7 @@ export const LearnPackForm: FC<LearnPackFormPropsType> = memo(({
     }, [onClickNotOpen])
 
     const cancel = useCallback(() => {
-        dispatch(learnActions.setRandomCard({} as CardType))
-        dispatch(learnActions.setCards([]))
+        dispatch(cleanLearnState())
         onClickNotOpen()
     }, [onClickNotOpen])
 

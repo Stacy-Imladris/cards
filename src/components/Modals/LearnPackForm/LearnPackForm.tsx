@@ -6,6 +6,8 @@ import {useAppSelector} from '../../../bll/store';
 import {selectTheme} from '../../../selectors/selectors';
 import {Preloader} from '../../../common/preloader/Preloader'
 import {useDispatch} from 'react-redux'
+import {learnActions} from '../../../bll/learn-reducer'
+import {CardType} from '../../Cards/CardsAPI/cards-api'
 
 type LearnPackFormPropsType = {
     onClickLearnPackOn: () => void
@@ -36,6 +38,12 @@ export const LearnPackForm: FC<LearnPackFormPropsType> = memo(({
         setIsAnswerOpen(true)
     }, [onClickNotOpen])
 
+    const cancel = useCallback(() => {
+        dispatch(learnActions.setRandomCard({} as CardType))
+        dispatch(learnActions.setCards([]))
+        onClickNotOpen()
+    }, [onClickNotOpen])
+
 
     return <>
         <AnswerForm onClickNotOpen={AnswerOff} isOpen={isAnswerOpen} name={name} card={randomCard}
@@ -50,7 +58,7 @@ export const LearnPackForm: FC<LearnPackFormPropsType> = memo(({
                         <div>Learn '{name}'</div>
                         <div>Question: '{randomCard.question}'</div>
                         <div>
-                            <SuperButton onClick={onClickNotOpen}>Cancel</SuperButton>
+                            <SuperButton onClick={cancel}>Cancel</SuperButton>
                             <SuperButton onClick={AnswerOn}>Show answer</SuperButton>
                         </div>
                     </>

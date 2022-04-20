@@ -23,7 +23,7 @@ export const PackActions: FC<PackActionsType> = memo(({isMyPacks, pack}) => {
 
     const dispatch = useDispatch()
 
-    const card = useSelector<AppRootStateType, CardType>(state => state.learn.randomCard)
+    const cards = useSelector<AppRootStateType, CardType[]>(state => state.learn.cards)
 
     const deletePackOff = useCallback(() => {
         setIsDeletingOpen(false)
@@ -42,16 +42,15 @@ export const PackActions: FC<PackActionsType> = memo(({isMyPacks, pack}) => {
     }, [])
 
     const learnPackOff = useCallback(() => {
-        // dispatch(cardsActions.setCards([]))
         setIsLearningOpen(false)
     }, [])
 
-    // const isEmptyCardObject = Object.keys(card).length === 0
+    const isCardsEmpty = cards.length === 0
 
     const learnPackOn = useCallback(() => {
         setIsLearningOpen(true)
-        dispatch(learnCard(pack._id))
-    }, [])
+        isCardsEmpty && dispatch(learnCard(pack._id))
+    }, [isCardsEmpty])
 
     return <div className={a.actionButtons}>
         <LearnPackForm onClickNotOpen={learnPackOff} isOpen={isLearningOpen} name={pack.name}

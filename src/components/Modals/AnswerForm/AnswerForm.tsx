@@ -6,7 +6,7 @@ import {SuperRadio} from '../../../common/super-components/c6-SuperRadio/SuperRa
 import {useAppSelector} from '../../../bll/store'
 import {selectTheme} from '../../../selectors/selectors'
 import {CardType} from '../../Cards/CardsAPI/cards-api'
-import {rate, setRandomCard} from '../../../bll/learn-reducer'
+import {learnActions, rate, setRandomCard} from '../../../bll/learn-reducer'
 
 type AnswerFormPropsType = {
     onClickLearnPackOn: () => void
@@ -67,6 +67,12 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
         setValue(value as GradesType)
     }, [value])
 
+    const cancel = () => {
+        dispatch(learnActions.setRandomCard({} as CardType))
+        dispatch(learnActions.setCards([]))
+        onClickNotOpen()
+    }
+
     return <Modal onClickNotOpen={onClickNotOpen} width={460} height={530}
                   isOpen={isOpen}
                   backgroundStyle={{
@@ -85,7 +91,7 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
             />
         </div>
         <div>
-            <SuperButton onClick={onClickNotOpen}>Cancel</SuperButton>
+            <SuperButton onClick={cancel}>Cancel</SuperButton>
             <SuperButton onClick={estimate}>Rate</SuperButton>
             <SuperButton onClick={next}>Next</SuperButton>
         </div>

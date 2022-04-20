@@ -1,10 +1,7 @@
 import {cardsAPI, CardType, NewCardType, UpdateCardPayload} from '../CardsAPI/cards-api'
-import {AppThunk, InferActionTypes} from '../../../bll/store';
-import axios from 'axios';
-import {packsActions} from "../../Packs/PacksBLL/packs-reducer";
-import {appActions} from '../../../bll/appReducer';
-import {handleServerNetworkError} from '../../../utils/error-handler';
-import {UpdatePackType} from '../../Packs/PacksAPI/packs-api';
+import {AppThunk, InferActionTypes} from '../../../bll/store'
+import {appActions} from '../../../bll/appReducer'
+import {handleServerNetworkError} from '../../../utils/error-handler'
 
 const cardsInitialState = {
     cards: [] as CardType[],

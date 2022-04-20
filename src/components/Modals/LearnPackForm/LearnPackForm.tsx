@@ -5,6 +5,7 @@ import {AnswerForm} from '../AnswerForm/AnswerForm';
 import {useAppSelector} from '../../../bll/store';
 import {selectTheme} from '../../../selectors/selectors';
 import {Preloader} from '../../../common/preloader/Preloader'
+import {useDispatch} from 'react-redux'
 
 type LearnPackFormPropsType = {
     onClickLearnPackOn: () => void
@@ -20,7 +21,9 @@ export const LearnPackForm: FC<LearnPackFormPropsType> = memo(({
                                                                }) => {
     const theme = useAppSelector(selectTheme)
     const isLearnLoading = useAppSelector(state => state.learn.isLearnLoading)
-    const card = useAppSelector(state => state.learn.randomCard)
+    const randomCard = useAppSelector(state => state.learn.randomCard)
+
+    const dispatch = useDispatch()
 
     const [isAnswerOpen, setIsAnswerOpen] = useState<boolean>(false)
 
@@ -35,7 +38,7 @@ export const LearnPackForm: FC<LearnPackFormPropsType> = memo(({
 
 
     return <>
-        <AnswerForm onClickNotOpen={AnswerOff} isOpen={isAnswerOpen} name={name} card={card}
+        <AnswerForm onClickNotOpen={AnswerOff} isOpen={isAnswerOpen} name={name} card={randomCard}
                     onClickLearnPackOn={onClickLearnPackOn}/>
         <Modal onClickNotOpen={onClickNotOpen} width={460} height={220} isOpen={isOpen}
                backgroundStyle={{background: `${theme === '☀' ? '#d0eca1' : '#022507'}`,
@@ -45,7 +48,7 @@ export const LearnPackForm: FC<LearnPackFormPropsType> = memo(({
                     ? <Preloader />
                     : <>
                         <div>Learn '{name}'</div>
-                        <div>Question: '{card.question}'</div>
+                        <div>Question: '{randomCard.question}'</div>
                         <div>
                             <SuperButton onClick={onClickNotOpen}>Cancel</SuperButton>
                             <SuperButton onClick={AnswerOn}>Show answer</SuperButton>

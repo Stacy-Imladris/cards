@@ -6,7 +6,7 @@ import {SuperRadio} from '../../../common/super-components/c6-SuperRadio/SuperRa
 import {useAppSelector} from '../../../bll/store'
 import {selectTheme} from '../../../selectors/selectors'
 import {CardType} from '../../Cards/CardsAPI/cards-api'
-import {rate} from '../../../bll/learn-reducer'
+import {rate, setRandomCard} from '../../../bll/learn-reducer'
 
 type AnswerFormPropsType = {
     onClickLearnPackOn: () => void
@@ -53,15 +53,19 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
 
     const dispatch = useDispatch()
 
-    const learnPackOn = useCallback(() => {
+    const next = useCallback(() => {
         onClickNotOpen()
         onClickLearnPackOn()
+        dispatch(setRandomCard())
+    }, [dispatch, onClickLearnPackOn, onClickNotOpen])
+
+    const estimate = useCallback(() => {
         dispatch(rate(Grades[value]))
-    }, [dispatch, onClickLearnPackOn, onClickNotOpen, value])
+    }, [dispatch, value])
 
     const onChangeOption = useCallback((value: string) => {
         setValue(value as GradesType)
-    }, [])
+    }, [value])
 
     return <Modal onClickNotOpen={onClickNotOpen} width={460} height={530}
                   isOpen={isOpen}
@@ -82,7 +86,8 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
         </div>
         <div>
             <SuperButton onClick={onClickNotOpen}>Cancel</SuperButton>
-            <SuperButton onClick={learnPackOn}>Next</SuperButton>
+            <SuperButton onClick={estimate}>Rate</SuperButton>
+            <SuperButton onClick={next}>Next</SuperButton>
         </div>
     </Modal>
 })

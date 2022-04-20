@@ -5,6 +5,7 @@ import {SuperButton} from '../../../common/super-components/c2-SuperButton/Super
 import {SuperRadio} from '../../../common/super-components/c6-SuperRadio/SuperRadio';
 import {useAppSelector} from '../../../bll/store';
 import {selectTheme} from '../../../selectors/selectors';
+import {CardType} from '../../Cards/CardsAPI/cards-api';
 
 type AnswerFormPropsType = {
     onClickLearnPackOn: () => void
@@ -22,6 +23,7 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
                                                              name
                                                          }) => {
     const [value, setValue] = useState<string>('Did not know')
+    //const [card, setCard] = useState<CardType>({} as CardType)
 
     const theme = useAppSelector(selectTheme)
 

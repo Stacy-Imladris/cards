@@ -17,6 +17,26 @@ import {
     selectUser_id
 } from '../../../selectors/selectors';
 import {AddCardForm} from '../../Modals/AddCardForm/AddCardForm';
+import {CardType} from '../CardsAPI/cards-api';
+
+function getRandom(min: number, max: number) {
+    return Math.random() * (max - min) + min;
+}
+
+export const getRandomCard = (cards: CardType[]) => {
+    const probabilities = cards.map(({grade}) => (6 - grade) ** 2)
+    const randomNumber = getRandom(Math.min(...probabilities), Math.max(...probabilities))
+    let sum = 0
+    probabilities.some((s, i) => {
+        if (sum > randomNumber) {
+            sum = i
+            return sum
+        } else {
+            sum += s
+        }
+    })
+    return cards[sum]
+}
 
 export const Cards = () => {
     const [isAddingOpen, setIsAddingOpen] = useState<boolean>(false)

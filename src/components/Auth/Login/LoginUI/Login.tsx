@@ -4,7 +4,6 @@ import {useAppSelector} from '../../../../bll/store';
 import {Link, Navigate} from 'react-router-dom';
 import {SuperInputText} from '../../../../common/super-components/c1-SuperInputText/SuperInputText';
 import {SuperButton} from '../../../../common/super-components/c2-SuperButton/SuperButton';
-import {PATH} from '../../../../app/AllRoutes';
 import s from '../../../../common/styles/Forms.module.css'
 import t from '../../../../common/styles/Themes.module.css'
 import {Logo} from '../../../../common/logo/Logo';
@@ -14,6 +13,7 @@ import {
     selectIsLoggedIn, selectLoginError, selectLoginIsLoading, selectTheme
 } from '../../../../selectors/selectors';
 import {login, loginActions} from '../LoginBLL/loginReducer';
+import {PATH} from '../../../../enums/paths';
 
 export const Login = () => {
     const [email, setEmail] = useState<string>('')

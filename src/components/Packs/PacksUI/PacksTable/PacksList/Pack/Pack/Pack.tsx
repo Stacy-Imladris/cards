@@ -5,9 +5,9 @@ import {PackType} from '../../../../../PacksAPI/packs-api'
 import {useDispatch} from 'react-redux';
 import {cardsActions} from '../../../../../../Cards/CardsBLL/cards-reducer';
 import {useNavigate} from 'react-router-dom';
-import {PATH} from '../../../../../../../app/AllRoutes';
 import {selectUser_id} from '../../../../../../../selectors/selectors';
 import {getLastUpdatedDate} from '../../../../../../../utils/getLastUpdatedDate';
+import {PATH} from '../../../../../../../enums/paths';
 
 type PackPropsType = {
     pack: PackType

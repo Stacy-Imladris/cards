@@ -4,11 +4,11 @@ import {useDispatch} from 'react-redux';
 import {registrationActions, signUp} from '../RegistrationBLL/registration-reducer';
 import {useAppSelector} from '../../../../bll/store';
 import {Navigate, useNavigate} from 'react-router-dom';
-import {PATH} from '../../../../app/AllRoutes';
 import {
     selectRegistrationError, selectRegistrationIsLoading,
     selectRegistrationToLogin, selectTheme
 } from '../../../../selectors/selectors';
+import {PATH} from '../../../../enums/paths';
 
 export const RegistrationContainer = () => {
     const [email, setEmail] = useState<string>('')

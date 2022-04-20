@@ -4,14 +4,14 @@ import {loginActions} from '../../Auth/Login/LoginBLL/loginReducer';
 import {appActions} from '../../../bll/appReducer';
 import {handleServerNetworkError} from '../../../utils/handleServerNetworkError';
 
-const initialState = {
+const profileInitialState = {
     user: {} as UserType,
     editMode: false,
     isFetching: false,
     isInitialized: false,
 }
 
-export const profileReducer = (state: ProfileStateType = initialState, action: ProfileActionTypes): ProfileStateType => {
+export const profileReducer = (state: ProfileStateType = profileInitialState, action: ProfileActionTypes): ProfileStateType => {
     switch (action.type) {
         case 'profile/SET_USER_DATA':
         case 'profile/SET_EDIT_MODE_PROFILE':
@@ -60,5 +60,5 @@ export const auth = (): AppThunk => async dispatch => {
 }
 
 //types:
-export type ProfileStateType = typeof initialState
+export type ProfileStateType = typeof profileInitialState
 export type ProfileActionTypes = InferActionTypes<typeof profileActions>

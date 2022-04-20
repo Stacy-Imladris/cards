@@ -1,35 +1,22 @@
-import {FC, useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import s from './Scroll.module.css'
 import {SuperButton} from '../super-components/c2-SuperButton/SuperButton';
 
-interface IModalUp {
-    speed?: number
-}
-
-export const Scroll: FC<IModalUp> = ({speed = 10}) => {
+export const Scroll = () => {
     const [show, setShow] = useState(false);
 
-    const handleScroll = () => {
+    const handleScroll = useCallback(() => {
         if (window.scrollY > 100) setShow(true);
         else setShow(false);
-    };
+    }, [])
 
     const scrollFunction = () => {
-        // window.scrollTo({top: 0, behavior: 'smooth'}) // !!!
-        const step = window.scrollY / speed;
-        let lastState = window.scrollY;
-
-        const innerTimer = setInterval(() => {
-            if (lastState < window.scrollY) clearInterval(innerTimer);
-            lastState = window.scrollY;
-
-            window.scroll(0, lastState - step);
-            if (window.scrollY === 0) clearInterval(innerTimer);
-        }, 50);
-    };
+        window.scrollTo({top: 0, behavior: 'smooth'})
+    }
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll)
     }, []);
 
     return <>

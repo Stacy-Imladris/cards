@@ -3,9 +3,9 @@ import t from '../../common/styles/Themes.module.css'
 import {NavLink} from 'react-router-dom'
 import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton'
 import {useAppSelector} from '../../bll/store'
-import {PATH} from '../../app/AllRoutes'
 import {selectTheme} from '../../selectors/selectors';
 import {useState} from 'react';
+import {PATH} from '../../enums/paths';
 
 export const Error404 = () => {
     const [height, setHeight] = useState<number>(-120)

@@ -4,11 +4,11 @@ import {NewPassword} from './NewPassword';
 import {changePassword, newPasswordActions} from '../NewPasswordBLL/new-password-reducer';
 import {Navigate, useParams} from 'react-router-dom';
 import {useAppSelector} from '../../../../bll/store';
-import {PATH} from '../../../../app/AllRoutes';
 import {
     selectNewPasswordError,
     selectNewPasswordIsLoading, selectNewPasswordToLogin, selectTheme
 } from '../../../../selectors/selectors';
+import {PATH} from '../../../../enums/paths';
 
 export const NewPasswordContainer = () => {
     const [password, setPassword] = useState<string>('')

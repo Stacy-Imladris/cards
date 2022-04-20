@@ -8,17 +8,7 @@ import {NewPasswordContainer} from '../components/Auth/NewPassword/NewPasswordUI
 import {Packs} from '../components/Packs/PacksUI/Packs'
 import {Cards} from '../components/Cards/CardsUI/Cards';
 import {LoginNavigate} from '../hoc/LoginNavigate'
-
-export enum PATH {
-    LOGIN = '/login',
-    REGISTRATION = '/registration',
-    PROFILE = '/profile',
-    ERROR_404 = '/error-404',
-    PASSWORD_RECOVERY = '/password-recovery',
-    NEW_PASSWORD = '/new-password/:resetPasswordToken',
-    PACKS = '/packs',
-    CARDS = '/cards',
-}
+import {PATH} from '../enums/paths';
 
 export const AllRoutes = () => {
     return (

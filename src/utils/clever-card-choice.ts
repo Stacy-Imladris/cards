@@ -31,3 +31,22 @@ export const chooseCard = (cards: CardType[]) => {
     return cards[mostProbableIndex]
 }
 
+function getRandom(min: number, max: number) {
+    return Math.random() * (max - min) + min;
+}
+
+export const getRandomCard = (cards: CardType[]) => {
+    const probabilities = cards.map(({grade}) => (6 - grade) ** 2)
+    const randomNumber = getRandom(Math.min(...probabilities), Math.max(...probabilities))
+    let sum = 0
+    probabilities.some((s, i) => {
+        if (sum > randomNumber) {
+            sum = i
+            return sum
+        } else {
+            sum += s
+        }
+    })
+    return cards[sum]
+}
+

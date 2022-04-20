@@ -35,7 +35,7 @@ export const Grades: GradesObjectType = {
     [GRADES.TWO]: 2,
     [GRADES.THREE]: 3,
     [GRADES.FOUR]: 4,
-    [GRADES.FIVE]: 5,
+    [GRADES.FIVE]: 5
 }
 
 const arr = [GRADES.ONE, GRADES.TWO, GRADES.THREE, GRADES.FOUR, GRADES.FIVE]
@@ -48,6 +48,7 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
                                                              card
                                                          }) => {
     const [value, setValue] = useState<GradesType>(GRADES.ONE)
+    const [rateEdit, setRateEdit] = useState<boolean>(false)
 
     const theme = useAppSelector(selectTheme)
 
@@ -57,11 +58,13 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
         dispatch(setRandomCard())
         onClickNotOpen()
         onClickLearnPackOn()
+        setRateEdit(false)
     }, [dispatch, onClickLearnPackOn, onClickNotOpen])
 
     const estimate = useCallback(() => {
-        dispatch(rate(Grades[value]))
-    }, [dispatch, value])
+        !rateEdit && dispatch(rate(Grades[value]))
+        setRateEdit(true)
+    }, [dispatch, value, rateEdit])
 
     const onChangeOption = useCallback((value: string) => {
         setValue(value as GradesType)
@@ -70,6 +73,7 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
     const cancel = () => {
         dispatch(cleanLearnState())
         onClickNotOpen()
+        setRateEdit(false)
     }
 
     return <Modal onClickNotOpen={onClickNotOpen} width={460} height={530}
@@ -91,7 +95,7 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
         </div>
         <div>
             <SuperButton onClick={cancel}>Cancel</SuperButton>
-            <SuperButton onClick={estimate}>Rate</SuperButton>
+            <SuperButton onClick={estimate} disabled={rateEdit}>Rate</SuperButton>
             <SuperButton onClick={next}>Next</SuperButton>
         </div>
     </Modal>

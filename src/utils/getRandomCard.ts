@@ -1,6 +1,6 @@
 import {CardType} from '../components/Cards/CardsAPI/cards-api'
 
-export const getCard = (cards: CardType[]) => {
+/*export const getCard = (cards: CardType[]) => {
     const sum = cards.reduce((acc, card) => acc + (6 - card.grade) * (6 - card.grade), 0)
     const rand = Math.random() * sum
     const res = cards.reduce((acc: { sum: number, id: number }, card, i) => {
@@ -29,7 +29,7 @@ export const chooseCard = (cards: CardType[]) => {
     const mostProbableIndex: number = indexesCardsArr[rand]
 
     return cards[mostProbableIndex]
-}
+}*/
 
 function getRandom(min: number, max: number) {
     return Math.random() * (max - min) + min;
@@ -37,16 +37,16 @@ function getRandom(min: number, max: number) {
 
 export const getRandomCard = (cards: CardType[]) => {
     const probabilities = cards.map(({grade}) => (6 - grade) ** 2)
-    const randomNumber = getRandom(Math.min(...probabilities), Math.max(...probabilities))
-    let sum = 0
+    const randomNumber = getRandom(Math.min(...probabilities), probabilities.reduce((acc, r) => acc + r))
+    let res = 0
     probabilities.some((s, i) => {
-        if (sum > randomNumber) {
-            sum = i
-            return sum
+        if (res >= randomNumber) {
+            res = i
+            return res
         } else {
-            sum += s
+            res += s
         }
     })
-    return cards[sum]
+    return cards[res]
 }
 

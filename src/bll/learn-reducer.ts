@@ -1,8 +1,8 @@
 import {AppThunk, InferActionTypes} from './store'
 import {cardsAPI, CardType} from '../components/Cards/CardsAPI/cards-api'
-import {chooseCard, getCard} from '../utils/clever-card-choice'
 import {handleServerNetworkError} from '../utils/handleServerNetworkError';
 import {appActions} from './appReducer';
+import {getRandomCard} from '../utils/getRandomCard';
 
 const InitialState = {
     cards: [] as CardType[],
@@ -29,9 +29,9 @@ export const learnActions = {
 export const learnCard = (packId: string): AppThunk => async (dispatch) => {
     dispatch(appActions.setAppIsLoading(true))
     try {
-        const response = await cardsAPI.getCards({cardsPack_id: packId})
+        const response = await cardsAPI.getCards({cardsPack_id: packId, pageCount: 103})
         dispatch(learnActions.setCards(response.cards))
-        const randomCard = getCard(response.cards)
+        const randomCard = getRandomCard(response.cards)
         dispatch(learnActions.setRandomCard(randomCard))
     } catch (e) {
         handleServerNetworkError(dispatch, e as Error)
@@ -54,7 +54,7 @@ export const rate = (grade: number): AppThunk => async (dispatch, getState) => {
 
 export const setRandomCard = (): AppThunk => async (dispatch, getState) => {
     const cards = getState().learn.cards
-    const randomCard = chooseCard(cards)
+    const randomCard = getRandomCard(cards)
     dispatch(learnActions.setRandomCard(randomCard))
 }
 

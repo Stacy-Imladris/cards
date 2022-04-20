@@ -1,7 +1,7 @@
-export enum Grades {
-    'Did not know' = 1,
-    'Forgot' = 2,
-    'A lot of thought' = 3,
-    'Confused' = 4,
-    'Knew the answer' = 5,
+export enum GRADES {
+    ONE = 'Did not know',
+    TWO = 'Forgot',
+    THREE = 'A lot of thought',
+    FOUR = 'Confused',
+    FIVE = 'Knew the answer'
 }

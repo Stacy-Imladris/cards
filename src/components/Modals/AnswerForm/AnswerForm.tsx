@@ -7,6 +7,7 @@ import {useAppSelector} from '../../../bll/store'
 import {selectTheme} from '../../../selectors/selectors'
 import {CardType} from '../../Cards/CardsAPI/cards-api'
 import {cleanLearnState, rate, setRandomCard} from '../../../bll/learn-reducer'
+import {GRADES} from '../../../enums/grades';
 
 type AnswerFormPropsType = {
     onClickLearnPackOn: () => void
@@ -14,14 +15,6 @@ type AnswerFormPropsType = {
     isOpen: boolean
     name: string
     card: CardType
-}
-
-enum GRADES {
-    ONE = 'Did not know',
-    TWO = 'Forgot',
-    THREE = 'A lot of thought',
-    FOUR = 'Confused',
-    FIVE = 'Knew the answer'
 }
 
 type GradesType = GRADES.ONE | GRADES.TWO | GRADES.THREE | GRADES.FOUR | GRADES.FIVE

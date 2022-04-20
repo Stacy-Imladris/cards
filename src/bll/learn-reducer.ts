@@ -26,13 +26,13 @@ export const learnActions = {
 
 
 //thunks
-export const learnCard = (packId: string): AppThunk => async (dispatch) => {
+export const learnCard = (cardsPack_id: string): AppThunk => async (dispatch, getState) => {
     dispatch(appActions.setAppIsLoading(true))
     try {
-        const response = await cardsAPI.getCards({cardsPack_id: packId, pageCount: 103})
+        const pageCount = getState().packs.maxCardsCount
+        const response = await cardsAPI.getCards({cardsPack_id, pageCount})
         dispatch(learnActions.setCards(response.cards))
-        const randomCard = getRandomCard(response.cards)
-        dispatch(learnActions.setRandomCard(randomCard))
+        dispatch(learnActions.setRandomCard(getRandomCard(response.cards)))
     } catch (e) {
         handleServerNetworkError(dispatch, e as Error)
     } finally {
@@ -45,22 +45,12 @@ export const rate = (grade: number): AppThunk => async (dispatch, getState) => {
     const card_id = getState().learn.randomCard._id
     try {
         await cardsAPI.rate({grade, card_id})
+        dispatch(appActions.setAppStatus('Card successfully rated'))
     } catch (e) {
         handleServerNetworkError(dispatch, e as Error)
     } finally {
         dispatch(appActions.setAppIsLoading(false))
     }
-}
-
-export const setRandomCard = (): AppThunk => async (dispatch, getState) => {
-    const cards = getState().learn.cards
-    const randomCard = getRandomCard(cards)
-    dispatch(learnActions.setRandomCard(randomCard))
-}
-
-export const cleanLearnState = (): AppThunk => async (dispatch) => {
-    dispatch(learnActions.setRandomCard({} as CardType))
-    dispatch(learnActions.setCards([]))
 }
 
 //types

@@ -6,7 +6,8 @@ import {useAppSelector} from '../../../bll/store'
 import {selectTheme} from '../../../selectors/selectors'
 import {Preloader} from '../../../common/preloader/Preloader'
 import {useDispatch} from 'react-redux'
-import {cleanLearnState} from '../../../bll/learn-reducer'
+import {learnActions} from '../../../bll/learn-reducer'
+import {CardType} from '../../Cards/CardsAPI/cards-api';
 
 type LearnPackFormPropsType = {
     onClickLearnPackOn: () => void
@@ -28,26 +29,26 @@ export const LearnPackForm: FC<LearnPackFormPropsType> = memo(({
 
     const [isAnswerOpen, setIsAnswerOpen] = useState<boolean>(false)
 
-    const AnswerOff = useCallback(() => {
+    const setAnswerOff = useCallback(() => {
         setIsAnswerOpen(false)
     }, [])
 
-    const AnswerOn = useCallback(() => {
+    const setAnswerOn = useCallback(() => {
         onClickNotOpen()
         setIsAnswerOpen(true)
     }, [onClickNotOpen])
 
-    const cancel = useCallback(() => {
-        dispatch(cleanLearnState())
+    const onClickStopLearning = useCallback(() => {
+        dispatch(learnActions.setRandomCard({} as CardType))
+        dispatch(learnActions.setCards([]))
         onClickNotOpen()
     }, [onClickNotOpen])
 
-
     return <>
-        <AnswerForm onClickNotOpen={AnswerOff} isOpen={isAnswerOpen} name={name}
+        <AnswerForm onClickNotOpen={setAnswerOff} isOpen={isAnswerOpen} name={name}
                     card={randomCard}
                     onClickLearnPackOn={onClickLearnPackOn}/>
-        <Modal onClickNotOpen={onClickNotOpen} width={460} height={220} isOpen={isOpen}
+        <Modal onClickNotOpen={onClickStopLearning} width={460} height={220} isOpen={isOpen}
                backgroundStyle={{
                    background: `${theme === '☀' ? '#d0eca1' : '#022507'}`,
                    opacity: 1
@@ -58,8 +59,8 @@ export const LearnPackForm: FC<LearnPackFormPropsType> = memo(({
                         <div>Learn '{name}'</div>
                         <div>Question: '{randomCard.question}'</div>
                         <div>
-                            <SuperButton onClick={cancel}>Cancel</SuperButton>
-                            <SuperButton onClick={AnswerOn}>Show answer</SuperButton>
+                            <SuperButton onClick={onClickStopLearning}>Cancel</SuperButton>
+                            <SuperButton onClick={setAnswerOn}>Show answer</SuperButton>
                         </div>
                     </>
             }

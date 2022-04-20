@@ -5,11 +5,9 @@ import {DeletePackForm} from '../../../../../../Modals/DeletePackForm/DeletePack
 import {EditPackForm} from '../../../../../../Modals/EditPackForm/EditPackForm'
 import a from '../../../../../../../common/styles/Actions.module.css'
 import {LearnPackForm} from '../../../../../../Modals/LearnPackForm/LearnPackForm'
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import {PackType} from '../../../../../PacksAPI/packs-api'
 import {learnCard} from '../../../../../../../bll/learn-reducer'
-import {AppRootStateType} from '../../../../../../../bll/store'
-import {CardType} from '../../../../../../Cards/CardsAPI/cards-api'
 
 type PackActionsType = {
     isMyPacks: boolean
@@ -22,8 +20,6 @@ export const PackActions: FC<PackActionsType> = memo(({isMyPacks, pack}) => {
     const [isEditingOpen, setIsEditingOpen] = useState<boolean>(false)
 
     const dispatch = useDispatch()
-
-    const cards = useSelector<AppRootStateType, CardType[]>(state => state.learn.cards)
 
     const deletePackOff = useCallback(() => {
         setIsDeletingOpen(false)
@@ -45,12 +41,14 @@ export const PackActions: FC<PackActionsType> = memo(({isMyPacks, pack}) => {
         setIsLearningOpen(false)
     }, [])
 
-    const isCardsEmpty = cards.length === 0
-
     const learnPackOn = useCallback(() => {
         setIsLearningOpen(true)
-        isCardsEmpty && dispatch(learnCard(pack._id))
-    }, [isCardsEmpty])
+    }, [])
+
+    const startLearning = useCallback(() => {
+        setIsLearningOpen(true)
+        dispatch(learnCard(pack._id))
+    }, [])
 
     return <div className={a.actionButtons}>
         <LearnPackForm onClickNotOpen={learnPackOff} isOpen={isLearningOpen} name={pack.name}
@@ -59,7 +57,7 @@ export const PackActions: FC<PackActionsType> = memo(({isMyPacks, pack}) => {
         <DeletePackForm onClickNotOpen={deletePackOff} isOpen={isDeletingOpen} packId={pack._id} name={pack.name}/>
         {
             pack.cardsCount > 0 &&
-            <SuperButton onClick={learnPackOn}>🕮</SuperButton>
+            <SuperButton onClick={startLearning}>🕮</SuperButton>
         }
         {
             isMyPacks &&

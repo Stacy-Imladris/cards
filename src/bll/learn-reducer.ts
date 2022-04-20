@@ -1,17 +1,16 @@
 import {AppThunk, InferActionTypes} from './store'
 import {cardsAPI, CardType} from '../components/Cards/CardsAPI/cards-api'
 import {chooseCard, getCard} from '../utils/clever-card-choice'
-import {handleServerNetworkError} from '../utils/error-handler'
+import {handleServerNetworkError} from '../utils/handleServerNetworkError';
+import {appActions} from './appReducer';
 
 const InitialState = {
     cards: [] as CardType[],
     randomCard: {} as CardType,
-    isLearnLoading: false
 }
 
 export const learnReducer = (state: InitialStateType = InitialState, action: LearnActionTypes): InitialStateType => {
     switch (action.type) {
-        case 'LEARN/SET_IS_LOADING':
         case 'LEARN/SET_CARDS':
         case 'LEARN/SET_RANDOM_CARD':
             return {...state, ...action.payload}
@@ -23,13 +22,12 @@ export const learnReducer = (state: InitialStateType = InitialState, action: Lea
 export const learnActions = {
     setCards: (cards: CardType[]) => ({type: 'LEARN/SET_CARDS', payload: {cards}} as const),
     setRandomCard: (randomCard: CardType) => ({type: 'LEARN/SET_RANDOM_CARD', payload: {randomCard}} as const),
-    setLearnIsLoading: (isLearnLoading: boolean) => ({type: 'LEARN/SET_IS_LOADING', payload: {isLearnLoading}} as const)
 }
 
 
 //thunks
 export const learnCard = (packId: string): AppThunk => async (dispatch) => {
-    dispatch(learnActions.setLearnIsLoading(true))
+    dispatch(appActions.setAppIsLoading(true))
     try {
         const response = await cardsAPI.getCards({cardsPack_id: packId})
         dispatch(learnActions.setCards(response.cards))
@@ -38,16 +36,19 @@ export const learnCard = (packId: string): AppThunk => async (dispatch) => {
     } catch (e) {
         handleServerNetworkError(dispatch, e as Error)
     } finally {
-        dispatch(learnActions.setLearnIsLoading(false))
+        dispatch(appActions.setAppIsLoading(false))
     }
 }
 
 export const rate = (grade: number): AppThunk => async (dispatch, getState) => {
+    dispatch(appActions.setAppIsLoading(true))
     const card_id = getState().learn.randomCard._id
     try {
         await cardsAPI.rate({grade, card_id})
     } catch (e) {
         handleServerNetworkError(dispatch, e as Error)
+    } finally {
+        dispatch(appActions.setAppIsLoading(false))
     }
 }
 

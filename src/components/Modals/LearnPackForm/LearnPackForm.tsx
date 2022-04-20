@@ -21,7 +21,7 @@ export const LearnPackForm: FC<LearnPackFormPropsType> = memo(({
                                                                    name
                                                                }) => {
     const theme = useAppSelector(selectTheme)
-    const isLearnLoading = useAppSelector(state => state.learn.isLearnLoading)
+    const isLoading = useAppSelector(state => state.app.isLoading)
     const randomCard = useAppSelector(state => state.learn.randomCard)
 
     const dispatch = useDispatch()
@@ -44,15 +44,17 @@ export const LearnPackForm: FC<LearnPackFormPropsType> = memo(({
 
 
     return <>
-        <AnswerForm onClickNotOpen={AnswerOff} isOpen={isAnswerOpen} name={name} card={randomCard}
+        <AnswerForm onClickNotOpen={AnswerOff} isOpen={isAnswerOpen} name={name}
+                    card={randomCard}
                     onClickLearnPackOn={onClickLearnPackOn}/>
         <Modal onClickNotOpen={onClickNotOpen} width={460} height={220} isOpen={isOpen}
-               backgroundStyle={{background: `${theme === '☀' ? '#d0eca1' : '#022507'}`,
-                   opacity: 1}}>
+               backgroundStyle={{
+                   background: `${theme === '☀' ? '#d0eca1' : '#022507'}`,
+                   opacity: 1
+               }}>
             {
-                isLearnLoading
-                    ? <Preloader />
-                    : <>
+                isLoading ? <Preloader/> :
+                    <>
                         <div>Learn '{name}'</div>
                         <div>Question: '{randomCard.question}'</div>
                         <div>
@@ -61,7 +63,6 @@ export const LearnPackForm: FC<LearnPackFormPropsType> = memo(({
                         </div>
                     </>
             }
-
         </Modal>
     </>
 })

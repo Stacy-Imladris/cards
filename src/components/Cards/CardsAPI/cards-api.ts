@@ -3,8 +3,8 @@ import {CardsParamsType} from '../CardsBLL/cards-reducer';
 import {AxiosResponse} from 'axios';
 
 export const cardsAPI = {
-    getCards(params: CardsParamsType) {
-        return instance.get<any, AxiosResponse<CardsResponseType>, CardsParamsType>('cards/card', {params}).then(res => res.data)
+    getCards(params: Partial<CardsParamsType>) {
+        return instance.get<any, AxiosResponse<CardsResponseType>, Partial<CardsParamsType>>('cards/card', {params}).then(res => res.data)
     },
     addCard(card: NewCardType) {
         return instance.post<any, AxiosResponse<AdditionalCardResponse & Pick<CardResponses, 'newCard'>>, NewCardType>('cards/card', card)
@@ -17,6 +17,7 @@ export const cardsAPI = {
     },
     rate(payload: RateType) {
         return instance.put<any, AxiosResponse<RateResponseType>, RateType>(`cards/grade`, payload)
+            .then(res => res.data.updatedGrade.grade)
     },
 }
 

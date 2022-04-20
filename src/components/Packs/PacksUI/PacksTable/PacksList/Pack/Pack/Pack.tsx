@@ -34,7 +34,7 @@ export const Pack: FC<PackPropsType> = memo(({pack}) => {
         <td>{lastUpdate}</td>
         <td>{pack.user_name}</td>
         <td>
-            <PackActions isMyPacks={pack.user_id === userId} cardsCount={pack.cardsCount} packId={pack._id} name={pack.name}/>
+            <PackActions isMyPacks={pack.user_id === userId} pack={pack} />
         </td>
     </tr>
 })

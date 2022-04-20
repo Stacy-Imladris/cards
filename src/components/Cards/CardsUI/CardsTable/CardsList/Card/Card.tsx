@@ -46,7 +46,7 @@ export const Card: FC<CardPropsType> = memo(({card}) => {
         <td>{card.question}</td>
         <td>{card.answer}</td>
         <td>{lastUpdate}</td>
-        <td>{card.grade}</td>
+        <td>{card.grade.toFixed(2)}</td>
         {userId === packUserId && <td className={s.actions}>
           <div className={a.actionButtons}>
             <SuperButton onClick={editCardOn} className={s.button}>✎</SuperButton>

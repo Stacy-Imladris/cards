@@ -3,8 +3,8 @@ import {useDispatch} from 'react-redux';
 import {useCallback, useState} from 'react';
 import {packsActions} from '../../Packs/PacksBLL/packs-reducer';
 import s from './DoubleRange.module.css';
-import {AlternativeSuperDoubleRange} from '../../../common/super-components/c8-SuperDoubleRange/AlternativeSuperDoubleRange';
 import {useAppSelector} from '../../../store/store';
+import {SuperDoubleRange} from '../../../common/super-components/c8-SuperDoubleRange/SuperDoubleRange';
 
 export const DoubleRange = () => {
     const minCardsCount = useAppSelector(selectMinCardsCount)
@@ -31,10 +31,10 @@ export const DoubleRange = () => {
         <div className={s.text}>Number of cards</div>
         <div className={s.doubleRange}>
             <div className={s.num}>{value1Range}</div>
-            <AlternativeSuperDoubleRange value={[value1Range, value2Range]}
-                                         onChangeRange={changeTwoValue}
-                                         min={minCardsCount}
-                                         max={maxCardsCount}/>
+            <SuperDoubleRange value={[value1Range, value2Range]}
+                              onChangeRange={changeTwoValue}
+                              min={minCardsCount}
+                              max={maxCardsCount}/>
             <div className={s.num}>{value2Range}</div>
         </div>
     </div>

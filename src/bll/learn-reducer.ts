@@ -40,9 +40,8 @@ export const learnCard = (cardsPack_id: string): AppThunk => async (dispatch, ge
     }
 }
 
-export const rate = (grade: number): AppThunk => async (dispatch, getState) => {
+export const rate = (grade: number, card_id: string): AppThunk => async (dispatch) => {
     dispatch(appActions.setAppIsLoading(true))
-    const card_id = getState().learn.randomCard._id
     try {
         await cardsAPI.rate({grade, card_id})
         dispatch(appActions.setAppStatus('Card successfully rated'))

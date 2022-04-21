@@ -1,19 +1,6 @@
 import {CardType} from '../components/Cards/CardsAPI/cards-api'
 
-/*export const getCard = (cards: CardType[]) => {
-    const sum = cards.reduce((acc, card) => acc + (6 - card.grade) * (6 - card.grade), 0)
-    const rand = Math.random() * sum
-    const res = cards.reduce((acc: { sum: number, id: number }, card, i) => {
-            const newSum = acc.sum + (6 - card.grade) * (6 - card.grade)
-            return {sum: newSum, id: newSum < rand ? i : acc.id}
-        }
-        , {sum: 0, id: -1})
-    // console.log('test: ', sum, rand, res)
-
-    return cards[res.id + 1]
-}
-
-export const chooseCard = (cards: CardType[]) => {
+/*export const chooseCard = (cards: CardType[]) => {
     const sum = cards.reduce((acc, card) => acc + (6 - card.grade), 0)
     const rand = Math.round(Math.random() * sum)
     const indexesCardsArr = [] as Array<number>
@@ -31,22 +18,25 @@ export const chooseCard = (cards: CardType[]) => {
     return cards[mostProbableIndex]
 }*/
 
-function getRandom(min: number, max: number) {
-    return Math.random() * (max - min) + min;
-}
+const getRandom = (min: number, max: number) => Math.random() * (max - min) + min
 
 export const getRandomCard = (cards: CardType[]) => {
     const probabilities = cards.map(({grade}) => (6 - grade) ** 2)
-    const randomNumber = getRandom(Math.min(...probabilities), probabilities.reduce((acc, r) => acc + r))
-    let res = 0
+    const randomNumber = getRandom(0, probabilities.reduce((acc, r) => acc + r))
+    let res = 0, ind = 0
+    // probabilities.some((s, i) => {
+    //     res += s
+    //     if (res >= randomNumber) {
+    //         ind = i
+    //         return true
+    //     }
+    //     return false
+    // })
     probabilities.some((s, i) => {
-        if (res >= randomNumber) {
-            res = i
-            return res
-        } else {
-            res += s
-        }
+        res += s
+        if (res >= randomNumber) ind = i
+        return res >= randomNumber
     })
-    return cards[res]
+    return cards[ind]
 }
 

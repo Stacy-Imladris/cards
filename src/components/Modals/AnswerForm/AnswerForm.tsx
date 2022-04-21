@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux'
 import {Modal} from '../Modal/Modal'
 import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton'
 import {SuperRadio} from '../../../common/super-components/c6-SuperRadio/SuperRadio'
-import {AppThunk, useAppSelector} from '../../../bll/store'
+import {useAppSelector} from '../../../bll/store'
 import {selectTheme} from '../../../selectors/selectors'
 import {CardType} from '../../Cards/CardsAPI/cards-api'
 import {learnActions, rate} from '../../../bll/learn-reducer'
@@ -16,7 +16,6 @@ type AnswerFormPropsType = {
     onClickNotOpen: () => void
     isOpen: boolean
     name: string
-    card: CardType
 }
 
 type GradesType = GRADES.ONE | GRADES.TWO | GRADES.THREE | GRADES.FOUR | GRADES.FIVE
@@ -39,8 +38,7 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
                                                              onClickLearnPackOn,
                                                              onClickNotOpen,
                                                              isOpen,
-                                                             name,
-                                                             card
+                                                             name
                                                          }) => {
     const [value, setValue] = useState<GradesType>(GRADES.ONE)
     const [rateEdit, setRateEdit] = useState<boolean>(false)
@@ -48,6 +46,7 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
     const theme = useAppSelector(selectTheme)
     const isLoading = useAppSelector(state => state.app.isLoading)
     const cards = useAppSelector(state => state.learn.cards)
+    const randomCard = useAppSelector(state => state.learn.randomCard)
 
     const dispatch = useDispatch()
 
@@ -56,16 +55,16 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
         onClickNotOpen()
         onClickLearnPackOn()
         setRateEdit(false)
-    }, [dispatch, onClickLearnPackOn, onClickNotOpen])
+    }, [dispatch, onClickLearnPackOn, onClickNotOpen, cards])
 
     const estimate = useCallback(() => {
-        dispatch(rate(Grades[value]))
+        dispatch(rate(Grades[value], randomCard._id))
         setRateEdit(true)
-    }, [dispatch, value, rateEdit])
+    }, [dispatch, value, rateEdit, randomCard])
 
     const onChangeOption = useCallback((value: GradesType) => {
         setValue(value)
-    }, [value])
+    }, [])
 
     const onClickStopLearning = useCallback(() => {
         onClickNotOpen()
@@ -84,8 +83,8 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
             <>
                 <div>
                     <div>Learn '{name}'</div>
-                    <div>Question: '{card.question}'</div>
-                    <div>Answer: '{card.answer}'</div>
+                    <div>Question: '{randomCard.question}'</div>
+                    <div>Answer: '{randomCard.answer}'</div>
                 </div>
                 <div>
                     <div>Rate yourself:</div>

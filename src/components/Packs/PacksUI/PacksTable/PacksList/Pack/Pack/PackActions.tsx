@@ -56,8 +56,7 @@ export const PackActions: FC<PackActionsType> = memo(({isMyPacks, pack}) => {
         <EditPackForm onClickNotOpen={editPackOff} isOpen={isEditingOpen} packId={pack._id} name={pack.name}/>
         <DeletePackForm onClickNotOpen={deletePackOff} isOpen={isDeletingOpen} packId={pack._id} name={pack.name}/>
         {
-            pack.cardsCount > 0 &&
-            <SuperButton onClick={startLearning}>🕮</SuperButton>
+            pack.cardsCount > 0 && <SuperButton onClick={startLearning}>🕮</SuperButton>
         }
         {
             isMyPacks &&

@@ -1,9 +1,8 @@
 .container {
-    margin: 5px;
+    margin-top: 27px;
 }
 
 .form_control {
-    font-family: "Times New Roman";
     display: grid;
     grid-template-columns: 1em auto;
     gap: 0.5em;
@@ -12,7 +11,7 @@
 input[type="radio"] {
     appearance: none;
     background-color: #4CAF50;
-    margin: 0;
+    margin-bottom: 17px;
     font: inherit;
     color: #077517;
     width: 1.15em;
@@ -25,7 +24,7 @@ input[type="radio"] {
 }
 
 .form_control + .form_control {
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 input[type="radio"]::before {
@@ -45,4 +44,11 @@ input[type="radio"]:checked::before {
 input[type="radio"]:focus {
     outline: max(1px, 0.1em) solid #077517;
     outline-offset: max(1px, 0.15em);
+}
+
+.text {
+    margin-left: 10px;
+    text-align: left;
+    font-weight: normal;
+    font-size: 16px;
 }

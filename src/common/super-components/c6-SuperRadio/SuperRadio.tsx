@@ -36,7 +36,7 @@ export const SuperRadio: FC<SuperRadioPropsType> = memo((
                 onChange={onChangeCallback}
                 {...restProps}
             />
-            {o}
+            <span className={s.text}>{o}</span>
         </label>
     )) : []
 

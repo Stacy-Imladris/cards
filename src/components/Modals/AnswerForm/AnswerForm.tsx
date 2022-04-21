@@ -62,6 +62,7 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({onClickLearnPackOn,
 
     const onChangeOption = useCallback((value: GradesType) => {
         setValue(value)
+        setRateEdit(false)
     }, [])
 
     const onClickStopLearning = useCallback(() => {

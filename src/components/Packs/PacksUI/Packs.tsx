@@ -61,11 +61,10 @@ export const Packs = () => {
             <AddPackForm onClickNotOpen={addPackOff} isOpen={isAddingOpen}/>
             <div className={`${c.container} ${t[theme + '-text']}`}>
                 <div className={c.settings}>
-                    <div className={c.text}>Show packs cards</div>
-                    <SuperRadio name={'radio'} options={arr}
-                                value={valueFromArray} onChangeOption={onChangeOption}
-                    />
-                    <DoubleRange/>
+                    <div className={c.text}>Packs</div>
+                    <div><SuperRadio name={'radio'} options={arr} value={valueFromArray}
+                                onChangeOption={onChangeOption}/></div>
+                        <div><DoubleRange/></div>
                 </div>
                 <div className={c.performance}>
                     <div className={c.title}>Packs list</div>

@@ -2,13 +2,13 @@ import {useCallback, useEffect, useState} from 'react';
 import {Registration} from './Registration';
 import {useDispatch} from 'react-redux';
 import {registrationActions, signUp} from '../RegistrationBLL/registration-reducer';
-import {useAppSelector} from '../../../../bll/store';
 import {Navigate, useNavigate} from 'react-router-dom';
 import {
     selectRegistrationError, selectRegistrationIsLoading,
     selectRegistrationToLogin, selectTheme
 } from '../../../../selectors/selectors';
 import {PATH} from '../../../../enums/paths';
+import {useAppSelector} from '../../../../store/store';
 
 export const RegistrationContainer = () => {
     const [email, setEmail] = useState<string>('')

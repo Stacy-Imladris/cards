@@ -2,7 +2,6 @@ import {CardsTable} from './CardsTable/CardsTable'
 import t from '../../../common/styles/Themes.module.css'
 import s from './Cards.module.css'
 import c from '../../../common/styles/Container.module.css'
-import {useAppSelector} from '../../../bll/store';
 import {useCallback, useState} from 'react';
 import {SearchField} from '../../Features/SearchField/SearchField';
 import {useNavigate, useParams} from 'react-router-dom';
@@ -17,6 +16,7 @@ import {
     selectUser_id
 } from '../../../selectors/selectors';
 import {AddCardForm} from '../../Modals/AddCardForm/AddCardForm';
+import {useAppSelector} from '../../../store/store';
 
 export const Cards = () => {
     const [isAddingOpen, setIsAddingOpen] = useState<boolean>(false)

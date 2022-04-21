@@ -1,13 +1,13 @@
-import {useCallback, useEffect, useState, KeyboardEvent} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {Recovery} from './Recovery';
 import {recoveryActions, toSendInstructions} from '../RecoveryBLL/recovery-reducer';
-import {useAppSelector} from '../../../../bll/store';
 import {
     selectRecoveryCheck,
     selectRecoveryError,
     selectRecoveryIsLoading, selectTheme
 } from '../../../../selectors/selectors';
+import {useAppSelector} from '../../../../store/store';
 
 export const RecoveryContainer = () => {
     const [email, setEmail] = useState<string>('')

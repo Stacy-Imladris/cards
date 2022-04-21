@@ -1,7 +1,6 @@
 import {PacksList} from './PacksList/PacksList'
 import {getPacks, packsActions} from '../../PacksBLL/packs-reducer'
 import {useDispatch} from 'react-redux'
-import {useAppSelector} from '../../../../bll/store'
 import {useCallback, useEffect} from 'react'
 import s from './PacksTable.module.css'
 import a from '../../../../common/styles/Actions.module.css'
@@ -18,6 +17,7 @@ import {
 } from '../../../../selectors/selectors';
 import {Paginator} from '../../../Features/Paginator/Paginator';
 import {PacksTableHeader} from './PacksTableHeader/PacksTableHeader';
+import {useAppSelector} from '../../../../store/store';
 
 export const PacksTable = () => {
     const packs = useAppSelector(selectPacks)

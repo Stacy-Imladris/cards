@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {recoveryAPI} from '../RecoveryAPI/recovery-api';
-import {AppThunk, InferActionTypes} from '../../../../bll/store';
+import {AppThunk, InferActionTypes} from '../../../../store/store';
 
 const recoveryInitialState = {
     error: '',

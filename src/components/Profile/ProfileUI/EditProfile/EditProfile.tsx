@@ -4,7 +4,6 @@ import t from '../../../../common/styles/Themes.module.css'
 import profile_ava from '../../../../assets/images/profile_ava.png'
 import {SuperInputText} from '../../../../common/super-components/c1-SuperInputText/SuperInputText'
 import {useDispatch} from 'react-redux'
-import {useAppSelector} from '../../../../bll/store'
 import {SuperButton} from '../../../../common/super-components/c2-SuperButton/SuperButton'
 import {profileActions, updateProfile} from '../../ProfileBLL/profile-reducer'
 import {Preloader} from '../../../../common/preloader/Preloader'
@@ -16,6 +15,7 @@ import {
 } from '../../../../selectors/selectors'
 import {Profile} from '../Profile'
 import {Logo} from '../../../../common/logo/Logo'
+import {useAppSelector} from '../../../../store/store';
 
 export const EditProfile = () => {
     const theme = useAppSelector(selectTheme)

@@ -1,8 +1,8 @@
 import s from './Logo.module.css';
 import logo from '../../assets/images/logo.png'
 import t from '../styles/Themes.module.css';
-import {useAppSelector} from '../../bll/store';
 import {selectTheme} from '../../selectors/selectors';
+import {useAppSelector} from '../../store/store';
 
 export const Logo = () => {
     const theme = useAppSelector(selectTheme)

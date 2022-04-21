@@ -1,6 +1,6 @@
-import {AppThunk, InferActionTypes} from '../../../../bll/store';
 import {RegDataType, registrationAPI} from '../RegistrationAPI/registration-api';
 import axios from 'axios';
+import {AppThunk, InferActionTypes} from '../../../../store/store';
 
 const registrationInitialState = {
     error: '',

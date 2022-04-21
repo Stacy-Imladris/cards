@@ -1,10 +1,10 @@
-import {useAppSelector} from '../../../bll/store';
 import {selectMaxCardsCount, selectMinCardsCount} from '../../../selectors/selectors';
 import {useDispatch} from 'react-redux';
 import {useCallback, useState} from 'react';
 import {packsActions} from '../../Packs/PacksBLL/packs-reducer';
 import s from './DoubleRange.module.css';
 import {AlternativeSuperDoubleRange} from '../../../common/super-components/c8-SuperDoubleRange/AlternativeSuperDoubleRange';
+import {useAppSelector} from '../../../store/store';
 
 export const DoubleRange = () => {
     const minCardsCount = useAppSelector(selectMinCardsCount)

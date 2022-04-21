@@ -1,6 +1,5 @@
 import {FC, memo} from 'react'
 import {PackActions} from './PackActions'
-import {useAppSelector} from '../../../../../../../bll/store'
 import {PackType} from '../../../../../PacksAPI/packs-api'
 import {useDispatch} from 'react-redux';
 import {cardsActions} from '../../../../../../Cards/CardsBLL/cards-reducer';
@@ -8,6 +7,7 @@ import {useNavigate} from 'react-router-dom';
 import {selectUser_id} from '../../../../../../../selectors/selectors';
 import {getLastUpdatedDate} from '../../../../../../../utils/getLastUpdatedDate';
 import {PATH} from '../../../../../../../enums/paths';
+import {useAppSelector} from '../../../../../../../store/store';
 
 type PackPropsType = {
     pack: PackType

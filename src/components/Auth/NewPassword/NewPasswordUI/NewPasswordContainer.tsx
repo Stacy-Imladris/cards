@@ -3,12 +3,12 @@ import {useDispatch} from 'react-redux';
 import {NewPassword} from './NewPassword';
 import {changePassword, newPasswordActions} from '../NewPasswordBLL/new-password-reducer';
 import {Navigate, useParams} from 'react-router-dom';
-import {useAppSelector} from '../../../../bll/store';
 import {
     selectNewPasswordError,
     selectNewPasswordIsLoading, selectNewPasswordToLogin, selectTheme
 } from '../../../../selectors/selectors';
 import {PATH} from '../../../../enums/paths';
+import {useAppSelector} from '../../../../store/store';
 
 export const NewPasswordContainer = () => {
     const [password, setPassword] = useState<string>('')

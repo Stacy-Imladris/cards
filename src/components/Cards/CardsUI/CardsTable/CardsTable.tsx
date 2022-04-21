@@ -3,7 +3,6 @@ import React, {useCallback, useEffect} from 'react';
 import {CardsList} from './CardsList/CardsList';
 import s from './CardsTable.module.css'
 import a from '../../../../common/styles/Actions.module.css'
-import {useAppSelector} from '../../../../bll/store';
 import {cardsActions, getCards} from '../../CardsBLL/cards-reducer';
 import {
     selectCards,
@@ -18,6 +17,7 @@ import {
 import {Paginator} from '../../../Features/Paginator/Paginator';
 import {CardsTableHeader} from './CardsTableHeader/CardsTableHeader';
 import {useParams} from 'react-router-dom';
+import {useAppSelector} from '../../../../store/store';
 
 export const CardsTable = () => {
     const cards = useAppSelector(selectCards)

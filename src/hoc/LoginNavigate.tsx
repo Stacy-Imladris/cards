@@ -1,8 +1,8 @@
 import {selectIsLoggedIn} from '../selectors/selectors'
 import {Navigate} from 'react-router-dom'
 import {FC} from 'react'
-import {useAppSelector} from '../bll/store'
 import {PATH} from '../enums/paths';
+import {useAppSelector} from '../store/store';
 
 export const LoginNavigate: FC = ({children}) => {
     const isLoggedIn = useAppSelector(selectIsLoggedIn)

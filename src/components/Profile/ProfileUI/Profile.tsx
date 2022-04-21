@@ -5,7 +5,6 @@ import profileAva from '../../../assets/images/profile_ava.png'
 import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton'
 import {profileActions} from '../ProfileBLL/profile-reducer'
 import {useDispatch} from 'react-redux'
-import {useAppSelector} from '../../../bll/store'
 import {EditProfile} from './EditProfile/EditProfile'
 import {
     selectPackNameForSearch,
@@ -20,6 +19,7 @@ import {packsActions} from '../../Packs/PacksBLL/packs-reducer';
 import {DoubleRange} from '../../Features/DoubleRange/DoubleRange';
 import {AddPackForm} from '../../Modals/AddPackForm/AddPackForm';
 import {useLocation} from 'react-router-dom';
+import {useAppSelector} from '../../../store/store';
 
 export const Profile = () => {
     const [isAddingOpen, setIsAddingOpen] = useState<boolean>(false)

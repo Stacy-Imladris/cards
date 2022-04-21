@@ -1,8 +1,8 @@
-import {AppThunk, InferActionTypes} from '../../../bll/store'
 import {profileAPI, UserType} from '../ProfileAPI/profile-api'
 import {loginActions} from '../../Auth/Login/LoginBLL/loginReducer';
-import {appActions} from '../../../bll/appReducer';
 import {handleServerNetworkError} from '../../../utils/handleServerNetworkError';
+import {AppThunk, InferActionTypes} from '../../../store/store';
+import {appActions} from '../../../store/appReducer';
 
 const profileInitialState = {
     user: {} as UserType,

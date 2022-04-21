@@ -3,12 +3,12 @@ import {CardType} from '../../../../CardsAPI/cards-api'
 import s from '../../../Cards.module.css'
 import a from '../../../../../../common/styles/Actions.module.css'
 import {SuperButton} from '../../../../../../common/super-components/c2-SuperButton/SuperButton'
-import {useAppSelector} from '../../../../../../bll/store'
 import {selectUser_id} from '../../../../../../selectors/selectors'
 import {DeleteCardForm} from '../../../../../Modals/DeleteCardForm/DeleteCardForm'
 import {EditCardForm} from '../../../../../Modals/EditCardForm/EditCardForm'
 import {useParams} from 'react-router-dom'
 import {getLastUpdatedDate} from '../../../../../../utils/getLastUpdatedDate';
+import {useAppSelector} from '../../../../../../store/store';
 
 type CardPropsType = {
     card: CardType

@@ -45,6 +45,7 @@ export const rate = (grade: number, card_id: string): AppThunk => async (dispatc
     try {
         await cardsAPI.rate({grade, card_id})
         dispatch(appActions.setAppStatus('Card successfully rated'))
+
     } catch (e) {
         handleServerNetworkError(dispatch, e as Error)
     } finally {

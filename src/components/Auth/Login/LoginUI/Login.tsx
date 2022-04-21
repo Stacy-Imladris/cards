@@ -1,6 +1,5 @@
 import {useCallback, useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {useAppSelector} from '../../../../bll/store';
 import {Link, Navigate} from 'react-router-dom';
 import {SuperInputText} from '../../../../common/super-components/c1-SuperInputText/SuperInputText';
 import {SuperButton} from '../../../../common/super-components/c2-SuperButton/SuperButton';
@@ -14,6 +13,7 @@ import {
 } from '../../../../selectors/selectors';
 import {login, loginActions} from '../LoginBLL/loginReducer';
 import {PATH} from '../../../../enums/paths';
+import {useAppSelector} from '../../../../store/store';
 
 export const Login = () => {
     const [email, setEmail] = useState<string>('')

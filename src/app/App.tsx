@@ -1,6 +1,5 @@
 import {useEffect} from 'react'
 import {Header} from '../components/Header/Header'
-import {useAppSelector} from '../bll/store'
 import t from '../common/styles/Themes.module.css'
 import s from './App.module.css'
 import {AllRoutes} from './AllRoutes'
@@ -10,6 +9,7 @@ import {Preloader} from '../common/preloader/Preloader';
 import {selectIsInitialized, selectTheme} from '../selectors/selectors';
 import {AppSnackbar} from '../components/Features/AppSnackbar/AppSnackbar';
 import {Scroll} from '../common/scroll/Scroll';
+import {useAppSelector} from '../store/store';
 
 export const App = () => {
     const theme = useAppSelector(selectTheme)

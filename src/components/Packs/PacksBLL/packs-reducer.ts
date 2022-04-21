@@ -1,7 +1,7 @@
-import {AppThunk, InferActionTypes} from '../../../bll/store';
 import {AddNewCardType, packsAPI, PackType, UpdatePackType} from '../PacksAPI/packs-api'
-import {appActions} from '../../../bll/appReducer';
 import {handleServerNetworkError} from '../../../utils/handleServerNetworkError';
+import {AppThunk, InferActionTypes} from '../../../store/store';
+import {appActions} from '../../../store/appReducer';
 
 const packsInitialState = {
     packs: [] as PackType[],

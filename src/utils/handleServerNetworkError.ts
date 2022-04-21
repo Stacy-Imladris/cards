@@ -1,6 +1,6 @@
 import axios from 'axios';
-import {appActions, AppActionTypes} from '../bll/appReducer';
 import {Dispatch} from 'redux';
+import {appActions, AppActionTypes} from '../store/appReducer';
 
 export const handleServerNetworkError = (dispatch: Dispatch<AppActionTypes>, e: Error) => {
     if (axios.isAxiosError(e)) {

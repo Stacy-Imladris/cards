@@ -1,7 +1,7 @@
 import {cardsAPI, CardType, NewCardType, UpdateCardPayload} from '../CardsAPI/cards-api'
-import {AppThunk, InferActionTypes} from '../../../bll/store'
-import {appActions} from '../../../bll/appReducer'
 import {handleServerNetworkError} from '../../../utils/handleServerNetworkError';
+import {AppThunk, InferActionTypes} from '../../../store/store';
+import {appActions} from '../../../store/appReducer';
 
 const cardsInitialState = {
     cards: [] as CardType[],

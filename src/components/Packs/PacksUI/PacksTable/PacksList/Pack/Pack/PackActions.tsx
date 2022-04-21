@@ -7,7 +7,7 @@ import a from '../../../../../../../common/styles/Actions.module.css'
 import {LearnPackForm} from '../../../../../../Modals/LearnPackForm/LearnPackForm'
 import {useDispatch} from 'react-redux'
 import {PackType} from '../../../../../PacksAPI/packs-api'
-import {learnCard} from '../../../../../../../bll/learn-reducer'
+import {learnCard} from '../../../../../../../store/learnReducer';
 
 type PackActionsType = {
     isMyPacks: boolean

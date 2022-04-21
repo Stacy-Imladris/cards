@@ -1,4 +1,4 @@
-import {AppRootStateType} from '../bll/store';
+import {AppRootStateType} from '../store/store';
 
 export const selectTheme = (state: AppRootStateType) => state.theme.theme
 

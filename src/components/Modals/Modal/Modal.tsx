@@ -1,9 +1,9 @@
 import {CSSProperties, FC, memo} from 'react';
 import s from './Modal.module.css'
 import ReactDOM from 'react-dom';
-import {useAppSelector} from '../../../bll/store';
 import {selectTheme} from '../../../selectors/selectors';
 import t from '../../../common/styles/Themes.module.css';
+import {useAppSelector} from '../../../store/store';
 
 type ModalPropsType = {
     onClickNotOpen: () => void

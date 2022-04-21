@@ -21,7 +21,7 @@ export const LearnPackForm: FC<LearnPackFormPropsType> = memo(({
                                                                    name
                                                                }) => {
     const theme = useAppSelector(selectTheme)
-    const isLearnLoading = useAppSelector(state => state.learn.isLearnLoading)
+    const isLoading = useAppSelector(state => state.app.isLoading)
     const randomCard = useAppSelector(state => state.learn.randomCard)
 
     const dispatch = useDispatch()
@@ -50,7 +50,7 @@ export const LearnPackForm: FC<LearnPackFormPropsType> = memo(({
                backgroundStyle={{background: `${theme === '☀' ? '#d0eca1' : '#022507'}`,
                    opacity: 1}}>
             {
-                isLearnLoading
+                isLoading
                     ? <Preloader />
                     : <>
                         <div>Learn '{name}'</div>

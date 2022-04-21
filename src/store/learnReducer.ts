@@ -14,6 +14,10 @@ export const learnReducer = (state: InitialStateType = InitialState, action: Lea
         case 'LEARN/SET_CARDS':
         case 'LEARN/SET_RANDOM_CARD':
             return {...state, ...action.payload}
+        case 'LEARN/SET_GRADE':
+            return {...state,
+                cards: state.cards.map(card => card._id === action.payload.cardId
+                    ? {...card, grade: action.payload.grade} : card)}
         default:
             return state
     }
@@ -22,6 +26,7 @@ export const learnReducer = (state: InitialStateType = InitialState, action: Lea
 export const learnActions = {
     setCards: (cards: CardType[]) => ({type: 'LEARN/SET_CARDS', payload: {cards}} as const),
     setRandomCard: (randomCard: CardType) => ({type: 'LEARN/SET_RANDOM_CARD', payload: {randomCard}} as const),
+    setGrade: (cardId: string, grade: number) => ({type: 'LEARN/SET_GRADE', payload: {cardId, grade}} as const),
 }
 
 
@@ -43,9 +48,9 @@ export const learnCard = (cardsPack_id: string): AppThunk => async (dispatch, ge
 export const rate = (grade: number, card_id: string): AppThunk => async (dispatch) => {
     dispatch(appActions.setAppIsLoading(true))
     try {
-        await cardsAPI.rate({grade, card_id})
+        const randomCardGrade = await cardsAPI.rate({grade, card_id})
         dispatch(appActions.setAppStatus('Card successfully rated'))
-
+        dispatch(learnActions.setGrade(card_id, randomCardGrade))
     } catch (e) {
         handleServerNetworkError(dispatch, e as Error)
     } finally {
@@ -56,4 +61,3 @@ export const rate = (grade: number, card_id: string): AppThunk => async (dispatc
 //types
 export type InitialStateType = typeof InitialState
 export type LearnActionTypes = InferActionTypes<typeof learnActions>
-

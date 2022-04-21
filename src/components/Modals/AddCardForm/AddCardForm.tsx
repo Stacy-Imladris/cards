@@ -31,8 +31,7 @@ export const AddCardForm: FC<AddCardFormPropsType> = memo(({
         setAnswer('')
     }
 
-    return <Modal onClickNotOpen={onClickCleanUpStates} width={350} height={330}
-                  isOpen={isOpen}>
+    return <Modal onClickNotOpen={onClickCleanUpStates} isOpen={isOpen}>
         <div>Add new card</div>
         <SuperInputText value={question} placeholder={'Enter card question'}
                         onChangeText={setQuestion}/>

@@ -98,8 +98,6 @@ export const getPacks = (): AppThunk => async (dispatch, getState) => {
         const data = await packsAPI.getPacks(params)
         dispatch(packsActions.setCardPacksTotalCount(data.cardPacksTotalCount))
         dispatch(packsActions.setPacks(data.cardPacks))
-        //dispatch(packsActions.setMaxCardsCount(data.maxCardsCount))
-        //dispatch(packsActions.setMinCardsCount(data.minCardsCount))
     } catch (e) {
         handleServerNetworkError(dispatch, e as Error)
     } finally {

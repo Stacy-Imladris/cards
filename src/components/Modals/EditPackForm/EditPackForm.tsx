@@ -31,8 +31,7 @@ export const EditPackForm: FC<EditPackFormPropsType> = memo(({
         setNewName(name)
     }
 
-    return <Modal onClickNotOpen={onClickCleanUpStates} width={350} height={260}
-                  isOpen={isOpen}>
+    return <Modal onClickNotOpen={onClickCleanUpStates} isOpen={isOpen}>
         <div>Pack name</div>
         <SuperInputText value={newName} placeholder={'Enter new name'}
                         onChangeText={setNewName}/>

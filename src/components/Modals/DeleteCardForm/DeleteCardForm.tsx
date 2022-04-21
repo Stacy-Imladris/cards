@@ -21,8 +21,7 @@ export const DeleteCardForm: FC<DeleteCardFormPropsType> = memo(({
         onClickNotOpen()
     }, [dispatch, onClickNotOpen, cardId])
 
-    return <Modal onClickNotOpen={onClickNotOpen} width={400} height={200}
-                  isOpen={isOpen}>
+    return <Modal onClickNotOpen={onClickNotOpen} isOpen={isOpen}>
         <div>Do you really want to remove card?</div>
         <div>
             <SuperButton onClick={onClickNotOpen}>Cancel</SuperButton>

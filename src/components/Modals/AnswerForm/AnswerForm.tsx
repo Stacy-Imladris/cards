@@ -34,11 +34,8 @@ export const Grades: GradesObjectType = {
 
 const arr = [GRADES.ONE, GRADES.TWO, GRADES.THREE, GRADES.FOUR, GRADES.FIVE]
 
-export const AnswerForm: FC<AnswerFormPropsType> = memo(({
-                                                             onClickLearnPackOn,
-                                                             onClickNotOpen,
-                                                             isOpen,
-                                                             name
+export const AnswerForm: FC<AnswerFormPropsType> = memo(({onClickLearnPackOn,
+                                                             onClickNotOpen, isOpen, name
                                                          }) => {
     const [value, setValue] = useState<GradesType>(GRADES.ONE)
     const [rateEdit, setRateEdit] = useState<boolean>(false)
@@ -55,6 +52,7 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
         onClickNotOpen()
         onClickLearnPackOn()
         setRateEdit(false)
+        setValue(GRADES.ONE)
     }, [dispatch, onClickLearnPackOn, onClickNotOpen, cards])
 
     const estimate = useCallback(() => {
@@ -73,8 +71,7 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({
         setRateEdit(false)
     }, [dispatch, onClickNotOpen])
 
-    return <Modal onClickNotOpen={onClickStopLearning} width={460} height={530}
-                  isOpen={isOpen}
+    return <Modal onClickNotOpen={onClickStopLearning} isOpen={isOpen}
                   backgroundStyle={{
                       background: `${theme === '☀' ? '#d0eca1' : '#022507'}`,
                       opacity: 1

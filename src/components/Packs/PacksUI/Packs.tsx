@@ -8,8 +8,8 @@ import {SuperRadio} from '../../../common/super-components/c6-SuperRadio/SuperRa
 import {useDispatch} from 'react-redux';
 import {packsActions} from '../PacksBLL/packs-reducer';
 import {DoubleRange} from '../../Features/DoubleRange/DoubleRange';
-import {selectPackNameForSearch,
-    //selectPackUserId,
+import {
+    selectPackNameForSearch,
     selectTheme,
     selectUser_id
 } from '../../../selectors/selectors';
@@ -24,15 +24,12 @@ export const Packs = () => {
     const theme = useAppSelector(selectTheme)
     const user_id = useAppSelector(selectUser_id)
     const packName = useAppSelector(selectPackNameForSearch)
-    //const packUserId = useAppSelector(selectPackUserId)
     const type = useAppSelector(state=> state.packs.packsType)
 
     const dispatch = useDispatch()
 
     {type === "All" ? dispatch(packsActions.setPacksForUser(""))
         : dispatch(packsActions.setPacksForUser(user_id))}
-
-    //const [valueFromArray, setValueFromArray] = useState(packUserId ? 'My' : 'All')
 
     const [valueFromArray, setValueFromArray] = useState(arr[0])
 

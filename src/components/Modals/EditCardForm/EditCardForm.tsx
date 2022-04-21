@@ -33,8 +33,7 @@ export const EditCardForm: FC<EditCardFormPropsType> = memo(({
         setNewAnswer(answer)
     }
 
-    return <Modal onClickNotOpen={onClickCleanUpStates} width={350} height={330}
-                  isOpen={isOpen}>
+    return <Modal onClickNotOpen={onClickCleanUpStates} isOpen={isOpen}>
         <div>Card info</div>
         <SuperInputText value={newQuestion} placeholder={'Enter new question'}
                         onChangeText={setNewQuestion}/>

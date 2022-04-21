@@ -27,8 +27,7 @@ export const AddPackForm: FC<AddPackFormPropsType> = memo(({onClickNotOpen, isOp
         setIsPrivate(false)
     }
 
-    return <Modal onClickNotOpen={onClickCleanUpStates} width={350} height={290}
-                  isOpen={isOpen}>
+    return <Modal onClickNotOpen={onClickCleanUpStates} isOpen={isOpen}>
         <div>Add new pack</div>
         <SuperInputText value={name} placeholder={'Enter pack name'}
                         onChangeText={setName}/>

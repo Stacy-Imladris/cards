@@ -47,7 +47,7 @@ export const LearnPackForm: FC<LearnPackFormPropsType> = memo(({
     return <>
         <AnswerForm onClickNotOpen={setAnswerOff} isOpen={isAnswerOpen} name={name}
                     onClickLearnPackOn={onClickLearnPackOn}/>
-        <Modal onClickNotOpen={onClickStopLearning} width={460} height={220} isOpen={isOpen}
+        <Modal onClickNotOpen={onClickStopLearning} isOpen={isOpen}
                backgroundStyle={{
                    background: `${theme === '☀' ? '#d0eca1' : '#022507'}`,
                    opacity: 1

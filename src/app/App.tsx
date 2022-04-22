@@ -6,7 +6,11 @@ import {AllRoutes} from './AllRoutes'
 import {useDispatch} from 'react-redux'
 import {auth} from '../components/Profile/ProfileBLL/profile-reducer'
 import {Preloader} from '../common/preloader/Preloader';
-import {selectIsInitialized, selectTheme} from '../selectors/selectors';
+import {
+    selectAppIsLoading,
+    selectIsInitialized,
+    selectTheme
+} from '../selectors/selectors';
 import {AppSnackbar} from '../components/Features/AppSnackbar/AppSnackbar';
 import {Scroll} from '../common/scroll/Scroll';
 import {useAppSelector} from '../store/store';
@@ -14,7 +18,7 @@ import {useAppSelector} from '../store/store';
 export const App = () => {
     const theme = useAppSelector(selectTheme)
     const isInitialized = useAppSelector(selectIsInitialized)
-    const isLoading = useAppSelector(state => state.app.isLoading)
+    const isLoading = useAppSelector(selectAppIsLoading)
 
     const dispatch = useDispatch()
 

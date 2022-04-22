@@ -4,6 +4,7 @@ import {useDispatch} from 'react-redux';
 import {forwardRef, SyntheticEvent} from 'react';
 import {useAppSelector} from '../../../store/store';
 import {appActions} from '../../../store/appReducer';
+import {selectAppError, selectAppStatus} from '../../../selectors/selectors';
 
 const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
     props, ref,) {
@@ -11,8 +12,8 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
 })
 
 export const AppSnackbar = () => {
-    const error = useAppSelector(state => state.app.error)
-    const status = useAppSelector(state => state.app.status)
+    const status = useAppSelector(selectAppStatus)
+    const error = useAppSelector(selectAppError)
 
     const dispatch = useDispatch()
 
@@ -24,14 +25,14 @@ export const AppSnackbar = () => {
 
     return (
         <>
-            <Snackbar open={!!error && error !== 'you are not authorized /ᐠ-ꞈ-ᐟ\\'} autoHideDuration={3000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity="error">
-                    {error}
-                </Alert>
-            </Snackbar>
             <Snackbar open={!!status} autoHideDuration={3000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="success">
                     {status}
+                </Alert>
+            </Snackbar>
+            <Snackbar open={!!error} autoHideDuration={3000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="error">
+                    {error}
                 </Alert>
             </Snackbar>
         </>

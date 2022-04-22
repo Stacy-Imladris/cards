@@ -10,7 +10,7 @@ import {useDispatch} from 'react-redux';
 import {cardsActions} from '../CardsBLL/cards-reducer';
 import {
     selectCardAnswer,
-    selectCardQuestion,
+    selectCardQuestion, selectPackId,
     selectPackName,
     selectTheme,
     selectUser_id
@@ -25,7 +25,7 @@ export const Cards = () => {
     const packName = useAppSelector(selectPackName)
     const cardQuestion = useAppSelector(selectCardQuestion)
     const cardAnswer = useAppSelector(selectCardAnswer)
-    const cardsPack_id = useAppSelector(state => state.cards.params.cardsPack_id)
+    const cardsPack_id = useAppSelector(selectPackId)
     const userId = useAppSelector(selectUser_id)
 
     const dispatch = useDispatch()

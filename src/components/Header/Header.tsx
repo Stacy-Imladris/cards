@@ -15,6 +15,7 @@ const themes = ['☀', '☽']
 export const Header = () => {
     const theme = useAppSelector(selectTheme)
     const isLoggedIn = useAppSelector(selectIsLoggedIn)
+
     const dispatch = useDispatch()
 
     const logOut = () => {

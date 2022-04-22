@@ -8,7 +8,7 @@ import {useDispatch} from 'react-redux';
 import {packsActions, PacksType} from '../PacksBLL/packs-reducer';
 import {DoubleRange} from '../../Features/DoubleRange/DoubleRange';
 import {
-    selectPackNameForSearch,
+    selectPackNameForSearch, selectPacksType,
     selectTheme,
     selectUser_id
 } from '../../../selectors/selectors';
@@ -24,7 +24,7 @@ export const Packs = () => {
     const theme = useAppSelector(selectTheme)
     const user_id = useAppSelector(selectUser_id)
     const packName = useAppSelector(selectPackNameForSearch)
-    const type = useAppSelector(state=> state.packs.packsType)
+    const type = useAppSelector(selectPacksType)
 
     const dispatch = useDispatch()
 

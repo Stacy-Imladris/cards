@@ -35,6 +35,7 @@ export const selectCards = (state: AppRootStateType) => state.cards.cards
 export const selectCardsQuestion = (state: AppRootStateType) => state.cards.params.cardQuestion
 export const selectCardsAnswer = (state: AppRootStateType) => state.cards.params.cardAnswer
 export const selectSortCards = (state: AppRootStateType) => state.cards.params.sortCards
+export const selectPackId = (state: AppRootStateType) => state.cards.params.cardsPack_id
 
 export const selectCardPacksTotalCount = (state: AppRootStateType) => state.packs.cardPacksTotalCount
 export const selectPageForPacks = (state: AppRootStateType) => state.packs.params.page
@@ -47,3 +48,11 @@ export const selectMinCardsCount = (state: AppRootStateType) => state.packs.minC
 export const selectMaxCardsCount = (state: AppRootStateType) => state.packs.maxCardsCount
 export const selectMinForCards = (state: AppRootStateType) => state.packs.params.min
 export const selectMaxForCards = (state: AppRootStateType) => state.packs.params.max
+export const selectPacksType = (state: AppRootStateType) => state.packs.packsType
+
+export const selectAppStatus = (state: AppRootStateType) => state.app.status
+export const selectAppError = (state: AppRootStateType) => state.app.error
+export const selectAppIsLoading = (state: AppRootStateType) => state.app.isLoading
+
+export const selectLearnCards = (state: AppRootStateType) => state.learn.cards
+export const selectRandomCard = (state: AppRootStateType) => state.learn.randomCard

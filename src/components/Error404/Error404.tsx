@@ -6,6 +6,7 @@ import {selectTheme} from '../../selectors/selectors';
 import {useState} from 'react';
 import {PATH} from '../../enums/paths';
 import {useAppSelector} from '../../store/store';
+import {getRandom} from '../../utils/getRandom';
 
 export const Error404 = () => {
     const [height, setHeight] = useState<number>(-120)
@@ -14,11 +15,9 @@ export const Error404 = () => {
 
     const theme = useAppSelector(selectTheme)
 
-    const random = (min: number, max: number) => Math.floor(min + Math.random() * (max - min + 1))
-
     const onMouseEnterButtonLeave = () => {
-        setHeight(random(0, 300))
-        setWidth(random(0, 300))
+        setHeight(getRandom(0, 300))
+        setWidth(getRandom(0, 300))
         setOpacity(0)
     }
 
@@ -46,7 +45,9 @@ export const Error404 = () => {
                 <div style={{left, top, opacity}} className={s.joke}>
                     <SuperButton onMouseEnter={onMouseEnterButtonLeave}
                                  onMouseLeave={onMouseLeaveButtonAppear}
-                                 onClick={onClickShowMessage}>Leave</SuperButton>
+                                 onClick={onClickShowMessage}>
+                        Leave
+                    </SuperButton>
                 </div>
             </div>
         </div>

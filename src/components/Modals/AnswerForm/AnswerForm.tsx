@@ -3,7 +3,11 @@ import {useDispatch} from 'react-redux'
 import {Modal} from '../Modal/Modal'
 import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton'
 import {SuperRadio} from '../../../common/super-components/c6-SuperRadio/SuperRadio'
-import {selectTheme} from '../../../selectors/selectors'
+import {
+    selectAppIsLoading,
+    selectLearnCards, selectRandomCard,
+    selectTheme
+} from '../../../selectors/selectors'
 import {CardType} from '../../Cards/CardsAPI/cards-api'
 import {GRADES} from '../../../enums/grades';
 import {Preloader} from '../../../common/preloader/Preloader';
@@ -41,9 +45,9 @@ export const AnswerForm: FC<AnswerFormPropsType> = memo(({onClickLearnPackOn,
     const [rateEdit, setRateEdit] = useState<boolean>(false)
 
     const theme = useAppSelector(selectTheme)
-    const isLoading = useAppSelector(state => state.app.isLoading)
-    const cards = useAppSelector(state => state.learn.cards)
-    const randomCard = useAppSelector(state => state.learn.randomCard)
+    const isLoading = useAppSelector(selectAppIsLoading)
+    const cards = useAppSelector(selectLearnCards)
+    const randomCard = useAppSelector(selectRandomCard)
 
     const dispatch = useDispatch()
 

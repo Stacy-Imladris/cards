@@ -1,4 +1,5 @@
 import {CardType} from '../components/Cards/CardsAPI/cards-api'
+import {getRandom} from './getRandom';
 
 /*export const chooseCard = (cards: CardType[]) => {
     const sum = cards.reduce((acc, card) => acc + (6 - card.grade), 0)
@@ -17,8 +18,6 @@ import {CardType} from '../components/Cards/CardsAPI/cards-api'
 
     return cards[mostProbableIndex]
 }*/
-
-const getRandom = (min: number, max: number) => Math.random() * (max - min) + min
 
 export const getRandomCard = (cards: CardType[]) => {
     const probabilities = cards.map(({grade}) => (6 - grade) ** 2)

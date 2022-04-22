@@ -2,7 +2,11 @@ import {FC, memo, useCallback, useState} from 'react'
 import {Modal} from '../Modal/Modal'
 import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton'
 import {AnswerForm} from '../AnswerForm/AnswerForm'
-import {selectTheme} from '../../../selectors/selectors'
+import {
+    selectAppIsLoading,
+    selectRandomCard,
+    selectTheme
+} from '../../../selectors/selectors'
 import {Preloader} from '../../../common/preloader/Preloader'
 import {useDispatch} from 'react-redux'
 import {CardType} from '../../Cards/CardsAPI/cards-api';
@@ -22,8 +26,8 @@ export const LearnPackForm: FC<LearnPackFormPropsType> = memo(({
                                                                    name
                                                                }) => {
     const theme = useAppSelector(selectTheme)
-    const isLoading = useAppSelector(state => state.app.isLoading)
-    const randomCard = useAppSelector(state => state.learn.randomCard)
+    const isLoading = useAppSelector(selectAppIsLoading)
+    const randomCard = useAppSelector(selectRandomCard)
 
     const dispatch = useDispatch()
 

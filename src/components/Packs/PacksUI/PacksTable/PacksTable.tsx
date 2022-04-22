@@ -5,26 +5,22 @@ import {useCallback, useEffect} from 'react'
 import t from '../../../../common/styles/Table.module.css'
 import {
     selectCardPacksTotalCount,
-    selectMaxForCards,
-    selectMinForCards,
     selectPackNameForSearch,
     selectPacks,
     selectPackUserId,
     selectPageCountForPacks,
     selectPageForPacks,
-    selectSortForPacks,
-} from '../../../../store/selectors';
-import {Paginator} from '../../../Features/Paginator/Paginator';
-import {PacksTableHeader} from './PacksTableHeader/PacksTableHeader';
-import {useAppSelector} from '../../../../store/store';
+    selectSortForPacks
+} from '../../../../store/selectors'
+import {Paginator} from '../../../Features/Paginator/Paginator'
+import {PacksTableHeader} from './PacksTableHeader/PacksTableHeader'
+import {useAppSelector} from '../../../../store/store'
 
 export const PacksTable = () => {
     const packs = useAppSelector(selectPacks)
     const packName = useAppSelector(selectPackNameForSearch)
     const user_id = useAppSelector(selectPackUserId)
     const sortPacks = useAppSelector(selectSortForPacks)
-    const min = useAppSelector(selectMinForCards)
-    const max = useAppSelector(selectMaxForCards)
     const cardPacksTotalCount = useAppSelector(selectCardPacksTotalCount)
     const page = useAppSelector(selectPageForPacks)
     const pageCount = useAppSelector(selectPageCountForPacks)
@@ -42,7 +38,7 @@ export const PacksTable = () => {
 
     useEffect(() => {
         dispatch(getPacks())
-    }, [dispatch, packName, user_id, sortPacks, min, max, pageCount])
+    }, [dispatch, packName, user_id, sortPacks, pageCount])
 
 
     return <div className={t.tableContainer}>

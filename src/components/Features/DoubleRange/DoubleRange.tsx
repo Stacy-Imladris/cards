@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from 'react-redux'
 import {useCallback, useState} from 'react'
-import {packsActions} from '../../Packs/PacksBLL/packs-reducer'
+import {getPacks, packsActions} from '../../Packs/PacksBLL/packs-reducer'
 import s from './DoubleRange.module.css'
 import {AppRootStateType} from '../../../store/store'
 import {SuperDoubleRange} from '../../../common/super-components/c8-SuperDoubleRange/SuperDoubleRange'
@@ -22,7 +22,8 @@ export const DoubleRange = () => {
             const id = +setTimeout(() => {
                 dispatch(packsActions.setPacksMin(range[0]))
                 dispatch(packsActions.setPacksMax(range[1]))
-            }, 500)
+                dispatch(getPacks())
+            }, 1000)
             setTimerId(id)
         }, [dispatch, timerId, range])
 

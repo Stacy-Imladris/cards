@@ -34,7 +34,7 @@ export const Profile = () => {
     const location = useLocation()
 
     const editProfile = useCallback(() => {
-        dispatch(profileActions.setEditModeProfile(true))
+        dispatch(profileActions.setEditMode(true))
     }, [dispatch])
 
     const onChangeDebounceRequest = useCallback((title: string) => {

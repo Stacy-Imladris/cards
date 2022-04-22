@@ -4,12 +4,12 @@ import {handleServerNetworkError} from '../utils/handleServerNetworkError';
 import {appActions} from './appReducer';
 import {getRandomCard} from '../utils/getRandomCard';
 
-const InitialState = {
+const learnInitialState = {
     cards: [] as CardType[],
     randomCard: {} as CardType,
 }
 
-export const learnReducer = (state: InitialStateType = InitialState, action: LearnActionTypes): InitialStateType => {
+export const learnReducer = (state: LearnInitialStateType = learnInitialState, action: LearnActionTypes): LearnInitialStateType => {
     switch (action.type) {
         case 'LEARN/SET_CARDS':
         case 'LEARN/SET_RANDOM_CARD':
@@ -59,5 +59,5 @@ export const rate = (grade: number, card_id: string): AppThunk => async (dispatc
 }
 
 //types
-export type InitialStateType = typeof InitialState
+export type LearnInitialStateType = typeof learnInitialState
 export type LearnActionTypes = InferActionTypes<typeof learnActions>

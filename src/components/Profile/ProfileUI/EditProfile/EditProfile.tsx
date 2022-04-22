@@ -28,7 +28,7 @@ export const EditProfile = () => {
     const dispatch = useDispatch()
 
     const navigateToProfile = useCallback(() => {
-        dispatch(profileActions.setEditModeProfile(false))
+        dispatch(profileActions.setEditMode(false))
     }, [dispatch])
 
     const updateData = useCallback(() => {

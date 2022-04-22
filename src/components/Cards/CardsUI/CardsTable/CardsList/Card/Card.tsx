@@ -1,7 +1,7 @@
 import {FC, memo, useCallback, useState} from 'react'
 import {CardType} from '../../../../CardsAPI/cards-api'
 import s from '../../../Cards.module.css'
-import a from '../../../../../../common/styles/Actions.module.css'
+import t from '../../../../../../common/styles/Table.module.css'
 import {SuperButton} from '../../../../../../common/super-components/c2-SuperButton/SuperButton'
 import {selectUser_id} from '../../../../../../selectors/selectors'
 import {DeleteCardForm} from '../../../../../Modals/DeleteCardForm/DeleteCardForm'
@@ -48,9 +48,9 @@ export const Card: FC<CardPropsType> = memo(({card}) => {
         <td>{lastUpdate}</td>
         <td>{card.grade.toFixed(2)}</td>
         {userId === packUserId && <td className={s.actions}>
-          <div className={a.actionButtons}>
-            <SuperButton onClick={editCardOn} className={s.button}>✎</SuperButton>
-            <SuperButton red onClick={deleteCardOn} className={s.button}>✘</SuperButton>
+          <div className={t.actionButtons}>
+            <SuperButton onClick={editCardOn}>✎</SuperButton>
+            <SuperButton red onClick={deleteCardOn}>✘</SuperButton>
           </div>
         </td>}
     </tr>

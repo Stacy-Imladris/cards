@@ -55,7 +55,7 @@ export const logout = (): AppThunk => async dispatch => {
     try {
         await loginAPI.logout()
         dispatch(loginActions.setLoginError(''))
-        dispatch(profileActions.setEditModeProfile(false))
+        dispatch(profileActions.setEditMode(false))
         dispatch(loginActions.setIsLoggedIn(false))
         dispatch(profileActions.setUserData({} as UserType))
         dispatch(packsActions.setPacks([]))

@@ -2,8 +2,7 @@ import {PacksList} from './PacksList/PacksList'
 import {getPacks, packsActions} from '../../PacksBLL/packs-reducer'
 import {useDispatch} from 'react-redux'
 import {useCallback, useEffect} from 'react'
-import s from './PacksTable.module.css'
-import a from '../../../../common/styles/Actions.module.css'
+import t from '../../../../common/styles/Table.module.css'
 import {
     selectCardPacksTotalCount,
     selectMaxForCards,
@@ -46,28 +45,32 @@ export const PacksTable = () => {
     }, [dispatch, packName, user_id, sortPacks, min, max, pageCount])
 
 
-    return <div className={s.packsTableContainer}>
-        <table className={s.table}>
+    return <div className={t.tableContainer}>
+        <table className={t.table}>
             <thead>
             <tr>
                 <PacksTableHeader text={'Name'} param={'name'}/>
                 <PacksTableHeader text={'Cards'} param={'cardsCount'}/>
                 <PacksTableHeader text={'Updated'} param={'updated'}/>
                 <PacksTableHeader text={'Creator'} param={'user_name'}/>
-                <th className={a.actions}>
+                <th className={t.actions}>
                     Actions
                 </th>
             </tr>
             </thead>
             <tbody>
             <PacksList cardPacks={packs}/>
+            <tr>
+                <td colSpan={5} className={t.pagination}>
+                    <div>
+                        <Paginator onChangeSetAmountOfItems={onChangeSetAmountOfPacks}
+                                   onPageChanged={onPageChanged}
+                                   itemsTotalCount={cardPacksTotalCount}
+                                   pageCount={pageCount} page={page}/>
+                    </div>
+                </td>
+            </tr>
             </tbody>
         </table>
-        <div className={s.pagination}>
-            <Paginator onChangeSetAmountOfItems={onChangeSetAmountOfPacks}
-                       onPageChanged={onPageChanged}
-                       itemsTotalCount={cardPacksTotalCount}
-                       pageCount={pageCount} page={page}/>
-        </div>
     </div>
 }

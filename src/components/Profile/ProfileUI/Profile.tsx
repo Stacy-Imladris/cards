@@ -20,6 +20,7 @@ import {DoubleRange} from '../../Features/DoubleRange/DoubleRange';
 import {AddPackForm} from '../../Modals/AddPackForm/AddPackForm';
 import {useLocation} from 'react-router-dom';
 import {useAppSelector} from '../../../store/store';
+import {PATH} from '../../../enums/paths';
 
 export const Profile = () => {
     const [isAddingOpen, setIsAddingOpen] = useState<boolean>(false)
@@ -54,7 +55,7 @@ export const Profile = () => {
         setIsAddingOpen(true)
     }
 
-    if (location.pathname === "/profile") {
+    if (location.pathname === PATH.PROFILE) {
         dispatch(packsActions.setPacksForUser(user_id))
         dispatch(packsActions.setPacksType("All"))
     }

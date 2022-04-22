@@ -2,7 +2,7 @@ import {profileAPI, UserType} from '../ProfileAPI/profile-api'
 import {loginActions} from '../../Auth/Login/LoginBLL/loginReducer';
 import {handleServerNetworkError} from '../../../utils/handleServerNetworkError';
 import {AppThunk, InferActionTypes} from '../../../store/store';
-import {appActions} from '../../../store/appReducer';
+import {appActions} from '../../../app/appReducer';
 
 const profileInitialState = {
     user: {} as UserType,

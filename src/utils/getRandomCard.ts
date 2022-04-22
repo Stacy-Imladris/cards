@@ -1,24 +1,6 @@
 import {CardType} from '../components/Cards/CardsAPI/cards-api'
 import {getRandom} from './getRandom';
 
-/*export const chooseCard = (cards: CardType[]) => {
-    const sum = cards.reduce((acc, card) => acc + (6 - card.grade), 0)
-    const rand = Math.round(Math.random() * sum)
-    const indexesCardsArr = [] as Array<number>
-
-    for (let i = 0; i < cards.length; i++) {
-        const probability = 6 - cards[i].grade
-        let j = 0
-        while (probability > j) {
-            indexesCardsArr.push(i)
-            j++
-        }
-    }
-    const mostProbableIndex: number = indexesCardsArr[rand]
-
-    return cards[mostProbableIndex]
-}*/
-
 export const getRandomCard = (cards: CardType[]) => {
     const probabilities = cards.map(({grade}) => (6 - grade) ** 2)
     const randomNumber = getRandom(0, probabilities.reduce((acc, r) => acc + r))

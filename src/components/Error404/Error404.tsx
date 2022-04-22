@@ -9,13 +9,15 @@ import {useAppSelector} from '../../store/store';
 import {getRandom} from '../../utils/getRandom';
 
 export const Error404 = () => {
-    const [height, setHeight] = useState<number>(-120)
-    const [width, setWidth] = useState<number>(-260)
+    const [height, setHeight] = useState<number>(0)
+    const [width, setWidth] = useState<number>(0)
     const [opacity, setOpacity] = useState<number>(1)
+    const [position, setPosition] = useState<'static' | 'absolute'>('static')
 
     const theme = useAppSelector(selectTheme)
 
     const onMouseEnterButtonLeave = () => {
+        setPosition('absolute')
         setHeight(getRandom(0, 300))
         setWidth(getRandom(0, 300))
         setOpacity(0)
@@ -41,13 +43,11 @@ export const Error404 = () => {
                 <NavLink to={PATH.PROFILE} className={s.nav}> Profile</NavLink> page?
             </div>
             <div className={`${s.lastLine} ${t[theme + '-text']}`}>
-                In case you decide to leave this awesome application, press button:
-                <div style={{left, top, opacity}} className={s.joke}>
+                <div>In case you decide to leave this awesome application, press button:</div>
+                <div style={{top, left, opacity, position}} className={s.joke}>
                     <SuperButton onMouseEnter={onMouseEnterButtonLeave}
                                  onMouseLeave={onMouseLeaveButtonAppear}
-                                 onClick={onClickShowMessage}>
-                        Leave
-                    </SuperButton>
+                                 onClick={onClickShowMessage}>Leave</SuperButton>
                 </div>
             </div>
         </div>

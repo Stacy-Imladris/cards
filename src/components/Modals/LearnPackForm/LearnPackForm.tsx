@@ -6,7 +6,7 @@ import {
     selectAppIsLoading,
     selectRandomCard,
     selectTheme
-} from '../../../selectors/selectors'
+} from '../../../store/selectors'
 import {Preloader} from '../../../common/preloader/Preloader'
 import {useDispatch} from 'react-redux'
 import {CardType} from '../../Cards/CardsAPI/cards-api';

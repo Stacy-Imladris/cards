@@ -1,7 +1,7 @@
 import {ChangeEvent, DetailedHTMLProps, FC, InputHTMLAttributes, memo} from 'react'
 import s from './SuperRadio.module.css'
 import t from '../../styles/Themes.module.css'
-import {selectTheme} from '../../../selectors/selectors';
+import {selectTheme} from '../../../store/selectors';
 import {useAppSelector} from '../../../store/store';
 
 type DefaultRadioPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>

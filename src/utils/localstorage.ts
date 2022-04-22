@@ -1,6 +1,8 @@
+import {KEYS} from '../enums/localstorageKeys';
+
 export const loadValue = () => {
     try {
-        const resultAsString = localStorage.getItem('theme')
+        const resultAsString = localStorage.getItem(KEYS.THEME)
         if (resultAsString === null) {
             return undefined
         }
@@ -12,6 +14,6 @@ export const loadValue = () => {
 
 export const saveState = (theme: string) => {
     try {
-        localStorage.setItem('theme', JSON.stringify(theme))
+        localStorage.setItem(KEYS.THEME, JSON.stringify(theme))
     } catch {}
 }

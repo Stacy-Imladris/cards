@@ -6,7 +6,7 @@ import {
     selectRecoveryCheck,
     selectRecoveryError,
     selectRecoveryIsLoading, selectTheme
-} from '../../../../selectors/selectors';
+} from '../../../../store/selectors';
 import {useAppSelector} from '../../../../store/store';
 
 export const RecoveryContainer = () => {

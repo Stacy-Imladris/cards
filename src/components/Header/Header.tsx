@@ -4,7 +4,7 @@ import s from './Header.module.css';
 import {useDispatch} from 'react-redux';
 import {SuperSelect} from '../../common/super-components/c5-SuperSelect/SuperSelect';
 import {saveState} from '../../utils/localstorage';
-import {selectIsLoggedIn, selectTheme} from '../../selectors/selectors';
+import {selectIsLoggedIn, selectTheme} from '../../store/selectors';
 import {logout} from '../Auth/Login/LoginBLL/loginReducer';
 import {PATH} from '../../enums/paths';
 import {useAppSelector} from '../../store/store';

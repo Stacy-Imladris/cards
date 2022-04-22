@@ -1,7 +1,7 @@
 import s from './Logo.module.css';
 import logo from '../../assets/images/logo.png'
 import t from '../styles/Themes.module.css';
-import {selectTheme} from '../../selectors/selectors';
+import {selectTheme} from '../../store/selectors';
 import {useAppSelector} from '../../store/store';
 
 export const Logo = () => {

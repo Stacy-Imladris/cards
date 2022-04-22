@@ -11,7 +11,7 @@ import {
     selectProfileEditMode,
     selectProfileUserName,
     selectTheme, selectUser_id
-} from '../../../selectors/selectors';
+} from '../../../store/selectors';
 import {useCallback, useState} from 'react';
 import {SearchField} from '../../Features/SearchField/SearchField';
 import {PacksTable} from '../../Packs/PacksUI/PacksTable/PacksTable';

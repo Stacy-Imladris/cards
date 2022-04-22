@@ -10,7 +10,7 @@ import {Preloader} from '../../../../common/preloader/Preloader';
 import {SuperCheckbox} from '../../../../common/super-components/c3-SuperCheckbox/SuperCheckbox';
 import {
     selectIsLoggedIn, selectLoginError, selectLoginIsLoading, selectTheme
-} from '../../../../selectors/selectors';
+} from '../../../../store/selectors';
 import {login, loginActions} from '../LoginBLL/loginReducer';
 import {PATH} from '../../../../enums/paths';
 import {useAppSelector} from '../../../../store/store';

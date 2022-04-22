@@ -7,7 +7,7 @@ import {
     selectAppIsLoading,
     selectLearnCards, selectRandomCard,
     selectTheme
-} from '../../../selectors/selectors'
+} from '../../../store/selectors'
 import {CardType} from '../../Cards/CardsAPI/cards-api'
 import {GRADES} from '../../../enums/grades';
 import {Preloader} from '../../../common/preloader/Preloader';

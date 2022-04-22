@@ -12,7 +12,7 @@ import {
     selectProfileIsFetching,
     selectProfileUser,
     selectTheme
-} from '../../../../selectors/selectors'
+} from '../../../../store/selectors'
 import {Profile} from '../Profile'
 import {Logo} from '../../../../common/logo/Logo'
 import {useAppSelector} from '../../../../store/store';

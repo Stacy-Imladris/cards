@@ -13,7 +13,7 @@ import {
     selectPageCountForPacks,
     selectPageForPacks,
     selectSortForPacks,
-} from '../../../../selectors/selectors';
+} from '../../../../store/selectors';
 import {Paginator} from '../../../Features/Paginator/Paginator';
 import {PacksTableHeader} from './PacksTableHeader/PacksTableHeader';
 import {useAppSelector} from '../../../../store/store';

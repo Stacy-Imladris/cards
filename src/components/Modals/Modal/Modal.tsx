@@ -1,7 +1,7 @@
 import {CSSProperties, FC, memo} from 'react';
 import s from './Modal.module.css'
 import ReactDOM from 'react-dom';
-import {selectTheme} from '../../../selectors/selectors';
+import {selectTheme} from '../../../store/selectors';
 import t from '../../../common/styles/Themes.module.css';
 import {useAppSelector} from '../../../store/store';
 

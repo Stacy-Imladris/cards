@@ -11,7 +11,7 @@ import {
     selectPackNameForSearch, selectPacksType,
     selectTheme,
     selectUser_id
-} from '../../../selectors/selectors';
+} from '../../../store/selectors';
 import {useCallback, useState} from 'react';
 import {AddPackForm} from '../../Modals/AddPackForm/AddPackForm';
 import {useAppSelector} from '../../../store/store';

@@ -14,7 +14,7 @@ import {
     selectPackName,
     selectTheme,
     selectUser_id
-} from '../../../selectors/selectors';
+} from '../../../store/selectors';
 import {AddCardForm} from '../../Modals/AddCardForm/AddCardForm';
 import {useAppSelector} from '../../../store/store';
 

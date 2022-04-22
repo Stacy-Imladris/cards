@@ -10,7 +10,7 @@ import {
     selectAppIsLoading,
     selectIsInitialized,
     selectTheme
-} from '../selectors/selectors';
+} from '../store/selectors';
 import {AppSnackbar} from '../components/Features/AppSnackbar/AppSnackbar';
 import {Scroll} from '../common/scroll/Scroll';
 import {useAppSelector} from '../store/store';

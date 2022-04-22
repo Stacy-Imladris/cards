@@ -1,4 +1,4 @@
-import {selectMaxCardsCount, selectMinCardsCount} from '../../../selectors/selectors';
+import {selectMaxCardsCount, selectMinCardsCount} from '../../../store/selectors';
 import {useDispatch} from 'react-redux';
 import {useCallback, useState} from 'react';
 import {packsActions} from '../../Packs/PacksBLL/packs-reducer';

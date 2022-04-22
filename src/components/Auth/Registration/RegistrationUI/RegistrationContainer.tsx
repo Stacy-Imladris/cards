@@ -6,7 +6,7 @@ import {Navigate, useNavigate} from 'react-router-dom';
 import {
     selectRegistrationError, selectRegistrationIsLoading,
     selectRegistrationToLogin, selectTheme
-} from '../../../../selectors/selectors';
+} from '../../../../store/selectors';
 import {PATH} from '../../../../enums/paths';
 import {useAppSelector} from '../../../../store/store';
 

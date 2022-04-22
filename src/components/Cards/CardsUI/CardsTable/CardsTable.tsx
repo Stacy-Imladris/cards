@@ -12,7 +12,7 @@ import {
     selectPageForCards,
     selectSortCards,
     selectUser_id
-} from '../../../../selectors/selectors';
+} from '../../../../store/selectors';
 import {Paginator} from '../../../Features/Paginator/Paginator';
 import {CardsTableHeader} from './CardsTableHeader/CardsTableHeader';
 import {useParams} from 'react-router-dom';

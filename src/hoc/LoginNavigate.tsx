@@ -1,4 +1,4 @@
-import {selectIsLoggedIn} from '../selectors/selectors'
+import {selectIsLoggedIn} from '../store/selectors'
 import {Navigate} from 'react-router-dom'
 import {FC} from 'react'
 import {PATH} from '../enums/paths';

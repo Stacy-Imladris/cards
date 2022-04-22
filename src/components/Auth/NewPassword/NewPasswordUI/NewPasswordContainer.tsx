@@ -6,7 +6,7 @@ import {Navigate, useParams} from 'react-router-dom';
 import {
     selectNewPasswordError,
     selectNewPasswordIsLoading, selectNewPasswordToLogin, selectTheme
-} from '../../../../selectors/selectors';
+} from '../../../../store/selectors';
 import {PATH} from '../../../../enums/paths';
 import {useAppSelector} from '../../../../store/store';
 

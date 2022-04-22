@@ -4,7 +4,7 @@ import {useDispatch} from 'react-redux';
 import {forwardRef, SyntheticEvent} from 'react';
 import {useAppSelector} from '../../../store/store';
 import {appActions} from '../../../store/appReducer';
-import {selectAppError, selectAppStatus} from '../../../selectors/selectors';
+import {selectAppError, selectAppStatus} from '../../../store/selectors';
 
 const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
     props, ref,) {

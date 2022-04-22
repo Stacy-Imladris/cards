@@ -1,4 +1,4 @@
-import {AppRootStateType} from '../store/store';
+import {AppRootStateType} from './store';
 
 export const selectTheme = (state: AppRootStateType) => state.theme.theme
 

@@ -1,12 +1,10 @@
-import {FC, memo} from 'react'
+import {FC, memo, useState} from 'react'
 import Box from '@mui/material/Box'
 import Slider from '@mui/material/Slider'
-import {selectMaxCardsCount, selectMinCardsCount} from '../../../store/selectors'
-import {useAppSelector} from '../../../store/store'
 
 type SuperDoubleRangePropsType = {
-    onChangeRange: (value: number[]) => void
-    value: number[]
+    onChangeRange?: (value: [number, number] | number[]) => void
+    value?: [number, number]
     min: number
     max: number
 }
@@ -16,11 +14,16 @@ export const SuperDoubleRange: FC<SuperDoubleRangePropsType> = memo(({
                                                                          value, min, max,
                                                                          ...restProps
                                                                      }) => {
-    const value1 = useAppSelector(selectMinCardsCount)
-    const value2 = useAppSelector(selectMaxCardsCount)
+
+    const [range, setRange] = useState<number[]>(value ? value : [min, max]);
 
     const handleChange = (event: Event, newRange: number | number[]) => {
-        onChangeRange(newRange as number[])
+        setRange(newRange as number[]);
+        onChangeCallback(newRange as number[])
+    }
+
+    const onChangeCallback = (arr: number[]) => {
+        onChangeRange && onChangeRange(arr)
     }
 
 
@@ -28,12 +31,12 @@ export const SuperDoubleRange: FC<SuperDoubleRangePropsType> = memo(({
         <Box sx={{width: 130, display: 'inline-block', margin: '0 10px 0 10px'}}>
             <Slider
                 getAriaLabel={() => 'My range'}
-                value={value}
+                value={range}
                 onChange={handleChange}
                 valueLabelDisplay="auto"
                 sx={{color: 'success.main'}}
-                min={value1}
-                max={value2}
+                min={min}
+                max={max}
                 {...restProps}/>
         </Box>
     )

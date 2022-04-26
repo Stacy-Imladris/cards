@@ -1,7 +1,7 @@
 import {AppThunk, InferActionTypes} from './store'
 import {cardsAPI, CardType} from '../components/Cards/CardsAPI/cards-api'
 import {handleServerNetworkError} from '../utils/handleServerNetworkError';
-import {appActions} from './appReducer';
+import {appActions} from '../app/appReducer';
 import {getRandomCard} from '../utils/getRandomCard';
 
 const learnInitialState = {

@@ -13,7 +13,7 @@ import {NewPasswordActionTypes, newPasswordReducer
 import {loadValue} from '../utils/localstorage';
 import {PacksActionTypes, packsReducer} from '../components/Packs/PacksBLL/packs-reducer';
 import {CardsActionTypes, cardsReducer} from '../components/Cards/CardsBLL/cards-reducer';
-import {AppActionTypes, appReducer} from './appReducer';
+import {AppActionTypes, appReducer} from '../app/appReducer';
 import {LearnActionTypes, learnReducer} from './learnReducer';
 
 const rootReducer = combineReducers({

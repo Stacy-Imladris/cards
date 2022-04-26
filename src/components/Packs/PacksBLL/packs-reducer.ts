@@ -1,7 +1,7 @@
 import {AddNewCardType, packsAPI, PackType, UpdatePackType} from '../PacksAPI/packs-api'
 import {handleServerNetworkError} from '../../../utils/handleServerNetworkError';
 import {AppThunk, InferActionTypes} from '../../../store/store';
-import {appActions} from '../../../store/appReducer';
+import {appActions} from '../../../app/appReducer';
 
 const packsInitialState = {
     packs: [] as PackType[],

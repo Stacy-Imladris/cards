@@ -1,7 +1,7 @@
 import {cardsAPI, CardType, NewCardType, UpdateCardPayload} from '../CardsAPI/cards-api'
 import {handleServerNetworkError} from '../../../utils/handleServerNetworkError';
 import {AppThunk, InferActionTypes} from '../../../store/store';
-import {appActions} from '../../../store/appReducer';
+import {appActions} from '../../../app/appReducer';
 
 const cardsInitialState = {
     cards: [] as CardType[],

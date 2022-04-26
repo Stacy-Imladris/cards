@@ -1,7 +1,7 @@
 import s from './Profile.module.css'
 import c from '../../../common/styles/Container.module.css'
 import t from '../../../common/styles/Themes.module.css'
-import profileAva from '../../../assets/images/profile_ava.png'
+import emptyAva from '../../../assets/images/empty_avatar.png'
 import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton'
 import {profileActions} from '../ProfileBLL/profile-reducer'
 import {useDispatch} from 'react-redux'
@@ -67,7 +67,7 @@ export const Profile = () => {
                 <div className={c.settings}>
                     <div className={s.profile}>
                         <div className={s.profileAvatar}>
-                            <img src={profileAva} alt={'avatar'}/>
+                            <img src={emptyAva} alt={'avatar'}/>
                         </div>
                         <div className={c.text}>{name}</div>
                         <div className={s.profileJob}>Front-end developer</div>

@@ -6,7 +6,7 @@ export const profileAPI = {
         return instance.post<any, AxiosResponse<ResponseType>, {}>('auth/me', {})
     },
     update(name: string, avatar: string) {
-        return instance.put<any, AxiosResponse<ResponseUpdateType>, {name: string, avatar?: string}>('auth/me', {name})
+        return instance.put<any, AxiosResponse<ResponseUpdateType>, {name: string, avatar?: string}>('auth/me', {name, avatar})
     },
 }
 
@@ -26,7 +26,7 @@ export type UserType = {
     _id: string
     email: string
     name: string
-    avatar?: string
+    avatar: string
     publicCardPacksCount: number
     created: Date
     updated: Date

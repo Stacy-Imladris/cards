@@ -27,7 +27,7 @@ export const profileActions = {
     setEditMode: (editMode: boolean) => ({type: 'profile/SET_EDIT_MODE', payload: {editMode}} as const),
     setIsFetching: (isFetching: boolean) => ({type: 'profile/SET_IS_FETCHING', payload: {isFetching}} as const),
     setUserData: (user: UserType) => ({type: 'profile/SET_USER_DATA', payload: {user}} as const),
-    setIsInitialized: (isInitialized: boolean) => ({type: 'profile/SET_IS_INITIALIZED', payload: {isInitialized}} as const)
+    setIsInitialized: (isInitialized: boolean) => ({type: 'profile/SET_IS_INITIALIZED', payload: {isInitialized}} as const),
 }
 
 //thunks:

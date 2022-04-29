@@ -4,23 +4,24 @@ import t from '../../../common/styles/Themes.module.css'
 import emptyAva from '../../../assets/images/empty_avatar.png'
 import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton'
 import {profileActions} from '../ProfileBLL/profile-reducer'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {EditProfile} from './EditProfile/EditProfile'
 import {
     selectPackNameForSearch,
     selectProfileEditMode,
     selectProfileUserName,
-    selectTheme, selectUser_id
-} from '../../../store/selectors';
-import {useCallback, useState} from 'react';
-import {SearchField} from '../../Features/SearchField/SearchField';
-import {PacksTable} from '../../Packs/PacksUI/PacksTable/PacksTable';
-import {packsActions} from '../../Packs/PacksBLL/packs-reducer';
-import {DoubleRange} from '../../Features/DoubleRange/DoubleRange';
-import {AddPackForm} from '../../Modals/AddPackForm/AddPackForm';
-import {useLocation} from 'react-router-dom';
-import {useAppSelector} from '../../../store/store';
-import {PATH} from '../../../enums/paths';
+    selectTheme,
+    selectUser_id
+} from '../../../store/selectors'
+import {useCallback, useState} from 'react'
+import {SearchField} from '../../Features/SearchField/SearchField'
+import {PacksTable} from '../../Packs/PacksUI/PacksTable/PacksTable'
+import {packsActions} from '../../Packs/PacksBLL/packs-reducer'
+import {DoubleRange} from '../../Features/DoubleRange/DoubleRange'
+import {AddPackForm} from '../../Modals/AddPackForm/AddPackForm'
+import {useLocation} from 'react-router-dom'
+import {AppRootStateType, useAppSelector} from '../../../store/store'
+import {PATH} from '../../../enums/paths'
 
 export const Profile = () => {
     const [isAddingOpen, setIsAddingOpen] = useState<boolean>(false)
@@ -30,6 +31,8 @@ export const Profile = () => {
     const editMode = useAppSelector(selectProfileEditMode)
     const packName = useAppSelector(selectPackNameForSearch)
     const user_id = useAppSelector(selectUser_id)
+
+    const avatar = useSelector<AppRootStateType, string>(state => state.profile.user.avatar)
 
     const dispatch = useDispatch()
     const location = useLocation()
@@ -44,7 +47,7 @@ export const Profile = () => {
     }, [dispatch])
 
     if (editMode) {
-        return <EditProfile/>
+        return <EditProfile avatar={avatar}/>
     }
 
     const addPackOff = () => {
@@ -67,7 +70,7 @@ export const Profile = () => {
                 <div className={c.settings}>
                     <div className={s.profile}>
                         <div className={s.profileAvatar}>
-                            <img src={emptyAva} alt={'avatar'}/>
+                            <img src={avatar ? avatar : emptyAva} alt={'avatar'}/>
                         </div>
                         <div className={c.text}>{name}</div>
                         <div className={s.profileJob}>Front-end developer</div>

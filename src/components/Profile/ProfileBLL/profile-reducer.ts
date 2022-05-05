@@ -52,7 +52,6 @@ export const auth = (): AppThunk => async dispatch => {
         dispatch(profileActions.setUserData(response.data))
         dispatch(loginActions.setIsLoggedIn(true))
     } catch (e) {
-        handleServerNetworkError(dispatch, e as Error)
     } finally {
         dispatch(profileActions.setIsFetching(false))
         dispatch(profileActions.setIsInitialized(true))

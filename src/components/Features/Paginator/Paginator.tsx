@@ -36,48 +36,48 @@ export const Paginator = memo(({
     return (
         itemsTotalCount ?
             <div className={s.paginatorContainer}>
-                    <div className={s.container}>
-                        <div className={s.edge}>
-                            {page > 3 && pagesCount > 5 && (
-                                <>
-                                    <button onClick={() => onClickPageChanged(page - 1)}>
-                                        ◁
-                                    </button>
-                                    <button className={page === 1 ? s.selectedPage : ''}
-                                            onClick={() => onClickPageChanged(1)}> 1
-                                    </button>
-                                    <span>...</span>
-                                </>
-                            )}
-                        </div>
-                        <div className={s.center}>
-                            {pagesForRender.map(p => (
-                                <button className={page === p ? s.selectedPage : ''}
-                                        onClick={() => onClickPageChanged(p)}
-                                        key={p}> {p} </button>))}
-                        </div>
-                        <div className={s.edge}>
-                            {page < pages.length - 2 && pagesCount > 5 && (
-                                <>
-                                    <span>...</span>
-                                    <button
-                                        className={page === pages.length ? s.selectedPage : ''}
-                                        onClick={() => onClickPageChanged(pages.length)}>
-                                        {pages.length}
-                                    </button>
-                                    <button onClick={() => onClickPageChanged(page + 1)}>
-                                        ▷
-                                    </button>
-                                </>
-                            )}
-                        </div>
-                        <div className={s.show}>
-                            <span>Show </span>
-                            <SuperSelect options={itemsPerPage} value={pageCount}
-                                         onChangeOption={onChangeSetAmountOfItems}/>
-                        </div>
+                <div className={s.container}>
+                    <div className={s.edge}>
+                        {page > 3 && pagesCount > 5 && (
+                            <>
+                                <button onClick={() => onClickPageChanged(page - 1)}>
+                                    ◁
+                                </button>
+                                <button className={page === 1 ? s.selectedPage : ''}
+                                        onClick={() => onClickPageChanged(1)}> 1
+                                </button>
+                                <span>...</span>
+                            </>
+                        )}
+                    </div>
+                    <div className={s.center}>
+                        {pagesForRender.map(p => (
+                            <button className={page === p ? s.selectedPage : ''}
+                                    onClick={() => onClickPageChanged(p)}
+                                    key={p}> {p} </button>))}
+                    </div>
+                    <div className={s.edge}>
+                        {page < pages.length - 2 && pagesCount > 5 && (
+                            <>
+                                <span>...</span>
+                                <button
+                                    className={page === pages.length ? s.selectedPage : ''}
+                                    onClick={() => onClickPageChanged(pages.length)}>
+                                    {pages.length}
+                                </button>
+                                <button onClick={() => onClickPageChanged(page + 1)}>
+                                    ▷
+                                </button>
+                            </>
+                        )}
+                    </div>
+                    <div className={s.show}>
+                        <span>Show </span>
+                        <SuperSelect options={itemsPerPage} value={pageCount}
+                                     onChangeOption={onChangeSetAmountOfItems}/>
                     </div>
                 </div>
+            </div>
             : <div className={s.emptyAnswer}>Nothing was found</div>
     )
 })

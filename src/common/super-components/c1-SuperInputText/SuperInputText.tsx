@@ -58,7 +58,7 @@ export const SuperInputText: FC<SuperInputTextPropsType> = memo((
     return (
         <>
             <div className={s.superInput}>
-                <div className={s.eye}></div>
+                <div className={s.eye}/>
                 <div>
                     <input
                         type={typeText ? 'text' : 'password'}

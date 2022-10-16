@@ -33,6 +33,7 @@ export type CardsResponseType = {
     token: string
     tokenDeathTime: number
 }
+
 export type CardType = {
     answer: string
     cardsPack_id: string
@@ -49,6 +50,7 @@ export type CardType = {
     __v: number
     _id: string
 }
+
 export type NewCardType = {
     card: {
         cardsPack_id: string
@@ -62,6 +64,7 @@ export type NewCardType = {
         answerVideo?: string
     }
 }
+
 export type UpdateCardPayload = {
     card: {
         _id: string
@@ -75,19 +78,23 @@ export type UpdateCardPayload = {
         updated?: Date
     }
 }
+
 export type CardResponses = {
     newCard: CardType
     deletedCard: CardType
     updatedCard: CardType
 }
+
 export type AdditionalCardResponse = {
     token: string
     tokenDeathTime: number
 }
+
 export type RateType = {
     grade: number
     card_id: string
 }
+
 export type RateResponseType = {
     updatedGrade: {
         _id: string

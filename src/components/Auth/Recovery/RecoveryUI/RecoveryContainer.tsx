@@ -6,8 +6,8 @@ import {
     selectRecoveryCheck,
     selectRecoveryError,
     selectRecoveryIsLoading, selectTheme
-} from '../../../../store/selectors';
-import {useAppSelector} from '../../../../store/store';
+} from 'store/selectors';
+import {useAppSelector} from 'store/store';
 
 export const RecoveryContainer = () => {
     const [email, setEmail] = useState<string>('')

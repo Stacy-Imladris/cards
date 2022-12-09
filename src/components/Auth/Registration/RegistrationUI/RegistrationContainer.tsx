@@ -6,9 +6,9 @@ import {Navigate, useNavigate} from 'react-router-dom';
 import {
     selectRegistrationError, selectRegistrationIsLoading,
     selectRegistrationToLogin, selectTheme
-} from '../../../../store/selectors';
-import {PATH} from '../../../../enums/paths';
-import {useAppSelector} from '../../../../store/store';
+} from 'store/selectors';
+import {PATH} from 'enums/paths';
+import {useAppSelector} from 'store/store';
 
 export const RegistrationContainer = () => {
     const [email, setEmail] = useState<string>('')

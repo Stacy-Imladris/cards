@@ -1,19 +1,19 @@
 import {useCallback, useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {Link, Navigate} from 'react-router-dom';
-import {SuperInputText} from '../../../../common/super-components/c1-SuperInputText/SuperInputText';
-import {SuperButton} from '../../../../common/super-components/c2-SuperButton/SuperButton';
-import s from '../../../../common/styles/Forms.module.css'
-import t from '../../../../common/styles/Themes.module.css'
-import {Logo} from '../../../../common/logo/Logo';
-import {Preloader} from '../../../../common/preloader/Preloader';
-import {SuperCheckbox} from '../../../../common/super-components/c3-SuperCheckbox/SuperCheckbox';
+import {SuperInputText} from 'common/super-components/c1-SuperInputText/SuperInputText';
+import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
+import s from 'common/styles/Forms.module.css'
+import t from 'common/styles/Themes.module.css'
+import {Logo} from 'common/logo/Logo';
+import {Preloader} from 'common/preloader/Preloader';
+import {SuperCheckbox} from 'common/super-components/c3-SuperCheckbox/SuperCheckbox';
 import {
     selectIsLoggedIn, selectLoginError, selectLoginIsLoading, selectTheme
-} from '../../../../store/selectors';
+} from 'store/selectors';
 import {login, loginActions} from '../LoginBLL/loginReducer';
-import {PATH} from '../../../../enums/paths';
-import {useAppSelector} from '../../../../store/store';
+import {PATH} from 'enums/paths';
+import {useAppSelector} from 'store/store';
 
 export const Login = () => {
     const [email, setEmail] = useState<string>('')

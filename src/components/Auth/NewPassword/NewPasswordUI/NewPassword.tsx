@@ -1,10 +1,10 @@
 import {memo} from 'react';
-import s from '../../../../common/styles/Forms.module.css'
-import t from '../../../../common/styles/Themes.module.css';
-import {Preloader} from '../../../../common/preloader/Preloader';
-import {SuperButton} from '../../../../common/super-components/c2-SuperButton/SuperButton';
-import {SuperInputText} from '../../../../common/super-components/c1-SuperInputText/SuperInputText';
-import {Logo} from '../../../../common/logo/Logo';
+import s from 'common/styles/Forms.module.css'
+import t from 'common/styles/Themes.module.css';
+import {Preloader} from 'common/preloader/Preloader';
+import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
+import {SuperInputText} from 'common/super-components/c1-SuperInputText/SuperInputText';
+import {Logo} from 'common/logo/Logo';
 
 type NewPasswordPropsType = {
     password: string

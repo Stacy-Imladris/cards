@@ -14,6 +14,7 @@ import {
 import {AppSnackbar} from '../components/Features/AppSnackbar/AppSnackbar';
 import {Scroll} from '../common/scroll/Scroll';
 import {useAppSelector} from '../store/store';
+import {appReducer} from './appReducer';
 
 export const App = () => {
     const theme = useAppSelector(selectTheme)

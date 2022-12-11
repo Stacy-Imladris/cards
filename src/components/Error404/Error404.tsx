@@ -1,12 +1,12 @@
-import s from './Error404.module.css'
-import t from '../../common/styles/Themes.module.css'
-import {NavLink} from 'react-router-dom'
-import {SuperButton} from '../../common/super-components/c2-SuperButton/SuperButton'
-import {selectTheme} from '../../store/selectors';
 import {useState} from 'react';
-import {PATH} from '../../enums/paths';
-import {useAppSelector} from '../../store/store';
-import {getRandom} from '../../utils/getRandom';
+import s from './Error404.module.css'
+import t from 'common/styles/Themes.module.css'
+import {NavLink} from 'react-router-dom'
+import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton'
+import {selectTheme} from 'store/selectors';
+import {PATH} from 'enums/paths';
+import {useAppSelector} from 'store/store';
+import {getRandom} from 'utils/getRandom';
 
 export const Error404 = () => {
     const [height, setHeight] = useState<number>(0)

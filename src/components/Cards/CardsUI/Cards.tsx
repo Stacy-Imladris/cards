@@ -1,11 +1,11 @@
-import {CardsTable} from './CardsTable/CardsTable'
-import t from '../../../common/styles/Themes.module.css'
-import s from './Cards.module.css'
-import c from '../../../common/styles/Container.module.css'
 import {useCallback, useState} from 'react';
-import {SearchField} from '../../Features/SearchField/SearchField';
+import {CardsTable} from './CardsTable/CardsTable'
+import t from 'common/styles/Themes.module.css'
+import s from './Cards.module.css'
+import c from 'common/styles/Container.module.css'
+import {SearchField} from 'components/Features/SearchField/SearchField';
 import {useNavigate, useParams} from 'react-router-dom';
-import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton';
+import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
 import {useDispatch} from 'react-redux';
 import {cardsActions} from '../CardsBLL/cards-reducer';
 import {
@@ -14,9 +14,9 @@ import {
     selectPackName,
     selectTheme,
     selectUser_id
-} from '../../../store/selectors';
-import {AddCardForm} from '../../Modals/AddCardForm/AddCardForm';
-import {useAppSelector} from '../../../store/store';
+} from 'store/selectors';
+import {AddCardForm} from 'components/Modals/AddCardForm/AddCardForm';
+import {useAppSelector} from 'store/store';
 
 export const Cards = () => {
     const [isAddingOpen, setIsAddingOpen] = useState<boolean>(false)

@@ -1,7 +1,7 @@
-import s from './Paginator.module.css';
 import {memo} from 'react';
-import {SuperSelect} from '../../../common/super-components/c5-SuperSelect/SuperSelect';
-import {getPages} from '../../../utils/getPages';
+import s from './Paginator.module.css';
+import {SuperSelect} from 'common/super-components/c5-SuperSelect/SuperSelect';
+import {getPages} from 'utils/getPages';
 
 type PaginatorPropsType = {
     onChangeSetAmountOfItems: (amountOfItems: number) => void

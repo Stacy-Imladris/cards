@@ -1,8 +1,8 @@
 import {memo, useCallback, useState} from 'react';
 import s from './SearchField.module.css';
 import {SuperInputText}
-    from '../../../common/super-components/c1-SuperInputText/SuperInputText';
-import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton';
+    from 'common/super-components/c1-SuperInputText/SuperInputText';
+import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
 
 type SearchFieldPropsType = {
     onChangeWithDebounce: (title: string) => void

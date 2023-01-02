@@ -1,20 +1,20 @@
 import {PacksTable} from './PacksTable/PacksTable'
-import t from '../../../common/styles/Themes.module.css'
-import c from '../../../common/styles/Container.module.css'
-import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton';
-import {SearchField} from '../../Features/SearchField/SearchField';
-import {SuperRadio} from '../../../common/super-components/c6-SuperRadio/SuperRadio';
+import t from 'common/styles/Themes.module.css'
+import c from 'common/styles/Container.module.css'
+import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
+import {SearchField} from 'components/Features/SearchField/SearchField';
+import {SuperRadio} from 'common/super-components/c6-SuperRadio/SuperRadio';
 import {useDispatch} from 'react-redux';
 import {packsActions, PacksType} from '../PacksBLL/packs-reducer';
-import {DoubleRange} from '../../Features/DoubleRange/DoubleRange';
+import {DoubleRange} from 'components/Features/DoubleRange/DoubleRange';
 import {
     selectPackNameForSearch, selectPacksType,
     selectTheme,
     selectUser_id
-} from '../../../store/selectors';
+} from 'store/selectors';
 import {useCallback, useState} from 'react';
-import {AddPackForm} from '../../Modals/AddPackForm/AddPackForm';
-import {useAppSelector} from '../../../store/store';
+import {AddPackForm} from 'components/Modals/AddPackForm/AddPackForm';
+import {useAppSelector} from 'store/store';
 
 const arr: PacksType[] = ['All', 'My']
 

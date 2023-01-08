@@ -1,9 +1,9 @@
 import {FC, memo, useCallback, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {Modal} from '../Modal/Modal';
-import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton';
-import {SuperInputText} from '../../../common/super-components/c1-SuperInputText/SuperInputText';
-import {updateCard} from '../../Cards/CardsBLL/cards-reducer';
+import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
+import {SuperInputText} from 'common/super-components/c1-SuperInputText/SuperInputText';
+import {updateCard} from 'components/Cards/CardsBLL/cards-reducer';
 
 type EditCardFormPropsType = {
     onClickNotOpen: () => void

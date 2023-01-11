@@ -1,19 +1,19 @@
 import {FC, memo, useCallback, useState} from 'react'
 import {useDispatch} from 'react-redux'
 import {Modal} from '../Modal/Modal'
-import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton'
-import {SuperRadio} from '../../../common/super-components/c6-SuperRadio/SuperRadio'
+import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton'
+import {SuperRadio} from 'common/super-components/c6-SuperRadio/SuperRadio'
 import {
     selectAppIsLoading,
     selectLearnCards, selectRandomCard,
     selectTheme
-} from '../../../store/selectors'
-import {CardType} from '../../Cards/CardsAPI/cards-api'
-import {GRADES} from '../../../enums/grades';
-import {Preloader} from '../../../common/preloader/Preloader';
-import {getRandomCard} from '../../../utils/getRandomCard';
-import {useAppSelector} from '../../../store/store';
-import {learnActions, rate} from '../../../store/learnReducer';
+} from 'store/selectors'
+import {CardType} from 'components/Cards/CardsAPI/cards-api'
+import {GRADES} from 'enums/grades';
+import {Preloader} from 'common/preloader/Preloader';
+import {getRandomCard} from 'utils/getRandomCard';
+import {useAppSelector} from 'store/store';
+import {learnActions, rate} from 'store/learnReducer';
 
 type AnswerFormPropsType = {
     onClickLearnPackOn: () => void

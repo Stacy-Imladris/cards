@@ -1,8 +1,8 @@
 import {FC, memo, useCallback} from 'react';
 import {useDispatch} from 'react-redux';
-import {deletePack} from '../../Packs/PacksBLL/packs-reducer';
+import {deletePack} from 'components/Packs/PacksBLL/packs-reducer';
 import {Modal} from '../Modal/Modal';
-import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton';
+import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
 
 type DeletePackFormPropsType = {
     onClickNotOpen: () => void

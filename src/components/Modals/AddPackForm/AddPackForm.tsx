@@ -1,10 +1,10 @@
 import {FC, memo, useCallback, useState} from 'react'
 import {useDispatch} from 'react-redux'
-import {addPack} from '../../Packs/PacksBLL/packs-reducer'
+import {addPack} from 'components/Packs/PacksBLL/packs-reducer'
 import {Modal} from '../Modal/Modal'
-import {SuperInputText} from '../../../common/super-components/c1-SuperInputText/SuperInputText'
-import {SuperCheckbox} from '../../../common/super-components/c3-SuperCheckbox/SuperCheckbox'
-import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton'
+import {SuperInputText} from 'common/super-components/c1-SuperInputText/SuperInputText'
+import {SuperCheckbox} from 'common/super-components/c3-SuperCheckbox/SuperCheckbox'
+import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton'
 
 type AddPackFormPropsType = {
     onClickNotOpen: () => void

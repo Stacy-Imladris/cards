@@ -1,17 +1,17 @@
 import {FC, memo, useCallback, useState} from 'react'
 import {Modal} from '../Modal/Modal'
-import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton'
+import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton'
 import {AnswerForm} from '../AnswerForm/AnswerForm'
 import {
     selectAppIsLoading,
     selectRandomCard,
     selectTheme
-} from '../../../store/selectors'
-import {Preloader} from '../../../common/preloader/Preloader'
+} from 'store/selectors'
+import {Preloader} from 'common/preloader/Preloader'
 import {useDispatch} from 'react-redux'
-import {CardType} from '../../Cards/CardsAPI/cards-api';
-import {useAppSelector} from '../../../store/store';
-import {learnActions} from '../../../store/learnReducer';
+import {CardType} from 'components/Cards/CardsAPI/cards-api';
+import {useAppSelector} from 'store/store';
+import {learnActions} from 'store/learnReducer';
 
 type LearnPackFormPropsType = {
     onClickLearnPackOn: () => void

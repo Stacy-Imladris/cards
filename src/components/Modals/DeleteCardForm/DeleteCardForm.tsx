@@ -1,8 +1,8 @@
 import {FC, memo, useCallback} from 'react';
 import {useDispatch} from 'react-redux';
 import {Modal} from '../Modal/Modal';
-import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton';
-import {deleteCard} from '../../Cards/CardsBLL/cards-reducer';
+import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
+import {deleteCard} from 'components/Cards/CardsBLL/cards-reducer';
 
 type DeleteCardFormPropsType = {
     onClickNotOpen: () => void

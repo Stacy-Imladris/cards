@@ -1,21 +1,21 @@
 import {useCallback, useState} from 'react'
-import s from '../../../../common/styles/Forms.module.css'
-import t from '../../../../common/styles/Themes.module.css'
-import profile_ava from '../../../../assets/images/profile_ava.png'
-import {SuperInputText} from '../../../../common/super-components/c1-SuperInputText/SuperInputText'
+import s from 'common/styles/Forms.module.css'
+import t from 'common/styles/Themes.module.css'
+import profile_ava from 'assets/images/profile_ava.png'
+import {SuperInputText} from 'common/super-components/c1-SuperInputText/SuperInputText'
 import {useDispatch} from 'react-redux'
-import {SuperButton} from '../../../../common/super-components/c2-SuperButton/SuperButton'
+import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton'
 import {profileActions, updateProfile} from '../../ProfileBLL/profile-reducer'
-import {Preloader} from '../../../../common/preloader/Preloader'
+import {Preloader} from 'common/preloader/Preloader'
 import {
     selectProfileEditMode,
     selectProfileIsFetching,
     selectProfileUser,
     selectTheme
-} from '../../../../store/selectors'
+} from 'store/selectors'
 import {Profile} from '../Profile'
-import {Logo} from '../../../../common/logo/Logo'
-import {useAppSelector} from '../../../../store/store';
+import {Logo} from 'common/logo/Logo'
+import {useAppSelector} from 'store/store';
 
 export const EditProfile = () => {
     const theme = useAppSelector(selectTheme)

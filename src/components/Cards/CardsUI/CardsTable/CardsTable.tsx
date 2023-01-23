@@ -1,8 +1,8 @@
 import {useDispatch} from 'react-redux';
 import React, {useCallback, useEffect} from 'react';
 import {CardsList} from './CardsList/CardsList';
-import t from '../../../../common/styles/Table.module.css'
-import {cardsActions, getCards} from '../../CardsBLL/cards-reducer';
+import t from 'common/styles/Table.module.css'
+import {cardsActions, getCards} from 'components/Cards/CardsBLL/cards-reducer';
 import {
     selectCards,
     selectCardsAnswer,
@@ -12,11 +12,11 @@ import {
     selectPageForCards,
     selectSortCards,
     selectUser_id
-} from '../../../../store/selectors';
-import {Paginator} from '../../../Features/Paginator/Paginator';
+} from 'store/selectors';
+import {Paginator} from 'components/Features/Paginator/Paginator';
 import {CardsTableHeader} from './CardsTableHeader/CardsTableHeader';
 import {useParams} from 'react-router-dom';
-import {useAppSelector} from '../../../../store/store';
+import {useAppSelector} from 'store/store';
 
 export const CardsTable = () => {
     const cards = useAppSelector(selectCards)

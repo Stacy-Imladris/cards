@@ -1,14 +1,14 @@
 import {FC, memo, useCallback, useState} from 'react'
-import {CardType} from '../../../../CardsAPI/cards-api'
-import s from '../../../Cards.module.css'
-import t from '../../../../../../common/styles/Table.module.css'
-import {SuperButton} from '../../../../../../common/super-components/c2-SuperButton/SuperButton'
-import {selectUser_id} from '../../../../../../store/selectors'
-import {DeleteCardForm} from '../../../../../Modals/DeleteCardForm/DeleteCardForm'
-import {EditCardForm} from '../../../../../Modals/EditCardForm/EditCardForm'
+import {CardType} from 'components/Cards/CardsAPI/cards-api'
+import s from 'components/Cards/CardsUI/Cards.module.css'
+import t from 'common/styles/Table.module.css'
+import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton'
+import {selectUser_id} from 'store/selectors'
+import {DeleteCardForm} from 'components/Modals/DeleteCardForm/DeleteCardForm'
+import {EditCardForm} from 'components/Modals/EditCardForm/EditCardForm'
 import {useParams} from 'react-router-dom'
-import {getLastUpdatedDate} from '../../../../../../utils/getLastUpdatedDate';
-import {useAppSelector} from '../../../../../../store/store';
+import {getLastUpdatedDate} from 'utils/getLastUpdatedDate';
+import {useAppSelector} from 'store/store';
 
 type CardPropsType = {
     card: CardType

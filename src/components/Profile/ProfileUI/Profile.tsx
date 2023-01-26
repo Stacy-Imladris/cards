@@ -1,8 +1,9 @@
+import {useCallback, useState} from 'react';
 import s from './Profile.module.css'
-import c from '../../../common/styles/Container.module.css'
-import t from '../../../common/styles/Themes.module.css'
-import profileAva from '../../../assets/images/profile_ava.png'
-import {SuperButton} from '../../../common/super-components/c2-SuperButton/SuperButton'
+import c from 'common/styles/Container.module.css'
+import t from 'common/styles/Themes.module.css'
+import profileAva from 'assets/images/profile_ava.png'
+import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton'
 import {profileActions} from '../ProfileBLL/profile-reducer'
 import {useDispatch} from 'react-redux'
 import {EditProfile} from './EditProfile/EditProfile'
@@ -11,16 +12,15 @@ import {
     selectProfileEditMode,
     selectProfileUserName,
     selectTheme, selectUser_id
-} from '../../../store/selectors';
-import {useCallback, useState} from 'react';
-import {SearchField} from '../../Features/SearchField/SearchField';
-import {PacksTable} from '../../Packs/PacksUI/PacksTable/PacksTable';
-import {packsActions} from '../../Packs/PacksBLL/packs-reducer';
-import {DoubleRange} from '../../Features/DoubleRange/DoubleRange';
-import {AddPackForm} from '../../Modals/AddPackForm/AddPackForm';
+} from 'store/selectors';
+import {SearchField} from 'components/Features/SearchField/SearchField';
+import {PacksTable} from 'components/Packs/PacksUI/PacksTable/PacksTable';
+import {packsActions} from 'components/Packs/PacksBLL/packs-reducer';
+import {DoubleRange} from 'components/Features/DoubleRange/DoubleRange';
+import {AddPackForm} from 'components/Modals/AddPackForm/AddPackForm';
 import {useLocation} from 'react-router-dom';
-import {useAppSelector} from '../../../store/store';
-import {PATH} from '../../../enums/paths';
+import {useAppSelector} from 'store/store';
+import {PATH} from 'enums/paths';
 
 export const Profile = () => {
     const [isAddingOpen, setIsAddingOpen] = useState<boolean>(false)

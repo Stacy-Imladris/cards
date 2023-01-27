@@ -1,12 +1,12 @@
 import {FC, memo, useCallback, useState} from 'react'
-import {SuperButton} from '../../../../../../../common/super-components/c2-SuperButton/SuperButton'
-import {DeletePackForm} from '../../../../../../Modals/DeletePackForm/DeletePackForm'
-import {EditPackForm} from '../../../../../../Modals/EditPackForm/EditPackForm'
-import {LearnPackForm} from '../../../../../../Modals/LearnPackForm/LearnPackForm'
+import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton'
+import {DeletePackForm} from 'components/Modals/DeletePackForm/DeletePackForm'
+import {EditPackForm} from 'components/Modals/EditPackForm/EditPackForm'
+import {LearnPackForm} from 'components/Modals/LearnPackForm/LearnPackForm'
 import {useDispatch} from 'react-redux'
-import {PackType} from '../../../../../PacksAPI/packs-api'
-import {learnCard} from '../../../../../../../store/learnReducer'
-import t from '../../../../../../../common/styles/Table.module.css'
+import {PackType} from 'components/Packs/PacksAPI/packs-api'
+import {learnCard} from 'store/learnReducer'
+import t from 'common/styles/Table.module.css'
 
 type PackActionsType = {
     isMyPacks: boolean

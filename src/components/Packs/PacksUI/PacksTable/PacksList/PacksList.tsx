@@ -1,6 +1,6 @@
 import {FC, memo} from 'react'
 import {Pack} from './Pack/Pack/Pack'
-import {PackType} from '../../../PacksAPI/packs-api';
+import {PackType} from 'components/Packs/PacksAPI/packs-api';
 
 type PackListPropsType = {
     cardPacks: PackType[]

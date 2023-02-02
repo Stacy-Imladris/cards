@@ -1,7 +1,7 @@
 import {useState} from 'react';
-import {packsActions, PacksSortFieldsType, SortOrderType,} from '../../../PacksBLL/packs-reducer';
 import {useDispatch} from 'react-redux';
-import c from '../../../../../common/styles/TableHeader.module.css';
+import {packsActions, PacksSortFieldsType, SortOrderType,} from 'components/Packs/PacksBLL/packs-reducer';
+import c from 'common/styles/TableHeader.module.css';
 
 type PacksTableHeaderPropsType = {
     text: string

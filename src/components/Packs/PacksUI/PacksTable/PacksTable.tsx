@@ -1,8 +1,8 @@
-import {PacksList} from './PacksList/PacksList'
-import {getPacks, packsActions} from '../../PacksBLL/packs-reducer'
-import {useDispatch} from 'react-redux'
 import {useCallback, useEffect} from 'react'
-import t from '../../../../common/styles/Table.module.css'
+import {PacksList} from './PacksList/PacksList'
+import {getPacks, packsActions} from 'components/Packs/PacksBLL/packs-reducer'
+import {useDispatch} from 'react-redux'
+import t from 'common/styles/Table.module.css'
 import {
     selectCardPacksTotalCount,
     selectMaxForCards,
@@ -13,10 +13,10 @@ import {
     selectPageCountForPacks,
     selectPageForPacks,
     selectSortForPacks,
-} from '../../../../store/selectors';
-import {Paginator} from '../../../Features/Paginator/Paginator';
+} from 'store/selectors';
+import {Paginator} from 'components/Features/Paginator/Paginator';
 import {PacksTableHeader} from './PacksTableHeader/PacksTableHeader';
-import {useAppSelector} from '../../../../store/store';
+import {useAppSelector} from 'store/store';
 
 export const PacksTable = () => {
     const packs = useAppSelector(selectPacks)

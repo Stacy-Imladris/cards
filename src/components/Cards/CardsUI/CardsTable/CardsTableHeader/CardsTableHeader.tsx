@@ -1,8 +1,8 @@
 import {useState} from 'react';
-import {SortOrderType} from '../../../../Packs/PacksBLL/packs-reducer';
+import {SortOrderType} from 'components/Packs/PacksBLL/packs-reducer';
 import {useDispatch} from 'react-redux';
-import c from '../../../../../common/styles/TableHeader.module.css';
-import {cardsActions, CardsSortFieldsType} from '../../../CardsBLL/cards-reducer';
+import c from 'common/styles/TableHeader.module.css';
+import {cardsActions, CardsSortFieldsType} from 'components/Cards/CardsBLL/cards-reducer';
 
 type CardsTableHeaderPropsType = {
     text: string

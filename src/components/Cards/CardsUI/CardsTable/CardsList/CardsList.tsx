@@ -1,5 +1,5 @@
 import {FC, memo} from 'react';
-import {CardType} from '../../../CardsAPI/cards-api';
+import {CardType} from 'components/Cards/CardsAPI/cards-api';
 import {Card} from './Card/Card';
 
 type CardsListPropsType = {

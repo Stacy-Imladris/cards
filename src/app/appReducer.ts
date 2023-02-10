@@ -1,4 +1,4 @@
-import {InferActionTypes} from '../store/store';
+import {InferActionTypes} from 'store/store';
 
 const appInitialState = {
     status: '',

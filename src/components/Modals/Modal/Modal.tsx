@@ -5,13 +5,13 @@ import {selectTheme} from '../../../store/selectors';
 import t from '../../../common/styles/Themes.module.css';
 import {useAppSelector} from '../../../store/store';
 
-type ModalPropsType = {
+type Props = {
     onClickNotOpen: () => void
     isOpen: boolean
     backgroundStyle?: CSSProperties
     modalStyle?: CSSProperties
 }
-export const Modal: FC<ModalPropsType> = memo(({onClickNotOpen, isOpen, children,
+export const Modal: FC<Props> = memo(({onClickNotOpen, isOpen, children,
                                                    backgroundStyle, modalStyle}) => {
     const theme = useAppSelector(selectTheme)
 

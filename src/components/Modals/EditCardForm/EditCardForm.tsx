@@ -5,43 +5,44 @@ import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
 import {SuperInputText} from 'common/super-components/c1-SuperInputText/SuperInputText';
 import {updateCard} from 'components/Cards/CardsBLL/cards-reducer';
 
-type EditCardFormPropsType = {
-    onClickNotOpen: () => void
-    isOpen: boolean
-    cardId: string
-    question: string
-    answer: string
+type Props = {
+  onClickNotOpen: () => void
+  isOpen: boolean
+  cardId: string
+  question: string
+  answer: string
 }
-export const EditCardForm: FC<EditCardFormPropsType> = memo(({
-                                                                 onClickNotOpen,
-                                                                 isOpen, question,
-                                                                 answer, cardId
-                                                             }) => {
-    const [newQuestion, setNewQuestion] = useState<string>(question)
-    const [newAnswer, setNewAnswer] = useState<string>(answer)
 
-    const dispatch = useDispatch()
+export const EditCardForm: FC<Props> = memo(({
+                                               onClickNotOpen,
+                                               isOpen, question,
+                                               answer, cardId
+                                             }) => {
+  const [newQuestion, setNewQuestion] = useState<string>(question)
+  const [newAnswer, setNewAnswer] = useState<string>(answer)
 
-    const onClickUpdateCard = useCallback(() => {
-        dispatch(updateCard(cardId, newQuestion, newAnswer))
-        onClickCleanUpStates()
-    }, [dispatch, onClickNotOpen, cardId, newQuestion, newAnswer])
+  const dispatch = useDispatch()
 
-    const onClickCleanUpStates = () => {
-        onClickNotOpen()
-        setNewQuestion(question)
-        setNewAnswer(answer)
-    }
+  const onClickUpdateCard = useCallback(() => {
+    dispatch(updateCard(cardId, newQuestion, newAnswer))
+    onClickCleanUpStates()
+  }, [dispatch, onClickNotOpen, cardId, newQuestion, newAnswer])
 
-    return <Modal onClickNotOpen={onClickCleanUpStates} isOpen={isOpen}>
-        <div>Card info</div>
-        <SuperInputText value={newQuestion} placeholder={'Enter new question'}
-                        onChangeText={setNewQuestion}/>
-        <SuperInputText value={newAnswer} placeholder={'Enter new answer'}
-                        onChangeText={setNewAnswer}/>
-        <div>
-            <SuperButton onClick={onClickCleanUpStates}>Cancel</SuperButton>
-            <SuperButton onClick={onClickUpdateCard}>Save</SuperButton>
-        </div>
-    </Modal>
+  const onClickCleanUpStates = () => {
+    onClickNotOpen()
+    setNewQuestion(question)
+    setNewAnswer(answer)
+  }
+
+  return <Modal onClickNotOpen={onClickCleanUpStates} isOpen={isOpen}>
+    <div>Card info</div>
+    <SuperInputText value={newQuestion} placeholder={'Enter new question'}
+                    onChangeText={setNewQuestion}/>
+    <SuperInputText value={newAnswer} placeholder={'Enter new answer'}
+                    onChangeText={setNewAnswer}/>
+    <div>
+      <SuperButton onClick={onClickCleanUpStates}>Cancel</SuperButton>
+      <SuperButton onClick={onClickUpdateCard}>Save</SuperButton>
+    </div>
+  </Modal>
 })

@@ -3,7 +3,7 @@ import s from './Paginator.module.css';
 import {SuperSelect} from 'common/super-components/c5-SuperSelect/SuperSelect';
 import {getPages} from 'utils/getPages';
 
-type PaginatorPropsType = {
+type Props = {
     onChangeSetAmountOfItems: (amountOfItems: number) => void
     onPageChanged: (page: number) => void
     itemsTotalCount: number
@@ -19,7 +19,7 @@ export const Paginator = memo(({
                                    itemsTotalCount,
                                    page,
                                    pageCount
-                               }: PaginatorPropsType) => {
+                               }: Props) => {
     const pagesCount = Math.ceil(itemsTotalCount / pageCount)
 
     const pages = []

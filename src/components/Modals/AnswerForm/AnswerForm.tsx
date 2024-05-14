@@ -15,7 +15,7 @@ import {getRandomCard} from 'utils/getRandomCard';
 import {useAppSelector} from 'store/store';
 import {learnActions, rate} from 'store/learnReducer';
 
-type AnswerFormPropsType = {
+type Props = {
     onClickLearnPackOn: () => void
     onClickNotOpen: () => void
     isOpen: boolean
@@ -38,7 +38,7 @@ export const Grades: GradesObjectType = {
 
 const arr = [GRADES.ONE, GRADES.TWO, GRADES.THREE, GRADES.FOUR, GRADES.FIVE]
 
-export const AnswerForm: FC<AnswerFormPropsType> = memo(({onClickLearnPackOn,
+export const AnswerForm: FC<Props> = memo(({onClickLearnPackOn,
                                                              onClickNotOpen, isOpen, name
                                                          }) => {
     const [value, setValue] = useState<GradesType>(GRADES.ONE)

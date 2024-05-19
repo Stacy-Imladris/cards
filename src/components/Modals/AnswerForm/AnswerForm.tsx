@@ -22,10 +22,8 @@ type Props = {
     name: string
 }
 
-type GradesType = GRADES.ONE | GRADES.TWO | GRADES.THREE | GRADES.FOUR | GRADES.FIVE
-
 type GradesObjectType = {
-    [key in GradesType]: number
+    [key in GRADES]: number
 }
 
 export const Grades: GradesObjectType = {
@@ -41,7 +39,7 @@ const arr = [GRADES.ONE, GRADES.TWO, GRADES.THREE, GRADES.FOUR, GRADES.FIVE]
 export const AnswerForm: FC<Props> = memo(({onClickLearnPackOn,
                                                              onClickNotOpen, isOpen, name
                                                          }) => {
-    const [value, setValue] = useState<GradesType>(GRADES.ONE)
+    const [value, setValue] = useState<GRADES>(GRADES.ONE)
     const [rateEdit, setRateEdit] = useState<boolean>(false)
 
     const theme = useAppSelector(selectTheme)
@@ -64,7 +62,7 @@ export const AnswerForm: FC<Props> = memo(({onClickLearnPackOn,
         setRateEdit(true)
     }, [dispatch, value, rateEdit, randomCard])
 
-    const onChangeOption = useCallback((value: GradesType) => {
+    const onChangeOption = useCallback((value: GRADES) => {
         setValue(value)
         setRateEdit(false)
     }, [])

@@ -7,7 +7,7 @@ import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
 import {SuperInputText} from 'common/super-components/c1-SuperInputText/SuperInputText';
 import {Logo} from 'common/logo/Logo';
 
-type RecoveryPropsType = {
+type Props = {
     email: string
     setEmail: (value: string) => void
     toSendInstructions: () => void
@@ -25,7 +25,7 @@ export const Recovery = memo(({
                                   error,
                                   check,
                                   theme
-                              }: RecoveryPropsType) => {
+                              }: Props) => {
     return check
         ? <div className={`${s.container} ${t[theme + '-text']}`}>
             <Logo/>

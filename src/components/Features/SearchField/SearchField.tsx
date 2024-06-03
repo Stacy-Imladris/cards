@@ -4,14 +4,14 @@ import {SuperInputText}
     from 'common/super-components/c1-SuperInputText/SuperInputText';
 import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
 
-type SearchFieldPropsType = {
+type Props = {
     onChangeWithDebounce: (title: string) => void
     value: string
     wide?: boolean
     placeholder?: string
 }
 
-export const SearchField = memo(({onChangeWithDebounce, value, wide, placeholder}: SearchFieldPropsType) => {
+export const SearchField = memo(({onChangeWithDebounce, value, wide, placeholder}: Props) => {
     const [title, setTitle] = useState<string>(value)
     const [timerId, setTimerId] = useState<number>(0)
 

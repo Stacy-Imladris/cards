@@ -7,7 +7,7 @@ import t from 'common/styles/Themes.module.css'
 import {Preloader} from 'common/preloader/Preloader';
 import {Logo} from 'common/logo/Logo';
 
-type RegistrationPropsType = {
+type Props = {
     signUp: () => void
     email: string
     password: string
@@ -33,7 +33,7 @@ export const Registration = memo(({
                                       isLoading,
                                       theme,
                                       navigate
-                                  }: RegistrationPropsType) => {
+                                  }: Props) => {
     return (
         <div className={`${s.container} ${t[theme + '-text']}`}>
             <Logo/>

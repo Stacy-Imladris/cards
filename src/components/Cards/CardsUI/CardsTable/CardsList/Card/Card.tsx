@@ -1,20 +1,20 @@
-import {FC, memo, useCallback, useState} from 'react'
-import {CardType} from 'components/Cards/CardsAPI/cards-api'
-import s from 'components/Cards/CardsUI/Cards.module.css'
 import t from 'common/styles/Table.module.css'
 import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton'
-import {selectUser_id} from 'store/selectors'
+import {CardType} from 'components/Cards/CardsAPI/cards-api'
+import s from 'components/Cards/CardsUI/Cards.module.css'
 import {DeleteCardForm} from 'components/Modals/DeleteCardForm/DeleteCardForm'
 import {EditCardForm} from 'components/Modals/EditCardForm/EditCardForm'
+import {memo, useCallback, useState} from 'react'
 import {useParams} from 'react-router-dom'
-import {getLastUpdatedDate} from 'utils/getLastUpdatedDate';
+import {selectUser_id} from 'store/selectors'
 import {useAppSelector} from 'store/store';
+import {getLastUpdatedDate} from 'utils/getLastUpdatedDate';
 
-type CardPropsType = {
+type Props = {
     card: CardType
 }
 
-export const Card: FC<CardPropsType> = memo(({card}) => {
+export const Card = memo(({card}: Props) => {
     const [isDeletingOpen, setIsDeletingOpen] = useState<boolean>(false)
     const [isEditingOpen, setIsEditingOpen] = useState<boolean>(false)
 

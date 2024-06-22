@@ -4,11 +4,12 @@ import {useDispatch} from 'react-redux';
 import c from 'common/styles/TableHeader.module.css';
 import {cardsActions, CardsSortFieldsType} from 'components/Cards/CardsBLL/cards-reducer';
 
-type CardsTableHeaderPropsType = {
+type Props = {
     text: string
     param: CardsSortFieldsType
 }
-export const CardsTableHeader = ({text, param}: CardsTableHeaderPropsType) => {
+
+export const CardsTableHeader = ({text, param}: Props) => {
     const [sortOrder, setSortOrder] = useState<SortOrderType>('0')
     const [sortField, setSortField] = useState<CardsSortFieldsType>('updated')
 

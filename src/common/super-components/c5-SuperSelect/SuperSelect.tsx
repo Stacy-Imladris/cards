@@ -1,20 +1,14 @@
 import {SelectHTMLAttributes, DetailedHTMLProps, ChangeEvent, memo, FC} from 'react'
 import s from './SuperSelect.module.css'
 
-type DefaultSelectPropsType = DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
+type DefaultSelectProps = DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
 
-type SuperSelectPropsType = DefaultSelectPropsType & {
+type Props = DefaultSelectProps & {
     options?: any[]
     onChangeOption?: (option: any) => void
 }
 
-export const SuperSelect: FC<SuperSelectPropsType> = memo((
-    {
-        options,
-        onChange, onChangeOption,
-        ...restProps
-    }
-) => {
+export const SuperSelect: FC<Props> = memo(({options, onChange, onChangeOption, ...restProps}) => {
     const mappedOptions: any[] = options ? options.map((o, i) => (
         <option value={o} key={i} className={s.option}>{o}</option>
     )) : []

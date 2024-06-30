@@ -6,7 +6,7 @@ import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
 import {SuperInputText} from 'common/super-components/c1-SuperInputText/SuperInputText';
 import {Logo} from 'common/logo/Logo';
 
-type NewPasswordPropsType = {
+type Props = {
     password: string
     password2: string
     setPassword: (value: string) => void
@@ -18,7 +18,7 @@ type NewPasswordPropsType = {
 }
 
 export const NewPassword = memo(({password, password2, setPassword, setPassword2, changePassword,
-                                     isLoading, error, theme}: NewPasswordPropsType) => {
+                                     isLoading, error, theme}: Props) => {
     return (
         <div className={`${s.container} ${t[theme + '-text']}`}>
             <Logo/>

@@ -3,11 +3,12 @@ import {useDispatch} from 'react-redux';
 import {packsActions, PacksSortFieldsType, SortOrderType,} from 'components/Packs/PacksBLL/packs-reducer';
 import c from 'common/styles/TableHeader.module.css';
 
-type PacksTableHeaderPropsType = {
+type Props = {
     text: string
     param: PacksSortFieldsType
 }
-export const PacksTableHeader = ({text, param}: PacksTableHeaderPropsType) => {
+
+export const PacksTableHeader = ({text, param}: Props) => {
     const [sortOrder, setSortOrder] = useState<SortOrderType>('0')
     const [sortField, setSortField] = useState<PacksSortFieldsType>('updated')
 

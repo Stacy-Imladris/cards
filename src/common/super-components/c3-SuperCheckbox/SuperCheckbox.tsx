@@ -2,20 +2,19 @@ import {ChangeEvent, DetailedHTMLProps, FC, InputHTMLAttributes, memo} from 'rea
 import s from './SuperCheckbox.module.css'
 
 // тип пропсов обычного инпута
-type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+type DefaultInputProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
-type SuperCheckboxPropsType = DefaultInputPropsType & {
+type Props = DefaultInputProps & {
     onChangeChecked?: (checked: boolean) => void
     spanClassName?: string
 }
 
-export const SuperCheckbox: FC<SuperCheckboxPropsType> = memo((
+export const SuperCheckbox: FC<Props> = memo((
     {
         type, // достаём и игнорируем чтоб нельзя было задать другой тип инпута
         onChange, onChangeChecked,
         className, spanClassName,
         children, // в эту переменную попадёт текст, типизировать не нужно так как он затипизирован в React.FC
-
         ...restProps// все остальные пропсы попадут в объект restProps
     }
 ) => {

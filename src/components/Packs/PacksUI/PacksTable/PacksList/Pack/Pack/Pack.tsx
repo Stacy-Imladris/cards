@@ -1,19 +1,19 @@
-import {FC, memo} from 'react'
-import {PackActions} from './PackActions'
-import {PackType} from 'components/Packs/PacksAPI/packs-api'
-import {useDispatch} from 'react-redux';
 import {cardsActions} from 'components/Cards/CardsBLL/cards-reducer';
+import {PackType} from 'components/Packs/PacksAPI/packs-api'
+import {PATH} from 'enums/paths';
+import {memo} from 'react'
+import {useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import {selectUser_id} from 'store/selectors';
-import {getLastUpdatedDate} from 'utils/getLastUpdatedDate';
-import {PATH} from 'enums/paths';
 import {useAppSelector} from 'store/store';
+import {getLastUpdatedDate} from 'utils/getLastUpdatedDate';
+import {PackActions} from './PackActions'
 
-type PackPropsType = {
+type Props = {
     pack: PackType
 }
 
-export const Pack: FC<PackPropsType> = memo(({pack}) => {
+export const Pack = memo(({pack}: Props) => {
     const userId = useAppSelector(selectUser_id)
     const lastUpdate = getLastUpdatedDate(pack.updated)
 

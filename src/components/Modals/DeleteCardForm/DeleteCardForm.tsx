@@ -1,19 +1,15 @@
-import {FC, memo, useCallback} from 'react';
+import {memo, useCallback} from 'react';
 import {useDispatch} from 'react-redux';
 import {Modal} from '../Modal/Modal';
 import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
 import {deleteCard} from 'components/Cards/CardsBLL/cards-reducer';
 
-type DeleteCardFormPropsType = {
+type Props = {
     onClickNotOpen: () => void
     isOpen: boolean
     cardId: string
 }
-export const DeleteCardForm: FC<DeleteCardFormPropsType> = memo(({
-                                                                     onClickNotOpen,
-                                                                     isOpen,
-                                                                     cardId
-                                                                 }) => {
+export const DeleteCardForm = memo(({onClickNotOpen, isOpen, cardId}: Props) => {
     const dispatch = useDispatch()
 
     const onClickDeleteCard = useCallback(() => {

@@ -8,12 +8,7 @@ type Props = DefaultButtonPropsType & {
     red?: boolean
 }
 
-export const SuperButton: FC<Props> = memo((
-    {
-        red, className,
-        ...restProps// все остальные пропсы попадут в объект restProps, там же будет children
-    }
-) => {
+export const SuperButton: FC<Props> = memo(({red, className, ...restProps}) => {
     const finalClassName = `${red ? s.red : s.default} ${className}`
 
     return (

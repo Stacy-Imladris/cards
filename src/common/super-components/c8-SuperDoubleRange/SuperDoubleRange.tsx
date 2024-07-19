@@ -2,14 +2,14 @@ import {FC, memo, useState} from 'react'
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
-type SuperDoubleRangePropsType = {
+type Props = {
     onChangeRange?: (value: [number, number] | number[]) => void
     value?: [number, number]
     min?: number
     max?: number
 }
 
-export const SuperDoubleRange: FC<SuperDoubleRangePropsType> = memo(({
+export const SuperDoubleRange: FC<Props> = memo(({
                                                                          onChangeRange,
                                                                          value, min, max,
                                                                          ...restProps

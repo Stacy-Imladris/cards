@@ -6,11 +6,12 @@ import {SuperInputText} from 'common/super-components/c1-SuperInputText/SuperInp
 import {SuperCheckbox} from 'common/super-components/c3-SuperCheckbox/SuperCheckbox'
 import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton'
 
-type AddPackFormPropsType = {
+type Props = {
     onClickNotOpen: () => void
     isOpen: boolean
 }
-export const AddPackForm: FC<AddPackFormPropsType> = memo(({onClickNotOpen, isOpen}) => {
+
+export const AddPackForm = memo(({onClickNotOpen, isOpen}: Props) => {
     const [name, setName] = useState<string>('')
     const [isPrivate, setIsPrivate] = useState<boolean>(false)
 

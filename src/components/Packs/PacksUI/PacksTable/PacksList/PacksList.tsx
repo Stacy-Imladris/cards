@@ -1,15 +1,10 @@
-import {FC, memo} from 'react'
+import {memo} from 'react'
 import {Pack} from './Pack/Pack/Pack'
 import {PackType} from 'components/Packs/PacksAPI/packs-api';
 
-type PackListPropsType = {
+type Props = {
     cardPacks: PackType[]
 }
 
-export const PacksList: FC<PackListPropsType> = memo(({cardPacks}) => {
-    return <>
-        {
-            cardPacks.map(pack => <Pack key={pack._id} pack={pack}/>)
-        }
-    </>
-})
+export const PacksList = memo(({cardPacks}: Props) =>
+    <>{cardPacks.map(pack => <Pack key={pack._id} pack={pack}/>)}</>)

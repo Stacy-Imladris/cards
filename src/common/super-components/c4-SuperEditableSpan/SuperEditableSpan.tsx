@@ -15,7 +15,7 @@ type DefaultSpanPropsType = DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, H
 
 // здесь мы говорим что у нашего инпута будут такие же пропсы как у обычного инпута
 // (чтоб не писать value: string, onChange: ...; они уже все описаны в DefaultInputPropsType)
-type SuperEditableSpanType = DefaultInputPropsType & { // и + ещё пропсы которых нет в стандартном инпуте
+type Props = DefaultInputPropsType & { // и + ещё пропсы которых нет в стандартном инпуте
     onChangeText?: (value: string) => void
     onEnter?: () => void
     error?: string
@@ -24,7 +24,7 @@ type SuperEditableSpanType = DefaultInputPropsType & { // и + ещё пропс
     spanProps?: DefaultSpanPropsType // пропсы для спана
 }
 
-export const SuperEditableSpan: FC<SuperEditableSpanType> = memo((
+export const SuperEditableSpan = memo((
     {
         autoFocus, // игнорировать изменение этого пропса
         onBlur,
@@ -32,7 +32,7 @@ export const SuperEditableSpan: FC<SuperEditableSpanType> = memo((
         spanProps,
 
         ...restProps// все остальные пропсы попадут в объект restProps
-    }
+    }: Props
 ) => {
     const [editMode, setEditMode] = useState<boolean>(false)
     const {children, onDoubleClick, className, ...restSpanProps} = spanProps || {}

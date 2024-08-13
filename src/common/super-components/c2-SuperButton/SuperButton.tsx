@@ -2,9 +2,9 @@ import {ButtonHTMLAttributes, DetailedHTMLProps, FC, memo} from 'react'
 import s from './SuperButton.module.css'
 
 // тип пропсов обычной кнопки, children в котором храниться название кнопки там уже описан
-type DefaultButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
+type DefaultButtonProps = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
 
-type Props = DefaultButtonPropsType & {
+type Props = DefaultButtonProps & {
     red?: boolean
 }
 

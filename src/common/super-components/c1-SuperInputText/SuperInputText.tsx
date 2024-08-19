@@ -9,11 +9,11 @@ import {
 import s from './SuperInputText.module.css'
 
 // тип пропсов обычного инпута
-type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+type DefaultInputProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
 // здесь мы говорим что у нашего инпута будут такие же пропсы как у обычного инпута
 // (чтоб не писать value: string, onChange: ...; они уже все описаны в DefaultInputPropsType)
-type SuperInputTextPropsType = Omit<DefaultInputPropsType, 'type'> & { // и + ещё пропсы которых нет в стандартном инпуте
+type SuperInputTextProps = Omit<DefaultInputProps, 'type'> & { // и + ещё пропсы которых нет в стандартном инпуте
     eye?: boolean //указывает, должен ли быть глаз возле инпута, переключающий типы text/password
     onChangeText?: (value: string) => void
     onEnter?: () => void
@@ -21,7 +21,7 @@ type SuperInputTextPropsType = Omit<DefaultInputPropsType, 'type'> & { // и + �
     spanClassName?: string
 }
 
-export const SuperInputText: FC<SuperInputTextPropsType> = memo((
+export const SuperInputText = memo((
     {
         //type, // достаём и игнорируем чтоб нельзя было задать другой тип инпута
         onChange, onChangeText,
@@ -30,7 +30,7 @@ export const SuperInputText: FC<SuperInputTextPropsType> = memo((
         className, spanClassName, eye = false,
 
         ...restProps// все остальные пропсы попадут в объект restProps
-    }
+    }: SuperInputTextProps
 ) => {
     const [typeText, setTypeText] = useState<boolean>(!eye)
 

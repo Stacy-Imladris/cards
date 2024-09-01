@@ -14,7 +14,7 @@ type DefaultInputProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>
 type DefaultSpanProps = DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>
 
 // здесь мы говорим что у нашего инпута будут такие же пропсы как у обычного инпута
-// (чтоб не писать value: string, onChange: ...; они уже все описаны в DefaultInputPropsType)
+// (чтоб не писать value: string, onChange: ...; они уже все описаны в DefaultInputProps)
 type Props = DefaultInputProps & { // и + ещё пропсы которых нет в стандартном инпуте
     onChangeText?: (value: string) => void
     onEnter?: () => void

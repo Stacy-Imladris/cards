@@ -12,7 +12,7 @@ import s from './SuperInputText.module.css'
 type DefaultInputProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
 // здесь мы говорим что у нашего инпута будут такие же пропсы как у обычного инпута
-// (чтоб не писать value: string, onChange: ...; они уже все описаны в DefaultInputPropsType)
+// (чтоб не писать value: string, onChange: ...; они уже все описаны в DefaultInputProps)
 type SuperInputTextProps = Omit<DefaultInputProps, 'type'> & { // и + ещё пропсы которых нет в стандартном инпуте
     eye?: boolean //указывает, должен ли быть глаз возле инпута, переключающий типы text/password
     onChangeText?: (value: string) => void

@@ -19,12 +19,12 @@ type Props = {
   isOpen: boolean
   name: string
 }
-export const LearnPackForm: FC<Props> = memo(({
+export const LearnPackForm = memo(({
                                                 onClickLearnPackOn,
                                                 onClickNotOpen,
                                                 isOpen,
                                                 name
-                                              }) => {
+                                              }: Props) => {
   const theme = useAppSelector(selectTheme)
   const isLoading = useAppSelector(selectAppIsLoading)
   const randomCard = useAppSelector(selectRandomCard)

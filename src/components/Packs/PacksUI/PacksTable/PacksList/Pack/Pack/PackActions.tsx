@@ -13,36 +13,21 @@ type PackActionsType = {
     pack: PackType
 }
 
-export const PackActions: FC<PackActionsType> = memo(({isMyPacks, pack}) => {
-    const [isLearningOpen, setIsLearningOpen] = useState<boolean>(false)
-    const [isDeletingOpen, setIsDeletingOpen] = useState<boolean>(false)
-    const [isEditingOpen, setIsEditingOpen] = useState<boolean>(false)
+export const PackActions = memo(({isMyPacks, pack}: PackActionsType) => {
+    const [isLearningOpen, setIsLearningOpen] = useState(false)
+    const [isDeletingOpen, setIsDeletingOpen] = useState(false)
+    const [isEditingOpen, setIsEditingOpen] = useState(false)
 
     const dispatch = useDispatch()
 
-    const deletePackOff = useCallback(() => {
-        setIsDeletingOpen(false)
-    }, [])
+    const deletePackOff = () => setIsDeletingOpen(false)
+    const deletePackOn = () => setIsDeletingOpen(true)
 
-    const deletePackOn = useCallback(() => {
-        setIsDeletingOpen(true)
-    }, [])
+    const editPackOff = () => setIsEditingOpen(false)
+    const editPackOn = () => setIsEditingOpen(true)
 
-    const editPackOff = useCallback(() => {
-        setIsEditingOpen(false)
-    }, [])
-
-    const editPackOn = useCallback(() => {
-        setIsEditingOpen(true)
-    }, [])
-
-    const learnPackOff = useCallback(() => {
-        setIsLearningOpen(false)
-    }, [])
-
-    const learnPackOn = useCallback(() => {
-        setIsLearningOpen(true)
-    }, [])
+    const learnPackOff = () => setIsLearningOpen(false)
+    const learnPackOn = () => setIsLearningOpen(true)
 
     const startLearning = useCallback(() => {
         setIsLearningOpen(true)

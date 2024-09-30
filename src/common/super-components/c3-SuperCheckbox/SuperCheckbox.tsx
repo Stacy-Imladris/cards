@@ -1,4 +1,4 @@
-import {ChangeEvent, DetailedHTMLProps, FC, InputHTMLAttributes, memo} from 'react'
+import {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, memo} from 'react'
 import s from './SuperCheckbox.module.css'
 
 // тип пропсов обычного инпута
@@ -9,14 +9,14 @@ type Props = DefaultInputProps & {
     spanClassName?: string
 }
 
-export const SuperCheckbox: FC<Props> = memo((
+export const SuperCheckbox = memo((
     {
         type, // достаём и игнорируем чтоб нельзя было задать другой тип инпута
         onChange, onChangeChecked,
         className, spanClassName,
         children, // в эту переменную попадёт текст, типизировать не нужно так как он затипизирован в React.FC
         ...restProps// все остальные пропсы попадут в объект restProps
-    }
+    }: Props
 ) => {
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
         onChange && onChange(e)

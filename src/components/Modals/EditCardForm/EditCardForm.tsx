@@ -1,4 +1,4 @@
-import {FC, memo, useCallback, useState} from 'react';
+import {memo, useCallback, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {Modal} from '../Modal/Modal';
 import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
@@ -13,11 +13,11 @@ type Props = {
   answer: string
 }
 
-export const EditCardForm: FC<Props> = memo(({
-                                               onClickNotOpen,
-                                               isOpen, question,
-                                               answer, cardId
-                                             }) => {
+export const EditCardForm = memo(({
+                                    onClickNotOpen,
+                                    isOpen, question,
+                                    answer, cardId
+                                  }: Props) => {
   const [newQuestion, setNewQuestion] = useState<string>(question)
   const [newAnswer, setNewAnswer] = useState<string>(answer)
 

@@ -1,4 +1,4 @@
-import {FC, memo, useCallback, useState} from 'react'
+import {memo, useCallback, useState} from 'react'
 import {useDispatch} from 'react-redux'
 import {addPack} from 'components/Packs/PacksBLL/packs-reducer'
 import {Modal} from '../Modal/Modal'

@@ -1,9 +1,9 @@
-import {FC, memo, useCallback, useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {updatePack} from 'components/Packs/PacksBLL/packs-reducer';
-import {Modal} from '../Modal/Modal';
-import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
 import {SuperInputText} from 'common/super-components/c1-SuperInputText/SuperInputText';
+import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
+import {updatePack} from 'components/Packs/PacksBLL/packs-reducer';
+import {memo, useCallback, useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {Modal} from '../Modal/Modal';
 
 type Props = {
   onClickNotOpen: () => void
@@ -11,12 +11,12 @@ type Props = {
   packId: string
   name: string
 }
-export const EditPackForm: FC<Props> = memo(({
-                                               onClickNotOpen,
-                                               isOpen,
-                                               name,
-                                               packId
-                                             }) => {
+export const EditPackForm = memo(({
+                                    onClickNotOpen,
+                                    isOpen,
+                                    name,
+                                    packId
+                                  }: Props) => {
   const [newName, setNewName] = useState<string>(name)
 
   const dispatch = useDispatch()

@@ -1,4 +1,4 @@
-import {FC, memo, useCallback, useState} from 'react'
+import {memo, useCallback, useState} from 'react'
 import {Modal} from '../Modal/Modal'
 import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton'
 import {AnswerForm} from '../AnswerForm/AnswerForm'
@@ -20,11 +20,11 @@ type Props = {
   name: string
 }
 export const LearnPackForm = memo(({
-                                                onClickLearnPackOn,
-                                                onClickNotOpen,
-                                                isOpen,
-                                                name
-                                              }: Props) => {
+                                     onClickLearnPackOn,
+                                     onClickNotOpen,
+                                     isOpen,
+                                     name
+                                   }: Props) => {
   const theme = useAppSelector(selectTheme)
   const isLoading = useAppSelector(selectAppIsLoading)
   const randomCard = useAppSelector(selectRandomCard)

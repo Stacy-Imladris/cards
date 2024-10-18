@@ -1,4 +1,4 @@
-import {FC, memo, useCallback, useState} from 'react'
+import {memo, useCallback, useState} from 'react'
 import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton'
 import {DeletePackForm} from 'components/Modals/DeletePackForm/DeletePackForm'
 import {EditPackForm} from 'components/Modals/EditPackForm/EditPackForm'

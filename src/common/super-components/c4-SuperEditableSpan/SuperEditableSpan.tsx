@@ -3,7 +3,7 @@ import {
     InputHTMLAttributes,
     HTMLAttributes,
     useState,
-    FC, memo
+    memo
 } from 'react'
 import s from './SuperEditableSpan.module.css'
 import {SuperInputText} from '../c1-SuperInputText/SuperInputText';

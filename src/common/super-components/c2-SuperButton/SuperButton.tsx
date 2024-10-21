@@ -1,4 +1,4 @@
-import {ButtonHTMLAttributes, DetailedHTMLProps, FC, memo} from 'react'
+import {ButtonHTMLAttributes, DetailedHTMLProps, memo} from 'react'
 import s from './SuperButton.module.css'
 
 // тип пропсов обычной кнопки, children в котором храниться название кнопки там уже описан

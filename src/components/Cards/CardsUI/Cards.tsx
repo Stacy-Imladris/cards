@@ -19,7 +19,7 @@ import {AddCardForm} from 'components/Modals/AddCardForm/AddCardForm';
 import {useAppSelector} from 'store/store';
 
 export const Cards = () => {
-    const [isAddingOpen, setIsAddingOpen] = useState<boolean>(false)
+    const [isAddingOpen, setIsAddingOpen] = useState(false)
 
     const theme = useAppSelector(selectTheme)
     const packName = useAppSelector(selectPackName)

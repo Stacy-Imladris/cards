@@ -19,7 +19,7 @@ import {useAppSelector} from 'store/store';
 const arr: PacksType[] = ['All', 'My']
 
 export const Packs = () => {
-    const [isAddingOpen, setIsAddingOpen] = useState<boolean>(false)
+    const [isAddingOpen, setIsAddingOpen] = useState(false)
 
     const theme = useAppSelector(selectTheme)
     const user_id = useAppSelector(selectUser_id)

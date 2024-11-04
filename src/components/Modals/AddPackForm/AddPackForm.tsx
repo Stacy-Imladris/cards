@@ -13,7 +13,7 @@ type Props = {
 
 export const AddPackForm = memo(({onClickNotOpen, isOpen}: Props) => {
     const [name, setName] = useState<string>('')
-    const [isPrivate, setIsPrivate] = useState<boolean>(false)
+    const [isPrivate, setIsPrivate] = useState(false)
 
     const dispatch = useDispatch()
 

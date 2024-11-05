@@ -18,7 +18,7 @@ import {useAppSelector} from 'store/store';
 export const Login = () => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
-    const [rememberMe, setRememberMe] = useState<boolean>(false)
+    const [rememberMe, setRememberMe] = useState(false)
 
     const error = useAppSelector(selectLoginError)
     const theme = useAppSelector(selectTheme)

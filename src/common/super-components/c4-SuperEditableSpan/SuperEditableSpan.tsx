@@ -34,7 +34,7 @@ export const SuperEditableSpan = memo((
         ...restProps// все остальные пропсы попадут в объект restProps
     }: Props
 ) => {
-    const [editMode, setEditMode] = useState<boolean>(false)
+    const [editMode, setEditMode] = useState(false)
     const {children, onDoubleClick, className, ...restSpanProps} = spanProps || {}
 
     const onEnterCallback = () => {

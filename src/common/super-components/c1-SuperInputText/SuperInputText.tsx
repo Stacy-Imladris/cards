@@ -32,7 +32,7 @@ export const SuperInputText = memo((
         ...restProps// все остальные пропсы попадут в объект restProps
     }: SuperInputTextProps
 ) => {
-    const [typeText, setTypeText] = useState<boolean>(!eye)
+    const [typeText, setTypeText] = useState(!eye)
 
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
         onChange // если есть пропс onChange

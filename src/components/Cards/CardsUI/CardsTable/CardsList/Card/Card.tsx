@@ -15,8 +15,8 @@ type Props = {
 }
 
 export const Card = memo(({card}: Props) => {
-    const [isDeletingOpen, setIsDeletingOpen] = useState<boolean>(false)
-    const [isEditingOpen, setIsEditingOpen] = useState<boolean>(false)
+    const [isDeletingOpen, setIsDeletingOpen] = useState(false)
+    const [isEditingOpen, setIsEditingOpen] = useState(false)
 
     const userId = useAppSelector(selectUser_id)
 

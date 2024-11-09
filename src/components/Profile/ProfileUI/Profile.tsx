@@ -23,7 +23,7 @@ import {useAppSelector} from 'store/store';
 import {PATH} from 'enums/paths';
 
 export const Profile = () => {
-    const [isAddingOpen, setIsAddingOpen] = useState<boolean>(false)
+    const [isAddingOpen, setIsAddingOpen] = useState(false)
 
     const name = useAppSelector(selectProfileUserName)
     const theme = useAppSelector(selectTheme)

@@ -31,7 +31,7 @@ export const LearnPackForm = memo(({
 
   const dispatch = useDispatch()
 
-  const [isAnswerOpen, setIsAnswerOpen] = useState<boolean>(false)
+  const [isAnswerOpen, setIsAnswerOpen] = useState(false)
 
   const setAnswerOff = useCallback(() => {
     setIsAnswerOpen(false)

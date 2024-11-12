@@ -42,7 +42,7 @@ export const AnswerForm = memo(({
                                   onClickNotOpen, isOpen, name
                                 }: Props) => {
   const [value, setValue] = useState<GRADES>(GRADES.ONE)
-  const [rateEdit, setRateEdit] = useState<boolean>(false)
+  const [rateEdit, setRateEdit] = useState(false)
 
   const theme = useAppSelector(selectTheme)
   const isLoading = useAppSelector(selectAppIsLoading)

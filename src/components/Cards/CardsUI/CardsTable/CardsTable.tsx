@@ -11,7 +11,7 @@ import {
     selectPageCountForCards,
     selectPageForCards,
     selectSortCards,
-    selectUser_id
+    selectUserId
 } from 'store/selectors';
 import {Paginator} from 'components/Features/Paginator/Paginator';
 import {CardsTableHeader} from './CardsTableHeader/CardsTableHeader';
@@ -26,7 +26,7 @@ export const CardsTable = () => {
     const page = useAppSelector(selectPageForCards)
     const pageCount = useAppSelector(selectPageCountForCards)
     const sortCards = useAppSelector(selectSortCards)
-    const userId = useAppSelector(selectUser_id)
+    const userId = useAppSelector(selectUserId)
 
     const dispatch = useDispatch()
     const {packUserId} = useParams<'packUserId'>()

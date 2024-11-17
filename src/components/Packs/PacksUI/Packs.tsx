@@ -10,7 +10,7 @@ import {DoubleRange} from 'components/Features/DoubleRange/DoubleRange';
 import {
     selectPackNameForSearch, selectPacksType,
     selectTheme,
-    selectUser_id
+    selectUserId
 } from 'store/selectors';
 import {useCallback, useState} from 'react';
 import {AddPackForm} from 'components/Modals/AddPackForm/AddPackForm';
@@ -22,7 +22,7 @@ export const Packs = () => {
     const [isAddingOpen, setIsAddingOpen] = useState(false)
 
     const theme = useAppSelector(selectTheme)
-    const user_id = useAppSelector(selectUser_id)
+    const user_id = useAppSelector(selectUserId)
     const packName = useAppSelector(selectPackNameForSearch)
     const type = useAppSelector(selectPacksType)
 

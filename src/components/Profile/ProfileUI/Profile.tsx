@@ -11,7 +11,7 @@ import {
     selectPackNameForSearch,
     selectProfileEditMode,
     selectProfileUserName,
-    selectTheme, selectUser_id
+    selectTheme, selectUserId
 } from 'store/selectors';
 import {SearchField} from 'components/Features/SearchField/SearchField';
 import {PacksTable} from 'components/Packs/PacksUI/PacksTable/PacksTable';
@@ -29,7 +29,7 @@ export const Profile = () => {
     const theme = useAppSelector(selectTheme)
     const editMode = useAppSelector(selectProfileEditMode)
     const packName = useAppSelector(selectPackNameForSearch)
-    const user_id = useAppSelector(selectUser_id)
+    const user_id = useAppSelector(selectUserId)
 
     const dispatch = useDispatch()
     const location = useLocation()

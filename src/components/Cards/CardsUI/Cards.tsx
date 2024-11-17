@@ -13,7 +13,7 @@ import {
     selectCardQuestion, selectPackId,
     selectPackName,
     selectTheme,
-    selectUser_id
+    selectUserId
 } from 'store/selectors';
 import {AddCardForm} from 'components/Modals/AddCardForm/AddCardForm';
 import {useAppSelector} from 'store/store';
@@ -26,7 +26,7 @@ export const Cards = () => {
     const cardQuestion = useAppSelector(selectCardQuestion)
     const cardAnswer = useAppSelector(selectCardAnswer)
     const cardsPack_id = useAppSelector(selectPackId)
-    const userId = useAppSelector(selectUser_id)
+    const userId = useAppSelector(selectUserId)
 
     const dispatch = useDispatch()
     const navigate = useNavigate()

@@ -6,7 +6,7 @@ import {DeleteCardForm} from 'components/Modals/DeleteCardForm/DeleteCardForm'
 import {EditCardForm} from 'components/Modals/EditCardForm/EditCardForm'
 import {memo, useCallback, useState} from 'react'
 import {useParams} from 'react-router-dom'
-import {selectUser_id} from 'store/selectors'
+import {selectUserId} from 'store/selectors'
 import {useAppSelector} from 'store/store';
 import {getLastUpdatedDate} from 'utils/getLastUpdatedDate';
 
@@ -18,7 +18,7 @@ export const Card = memo(({card}: Props) => {
     const [isDeletingOpen, setIsDeletingOpen] = useState(false)
     const [isEditingOpen, setIsEditingOpen] = useState(false)
 
-    const userId = useAppSelector(selectUser_id)
+    const userId = useAppSelector(selectUserId)
 
     const {packUserId} = useParams<'packUserId'>()
 

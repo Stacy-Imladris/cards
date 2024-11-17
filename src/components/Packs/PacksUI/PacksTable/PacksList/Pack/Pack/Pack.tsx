@@ -4,7 +4,7 @@ import {PATH} from 'enums/paths';
 import {memo} from 'react'
 import {useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
-import {selectUser_id} from 'store/selectors';
+import {selectUserId} from 'store/selectors';
 import {useAppSelector} from 'store/store';
 import {getLastUpdatedDate} from 'utils/getLastUpdatedDate';
 import {PackActions} from './PackActions'
@@ -14,7 +14,7 @@ type Props = {
 }
 
 export const Pack = memo(({pack}: Props) => {
-    const userId = useAppSelector(selectUser_id)
+    const userId = useAppSelector(selectUserId)
     const lastUpdate = getLastUpdatedDate(pack.updated)
 
     const dispatch = useDispatch()

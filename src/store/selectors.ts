@@ -3,7 +3,7 @@ import {AppRootStateType} from './store';
 export const selectTheme = (state: AppRootStateType) => state.theme.theme
 
 export const selectIsInitialized = (state: AppRootStateType) => state.profile.isInitialized
-export const selectUser_id = (state: AppRootStateType) => state.profile.user._id
+export const selectUserId = (state: AppRootStateType) => state.profile.user._id
 export const selectProfileEditMode = (state: AppRootStateType) => state.profile.editMode
 export const selectProfileUserName = (state: AppRootStateType) => state.profile.user.name
 export const selectProfileUser = (state: AppRootStateType) => state.profile.user

@@ -11,9 +11,9 @@ import {PATH} from 'enums/paths';
 import {useAppSelector} from 'store/store';
 
 export const RegistrationContainer = () => {
-    const [email, setEmail] = useState<string>('')
-    const [password, setPassword] = useState<string>('')
-    const [password2, setPassword2] = useState<string>('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [password2, setPassword2] = useState('')
 
     const theme = useAppSelector(selectTheme)
     const error = useAppSelector(selectRegistrationError)

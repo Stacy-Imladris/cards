@@ -1,7 +1,7 @@
-import {cardsActions, CardsInitialStateType, cardsReducer} from './cards-reducer'
+import {cardsActions, CardsInitialState, cardsReducer} from './cards-reducer'
 import {CardType} from '../CardsAPI/cards-api'
 
-let state: CardsInitialStateType
+let state: CardsInitialState
 let date: Date
 
 describe('cards reducer tests', () => {

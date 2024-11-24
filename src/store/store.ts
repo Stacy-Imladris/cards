@@ -33,13 +33,13 @@ const preloadedState = {theme: {theme: loadValue() ? loadValue() : '☀'}}
 
 export const store = createStore(rootReducer, preloadedState, applyMiddleware(thunk))
 
-export type AppRootStateType = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof store.getState>
 export type InferActionTypes<T> = T extends { [keys: string]: (...args: any[]) => infer U } ? U : never
 export type ActionsType = RegistrationActionTypes | RecoveryActionTypes
     | NewPasswordActionTypes | LoginActionsType | ProfileActionTypes
     | PacksActionTypes | CardsActionTypes | AppActionTypes | LearnActionTypes
-export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppRootStateType, unknown, ActionsType>
-export const useAppSelector: TypedUseSelectorHook<AppRootStateType> = useSelector
+export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, ActionsType>
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
 // @ts-ignore
 window.store = store

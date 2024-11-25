@@ -136,5 +136,5 @@ export type PacksParamsType = {
     user_id: string
 }
 export type PacksSortFieldsType = 'name' | 'cardsCount' | 'updated' | 'user_name'
-export type SortOrderType = '0' | '1'
+export type SortOrder = '0' | '1'
 export type PacksType = 'All' | 'My'

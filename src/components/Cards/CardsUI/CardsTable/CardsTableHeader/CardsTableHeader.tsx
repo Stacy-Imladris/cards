@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {SortOrderType} from 'components/Packs/PacksBLL/packs-reducer';
+import {SortOrder} from 'components/Packs/PacksBLL/packs-reducer';
 import {useDispatch} from 'react-redux';
 import c from 'common/styles/TableHeader.module.css';
 import {cardsActions, CardsSortFieldsType} from 'components/Cards/CardsBLL/cards-reducer';
@@ -10,7 +10,7 @@ type Props = {
 }
 
 export const CardsTableHeader = ({text, param}: Props) => {
-    const [sortOrder, setSortOrder] = useState<SortOrderType>('0')
+    const [sortOrder, setSortOrder] = useState<SortOrder>('0')
     const [sortField, setSortField] = useState<CardsSortFieldsType>('updated')
 
     const dispatch = useDispatch()
@@ -20,7 +20,7 @@ export const CardsTableHeader = ({text, param}: Props) => {
         dispatch(cardsActions.setSortParameters(sortOrder + fieldToSort))
     }
 
-    const changeSortOrder = (order: SortOrderType) => {
+    const changeSortOrder = (order: SortOrder) => {
         setSortOrder(order)
         dispatch(cardsActions.setSortParameters(order + sortField))
     }

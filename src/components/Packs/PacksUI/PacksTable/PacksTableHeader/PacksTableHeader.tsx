@@ -1,20 +1,20 @@
 import {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {packsActions, PacksSortFieldsType, SortOrder,} from 'components/Packs/PacksBLL/packs-reducer';
+import {packsActions, PacksSortFields, SortOrder,} from 'components/Packs/PacksBLL/packs-reducer';
 import c from 'common/styles/TableHeader.module.css';
 
 type Props = {
     text: string
-    param: PacksSortFieldsType
+    param: PacksSortFields
 }
 
 export const PacksTableHeader = ({text, param}: Props) => {
     const [sortOrder, setSortOrder] = useState<SortOrder>('0')
-    const [sortField, setSortField] = useState<PacksSortFieldsType>('updated')
+    const [sortField, setSortField] = useState<PacksSortFields>('updated')
 
     const dispatch = useDispatch()
 
-    const changeSortField = (fieldToSort: PacksSortFieldsType) => {
+    const changeSortField = (fieldToSort: PacksSortFields) => {
         setSortField(fieldToSort)
         dispatch(packsActions.setSortParameters(sortOrder + fieldToSort))
     }

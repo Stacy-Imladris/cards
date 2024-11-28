@@ -8,12 +8,12 @@ import {PackType} from 'components/Packs/PacksAPI/packs-api'
 import {learnCard} from 'store/learnReducer'
 import t from 'common/styles/Table.module.css'
 
-type PackActionsType = {
+type Props = {
     isMyPacks: boolean
     pack: PackType
 }
 
-export const PackActions = memo(({isMyPacks, pack}: PackActionsType) => {
+export const PackActions = memo(({isMyPacks, pack}: Props) => {
     const [isLearningOpen, setIsLearningOpen] = useState(false)
     const [isDeletingOpen, setIsDeletingOpen] = useState(false)
     const [isEditingOpen, setIsEditingOpen] = useState(false)

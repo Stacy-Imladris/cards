@@ -6,7 +6,7 @@ import {ProfileActionTypes, profileReducer} from '../components/Profile/ProfileB
 import {RegistrationActionTypes, registrationReducer
 } from '../components/Auth/Registration/RegistrationBLL/registration-reducer';
 import {LoginActionsType, loginReducer} from '../components/Auth/Login/LoginBLL/loginReducer';
-import {RecoveryActionTypes, recoveryReducer
+import {RecoveryActions, recoveryReducer
 } from '../components/Auth/Recovery/RecoveryBLL/recovery-reducer';
 import {NewPasswordActionTypes, newPasswordReducer
 } from '../components/Auth/NewPassword/NewPasswordBLL/new-password-reducer';
@@ -35,7 +35,7 @@ export const store = createStore(rootReducer, preloadedState, applyMiddleware(th
 
 export type RootState = ReturnType<typeof store.getState>
 export type InferActionTypes<T> = T extends { [keys: string]: (...args: any[]) => infer U } ? U : never
-export type ActionsType = RegistrationActionTypes | RecoveryActionTypes
+export type ActionsType = RegistrationActionTypes | RecoveryActions
     | NewPasswordActionTypes | LoginActionsType | ProfileActionTypes
     | PacksActionTypes | CardsActionTypes | AppActionTypes | LearnActionTypes
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, ActionsType>

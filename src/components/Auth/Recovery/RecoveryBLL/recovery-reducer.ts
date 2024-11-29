@@ -8,7 +8,7 @@ const recoveryInitialState = {
     check: false,
 }
 
-export const recoveryReducer = (state: RecoveryInitialStateType = recoveryInitialState, action: RecoveryActionTypes): RecoveryInitialStateType => {
+export const recoveryReducer = (state: RecoveryInitialStateType = recoveryInitialState, action: RecoveryActions): RecoveryInitialStateType => {
     switch (action.type) {
         case 'RECOVERY/SET_ERROR':
         case 'RECOVERY/SET_IS_LOADING':
@@ -45,4 +45,4 @@ export const toSendInstructions = (email: string): AppThunk => async dispatch =>
 
 //types
 export type RecoveryInitialStateType = typeof recoveryInitialState
-export type RecoveryActionTypes = InferActionTypes<typeof recoveryActions>
+export type RecoveryActions = InferActionTypes<typeof recoveryActions>

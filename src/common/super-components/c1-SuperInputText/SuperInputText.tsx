@@ -13,7 +13,7 @@ type DefaultInputProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>
 
 // здесь мы говорим что у нашего инпута будут такие же пропсы как у обычного инпута
 // (чтоб не писать value: string, onChange: ...; они уже все описаны в DefaultInputProps)
-type SuperInputTextProps = Omit<DefaultInputProps, 'type'> & { // и + ещё пропсы которых нет в стандартном инпуте
+type Props = Omit<DefaultInputProps, 'type'> & { // и + ещё пропсы которых нет в стандартном инпуте
     eye?: boolean //указывает, должен ли быть глаз возле инпута, переключающий типы text/password
     onChangeText?: (value: string) => void
     onEnter?: () => void
@@ -30,7 +30,7 @@ export const SuperInputText = memo((
         className, spanClassName, eye = false,
 
         ...restProps// все остальные пропсы попадут в объект restProps
-    }: SuperInputTextProps
+    }: Props
 ) => {
     const [typeText, setTypeText] = useState(!eye)
 

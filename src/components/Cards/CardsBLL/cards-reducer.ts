@@ -119,4 +119,4 @@ export type CardsParamsType = {
     page: number
     pageCount: number
 }
-export type CardsSortFieldsType = 'answer' | 'question' | 'updated' | 'grade'
+export type CardsSortFields = 'answer' | 'question' | 'updated' | 'grade'

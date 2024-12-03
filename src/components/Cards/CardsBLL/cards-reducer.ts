@@ -19,7 +19,7 @@ const cardsInitialState = {
     packName: '',
 }
 
-export const cardsReducer = (state: CardsInitialState = cardsInitialState, action: CardsActionTypes): CardsInitialState => {
+export const cardsReducer = (state: CardsInitialState = cardsInitialState, action: CardsActions): CardsInitialState => {
     switch (action.type) {
         case 'CARDS/SET_CARDS':
         case 'CARDS/SET_CARDS_TOTAL_COUNT':
@@ -108,7 +108,7 @@ export const updateCard = (_id: string, question: string, answer: string): AppTh
 
 //types
 export type CardsInitialState = typeof cardsInitialState
-export type CardsActionTypes = InferActionTypes<typeof cardsActions>
+export type CardsActions = InferActionTypes<typeof cardsActions>
 export type CardsParamsType = {
     cardAnswer: string
     cardQuestion: string

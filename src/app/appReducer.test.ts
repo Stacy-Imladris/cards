@@ -1,6 +1,6 @@
-import {appActions, AppInitialStateType, appReducer} from './appReducer';
+import {appActions, AppInitialState, appReducer} from './appReducer';
 
-let state: AppInitialStateType
+let state: AppInitialState
 
 describe('app reducer tests', () => {
     beforeEach(() => {

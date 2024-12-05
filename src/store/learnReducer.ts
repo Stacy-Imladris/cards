@@ -9,7 +9,7 @@ const learnInitialState = {
     randomCard: {} as CardType,
 }
 
-export const learnReducer = (state: LearnInitialStateType = learnInitialState, action: LearnActionTypes): LearnInitialStateType => {
+export const learnReducer = (state: LearnInitialState = learnInitialState, action: LearnActionTypes): LearnInitialState => {
     switch (action.type) {
         case 'LEARN/SET_CARDS':
         case 'LEARN/SET_RANDOM_CARD':
@@ -59,5 +59,5 @@ export const rate = (grade: number, card_id: string): AppThunk => async (dispatc
 }
 
 //types
-export type LearnInitialStateType = typeof learnInitialState
+export type LearnInitialState = typeof learnInitialState
 export type LearnActionTypes = InferActionTypes<typeof learnActions>

@@ -1,7 +1,7 @@
-import {learnActions, LearnInitialStateType, learnReducer} from './learnReducer';
+import {learnActions, LearnInitialState, learnReducer} from './learnReducer';
 import {CardType} from '../components/Cards/CardsAPI/cards-api';
 
-let state: LearnInitialStateType
+let state: LearnInitialState
 let date: Date
 
 describe('app reducer tests', () => {

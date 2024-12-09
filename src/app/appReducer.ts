@@ -6,7 +6,7 @@ const appInitialState = {
     isLoading: false,
 }
 
-export const appReducer = (state: AppInitialState = appInitialState, action: AppActionTypes): AppInitialState => {
+export const appReducer = (state: AppInitialState = appInitialState, action: AppActions): AppInitialState => {
     switch (action.type) {
         case 'APP/SET_STATUS':
         case 'APP/SET_ERROR':
@@ -25,4 +25,4 @@ export const appActions = {
 
 //types
 export type AppInitialState = typeof appInitialState
-export type AppActionTypes = InferActionTypes<typeof appActions>
+export type AppActions = InferActionTypes<typeof appActions>

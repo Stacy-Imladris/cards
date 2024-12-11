@@ -11,7 +11,7 @@ const profileInitialState = {
     isInitialized: false,
 }
 
-export const profileReducer = (state: ProfileStateType = profileInitialState, action: ProfileActionTypes): ProfileStateType => {
+export const profileReducer = (state: ProfileStateType = profileInitialState, action: ProfileActions): ProfileStateType => {
     switch (action.type) {
         case 'profile/SET_USER_DATA':
         case 'profile/SET_EDIT_MODE':
@@ -60,4 +60,4 @@ export const auth = (): AppThunk => async dispatch => {
 
 //types:
 export type ProfileStateType = typeof profileInitialState
-export type ProfileActionTypes = InferActionTypes<typeof profileActions>
+export type ProfileActions = InferActionTypes<typeof profileActions>

@@ -4,7 +4,7 @@ const themeInitialState = {
     theme: '☀' as ThemeType
 }
 
-export const themeReducer = (state: ThemeInitialStateType = themeInitialState, action: ThemeActions): ThemeInitialStateType => {
+export const themeReducer = (state: ThemeInitialState = themeInitialState, action: ThemeActions): ThemeInitialState => {
     switch (action.type) {
         case 'THEME/CHANGE_THEME':
             return {...state, ...action.payload}
@@ -18,5 +18,5 @@ export const themeActions = {
 }
 
 export type ThemeType = '☀' | '☽'
-export type ThemeInitialStateType = typeof themeInitialState
+export type ThemeInitialState = typeof themeInitialState
 export type ThemeActions = InferActionTypes<typeof themeActions>

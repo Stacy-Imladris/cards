@@ -1,6 +1,6 @@
-import {themeActions, ThemeInitialStateType, themeReducer} from './themeReducer';
+import {themeActions, ThemeInitialState, themeReducer} from './themeReducer';
 
-let themeStartState: ThemeInitialStateType
+let themeStartState: ThemeInitialState
 
 describe('theme reducer tests', () => {
     beforeEach(() => {

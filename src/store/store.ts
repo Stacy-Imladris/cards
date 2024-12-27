@@ -5,7 +5,7 @@ import {TypedUseSelectorHook, useSelector} from 'react-redux';
 import {ProfileActions, profileReducer} from '../components/Profile/ProfileBLL/profile-reducer'
 import {RegistrationActions, registrationReducer
 } from '../components/Auth/Registration/RegistrationBLL/registration-reducer';
-import {LoginActionsType, loginReducer} from '../components/Auth/Login/LoginBLL/loginReducer';
+import {LoginActions, loginReducer} from '../components/Auth/Login/LoginBLL/loginReducer';
 import {RecoveryActions, recoveryReducer
 } from '../components/Auth/Recovery/RecoveryBLL/recovery-reducer';
 import {NewPasswordActionTypes, newPasswordReducer
@@ -36,7 +36,7 @@ export const store = createStore(rootReducer, preloadedState, applyMiddleware(th
 export type RootState = ReturnType<typeof store.getState>
 export type InferActionTypes<T> = T extends { [keys: string]: (...args: any[]) => infer U } ? U : never
 export type ActionsType = RegistrationActions | RecoveryActions
-    | NewPasswordActionTypes | LoginActionsType | ProfileActions
+    | NewPasswordActionTypes | LoginActions | ProfileActions
     | PacksActionTypes | CardsActions | AppActions | LearnActions
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, ActionsType>
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector

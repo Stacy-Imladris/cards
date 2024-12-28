@@ -1,6 +1,6 @@
-import {loginActions, LoginInitialStateType, loginReducer} from './loginReducer';
+import {loginActions, LoginInitialState, loginReducer} from './loginReducer';
 
-let startState: LoginInitialStateType
+let startState: LoginInitialState
 
 describe('login reducer tests', () => {
     beforeEach(() => {

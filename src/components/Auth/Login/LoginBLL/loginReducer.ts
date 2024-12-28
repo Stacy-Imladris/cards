@@ -11,7 +11,7 @@ export const loginInitialState = {
     isLoading: false
 }
 
-export const loginReducer = (state: LoginInitialStateType = loginInitialState, action: LoginActions): LoginInitialStateType => {
+export const loginReducer = (state: LoginInitialState = loginInitialState, action: LoginActions): LoginInitialState => {
     switch (action.type) {
         case 'LOGIN/SET-IS-LOGGED-IN':
         case 'LOGIN/SET-ERROR':
@@ -70,5 +70,5 @@ export const logout = (): AppThunk => async dispatch => {
 }
 
 // types
-export type LoginInitialStateType = typeof loginInitialState
+export type LoginInitialState = typeof loginInitialState
 export type LoginActions = InferActionTypes<typeof loginActions>

@@ -1,10 +1,10 @@
 import {instance} from '../../../api/instance';
-import {CardsParamsType} from '../CardsBLL/cards-reducer';
+import {CardsParams} from '../CardsBLL/cards-reducer';
 import {AxiosResponse} from 'axios';
 
 export const cardsAPI = {
-    getCards(params: Partial<CardsParamsType>) {
-        return instance.get<any, AxiosResponse<CardsResponseType>, Partial<CardsParamsType>>('cards/card', {params}).then(res => res.data)
+    getCards(params: Partial<CardsParams>) {
+        return instance.get<any, AxiosResponse<CardsResponseType>, Partial<CardsParams>>('cards/card', {params}).then(res => res.data)
     },
     addCard(card: NewCardType) {
         return instance.post<any, AxiosResponse<AdditionalCardResponse & Pick<CardResponses, 'newCard'>>, NewCardType>('cards/card', card)

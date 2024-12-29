@@ -14,7 +14,7 @@ const cardsInitialState = {
         sortCards: '0grade',
         page: 1,
         pageCount: 10,
-    } as CardsParamsType,
+    } as CardsParams,
     cardsTotalCount: 0,
     packName: '',
 }
@@ -109,7 +109,7 @@ export const updateCard = (_id: string, question: string, answer: string): AppTh
 //types
 export type CardsInitialState = typeof cardsInitialState
 export type CardsActions = InferActionTypes<typeof cardsActions>
-export type CardsParamsType = {
+export type CardsParams = {
     cardAnswer: string
     cardQuestion: string
     cardsPack_id: string

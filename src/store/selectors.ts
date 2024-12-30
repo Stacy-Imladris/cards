@@ -2,7 +2,7 @@ import {RootState} from './store';
 
 export const selectTheme = (state: RootState) => state.theme.theme
 
-export const selectIsInitialized = (state: RootState) => state.profile.isInitialized
+export const selectIsInitialized = (state: RootState): boolean => state.profile.isInitialized
 export const selectUserId = (state: RootState) => state.profile.user._id
 export const selectProfileEditMode = (state: RootState) => state.profile.editMode
 export const selectProfileUserName = (state: RootState) => state.profile.user.name

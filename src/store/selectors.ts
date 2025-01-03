@@ -4,7 +4,7 @@ export const selectTheme = (state: RootState) => state.theme.theme
 
 export const selectIsInitialized = (state: RootState): boolean => state.profile.isInitialized
 export const selectUserId = (state: RootState) => state.profile.user._id
-export const selectProfileEditMode = (state: RootState) => state.profile.editMode
+export const selectProfileEditMode = (state: RootState): boolean => state.profile.editMode
 export const selectProfileUserName = (state: RootState) => state.profile.user.name
 export const selectProfileUser = (state: RootState) => state.profile.user
 export const selectProfileIsFetching = (state: RootState) => state.profile.isFetching

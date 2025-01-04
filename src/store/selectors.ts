@@ -7,7 +7,7 @@ export const selectUserId = (state: RootState) => state.profile.user._id
 export const selectProfileEditMode = (state: RootState): boolean => state.profile.editMode
 export const selectProfileUserName = (state: RootState) => state.profile.user.name
 export const selectProfileUser = (state: RootState) => state.profile.user
-export const selectProfileIsFetching = (state: RootState) => state.profile.isFetching
+export const selectProfileIsFetching = (state: RootState): boolean => state.profile.isFetching
 
 export const selectIsLoggedIn = (state: RootState) => state.login.isLoggedIn
 export const selectLoginError = (state: RootState) => state.login.error

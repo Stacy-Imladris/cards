@@ -9,7 +9,7 @@ export const selectProfileUserName = (state: RootState) => state.profile.user.na
 export const selectProfileUser = (state: RootState) => state.profile.user
 export const selectProfileIsFetching = (state: RootState): boolean => state.profile.isFetching
 
-export const selectIsLoggedIn = (state: RootState) => state.login.isLoggedIn
+export const selectIsLoggedIn = (state: RootState): boolean => state.login.isLoggedIn
 export const selectLoginError = (state: RootState) => state.login.error
 export const selectLoginIsLoading = (state: RootState) => state.login.isLoading
 

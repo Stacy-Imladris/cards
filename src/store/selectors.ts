@@ -23,7 +23,7 @@ export const selectRecoveryIsLoading = (state: RootState) => state.recovery.isLo
 
 export const selectNewPasswordToLogin = (state: RootState) => state.newPassword.toLogIn
 export const selectNewPasswordError = (state: RootState) => state.newPassword.error
-export const selectNewPasswordIsLoading = (state: RootState) => state.newPassword.isLoading
+export const selectNewPasswordIsLoading = (state: RootState): boolean => state.newPassword.isLoading
 
 export const selectPackName = (state: RootState) => state.cards.packName
 export const selectCardsTotalCount = (state: RootState) => state.cards.cardsTotalCount

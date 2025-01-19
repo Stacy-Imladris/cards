@@ -11,7 +11,7 @@ export const selectProfileUser = (state: RootState): UserType => state.profile.u
 export const selectProfileIsFetching = (state: RootState): boolean => state.profile.isFetching
 
 export const selectIsLoggedIn = (state: RootState): boolean => state.login.isLoggedIn
-export const selectLoginError = (state: RootState) => state.login.error
+export const selectLoginError = (state: RootState): string => state.login.error
 export const selectLoginIsLoading = (state: RootState): boolean => state.login.isLoading
 
 export const selectRegistrationToLogin = (state: RootState) => state.registration.toLogIn

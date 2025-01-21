@@ -1,7 +1,8 @@
 import {UserType} from '../components/Profile/ProfileAPI/profile-api'
 import {RootState} from './store';
+import type {ThemeType} from './themeReducer'
 
-export const selectTheme = (state: RootState) => state.theme.theme
+export const selectTheme = (state: RootState): ThemeType => state.theme.theme
 
 export const selectIsInitialized = (state: RootState): boolean => state.profile.isInitialized
 export const selectUserId = (state: RootState): string => state.profile.user._id

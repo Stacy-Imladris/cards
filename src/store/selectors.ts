@@ -20,7 +20,7 @@ export const selectRegistrationError = (state: RootState): string => state.regis
 export const selectRegistrationIsLoading = (state: RootState): boolean => state.registration.isLoading
 
 export const selectRecoveryCheck = (state: RootState): boolean => state.recovery.check
-export const selectRecoveryError = (state: RootState) => state.recovery.error
+export const selectRecoveryError = (state: RootState): string => state.recovery.error
 export const selectRecoveryIsLoading = (state: RootState): boolean => state.recovery.isLoading
 
 export const selectNewPasswordToLogin = (state: RootState) => state.newPassword.toLogIn

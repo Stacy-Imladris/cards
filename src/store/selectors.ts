@@ -27,7 +27,7 @@ export const selectNewPasswordToLogin = (state: RootState): boolean => state.new
 export const selectNewPasswordError = (state: RootState): string => state.newPassword.error
 export const selectNewPasswordIsLoading = (state: RootState): boolean => state.newPassword.isLoading
 
-export const selectPackName = (state: RootState) => state.cards.packName
+export const selectPackName = (state: RootState): string => state.cards.packName
 export const selectCardsTotalCount = (state: RootState) => state.cards.cardsTotalCount
 export const selectPageForCards = (state: RootState) => state.cards.params.page
 export const selectPageCountForCards = (state: RootState) => state.cards.params.pageCount

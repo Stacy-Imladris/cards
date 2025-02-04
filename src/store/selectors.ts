@@ -41,7 +41,7 @@ export const selectPackId = (state: RootState) => state.cards.params.cardsPack_i
 
 export const selectCardPacksTotalCount = (state: RootState) => state.packs.cardPacksTotalCount
 export const selectPageForPacks = (state: RootState): number => state.packs.params.page
-export const selectPageCountForPacks = (state: RootState) => state.packs.params.pageCount
+export const selectPageCountForPacks = (state: RootState): number => state.packs.params.pageCount
 export const selectPackNameForSearch = (state: RootState) => state.packs.params.packName
 export const selectPacks = (state: RootState) => state.packs.packs
 export const selectPackUserId = (state: RootState) => state.packs.params.user_id

@@ -32,7 +32,7 @@ export const selectCardsTotalCount = (state: RootState) => state.cards.cardsTota
 export const selectPageForCards = (state: RootState) => state.cards.params.page
 export const selectPageCountForCards = (state: RootState) => state.cards.params.pageCount
 export const selectCardQuestion = (state: RootState) => state.cards.params.cardQuestion
-export const selectCardAnswer = (state: RootState) => state.cards.params.cardAnswer
+export const selectCardAnswer = (state: RootState): string => state.cards.params.cardAnswer
 export const selectCards = (state: RootState) => state.cards.cards
 export const selectCardsQuestion = (state: RootState) => state.cards.params.cardQuestion
 export const selectCardsAnswer = (state: RootState) => state.cards.params.cardAnswer

@@ -39,7 +39,7 @@ export const selectCardsAnswer = (state: RootState) => state.cards.params.cardAn
 export const selectSortCards = (state: RootState) => state.cards.params.sortCards
 export const selectPackId = (state: RootState) => state.cards.params.cardsPack_id
 
-export const selectCardPacksTotalCount = (state: RootState) => state.packs.cardPacksTotalCount
+export const selectCardPacksTotalCount = (state: RootState): number => state.packs.cardPacksTotalCount
 export const selectPageForPacks = (state: RootState): number => state.packs.params.page
 export const selectPageCountForPacks = (state: RootState): number => state.packs.params.pageCount
 export const selectPackNameForSearch = (state: RootState) => state.packs.params.packName

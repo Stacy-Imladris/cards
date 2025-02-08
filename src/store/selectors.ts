@@ -46,7 +46,7 @@ export const selectPackNameForSearch = (state: RootState) => state.packs.params.
 export const selectPacks = (state: RootState) => state.packs.packs
 export const selectPackUserId = (state: RootState) => state.packs.params.user_id
 export const selectSortForPacks = (state: RootState) => state.packs.params.sortPacks
-export const selectMinCardsCount = (state: RootState) => state.packs.minCardsCount
+export const selectMinCardsCount = (state: RootState): number => state.packs.minCardsCount
 export const selectMaxCardsCount = (state: RootState) => state.packs.maxCardsCount
 export const selectMinForCards = (state: RootState) => state.packs.params.min
 export const selectMaxForCards = (state: RootState) => state.packs.params.max

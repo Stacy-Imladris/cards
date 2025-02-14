@@ -1,3 +1,4 @@
+import {CardType} from '../components/Cards/CardsAPI/cards-api'
 import {UserType} from '../components/Profile/ProfileAPI/profile-api'
 import {RootState} from './store';
 import type {ThemeType} from './themeReducer'
@@ -33,7 +34,7 @@ export const selectPageForCards = (state: RootState): number => state.cards.para
 export const selectPageCountForCards = (state: RootState): number => state.cards.params.pageCount
 export const selectCardQuestion = (state: RootState) => state.cards.params.cardQuestion
 export const selectCardAnswer = (state: RootState): string => state.cards.params.cardAnswer
-export const selectCards = (state: RootState) => state.cards.cards
+export const selectCards = (state: RootState): CardType[] => state.cards.cards
 export const selectCardsQuestion = (state: RootState): string => state.cards.params.cardQuestion
 export const selectCardsAnswer = (state: RootState) => state.cards.params.cardAnswer
 export const selectSortCards = (state: RootState) => state.cards.params.sortCards

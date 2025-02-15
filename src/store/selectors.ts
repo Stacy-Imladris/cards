@@ -36,7 +36,7 @@ export const selectCardQuestion = (state: RootState) => state.cards.params.cardQ
 export const selectCardAnswer = (state: RootState): string => state.cards.params.cardAnswer
 export const selectCards = (state: RootState): CardType[] => state.cards.cards
 export const selectCardsQuestion = (state: RootState): string => state.cards.params.cardQuestion
-export const selectCardsAnswer = (state: RootState) => state.cards.params.cardAnswer
+export const selectCardsAnswer = (state: RootState): string => state.cards.params.cardAnswer
 export const selectSortCards = (state: RootState) => state.cards.params.sortCards
 export const selectPackId = (state: RootState) => state.cards.params.cardsPack_id
 

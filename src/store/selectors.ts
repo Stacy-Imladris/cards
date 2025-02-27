@@ -1,4 +1,5 @@
 import {CardType} from '../components/Cards/CardsAPI/cards-api'
+import {PackType} from '../components/Packs/PacksAPI/packs-api'
 import {UserType} from '../components/Profile/ProfileAPI/profile-api'
 import {RootState} from './store';
 import type {ThemeType} from './themeReducer'
@@ -44,7 +45,7 @@ export const selectCardPacksTotalCount = (state: RootState): number => state.pac
 export const selectPageForPacks = (state: RootState): number => state.packs.params.page
 export const selectPageCountForPacks = (state: RootState): number => state.packs.params.pageCount
 export const selectPackNameForSearch = (state: RootState) => state.packs.params.packName
-export const selectPacks = (state: RootState) => state.packs.packs
+export const selectPacks = (state: RootState): PackType[] => state.packs.packs
 export const selectPackUserId = (state: RootState) => state.packs.params.user_id
 export const selectSortForPacks = (state: RootState) => state.packs.params.sortPacks
 export const selectMinCardsCount = (state: RootState): number => state.packs.minCardsCount

@@ -58,5 +58,5 @@ export const selectAppStatus = (state: RootState) => state.app.status
 export const selectAppError = (state: RootState) => state.app.error
 export const selectAppIsLoading = (state: RootState): boolean => state.app.isLoading
 
-export const selectLearnCards = (state: RootState) => state.learn.cards
+export const selectLearnCards = (state: RootState): CardType[] => state.learn.cards
 export const selectRandomCard = (state: RootState) => state.learn.randomCard

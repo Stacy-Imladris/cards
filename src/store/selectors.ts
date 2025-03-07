@@ -55,7 +55,7 @@ export const selectMaxForCards = (state: RootState) => state.packs.params.max
 export const selectPacksType = (state: RootState) => state.packs.packsType
 
 export const selectAppStatus = (state: RootState) => state.app.status
-export const selectAppError = (state: RootState) => state.app.error
+export const selectAppError = (state: RootState): string => state.app.error
 export const selectAppIsLoading = (state: RootState): boolean => state.app.isLoading
 
 export const selectLearnCards = (state: RootState): CardType[] => state.learn.cards

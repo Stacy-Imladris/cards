@@ -51,7 +51,7 @@ export const selectSortForPacks = (state: RootState): string => state.packs.para
 export const selectMinCardsCount = (state: RootState): number => state.packs.minCardsCount
 export const selectMaxCardsCount = (state: RootState): number => state.packs.maxCardsCount
 export const selectMinForCards = (state: RootState): number => state.packs.params.min
-export const selectMaxForCards = (state: RootState) => state.packs.params.max
+export const selectMaxForCards = (state: RootState): number => state.packs.params.max
 export const selectPacksType = (state: RootState) => state.packs.packsType
 
 export const selectAppStatus = (state: RootState): string => state.app.status

@@ -1,5 +1,6 @@
 import {CardType} from '../components/Cards/CardsAPI/cards-api'
 import {PackType} from '../components/Packs/PacksAPI/packs-api'
+import type {PacksType} from '../components/Packs/PacksBLL/packs-reducer'
 import {UserType} from '../components/Profile/ProfileAPI/profile-api'
 import {RootState} from './store';
 import type {ThemeType} from './themeReducer'
@@ -52,7 +53,7 @@ export const selectMinCardsCount = (state: RootState): number => state.packs.min
 export const selectMaxCardsCount = (state: RootState): number => state.packs.maxCardsCount
 export const selectMinForCards = (state: RootState): number => state.packs.params.min
 export const selectMaxForCards = (state: RootState): number => state.packs.params.max
-export const selectPacksType = (state: RootState) => state.packs.packsType
+export const selectPacksType = (state: RootState): PacksType => state.packs.packsType
 
 export const selectAppStatus = (state: RootState): string => state.app.status
 export const selectAppError = (state: RootState): string => state.app.error

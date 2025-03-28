@@ -30,9 +30,7 @@ export const NewPasswordContainer = () => {
     }, [dispatch, password, password2, resetPasswordToken])
 
     useEffect(() => {
-        return () => {
-            dispatch(newPasswordActions.setNewPasswordError(''))
-        }
+        return () => dispatch(newPasswordActions.setNewPasswordError(''))
     }, [dispatch])
 
     if (toLogin) {

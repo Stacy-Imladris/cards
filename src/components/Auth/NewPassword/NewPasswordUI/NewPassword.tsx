@@ -7,36 +7,35 @@ import {SuperInputText} from 'common/super-components/c1-SuperInputText/SuperInp
 import {Logo} from 'common/logo/Logo';
 
 type Props = {
-    password: string
-    password2: string
-    setPassword: (value: string) => void
-    setPassword2: (value: string) => void
-    changePassword: () => void
-    isLoading: boolean
-    error: string
-    theme: string
+  password: string
+  password2: string
+  setPassword: (value: string) => void
+  setPassword2: (value: string) => void
+  changePassword: () => void
+  isLoading: boolean
+  error: string
+  theme: string
 }
 
-export const NewPassword = memo(({password, password2, setPassword, setPassword2, changePassword,
-                                     isLoading, error, theme}: Props) => {
-    return (
-        <div className={`${s.container} ${t[theme + '-text']}`}>
-            <Logo/>
-            <div className={s.preloader}>{isLoading && <Preloader/>}</div>
-            <div className={s.mainText}>Create new password</div>
-            <span>Password</span>
-            <div><SuperInputText value={password} onChangeText={setPassword}
-                                 onEnter={changePassword} eye/></div>
-            <span>Confirm password</span>
-            <div><SuperInputText value={password2} onChangeText={setPassword2}
-                                 onEnter={changePassword}eye/></div>
-            <span>Create new password</span>
-            <div className={s.buttons}>
-                <SuperButton disabled={isLoading} onClick={changePassword}>
-                    Create new password
-                </SuperButton>
-            </div>
-            <div className={s.error}>{error}</div>
-        </div>
-    )
-})
+export const NewPassword = memo(({
+                                   password, password2, setPassword, setPassword2, changePassword, isLoading, error, theme
+                                 }: Props) => (
+    <div className={`${s.container} ${t[theme + '-text']}`}>
+      <Logo/>
+      <div className={s.preloader}>{isLoading && <Preloader/>}</div>
+      <div className={s.mainText}>Create new password</div>
+      <span>Password</span>
+      <div><SuperInputText value={password} onChangeText={setPassword}
+                           onEnter={changePassword} eye/></div>
+      <span>Confirm password</span>
+      <div><SuperInputText value={password2} onChangeText={setPassword2}
+                           onEnter={changePassword} eye/></div>
+      <span>Create new password</span>
+      <div className={s.buttons}>
+        <SuperButton disabled={isLoading} onClick={changePassword}>
+          Create new password
+        </SuperButton>
+      </div>
+      <div className={s.error}>{error}</div>
+    </div>
+)

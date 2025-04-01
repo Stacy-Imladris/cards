@@ -10,7 +10,7 @@ import {
 import {useAppSelector} from 'store/store';
 
 export const RecoveryContainer = () => {
-    const [email, setEmail] = useState<string>('')
+    const [email, setEmail] = useState('')
 
     const theme = useAppSelector(selectTheme)
     const isLoading = useAppSelector(selectRecoveryIsLoading)

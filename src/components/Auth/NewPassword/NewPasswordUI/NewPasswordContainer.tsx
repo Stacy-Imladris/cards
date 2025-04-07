@@ -33,9 +33,7 @@ export const NewPasswordContainer = () => {
         return () => dispatch(newPasswordActions.setNewPasswordError(''))
     }, [dispatch])
 
-    if (toLogin) {
-        return <Navigate to={PATH.LOGIN}/>
-    }
+    if (toLogin) return <Navigate to={PATH.LOGIN}/>
 
     return <NewPassword changePassword={toChangePassword} isLoading={isLoading}
                         error={error} theme={theme}

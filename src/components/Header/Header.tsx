@@ -18,9 +18,7 @@ export const Header = () => {
 
     const dispatch = useDispatch()
 
-    const logOut = () => {
-        dispatch(logout())
-    }
+    const logOut = () => dispatch(logout())
 
     const onChangeCallback = useCallback((theme: ThemeType) => {
         dispatch(themeActions.changeTheme(theme))

@@ -27,8 +27,7 @@ export const Header = () => {
 
     return (
         <nav className={s.links}>
-            <NavLink to={PATH.PROFILE}
-                     className={({isActive}) => isActive ? s.active : s.nav}>
+            <NavLink to={PATH.PROFILE} className={({isActive}) => isActive ? s.active : s.nav}>
                 Profile
             </NavLink>
             {

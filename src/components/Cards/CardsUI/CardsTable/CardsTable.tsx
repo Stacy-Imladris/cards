@@ -33,9 +33,7 @@ export const CardsTable = () => {
 
     useEffect(() => {
         dispatch(getCards())
-        return () => {
-            dispatch(cardsActions.setCards([]))
-        }
+        return () => dispatch(cardsActions.setCards([]))
     }, [dispatch, cardQuestion, cardAnswer, pageCount, sortCards])
 
     const onPageChanged = useCallback((page: number) => {

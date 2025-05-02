@@ -22,21 +22,10 @@ export const Card = memo(({card}: Props) => {
 
     const {packUserId} = useParams<'packUserId'>()
 
-    const deleteCardOff = useCallback(() => {
-        setIsDeletingOpen(false)
-    }, [])
-
-    const deleteCardOn = useCallback(() => {
-        setIsDeletingOpen(true)
-    }, [])
-
-    const editCardOff = useCallback(() => {
-        setIsEditingOpen(false)
-    }, [])
-
-    const editCardOn = useCallback(() => {
-        setIsEditingOpen(true)
-    }, [])
+    const deleteCardOff = useCallback(() => setIsDeletingOpen(false), [])
+    const deleteCardOn = useCallback(() => setIsDeletingOpen(true), [])
+    const editCardOff = useCallback(() => setIsEditingOpen(false), [])
+    const editCardOn = useCallback(() => setIsEditingOpen(true), [])
 
     const lastUpdate = getLastUpdatedDate(card.updated)
 

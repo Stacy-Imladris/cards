@@ -4,7 +4,7 @@ import {AxiosResponse} from 'axios';
 
 export const cardsAPI = {
     getCards(params: Partial<CardsParams>) {
-        return instance.get<any, AxiosResponse<CardsResponseType>, Partial<CardsParams>>('cards/card', {params}).then(res => res.data)
+        return instance.get<any, AxiosResponse<CardsResponse>, Partial<CardsParams>>('cards/card', {params}).then(res => res.data)
     },
     addCard(card: NewCardType) {
         return instance.post<any, AxiosResponse<AdditionalCardResponse & Pick<CardResponses, 'newCard'>>, NewCardType>('cards/card', card)
@@ -22,7 +22,7 @@ export const cardsAPI = {
 }
 
 //types
-export type CardsResponseType = {
+export type CardsResponse = {
     cards: CardType[]
     cardsTotalCount: number
     maxGrade: number

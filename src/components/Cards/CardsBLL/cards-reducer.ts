@@ -1,4 +1,4 @@
-import {cardsAPI, CardType, NewCardType, UpdateCardPayload} from '../CardsAPI/cards-api'
+import {cardsAPI, CardType, NewCard, UpdateCardPayload} from '../CardsAPI/cards-api'
 import {handleServerNetworkError} from '../../../utils/handleServerNetworkError';
 import {AppThunk, InferActionTypes} from '../../../store/store';
 import {appActions} from '../../../app/appReducer';
@@ -79,7 +79,7 @@ export const deleteCard = (id: string): AppThunk => async (dispatch) => {
 }
 
 export const addCard = (cardsPack_id: string, question: string, answer: string): AppThunk => async (dispatch) => {
-    const card: NewCardType = {card: {cardsPack_id, question, answer}}
+    const card: NewCard = {card: {cardsPack_id, question, answer}}
     dispatch(appActions.setAppIsLoading(true))
     try {
         await cardsAPI.addCard(card)

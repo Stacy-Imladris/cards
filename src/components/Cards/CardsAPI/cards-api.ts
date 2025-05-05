@@ -6,8 +6,8 @@ export const cardsAPI = {
     getCards(params: Partial<CardsParams>) {
         return instance.get<any, AxiosResponse<CardsResponse>, Partial<CardsParams>>('cards/card', {params}).then(res => res.data)
     },
-    addCard(card: NewCardType) {
-        return instance.post<any, AxiosResponse<AdditionalCardResponse & Pick<CardResponses, 'newCard'>>, NewCardType>('cards/card', card)
+    addCard(card: NewCard) {
+        return instance.post<any, AxiosResponse<AdditionalCardResponse & Pick<CardResponses, 'newCard'>>, NewCard>('cards/card', card)
     },
     deleteCard(cardId: string) {
         return instance.delete<any, AxiosResponse<AdditionalCardResponse & Pick<CardResponses, 'deletedCard'>>>(`cards/card?id=${cardId}`)
@@ -51,7 +51,7 @@ export type CardType = {
     _id: string
 }
 
-export type NewCardType = {
+export type NewCard = {
     card: {
         cardsPack_id: string
         question?: string

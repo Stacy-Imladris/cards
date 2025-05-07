@@ -16,7 +16,7 @@ export const cardsAPI = {
         return instance.put<any, AxiosResponse<AdditionalCardResponse & Pick<CardResponses, 'updatedCard'>>, UpdateCardPayload>(`cards/card`, card)
     },
     rate(payload: RateType) {
-        return instance.put<any, AxiosResponse<RateResponseType>, RateType>(`cards/grade`, payload)
+        return instance.put<any, AxiosResponse<RateResponse>, RateType>(`cards/grade`, payload)
             .then(res => res.data.updatedGrade.grade)
     },
 }
@@ -95,7 +95,7 @@ export type RateType = {
     card_id: string
 }
 
-export type RateResponseType = {
+export type RateResponse = {
     updatedGrade: {
         _id: string
         cardsPack_id: string

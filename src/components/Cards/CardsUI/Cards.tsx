@@ -65,12 +65,12 @@ export const Cards = () => {
                         <div className={s.searchFields}>
                             <div>
                                 <SearchField value={cardQuestion}
-                                             placeholder={'Enter question'}
+                                             placeholder="Enter question"
                                              onChangeWithDebounce={onChangeDebounceQuestionRequest}/>
                             </div>
                             <div>
                                 <SearchField value={cardAnswer}
-                                             placeholder={'Enter answer'}
+                                             placeholder="Enter answer"
                                              onChangeWithDebounce={onChangeDebounceAnswerRequest}/>
                             </div>
                         </div>

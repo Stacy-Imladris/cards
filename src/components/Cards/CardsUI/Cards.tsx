@@ -55,8 +55,7 @@ export const Cards = () => {
             <div className={`${c.container} ${t[theme + '-text']}`}>
                 <div className={s.cardsTable}>
                     <div className={s.backAndTitle}>
-                        <SuperButton className={s.backIcon}
-                                     onClick={onBackPage}>
+                        <SuperButton className={s.backIcon} onClick={onBackPage}>
                             ←
                         </SuperButton>
                         <div className={c.title}>{packName}</div>

@@ -10,19 +10,17 @@ import {Cards} from 'components/Cards/CardsUI/Cards';
 import {LoginNavigate} from 'hoc/LoginNavigate'
 import {PATH} from 'enums/paths';
 
-export const AllRoutes = () => {
-    return (
-        <Routes>
-            <Route path="/" element={<Navigate to={PATH.PROFILE}/>}/>
-            <Route path={PATH.PROFILE} element={<LoginNavigate><Profile/></LoginNavigate>}/>
-            <Route path={PATH.LOGIN} element={<Login/>}/>
-            <Route path={PATH.REGISTRATION} element={<RegistrationContainer/>}/>
-            <Route path={PATH.PASSWORD_RECOVERY} element={<RecoveryContainer/>}/>
-            <Route path={PATH.NEW_PASSWORD} element={<NewPasswordContainer/>}/>
-            <Route path={PATH.PACKS} element={<LoginNavigate><Packs/></LoginNavigate>}/>
-            <Route path={`${PATH.CARDS}/:packUserId`} element={<LoginNavigate><Cards/></LoginNavigate>}/>
-            <Route path={PATH.ERROR_404} element={<Error404/>}/>
-            <Route path="*" element={<Navigate to={PATH.ERROR_404}/>}/>
-        </Routes>
-    )
-}
+export const AllRoutes = () => (
+    <Routes>
+      <Route path="/" element={<Navigate to={PATH.PROFILE}/>}/>
+      <Route path={PATH.PROFILE} element={<LoginNavigate><Profile/></LoginNavigate>}/>
+      <Route path={PATH.LOGIN} element={<Login/>}/>
+      <Route path={PATH.REGISTRATION} element={<RegistrationContainer/>}/>
+      <Route path={PATH.PASSWORD_RECOVERY} element={<RecoveryContainer/>}/>
+      <Route path={PATH.NEW_PASSWORD} element={<NewPasswordContainer/>}/>
+      <Route path={PATH.PACKS} element={<LoginNavigate><Packs/></LoginNavigate>}/>
+      <Route path={`${PATH.CARDS}/:packUserId`} element={<LoginNavigate><Cards/></LoginNavigate>}/>
+      <Route path={PATH.ERROR_404} element={<Error404/>}/>
+      <Route path="*" element={<Navigate to={PATH.ERROR_404}/>}/>
+    </Routes>
+)

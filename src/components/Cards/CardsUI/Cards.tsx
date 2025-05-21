@@ -50,8 +50,7 @@ export const Cards = () => {
 
     return (
         <div className={s.cardsContainer}>
-            <AddCardForm onClickNotOpen={addCardOff} isOpen={isAddingOpen}
-                         cardsPack_id={cardsPack_id}/>
+            <AddCardForm onClickNotOpen={addCardOff} isOpen={isAddingOpen} cardsPack_id={cardsPack_id}/>
             <div className={`${c.container} ${t[theme + '-text']}`}>
                 <div className={s.cardsTable}>
                     <div className={s.backAndTitle}>

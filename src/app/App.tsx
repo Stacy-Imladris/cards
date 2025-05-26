@@ -26,9 +26,7 @@ export const App = () => {
         dispatch(auth())
     }, [])
 
-    if (!isInitialized) {
-        return <div className={s.appProgress}><Preloader/></div>
-    }
+    if (!isInitialized) return <div className={s.appProgress}><Preloader/></div>
 
     return (
         <div className={`${s.main} ${t[theme]}`}>

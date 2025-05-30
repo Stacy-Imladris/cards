@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {SortOrder} from 'components/Packs/PacksBLL/packs-reducer';
 import {useDispatch} from 'react-redux';
-import c from 'common/styles/TableHeader.module.css';
+import styles from 'common/styles/TableHeader.module.css';
 import {cardsActions, CardsSortFields} from 'components/Cards/CardsBLL/cards-reducer';
 
 type Props = {
@@ -26,9 +26,9 @@ export const CardsTableHeader = ({text, param}: Props) => {
     }
 
     return <th>
-        <div className={c.container}>
+        <div className={styles.container}>
             <div onClick={() => changeSortField(param)}>{text}</div>
-            <div className={c.triangle}>
+            <div className={styles.triangle}>
                 <div onClick={() => changeSortOrder('0')}>▲</div>
                 <div onClick={() => changeSortOrder('1')}>▼</div>
             </div>

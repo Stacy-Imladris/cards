@@ -1,3 +1,3 @@
-import s from './Preloader.module.css'
+import styles from './Preloader.module.css'
 
-export const Preloader = () => <div className={s.progress}><div></div></div>
+export const Preloader = () => <div className={styles.progress}><div></div></div>

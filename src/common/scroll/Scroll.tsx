@@ -10,9 +10,7 @@ export const Scroll = () => {
     else setShow(false);
   }, [])
 
-  const scrollFunction = () => {
-    window.scrollTo({top: 0, behavior: 'smooth'})
-  }
+  const scrollFunction = () => window.scrollTo({top: 0, behavior: 'smooth'})
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);

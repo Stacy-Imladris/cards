@@ -17,9 +17,5 @@ export const Scroll = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, []);
 
-  return (
-      <>
-        {show && <SuperButton className={s.scroll} onClick={scrollFunction}>⃤</SuperButton>}
-      </>
-  )
+  return <>{show && <SuperButton className={s.scroll} onClick={scrollFunction}>⃤</SuperButton>}</>
 }

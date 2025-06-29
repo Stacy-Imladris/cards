@@ -1,5 +1,5 @@
 import {useCallback, useEffect, useState} from 'react';
-import s from './Scroll.module.css'
+import styles from './Scroll.module.css'
 import {SuperButton} from '../super-components/c2-SuperButton/SuperButton';
 
 export const Scroll = () => {
@@ -17,5 +17,5 @@ export const Scroll = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, []);
 
-  return <>{show && <SuperButton className={s.scroll} onClick={scrollFunction}>⃤</SuperButton>}</>
+  return <>{show && <SuperButton className={styles.scroll} onClick={scrollFunction}>⃤</SuperButton>}</>
 }

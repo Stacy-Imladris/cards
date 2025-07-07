@@ -19,14 +19,17 @@
 }
 
 @media screen and (max-width: 905px) {
+
     .container {
         flex-direction: column;
     }
+
     .settings {
         display: flex;
         align-items: center;
         max-width: 80%;
     }
+
     .performance {
         padding: 0 10px;
         max-width: 100%;

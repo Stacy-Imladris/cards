@@ -1,12 +1,12 @@
 import {
     ChangeEvent,
-    DetailedHTMLProps, FC,
+    DetailedHTMLProps,
     InputHTMLAttributes,
     KeyboardEvent,
     memo,
     useState
 } from 'react'
-import s from './SuperInputText.module.css'
+import styles from './SuperInputText.module.css'
 
 // тип пропсов обычного инпута
 type DefaultInputProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
@@ -52,13 +52,13 @@ export const SuperInputText = memo((
         setTypeText(!typeText)
     }
 
-    const finalSpanClassName = `${s.error} ${spanClassName ? spanClassName : ''}`
-    const finalInputClassName = `${s.errorInput} ${className ? className : ''}`
+    const finalSpanClassName = `${styles.error} ${spanClassName ? spanClassName : ''}`
+    const finalInputClassName = `${styles.errorInput} ${className ? className : ''}`
 
     return (
         <>
-            <div className={s.superInput}>
-                <div className={s.eye}/>
+            <div className={styles.superInput}>
+                <div className={styles.eye}/>
                 <div>
                     <input
                         type={typeText ? 'text' : 'password'}
@@ -69,7 +69,7 @@ export const SuperInputText = memo((
                         {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
                     />
                 </div>
-                <div className={s.eye}>
+                <div className={styles.eye}>
                     {eye && <span onClick={switchInputType}>👁</span>}
                 </div>
             </div>

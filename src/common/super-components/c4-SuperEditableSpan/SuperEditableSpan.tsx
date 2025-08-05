@@ -5,7 +5,7 @@ import {
     useState,
     memo
 } from 'react'
-import s from './SuperEditableSpan.module.css'
+import styles from './SuperEditableSpan.module.css'
 import {SuperInputText} from '../c1-SuperInputText/SuperInputText';
 
 // тип пропсов обычного инпута
@@ -53,7 +53,7 @@ export const SuperEditableSpan = memo((
         onDoubleClick && onDoubleClick(e)
     }
 
-    const spanClassName = `${s.editableSpan} ${className}`
+    const spanClassName = `${styles.editableSpan} ${className}`
 
     return (
         <>

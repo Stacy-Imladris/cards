@@ -1,5 +1,5 @@
 import {ButtonHTMLAttributes, DetailedHTMLProps, memo} from 'react'
-import s from './SuperButton.module.css'
+import styles from './SuperButton.module.css'
 
 // тип пропсов обычной кнопки, children в котором храниться название кнопки там уже описан
 type DefaultButtonProps = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
@@ -9,7 +9,7 @@ type Props = DefaultButtonProps & {
 }
 
 export const SuperButton = memo(({red, className, ...restProps}: Props) => {
-    const finalClassName = `${red ? s.red : s.default} ${className}`
+    const finalClassName = `${red ? styles.red : styles.default} ${className}`
 
     return (
         <button

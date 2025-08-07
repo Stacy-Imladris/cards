@@ -2,6 +2,8 @@ import {
     DetailedHTMLProps,
     InputHTMLAttributes,
     HTMLAttributes,
+    FocusEvent,
+    MouseEvent,
     useState,
     memo
 } from 'react'
@@ -42,12 +44,12 @@ export const SuperEditableSpan = memo((
 
         onEnter && onEnter()
     }
-    const onBlurCallback = (e: React.FocusEvent<HTMLInputElement>) => {
+    const onBlurCallback = (e: FocusEvent<HTMLInputElement>) => {
         setEditMode(false) // выключить editMode при нажатии за пределами инпута
 
         onBlur && onBlur(e)
     }
-    const onDoubleClickCallBack = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+    const onDoubleClickCallBack = (e: MouseEvent<HTMLSpanElement, MouseEvent>) => {
         setEditMode(true) // включить editMode при двойном клике
 
         onDoubleClick && onDoubleClick(e)

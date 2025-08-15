@@ -1,5 +1,5 @@
 import {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, memo} from 'react'
-import s from './SuperRadio.module.css'
+import styles from './SuperRadio.module.css'
 import t from 'common/styles/Themes.module.css'
 import {selectTheme} from 'store/selectors';
 import {useAppSelector} from 'store/store';
@@ -27,7 +27,7 @@ export const SuperRadio = memo((
     }
 
     const mappedOptions: any[] = options ? options.map((o, i) => (
-        <label key={name + '-' + i} className={`${s.form_control} ${t[theme + '-text']}`}>
+        <label key={name + '-' + i} className={`${styles.form_control} ${t[theme + '-text']}`}>
             <input
                 type={'radio'}
                 name={name}
@@ -36,12 +36,12 @@ export const SuperRadio = memo((
                 onChange={onChangeCallback}
                 {...restProps}
             />
-            <span className={s.text}>{o}</span>
+            <span className={styles.text}>{o}</span>
         </label>
     )) : []
 
     return (
-        <div className={s.container}>
+        <div className={styles.container}>
             {mappedOptions}
         </div>
     )

@@ -41,8 +41,6 @@ export const SuperRadio = memo((
     )) : []
 
     return (
-        <div className={styles.container}>
-            {mappedOptions}
-        </div>
+        <div className={styles.container}>{mappedOptions}</div>
     )
 })

@@ -1,5 +1,5 @@
 import {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, memo} from 'react'
-import s from './SuperRange.module.css'
+import styles from './SuperRange.module.css'
 
 // тип пропсов обычного инпута
 type DefaultInputProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
@@ -25,7 +25,7 @@ export const SuperRange = memo((
         onChangeRange && onChangeRange(+e.currentTarget.value)
     }
 
-    const finalRangeClassName = `${s.range} ${className ? className : ''}`
+    const finalRangeClassName = `${styles.range} ${className ? className : ''}`
 
     return (
         <>

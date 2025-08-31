@@ -18,21 +18,17 @@ export const SuperRange = memo(({
                                 }: Props) => {
   const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
     onChange && onChange(e) // сохраняем старую функциональность
-
     onChangeRange && onChangeRange(+e.currentTarget.value)
   }
 
   const finalRangeClassName = `${styles.range} ${className ? className : ''}`
 
   return (
-      <>
-        <input
-            type={'range'}
-            onChange={onChangeCallback}
-            className={finalRangeClassName}
-
-            {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
-        />
-      </>
+      <input
+          type={'range'}
+          onChange={onChangeCallback}
+          className={finalRangeClassName}
+          {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
+      />
   )
 })

@@ -9,11 +9,7 @@ type Props = {
   max?: number
 }
 
-export const SuperDoubleRange = memo(({
-                                        onChangeRange,
-                                        value, min, max,
-                                        ...restProps
-                                      }: Props) => {
+export const SuperDoubleRange = memo(({onChangeRange, value, min, max, ...restProps}: Props) => {
   const value1 = 0
   const value2 = 103
   const [range, setRange] = useState<number[]>(value ? value : [value1, value2]);

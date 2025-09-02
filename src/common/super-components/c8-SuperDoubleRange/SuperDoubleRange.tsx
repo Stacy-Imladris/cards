@@ -20,7 +20,7 @@ export const SuperDoubleRange = memo(({onChangeRange, value, min, max, ...restPr
   }
 
   const onChangeCallback = (arr: number[]) => {
-    onChangeRange && onChangeRange(arr)
+    onChangeRange?.(arr)
   }
 
   return (

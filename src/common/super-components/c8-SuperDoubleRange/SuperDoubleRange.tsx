@@ -27,7 +27,7 @@ export const SuperDoubleRange = memo(({onChangeRange, value, min, max, ...restPr
       <Box sx={{width: 130, display: 'inline-block', margin: '0 10px 0 10px'}}>
         <Slider
             getAriaLabel={() => 'My range'}
-            value={value ? value : range}
+            value={value || range}
             onChange={handleChange}
             valueLabelDisplay="auto"
             sx={{color: 'success.main'}}

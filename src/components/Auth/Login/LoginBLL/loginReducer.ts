@@ -1,5 +1,5 @@
 import {profileActions} from '../../../Profile/ProfileBLL/profile-reducer';
-import {loginAPI, LoginType} from '../LoginAPI/login-api';
+import {loginAPI, LoginData} from '../LoginAPI/login-api';
 import axios from 'axios';
 import {packsActions} from '../../../Packs/PacksBLL/packs-reducer';
 import {UserType} from '../../../Profile/ProfileAPI/profile-api';
@@ -33,7 +33,7 @@ export const loginActions = {
 }
 
 // thunks
-export const login = (login: LoginType): AppThunk => async dispatch => {
+export const login = (login: LoginData): AppThunk => async dispatch => {
     dispatch(loginActions.setIsLoading(true))
     try {
         const res = await loginAPI.login(login)

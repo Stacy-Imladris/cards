@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux';
 import {Link, Navigate} from 'react-router-dom';
 import {SuperInputText} from 'common/super-components/c1-SuperInputText/SuperInputText';
 import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
-import s from 'common/styles/Forms.module.css'
+import styles from 'common/styles/Forms.module.css'
 import t from 'common/styles/Themes.module.css'
 import {Logo} from 'common/logo/Logo';
 import {Preloader} from 'common/preloader/Preloader';
@@ -42,39 +42,39 @@ export const Login = () => {
     }
 
     return (
-        <div className={`${s.container} ${t[theme + '-text']}`}>
+        <div className={`${styles.container} ${t[theme + '-text']}`}>
             <Logo/>
-            <div className={s.preloader}>{isLoading && <Preloader/>}</div>
-            <h3 className={`${s.mainText} ${t[theme + '-text']}`}>Sign In</h3>
+            <div className={styles.preloader}>{isLoading && <Preloader/>}</div>
+            <h3 className={`${styles.mainText} ${t[theme + '-text']}`}>Sign In</h3>
             <span>Email</span>
             <SuperInputText
                 name="email"
                 value={email}
                 onChangeText={setEmail}
                 onEnter={onClickLogin}
-                className={s.email}
+                className={styles.email}
             />
             <span>Password</span>
             <div>
                 <SuperInputText value={password}
                                 onChangeText={setPassword}
                                 onEnter={onClickLogin}
-                                className={s.password} eye/>
+                                className={styles.password} eye/>
             </div>
-            <div className={s.checkbox}>
+            <div className={styles.checkbox}>
                 <SuperCheckbox checked={rememberMe} onChangeChecked={setRememberMe}>
                     Remember me
                 </SuperCheckbox>
             </div>
-            <Link to="/password-recovery" className={`${s.link} ${t[theme + '-text']}`}>
+            <Link to="/password-recovery" className={`${styles.link} ${t[theme + '-text']}`}>
                 Forgot Password
             </Link>
-            <SuperButton onClick={onClickLogin} className={s.login}>Login</SuperButton>
+            <SuperButton onClick={onClickLogin} className={styles.login}>Login</SuperButton>
             <span>Don't have an account?</span>
-            <Link to="/registration" className={`${s.link} ${t[theme + '-text']}`}>
+            <Link to="/registration" className={`${styles.link} ${t[theme + '-text']}`}>
                 Sign Up
             </Link>
-            <div className={s.error}>{error}</div>
+            <div className={styles.error}>{error}</div>
         </div>
     )
 }

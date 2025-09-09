@@ -4,7 +4,7 @@ import {Link, Navigate} from 'react-router-dom';
 import {SuperInputText} from 'common/super-components/c1-SuperInputText/SuperInputText';
 import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
 import styles from 'common/styles/Forms.module.css'
-import t from 'common/styles/Themes.module.css'
+import extraStyles from 'common/styles/Themes.module.css'
 import {Logo} from 'common/logo/Logo';
 import {Preloader} from 'common/preloader/Preloader';
 import {SuperCheckbox} from 'common/super-components/c3-SuperCheckbox/SuperCheckbox';
@@ -42,10 +42,10 @@ export const Login = () => {
     }
 
     return (
-        <div className={`${styles.container} ${t[theme + '-text']}`}>
+        <div className={`${styles.container} ${extraStyles[theme + '-text']}`}>
             <Logo/>
             <div className={styles.preloader}>{isLoading && <Preloader/>}</div>
-            <h3 className={`${styles.mainText} ${t[theme + '-text']}`}>Sign In</h3>
+            <h3 className={`${styles.mainText} ${extraStyles[theme + '-text']}`}>Sign In</h3>
             <span>Email</span>
             <SuperInputText
                 name="email"
@@ -66,12 +66,12 @@ export const Login = () => {
                     Remember me
                 </SuperCheckbox>
             </div>
-            <Link to="/password-recovery" className={`${styles.link} ${t[theme + '-text']}`}>
+            <Link to="/password-recovery" className={`${styles.link} ${extraStyles[theme + '-text']}`}>
                 Forgot Password
             </Link>
             <SuperButton onClick={onClickLogin} className={styles.login}>Login</SuperButton>
             <span>Don't have an account?</span>
-            <Link to="/registration" className={`${styles.link} ${t[theme + '-text']}`}>
+            <Link to="/registration" className={`${styles.link} ${extraStyles[theme + '-text']}`}>
                 Sign Up
             </Link>
             <div className={styles.error}>{error}</div>

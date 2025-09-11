@@ -28,9 +28,7 @@ export const Login = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        return () => {
-            dispatch(loginActions.setLoginError(''))
-        }
+        return () => dispatch(loginActions.setLoginError(''))
     }, [dispatch])
 
     const onClickLogin = useCallback(() => {

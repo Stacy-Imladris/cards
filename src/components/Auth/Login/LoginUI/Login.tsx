@@ -16,8 +16,8 @@ import {PATH} from 'enums/paths';
 import {useAppSelector} from 'store/store';
 
 export const Login = () => {
-    const [email, setEmail] = useState<string>('')
-    const [password, setPassword] = useState<string>('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     const [rememberMe, setRememberMe] = useState(false)
 
     const error = useAppSelector(selectLoginError)

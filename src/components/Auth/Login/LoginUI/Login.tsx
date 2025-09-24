@@ -35,9 +35,7 @@ export const Login = () => {
         dispatch(login({email, password, rememberMe}))
     }, [dispatch, email, password, rememberMe])
 
-    if (isLoggedIn) {
-        return <Navigate to={PATH.PROFILE}/>
-    }
+    if (isLoggedIn) return <Navigate to={PATH.PROFILE}/>
 
     return (
         <div className={`${styles.container} ${extraStyles[theme + '-text']}`}>

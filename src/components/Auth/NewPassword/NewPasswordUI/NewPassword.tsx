@@ -1,5 +1,5 @@
 import {memo} from 'react';
-import s from 'common/styles/Forms.module.css'
+import styles from 'common/styles/Forms.module.css'
 import t from 'common/styles/Themes.module.css';
 import {Preloader} from 'common/preloader/Preloader';
 import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
@@ -20,10 +20,10 @@ type Props = {
 export const NewPassword = memo(({
                                    password, password2, setPassword, setPassword2, changePassword, isLoading, error, theme
                                  }: Props) => (
-    <div className={`${s.container} ${t[theme + '-text']}`}>
+    <div className={`${styles.container} ${t[theme + '-text']}`}>
       <Logo/>
-      <div className={s.preloader}>{isLoading && <Preloader/>}</div>
-      <div className={s.mainText}>Create new password</div>
+      <div className={styles.preloader}>{isLoading && <Preloader/>}</div>
+      <div className={styles.mainText}>Create new password</div>
       <span>Password</span>
       <div><SuperInputText value={password} onChangeText={setPassword}
                            onEnter={changePassword} eye/></div>
@@ -31,11 +31,11 @@ export const NewPassword = memo(({
       <div><SuperInputText value={password2} onChangeText={setPassword2}
                            onEnter={changePassword} eye/></div>
       <span>Create new password</span>
-      <div className={s.buttons}>
+      <div className={styles.buttons}>
         <SuperButton disabled={isLoading} onClick={changePassword}>
           Create new password
         </SuperButton>
       </div>
-      <div className={s.error}>{error}</div>
+      <div className={styles.error}>{error}</div>
     </div>
 )

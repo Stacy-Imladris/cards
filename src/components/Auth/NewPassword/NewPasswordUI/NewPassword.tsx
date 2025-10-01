@@ -17,9 +17,7 @@ type Props = {
   theme: string
 }
 
-export const NewPassword = memo(({
-                                   password, password2, setPassword, setPassword2, changePassword, isLoading, error, theme
-                                 }: Props) => (
+export const NewPassword = memo(({password, password2, setPassword, setPassword2, changePassword, isLoading, error, theme}: Props) => (
     <div className={`${styles.container} ${t[theme + '-text']}`}>
       <Logo/>
       <div className={styles.preloader}>{isLoading && <Preloader/>}</div>

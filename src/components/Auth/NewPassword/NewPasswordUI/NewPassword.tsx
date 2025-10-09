@@ -1,6 +1,6 @@
 import {memo} from 'react';
 import styles from 'common/styles/Forms.module.css'
-import t from 'common/styles/Themes.module.css';
+import extraStyles from 'common/styles/Themes.module.css';
 import {Preloader} from 'common/preloader/Preloader';
 import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
 import {SuperInputText} from 'common/super-components/c1-SuperInputText/SuperInputText';
@@ -18,7 +18,7 @@ type Props = {
 }
 
 export const NewPassword = memo(({password, password2, setPassword, setPassword2, changePassword, isLoading, error, theme}: Props) => (
-    <div className={`${styles.container} ${t[theme + '-text']}`}>
+    <div className={`${styles.container} ${extraStyles[theme + '-text']}`}>
       <Logo/>
       <div className={styles.preloader}>{isLoading && <Preloader/>}</div>
       <div className={styles.mainText}>Create new password</div>

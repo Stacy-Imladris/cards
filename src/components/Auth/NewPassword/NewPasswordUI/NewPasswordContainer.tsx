@@ -21,7 +21,7 @@ export const NewPasswordContainer = () => {
 
     const dispatch = useDispatch()
 
-    let {resetPasswordToken} = useParams<'resetPasswordToken'>()
+    const {resetPasswordToken} = useParams<'resetPasswordToken'>()
 
     const toChangePassword = useCallback(() => {
         if (resetPasswordToken) {

@@ -24,10 +24,8 @@ export const NewPasswordContainer = () => {
     const {resetPasswordToken} = useParams<'resetPasswordToken'>()
 
     const toChangePassword = useCallback(() => {
-        if (resetPasswordToken) {
-            dispatch(changePassword({password, password2, resetPasswordToken}))
-        }
-    }, [dispatch, password, password2, resetPasswordToken])
+        if (resetPasswordToken) dispatch(changePassword({password, password2, resetPasswordToken}))
+    }, [password, password2, resetPasswordToken])
 
     useEffect(() => {
         return () => dispatch(newPasswordActions.setNewPasswordError(''))

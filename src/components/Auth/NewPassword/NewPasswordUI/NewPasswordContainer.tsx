@@ -33,8 +33,6 @@ export const NewPasswordContainer = () => {
 
     if (toLogin) return <Navigate to={PATH.LOGIN}/>
 
-    return <NewPassword changePassword={toChangePassword} isLoading={isLoading}
-                        error={error} theme={theme}
-                        password={password} setPassword={setPassword}
-                        password2={password2} setPassword2={setPassword2}/>
+    return <NewPassword changePassword={toChangePassword} isLoading={isLoading} error={error} theme={theme}
+                        password={password} setPassword={setPassword} password2={password2} setPassword2={setPassword2}/>
 }

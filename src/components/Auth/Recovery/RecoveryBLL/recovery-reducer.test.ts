@@ -1,10 +1,10 @@
 import {
     recoveryActions,
-    RecoveryInitialStateType,
+    RecoveryInitialState,
     recoveryReducer
 } from './recovery-reducer';
 
-let recoveryStartState: RecoveryInitialStateType
+let recoveryStartState: RecoveryInitialState
 
 describe('recovery reducer tests', () => {
     beforeEach(() => {

@@ -1,5 +1,5 @@
 import {memo} from 'react';
-import s from 'common/styles/Forms.module.css'
+import styles from 'common/styles/Forms.module.css'
 import t from 'common/styles/Themes.module.css';
 import {Link} from 'react-router-dom';
 import {Preloader} from 'common/preloader/Preloader';
@@ -27,30 +27,30 @@ export const Recovery = memo(({
                                   theme
                               }: Props) => {
     return check
-        ? <div className={`${s.container} ${t[theme + '-text']}`}>
+        ? <div className={`${styles.container} ${t[theme + '-text']}`}>
             <Logo/>
-            <div className={s.mainText}>Check Email</div>
+            <div className={styles.mainText}>Check Email</div>
             <span>We've sent an Email with instructions to {email}</span>
         </div>
-        : <div className={`${s.container} ${t[theme + '-text']}`}>
+        : <div className={`${styles.container} ${t[theme + '-text']}`}>
             <Logo/>
-            <div className={s.preloader}>{isLoading && <Preloader/>}</div>
-            <div className={s.mainText}>Forgot your password?</div>
+            <div className={styles.preloader}>{isLoading && <Preloader/>}</div>
+            <div className={styles.mainText}>Forgot your password?</div>
             <span>Email</span>
             <div>
                 <SuperInputText value={email} onChangeText={setEmail}
                                 onEnter={toSendInstructions}/>
             </div>
             <span>Enter your email address and we will send you further instructions</span>
-            <div className={s.buttons}>
+            <div className={styles.buttons}>
                 <SuperButton disabled={isLoading} onClick={toSendInstructions}>
                     Send instructions
                 </SuperButton>
             </div>
             <span>Did you remember your password?</span>
-            <div className={s.error}>{error}</div>
+            <div className={styles.error}>{error}</div>
             <div>
-                <Link to="/login" className={`${s.link} ${t[theme + '-text']}`}>
+                <Link to="/login" className={`${styles.link} ${t[theme + '-text']}`}>
                     Try logging in
                 </Link>
             </div>

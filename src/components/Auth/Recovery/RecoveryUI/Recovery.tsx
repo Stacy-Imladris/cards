@@ -1,6 +1,6 @@
 import {memo} from 'react';
 import styles from 'common/styles/Forms.module.css'
-import t from 'common/styles/Themes.module.css';
+import extraStyles from 'common/styles/Themes.module.css';
 import {Link} from 'react-router-dom';
 import {Preloader} from 'common/preloader/Preloader';
 import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
@@ -27,12 +27,12 @@ export const Recovery = memo(({
                                   theme
                               }: Props) => {
     return check
-        ? <div className={`${styles.container} ${t[theme + '-text']}`}>
+        ? <div className={`${styles.container} ${extraStyles[theme + '-text']}`}>
             <Logo/>
             <div className={styles.mainText}>Check Email</div>
             <span>We've sent an Email with instructions to {email}</span>
         </div>
-        : <div className={`${styles.container} ${t[theme + '-text']}`}>
+        : <div className={`${styles.container} ${extraStyles[theme + '-text']}`}>
             <Logo/>
             <div className={styles.preloader}>{isLoading && <Preloader/>}</div>
             <div className={styles.mainText}>Forgot your password?</div>
@@ -50,7 +50,7 @@ export const Recovery = memo(({
             <span>Did you remember your password?</span>
             <div className={styles.error}>{error}</div>
             <div>
-                <Link to="/login" className={`${styles.link} ${t[theme + '-text']}`}>
+                <Link to="/login" className={`${styles.link} ${extraStyles[theme + '-text']}`}>
                     Try logging in
                 </Link>
             </div>

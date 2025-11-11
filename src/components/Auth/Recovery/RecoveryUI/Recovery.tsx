@@ -30,8 +30,7 @@ export const Recovery = memo(({setEmail, email, toSendInstructions, isLoading, e
             <div className={styles.mainText}>Forgot your password?</div>
             <span>Email</span>
             <div>
-              <SuperInputText value={email} onChangeText={setEmail}
-                              onEnter={toSendInstructions}/>
+              <SuperInputText value={email} onChangeText={setEmail} onEnter={toSendInstructions}/>
             </div>
             <span>Enter your email address and we will send you further instructions</span>
             <div className={styles.buttons}>

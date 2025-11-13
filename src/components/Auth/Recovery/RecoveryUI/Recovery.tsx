@@ -34,9 +34,7 @@ export const Recovery = memo(({setEmail, email, toSendInstructions, isLoading, e
             </div>
             <span>Enter your email address and we will send you further instructions</span>
             <div className={styles.buttons}>
-              <SuperButton disabled={isLoading} onClick={toSendInstructions}>
-                Send instructions
-              </SuperButton>
+              <SuperButton disabled={isLoading} onClick={toSendInstructions}>Send instructions</SuperButton>
             </div>
             <span>Did you remember your password?</span>
             <div className={styles.error}>{error}</div>

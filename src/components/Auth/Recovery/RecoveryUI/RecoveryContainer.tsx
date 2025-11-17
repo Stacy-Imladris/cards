@@ -19,9 +19,7 @@ export const RecoveryContainer = () => {
 
     const dispatch = useDispatch()
 
-    const toSendInstructionsOnEmail = useCallback(() => {
-        dispatch(toSendInstructions(email))
-    }, [dispatch, email])
+    const toSendInstructionsOnEmail = useCallback(() => dispatch(toSendInstructions(email)), [dispatch, email])
 
     useEffect(() => {
         return () => {

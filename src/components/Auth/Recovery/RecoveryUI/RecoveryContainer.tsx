@@ -28,7 +28,6 @@ export const RecoveryContainer = () => {
         }
     }, [dispatch])
 
-    return <Recovery toSendInstructions={toSendInstructionsOnEmail}
-                     email={email} setEmail={setEmail} theme={theme}
-                     isLoading={isLoading} error={error} check={check}/>
+    return <Recovery toSendInstructions={toSendInstructionsOnEmail} email={email} setEmail={setEmail}
+                     theme={theme} isLoading={isLoading} error={error} check={check}/>
 }

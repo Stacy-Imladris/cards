@@ -1,4 +1,4 @@
-import {RegDataType, registrationAPI} from '../RegistrationAPI/registration-api';
+import {RegData, registrationAPI} from '../RegistrationAPI/registration-api';
 import axios from 'axios';
 import {AppThunk, InferActionTypes} from '../../../../store/store';
 
@@ -26,7 +26,7 @@ export const registrationActions = {
 }
 
 //thunk
-export const signUp = ({email, password, password2}: RegDataType): AppThunk => async dispatch => {
+export const signUp = ({email, password, password2}: RegData): AppThunk => async dispatch => {
     dispatch(registrationActions.setRegistrationIsLoading(true))
     dispatch(registrationActions.setRegistrationError(''))
     if (password !== password2) {

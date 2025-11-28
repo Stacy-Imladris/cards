@@ -1,6 +1,6 @@
-import {registrationActions, RegistrationInitialStateType, registrationReducer} from './registration-reducer';
+import {registrationActions, RegistrationInitialState, registrationReducer} from './registration-reducer';
 
-let registrationStartState: RegistrationInitialStateType
+let registrationStartState: RegistrationInitialState
 
 describe('registration reducer tests', () => {
     beforeEach(() => {

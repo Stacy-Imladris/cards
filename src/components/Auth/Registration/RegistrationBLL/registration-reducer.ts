@@ -8,7 +8,7 @@ const initialState = {
     toLogIn: false,
 }
 
-export const registrationReducer = (state: RegistrationInitialStateType = initialState, action: RegistrationActions): RegistrationInitialStateType => {
+export const registrationReducer = (state: RegistrationInitialState = initialState, action: RegistrationActions): RegistrationInitialState => {
     switch (action.type) {
         case 'REGISTRATION/SET_ERROR':
         case 'REGISTRATION/SET_IS_LOADING':
@@ -49,5 +49,5 @@ export const signUp = ({email, password, password2}: RegData): AppThunk => async
 }
 
 //types
-export type RegistrationInitialStateType = typeof initialState
+export type RegistrationInitialState = typeof initialState
 export type RegistrationActions = InferActionTypes<typeof registrationActions>

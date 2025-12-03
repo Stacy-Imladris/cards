@@ -44,13 +44,11 @@ export const Registration = memo(({
       </div>
       <span>Password</span>
       <div>
-        <SuperInputText value={password} onChangeText={setPassword}
-                        onEnter={signUp} eye/>
+        <SuperInputText value={password} onChangeText={setPassword} onEnter={signUp} eye/>
       </div>
       <span>Confirm password</span>
       <div>
-        <SuperInputText value={password2} onChangeText={setPassword2}
-                        onEnter={signUp} eye/>
+        <SuperInputText value={password2} onChangeText={setPassword2} onEnter={signUp} eye/>
       </div>
       <div className={s.buttons}>
         <SuperButton disabled={isLoading} onClick={() => navigate('/login')}>

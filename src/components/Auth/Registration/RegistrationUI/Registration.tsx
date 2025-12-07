@@ -51,9 +51,7 @@ export const Registration = memo(({
         <SuperInputText value={password2} onChangeText={setPassword2} onEnter={signUp} eye/>
       </div>
       <div className={s.buttons}>
-        <SuperButton disabled={isLoading} onClick={() => navigate('/login')}>
-          Cancel
-        </SuperButton>
+        <SuperButton disabled={isLoading} onClick={() => navigate('/login')}>Cancel</SuperButton>
         <SuperButton disabled={isLoading} onClick={signUp}>Register</SuperButton>
       </div>
       <div className={s.error}>{error}</div>

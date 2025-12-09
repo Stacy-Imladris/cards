@@ -9,7 +9,7 @@ import {
 } from 'store/selectors'
 import {Preloader} from 'common/preloader/Preloader'
 import {useDispatch} from 'react-redux'
-import {CardType} from 'components/Cards/CardsAPI/cards-api';
+import {CardItem} from 'components/Cards/CardsAPI/cards-api';
 import {useAppSelector} from 'store/store';
 import {learnActions} from 'store/learnReducer';
 
@@ -43,7 +43,7 @@ export const LearnPackForm = memo(({
   }, [onClickNotOpen])
 
   const onClickStopLearning = useCallback(() => {
-    dispatch(learnActions.setRandomCard({} as CardType))
+    dispatch(learnActions.setRandomCard({} as CardItem))
     dispatch(learnActions.setCards([]))
     onClickNotOpen()
   }, [onClickNotOpen])

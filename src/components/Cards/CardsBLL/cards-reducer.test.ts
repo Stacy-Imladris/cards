@@ -1,5 +1,5 @@
 import {cardsActions, CardsInitialState, cardsReducer} from './cards-reducer'
-import {CardType} from '../CardsAPI/cards-api'
+import {CardItem} from '../CardsAPI/cards-api'
 
 let state: CardsInitialState
 let date: Date
@@ -42,7 +42,7 @@ describe('cards reducer tests', () => {
     )
 
     test('set cards data to state', () => {
-        const cards: CardType[] = [
+        const cards: CardItem[] = [
             {
                 answer: "TS",
                 cardsPack_id: "625f4c4a9be28e0004531b14",

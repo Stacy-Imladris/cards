@@ -1,4 +1,4 @@
-import {CardType} from '../components/Cards/CardsAPI/cards-api'
+import {CardItem} from '../components/Cards/CardsAPI/cards-api'
 import {PackType} from '../components/Packs/PacksAPI/packs-api'
 import type {PacksType} from '../components/Packs/PacksBLL/packs-reducer'
 import {UserType} from '../components/Profile/ProfileAPI/profile-api'
@@ -36,7 +36,7 @@ export const selectPageForCards = (state: RootState): number => state.cards.para
 export const selectPageCountForCards = (state: RootState): number => state.cards.params.pageCount
 export const selectCardQuestion = (state: RootState): string => state.cards.params.cardQuestion
 export const selectCardAnswer = (state: RootState): string => state.cards.params.cardAnswer
-export const selectCards = (state: RootState): CardType[] => state.cards.cards
+export const selectCards = (state: RootState): CardItem[] => state.cards.cards
 export const selectCardsQuestion = (state: RootState): string => state.cards.params.cardQuestion
 export const selectCardsAnswer = (state: RootState): string => state.cards.params.cardAnswer
 export const selectSortCards = (state: RootState): string => state.cards.params.sortCards
@@ -59,5 +59,5 @@ export const selectAppStatus = (state: RootState): string => state.app.status
 export const selectAppError = (state: RootState): string => state.app.error
 export const selectAppIsLoading = (state: RootState): boolean => state.app.isLoading
 
-export const selectLearnCards = (state: RootState): CardType[] => state.learn.cards
-export const selectRandomCard = (state: RootState): CardType => state.learn.randomCard
+export const selectLearnCards = (state: RootState): CardItem[] => state.learn.cards
+export const selectRandomCard = (state: RootState): CardItem => state.learn.randomCard

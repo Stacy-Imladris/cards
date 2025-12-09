@@ -1,6 +1,6 @@
 import t from 'common/styles/Table.module.css'
 import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton'
-import {CardType} from 'components/Cards/CardsAPI/cards-api'
+import {CardItem} from 'components/Cards/CardsAPI/cards-api'
 import s from 'components/Cards/CardsUI/Cards.module.css'
 import {DeleteCardForm} from 'components/Modals/DeleteCardForm/DeleteCardForm'
 import {EditCardForm} from 'components/Modals/EditCardForm/EditCardForm'
@@ -11,7 +11,7 @@ import {useAppSelector} from 'store/store';
 import {getLastUpdatedDate} from 'utils/getLastUpdatedDate';
 
 type Props = {
-    card: CardType
+    card: CardItem
 }
 
 export const Card = memo(({card}: Props) => {

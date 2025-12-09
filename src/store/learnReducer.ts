@@ -1,12 +1,12 @@
 import {AppThunk, InferActionTypes} from './store'
-import {cardsAPI, CardType} from '../components/Cards/CardsAPI/cards-api'
+import {cardsAPI, CardItem} from '../components/Cards/CardsAPI/cards-api'
 import {handleServerNetworkError} from '../utils/handleServerNetworkError';
 import {appActions} from '../app/appReducer';
 import {getRandomCard} from '../utils/getRandomCard';
 
 const learnInitialState = {
-    cards: [] as CardType[],
-    randomCard: {} as CardType,
+    cards: [] as CardItem[],
+    randomCard: {} as CardItem,
 }
 
 export const learnReducer = (state: LearnInitialState = learnInitialState, action: LearnActions): LearnInitialState => {
@@ -24,8 +24,8 @@ export const learnReducer = (state: LearnInitialState = learnInitialState, actio
 }
 
 export const learnActions = {
-    setCards: (cards: CardType[]) => ({type: 'LEARN/SET_CARDS', payload: {cards}} as const),
-    setRandomCard: (randomCard: CardType) => ({type: 'LEARN/SET_RANDOM_CARD', payload: {randomCard}} as const),
+    setCards: (cards: CardItem[]) => ({type: 'LEARN/SET_CARDS', payload: {cards}} as const),
+    setRandomCard: (randomCard: CardItem) => ({type: 'LEARN/SET_RANDOM_CARD', payload: {randomCard}} as const),
     setGrade: (cardId: string, grade: number) => ({type: 'LEARN/SET_GRADE', payload: {cardId, grade}} as const),
 }
 

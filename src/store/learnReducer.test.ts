@@ -1,5 +1,5 @@
 import {learnActions, LearnInitialState, learnReducer} from './learnReducer';
-import {CardType} from '../components/Cards/CardsAPI/cards-api';
+import {CardItem} from '../components/Cards/CardsAPI/cards-api';
 
 let state: LearnInitialState
 let date: Date
@@ -41,7 +41,7 @@ describe('app reducer tests', () => {
                     _id: '625f4c779be28e0004531b16',
                 },
             ],
-            randomCard: {} as CardType,
+            randomCard: {} as CardItem,
         }
     })
 

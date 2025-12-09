@@ -23,7 +23,7 @@ export const cardsAPI = {
 
 //types
 export type CardsResponse = {
-    cards: CardType[]
+    cards: CardItem[]
     cardsTotalCount: number
     maxGrade: number
     minGrade: number
@@ -34,7 +34,7 @@ export type CardsResponse = {
     tokenDeathTime: number
 }
 
-export type CardType = {
+export type CardItem = {
     answer: string
     cardsPack_id: string
     comments: string
@@ -80,9 +80,9 @@ export type UpdateCardPayload = {
 }
 
 export type CardResponses = {
-    newCard: CardType
-    deletedCard: CardType
-    updatedCard: CardType
+    newCard: CardItem
+    deletedCard: CardItem
+    updatedCard: CardItem
 }
 
 export type AdditionalCardResponse = {

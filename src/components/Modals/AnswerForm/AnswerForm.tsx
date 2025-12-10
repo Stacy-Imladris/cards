@@ -1,7 +1,7 @@
 import {Preloader} from 'common/preloader/Preloader';
 import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton'
 import {SuperRadio} from 'common/super-components/c6-SuperRadio/SuperRadio'
-import {CardType} from 'components/Cards/CardsAPI/cards-api'
+import {CardItem} from 'components/Cards/CardsAPI/cards-api'
 import {GRADES} from 'enums/grades';
 import {memo, useCallback, useState} from 'react'
 import {useDispatch} from 'react-redux'
@@ -71,7 +71,7 @@ export const AnswerForm = memo(({
 
   const onClickStopLearning = useCallback(() => {
     onClickNotOpen()
-    dispatch(learnActions.setRandomCard({} as CardType))
+    dispatch(learnActions.setRandomCard({} as CardItem))
     dispatch(learnActions.setCards([]))
     setRateEdit(false)
   }, [dispatch, onClickNotOpen])

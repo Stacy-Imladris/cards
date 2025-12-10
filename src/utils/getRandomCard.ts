@@ -1,7 +1,7 @@
-import {CardType} from '../components/Cards/CardsAPI/cards-api'
+import {CardItem} from '../components/Cards/CardsAPI/cards-api'
 import {getRandom} from './getRandom';
 
-export const getRandomCard = (cards: CardType[]) => {
+export const getRandomCard = (cards: CardItem[]) => {
     const probabilities = cards.map(({grade}) => (6 - grade) ** 2)
     const randomNumber = getRandom(0, probabilities.reduce((acc, r) => acc + r))
     let res = 0, ind = 0

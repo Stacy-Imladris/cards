@@ -1,10 +1,10 @@
-import {cardsAPI, CardType, NewCard, UpdateCardPayload} from '../CardsAPI/cards-api'
+import {cardsAPI, CardItem, NewCard, UpdateCardPayload} from '../CardsAPI/cards-api'
 import {handleServerNetworkError} from '../../../utils/handleServerNetworkError';
 import {AppThunk, InferActionTypes} from '../../../store/store';
 import {appActions} from '../../../app/appReducer';
 
 const cardsInitialState = {
-    cards: [] as CardType[],
+    cards: [] as CardItem[],
     params: {
         cardAnswer: '',
         cardQuestion: '',
@@ -38,7 +38,7 @@ export const cardsReducer = (state: CardsInitialState = cardsInitialState, actio
 }
 
 export const cardsActions = {
-    setCards: (cards: CardType[]) => ({type: 'CARDS/SET_CARDS', payload: {cards}} as const),
+    setCards: (cards: CardItem[]) => ({type: 'CARDS/SET_CARDS', payload: {cards}} as const),
     setCardsTotalCount: (cardsTotalCount: number) =>
         ({type: 'CARDS/SET_CARDS_TOTAL_COUNT', payload: {cardsTotalCount}} as const),
     setCurrentPage: (page: number) => ({type: 'CARDS/SET_CURRENT_PAGE', payload: {page}} as const),

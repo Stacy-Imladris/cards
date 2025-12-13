@@ -21,7 +21,6 @@ export const cardsAPI = {
     },
 }
 
-//types
 export type CardsResponse = {
     cards: CardItem[]
     cardsTotalCount: number

@@ -71,7 +71,9 @@ export const Cards = () => {
                             </div>
                         </div>
                         <div>
-                            {userId === packUserId && <SuperButton className={c.addItem} onClick={addCardOn}>Add card</SuperButton>}
+                            {userId === packUserId && <SuperButton className={c.addItem} onClick={addCardOn}>
+                                Add card
+                            </SuperButton>}
                         </div>
                     </div>
                     <div className={c.table}><CardsTable/></div>

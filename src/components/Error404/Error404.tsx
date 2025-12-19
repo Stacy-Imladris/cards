@@ -23,9 +23,7 @@ export const Error404 = () => {
         setOpacity(0)
     }
 
-    const onMouseLeaveButtonAppear = () => {
-        setOpacity(1)
-    }
+    const onMouseLeaveButtonAppear = () => setOpacity(1)
 
     const onClickShowMessage = () => {
         alert('Probably, you wanted to click on the Profile and missed it? (◕‿◕)')

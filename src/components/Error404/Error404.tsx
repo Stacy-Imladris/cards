@@ -9,9 +9,9 @@ import {useAppSelector} from 'store/store';
 import {getRandom} from 'utils/getRandom';
 
 export const Error404 = () => {
-    const [height, setHeight] = useState<number>(0)
-    const [width, setWidth] = useState<number>(0)
-    const [opacity, setOpacity] = useState<number>(1)
+    const [height, setHeight] = useState(0)
+    const [width, setWidth] = useState(0)
+    const [opacity, setOpacity] = useState(1)
     const [position, setPosition] = useState<'static' | 'absolute'>('static')
 
     const theme = useAppSelector(selectTheme)
@@ -25,9 +25,7 @@ export const Error404 = () => {
 
     const onMouseLeaveButtonAppear = () => setOpacity(1)
 
-    const onClickShowMessage = () => {
-        alert('Probably, you wanted to click on the Profile and missed it? (◕‿◕)')
-    }
+    const onClickShowMessage = () => alert('Probably, you wanted to click on the Profile and missed it? (◕‿◕)')
 
     let top = `calc(50vh - ${height}px)`
     let left = `calc(50vw - ${width}px)`

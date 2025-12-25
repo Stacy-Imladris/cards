@@ -27,9 +27,6 @@ export const Error404 = () => {
 
     const onClickShowMessage = () => alert('Probably, you wanted to click on the Profile and missed it? (◕‿◕)')
 
-    let top = `calc(50vh - ${height}px)`
-    let left = `calc(50vw - ${width}px)`
-
     return (
         <div className={`${s.container} ${t[theme + '-text']}`}>
             <div className={`${s.error} ${t[theme + '-text']}`}>404</div>
@@ -40,7 +37,8 @@ export const Error404 = () => {
             </div>
             <div className={`${s.lastLine} ${t[theme + '-text']}`}>
                 <div>In case you decide to leave this awesome application, press button:</div>
-                <div style={{top, left, opacity, position}} className={s.joke}>
+                <div style={{top: `calc(50vh - ${height}px)`, left: `calc(50vw - ${width}px)`, opacity, position}}
+                     className={s.joke}>
                     <SuperButton onMouseEnter={onMouseEnterButtonLeave}
                                  onMouseLeave={onMouseLeaveButtonAppear}
                                  onClick={onClickShowMessage}>Leave</SuperButton>

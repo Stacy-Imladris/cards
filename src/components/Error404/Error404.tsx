@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import s from './Error404.module.css'
+import styles from './Error404.module.css'
 import t from 'common/styles/Themes.module.css'
 import {NavLink} from 'react-router-dom'
 import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton'
@@ -28,17 +28,17 @@ export const Error404 = () => {
     const onClickShowMessage = () => alert('Probably, you wanted to click on the Profile and missed it? (◕‿◕)')
 
     return (
-        <div className={`${s.container} ${t[theme + '-text']}`}>
-            <div className={`${s.error} ${t[theme + '-text']}`}>404</div>
-            <div className={`${s.text} ${t[theme + '-text']}`}>Page not found!</div>
-            <div className={`${s.textNav} ${t[theme + '-text']}`}>
+        <div className={`${styles.container} ${t[theme + '-text']}`}>
+            <div className={`${styles.error} ${t[theme + '-text']}`}>404</div>
+            <div className={`${styles.text} ${t[theme + '-text']}`}>Page not found!</div>
+            <div className={`${styles.textNav} ${t[theme + '-text']}`}>
                 Maybe, you want to see your
-                <NavLink to={PATH.PROFILE} className={s.nav}> Profile</NavLink> page?
+                <NavLink to={PATH.PROFILE} className={styles.nav}> Profile</NavLink> page?
             </div>
-            <div className={`${s.lastLine} ${t[theme + '-text']}`}>
+            <div className={`${styles.lastLine} ${t[theme + '-text']}`}>
                 <div>In case you decide to leave this awesome application, press button:</div>
                 <div style={{top: `calc(50vh - ${height}px)`, left: `calc(50vw - ${width}px)`, opacity, position}}
-                     className={s.joke}>
+                     className={styles.joke}>
                     <SuperButton onMouseEnter={onMouseEnterButtonLeave}
                                  onMouseLeave={onMouseLeaveButtonAppear}
                                  onClick={onClickShowMessage}>Leave</SuperButton>

@@ -6,8 +6,7 @@ import {useAppSelector} from 'store/store';
 import {appActions} from 'app/appReducer';
 import {selectAppError, selectAppStatus} from 'store/selectors';
 
-const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
-    props, ref,) {
+const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 })
 

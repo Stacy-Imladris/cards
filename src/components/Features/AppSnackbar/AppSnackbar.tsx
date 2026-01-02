@@ -25,14 +25,10 @@ export const AppSnackbar = () => {
     return (
         <>
             <Snackbar open={!!status} autoHideDuration={3000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity="success">
-                    {status}
-                </Alert>
+                <Alert onClose={handleClose} severity="success">{status}</Alert>
             </Snackbar>
             <Snackbar open={!!error} autoHideDuration={3000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity="error">
-                    {error}
-                </Alert>
+                <Alert onClose={handleClose} severity="error">{error}</Alert>
             </Snackbar>
         </>
     )

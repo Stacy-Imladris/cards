@@ -16,7 +16,7 @@ export const AppSnackbar = () => {
 
     const dispatch = useDispatch()
 
-    const handleClose = (event?: SyntheticEvent | Event, reason?: string) => {
+    const handleClose = (_?: SyntheticEvent | Event, reason?: string) => {
         if (reason === 'clickaway') return
         dispatch(appActions.setAppError(''))
         dispatch(appActions.setAppStatus(''))

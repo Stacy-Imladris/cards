@@ -29,9 +29,7 @@ export const Paginator = memo(({
 
     const pagesForRender = getPages(pages, page, pagesCount)
 
-    const onClickPageChanged = (page: number) => {
-        onPageChanged(page)
-    }
+    const onClickPageChanged = (page: number) => onPageChanged(page)
 
     return (
         itemsTotalCount ?

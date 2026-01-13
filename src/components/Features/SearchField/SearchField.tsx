@@ -29,9 +29,7 @@ export const SearchField = memo(({onChangeWithDebounce, value, wide, placeholder
             <SuperInputText value={title} onChangeText={onChangeText}
                             placeholder={placeholder}
                             className={searchFieldClassName}/>
-            <SuperButton className={s.deleteIcon} onClick={() => onChangeText('')}>
-                ✘
-            </SuperButton>
+            <SuperButton className={s.deleteIcon} onClick={() => onChangeText('')}>✘</SuperButton>
         </div>
     )
 })

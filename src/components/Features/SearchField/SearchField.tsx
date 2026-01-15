@@ -1,5 +1,5 @@
 import {memo, useCallback, useState} from 'react';
-import s from './SearchField.module.css';
+import styles from './SearchField.module.css';
 import {SuperInputText} from 'common/super-components/c1-SuperInputText/SuperInputText';
 import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
 
@@ -21,15 +21,15 @@ export const SearchField = memo(({onChangeWithDebounce, value, wide, placeholder
         setTimerId(id)
     }, [onChangeWithDebounce, timerId])
 
-    const searchFieldClassName = `${s.searchField} ${wide ? s.wideSearchField : s.narrowSearchField}`
+    const searchFieldClassName = `${styles.searchField} ${wide ? styles.wideSearchField : styles.narrowSearchField}`
 
     return (
-        <div className={s.searchBlock}>
+        <div className={styles.searchBlock}>
             <div>🔍︎</div>
             <SuperInputText value={title} onChangeText={onChangeText}
                             placeholder={placeholder}
                             className={searchFieldClassName}/>
-            <SuperButton className={s.deleteIcon} onClick={() => onChangeText('')}>✘</SuperButton>
+            <SuperButton className={styles.deleteIcon} onClick={() => onChangeText('')}>✘</SuperButton>
         </div>
     )
 })

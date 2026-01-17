@@ -31,8 +31,7 @@ export const Header = () => {
             {
                 isLoggedIn &&
                 <>
-                  <NavLink to={PATH.PACKS}
-                           className={({isActive}) => isActive ? s.active : s.nav}>
+                  <NavLink to={PATH.PACKS} className={({isActive}) => isActive ? s.active : s.nav}>
                     Packs List
                   </NavLink>
                   <span onClick={logOut} className={s.nav}>
@@ -43,24 +42,20 @@ export const Header = () => {
             {
                 !isLoggedIn &&
                 <>
-                  <NavLink to={PATH.REGISTRATION}
-                           className={({isActive}) => isActive ? s.active : s.nav}>
+                  <NavLink to={PATH.REGISTRATION} className={({isActive}) => isActive ? s.active : s.nav}>
                     Registration
                   </NavLink>
-                  <NavLink to={PATH.PASSWORD_RECOVERY}
-                           className={({isActive}) => isActive ? s.active : s.nav}>
+                  <NavLink to={PATH.PASSWORD_RECOVERY} className={({isActive}) => isActive ? s.active : s.nav}>
                     Password recovery
                   </NavLink>
-                  <NavLink to={PATH.LOGIN}
-                           className={({isActive}) => isActive ? s.active : s.nav}>
+                  <NavLink to={PATH.LOGIN} className={({isActive}) => isActive ? s.active : s.nav}>
                     Log In
                   </NavLink>
                 </>
             }
             <div className={s.select}>
                 <span className={s.text}>Theme</span>
-                <SuperSelect options={themes} value={theme}
-                             onChangeOption={onChangeCallback}/>
+                <SuperSelect options={themes} value={theme} onChangeOption={onChangeCallback}/>
             </div>
         </nav>
     )

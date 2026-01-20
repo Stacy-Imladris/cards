@@ -34,9 +34,7 @@ export const Header = () => {
                   <NavLink to={PATH.PACKS} className={({isActive}) => isActive ? s.active : s.nav}>
                     Packs List
                   </NavLink>
-                  <span onClick={logOut} className={s.nav}>
-                    Log Out
-                  </span>
+                  <span onClick={logOut} className={s.nav}>Log Out</span>
                 </>
             }
             {

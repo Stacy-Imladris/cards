@@ -11,11 +11,7 @@ type AddCardFormProps = {
   cardsPack_id: string
 }
 
-export const AddCardForm = memo(({
-                                   onClickNotOpen,
-                                   isOpen,
-                                   cardsPack_id
-                                 }: AddCardFormProps) => {
+export const AddCardForm = memo(({onClickNotOpen, isOpen, cardsPack_id}: AddCardFormProps) => {
   const [question, setQuestion] = useState<string>('')
   const [answer, setAnswer] = useState<string>('')
 

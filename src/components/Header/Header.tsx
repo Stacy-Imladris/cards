@@ -1,6 +1,6 @@
 import {NavLink} from 'react-router-dom';
 import {useCallback} from 'react';
-import s from './Header.module.css';
+import styles from './Header.module.css';
 import {useDispatch} from 'react-redux';
 import {SuperSelect} from 'common/super-components/c5-SuperSelect/SuperSelect';
 import {saveState} from 'utils/localstorage';
@@ -26,29 +26,29 @@ export const Header = () => {
   }, [dispatch])
 
   return (
-      <nav className={s.links}>
-        <NavLink to={PATH.PROFILE} className={({isActive}) => isActive ? s.active : s.nav}>Profile</NavLink>
+      <nav className={styles.links}>
+        <NavLink to={PATH.PROFILE} className={({isActive}) => isActive ? styles.active : styles.nav}>Profile</NavLink>
         {isLoggedIn &&
             <>
-              <NavLink to={PATH.PACKS} className={({isActive}) => isActive ? s.active : s.nav}>
+              <NavLink to={PATH.PACKS} className={({isActive}) => isActive ? styles.active : styles.nav}>
                 Packs List
               </NavLink>
-              <span onClick={logOut} className={s.nav}>Log Out</span>
+              <span onClick={logOut} className={styles.nav}>Log Out</span>
             </>}
         {!isLoggedIn &&
             <>
-              <NavLink to={PATH.REGISTRATION} className={({isActive}) => isActive ? s.active : s.nav}>
+              <NavLink to={PATH.REGISTRATION} className={({isActive}) => isActive ? styles.active : styles.nav}>
                 Registration
               </NavLink>
-              <NavLink to={PATH.PASSWORD_RECOVERY} className={({isActive}) => isActive ? s.active : s.nav}>
+              <NavLink to={PATH.PASSWORD_RECOVERY} className={({isActive}) => isActive ? styles.active : styles.nav}>
                 Password recovery
               </NavLink>
-              <NavLink to={PATH.LOGIN} className={({isActive}) => isActive ? s.active : s.nav}>
+              <NavLink to={PATH.LOGIN} className={({isActive}) => isActive ? styles.active : styles.nav}>
                 Log In
               </NavLink>
             </>}
-        <div className={s.select}>
-          <span className={s.text}>Theme</span>
+        <div className={styles.select}>
+          <span className={styles.text}>Theme</span>
           <SuperSelect options={themes} value={theme} onChangeOption={onChangeCallback}/>
         </div>
       </nav>

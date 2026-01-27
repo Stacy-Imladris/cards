@@ -30,10 +30,8 @@ export const AddCardForm = memo(({onClickNotOpen, isOpen, cardsPack_id}: AddCard
 
   return <Modal onClickNotOpen={onClickCleanUpStates} isOpen={isOpen}>
     <div>Add new card</div>
-    <SuperInputText value={question} placeholder={'Enter card question'}
-                    onChangeText={setQuestion}/>
-    <SuperInputText value={answer} placeholder={'Enter card answer'}
-                    onChangeText={setAnswer}/>
+    <SuperInputText value={question} placeholder={'Enter card question'} onChangeText={setQuestion}/>
+    <SuperInputText value={answer} placeholder={'Enter card answer'} onChangeText={setAnswer}/>
     <div>
       <SuperButton onClick={onClickCleanUpStates}>Cancel</SuperButton>
       <SuperButton onClick={addNewCard}>Save</SuperButton>

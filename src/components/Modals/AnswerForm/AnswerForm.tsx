@@ -90,9 +90,7 @@ export const AnswerForm = memo(({
           </div>
           <div>
             <div>Rate yourself:</div>
-            <SuperRadio name={'radio'} options={arr}
-                        value={value} onChangeOption={onChangeOption}
-            />
+            <SuperRadio name={'radio'} options={arr} value={value} onChangeOption={onChangeOption}/>
           </div>
           <div>
             <SuperButton onClick={onClickStopLearning}>Cancel</SuperButton>

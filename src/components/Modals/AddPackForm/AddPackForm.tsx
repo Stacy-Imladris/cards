@@ -32,9 +32,7 @@ export const AddPackForm = memo(({onClickNotOpen, isOpen}: Props) => {
         <div>Add new pack</div>
         <SuperInputText value={name} placeholder={'Enter pack name'}
                         onChangeText={setName}/>
-        <SuperCheckbox checked={isPrivate} onChangeChecked={setIsPrivate}>
-            Make private
-        </SuperCheckbox>
+        <SuperCheckbox checked={isPrivate} onChangeChecked={setIsPrivate}>Make private</SuperCheckbox>
         <div>
             <SuperButton onClick={onClickCleanUpStates}>Cancel</SuperButton>
             <SuperButton onClick={onClickAddPack}>Save</SuperButton>

@@ -7,10 +7,10 @@ import {memo, useCallback, useState} from 'react'
 import {useDispatch} from 'react-redux'
 import {learnActions, rate} from 'store/learnReducer';
 import {
-    selectAppIsLoading,
-    selectLearnCards,
-    selectRandomCard,
-    selectTheme
+  selectAppIsLoading,
+  selectLearnCards,
+  selectRandomCard,
+  selectTheme
 } from 'store/selectors'
 import {useAppSelector} from 'store/store';
 import {getRandomCard} from 'utils/getRandomCard';
@@ -97,7 +97,6 @@ export const AnswerForm = memo(({
             <SuperButton onClick={estimate} disabled={rateEdit}>Rate</SuperButton>
             <SuperButton onClick={getNextQuestion}>Next</SuperButton>
           </div>
-        </>
-    }
+        </>}
   </Modal>
 })

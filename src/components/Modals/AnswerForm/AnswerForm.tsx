@@ -77,10 +77,7 @@ export const AnswerForm = memo(({
   }, [dispatch, onClickNotOpen])
 
   return <Modal onClickNotOpen={onClickStopLearning} isOpen={isOpen}
-                backgroundStyle={{
-                  background: `${theme === '☀' ? '#d0eca1' : '#022507'}`,
-                  opacity: 1
-                }}>
+                backgroundStyle={{background: `${theme === '☀' ? '#d0eca1' : '#022507'}`, opacity: 1}}>
     {isLoading ? <Preloader/> :
         <>
           <div>

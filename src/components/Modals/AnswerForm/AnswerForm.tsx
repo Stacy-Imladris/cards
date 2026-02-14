@@ -78,8 +78,9 @@ export const AnswerForm = memo(({
 
   return <Modal onClickNotOpen={onClickStopLearning} isOpen={isOpen}
                 backgroundStyle={{background: `${theme === '☀' ? '#d0eca1' : '#022507'}`, opacity: 1}}>
-    {isLoading ? <Preloader/> :
-        <>
+    {isLoading
+        ? <Preloader/>
+        : <>
           <div>
             <div>Learn '{name}'</div>
             <div>Question: '{randomCard.question}'</div>

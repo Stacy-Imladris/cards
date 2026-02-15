@@ -11,12 +11,7 @@ type Props = {
   name: string
 }
 
-export const DeletePackForm = memo(({
-                                      onClickNotOpen,
-                                      isOpen,
-                                      name,
-                                      packId
-                                    }: Props) => {
+export const DeletePackForm = memo(({onClickNotOpen, isOpen, name, packId}: Props) => {
   const dispatch = useDispatch()
 
   const onClickDeletePack = useCallback(() => {

@@ -13,11 +13,7 @@ type Props = {
   answer: string
 }
 
-export const EditCardForm = memo(({
-                                    onClickNotOpen,
-                                    isOpen, question,
-                                    answer, cardId
-                                  }: Props) => {
+export const EditCardForm = memo(({onClickNotOpen, isOpen, question, answer, cardId}: Props) => {
   const [newQuestion, setNewQuestion] = useState<string>(question)
   const [newAnswer, setNewAnswer] = useState<string>(answer)
 

@@ -14,8 +14,8 @@ type Props = {
 }
 
 export const EditCardForm = memo(({onClickNotOpen, isOpen, question, answer, cardId}: Props) => {
-  const [newQuestion, setNewQuestion] = useState<string>(question)
-  const [newAnswer, setNewAnswer] = useState<string>(answer)
+  const [newQuestion, setNewQuestion] = useState(question)
+  const [newAnswer, setNewAnswer] = useState(answer)
 
   const dispatch = useDispatch()
 

@@ -30,13 +30,15 @@ export const EditCardForm = memo(({onClickNotOpen, isOpen, question, answer, car
     setNewAnswer(answer)
   }
 
-  return <Modal onClickNotOpen={onClickCleanUpStates} isOpen={isOpen}>
-    <div>Card info</div>
-    <SuperInputText value={newQuestion} placeholder={'Enter new question'} onChangeText={setNewQuestion}/>
-    <SuperInputText value={newAnswer} placeholder={'Enter new answer'} onChangeText={setNewAnswer}/>
-    <div>
-      <SuperButton onClick={onClickCleanUpStates}>Cancel</SuperButton>
-      <SuperButton onClick={onClickUpdateCard}>Save</SuperButton>
-    </div>
-  </Modal>
+  return (
+      <Modal onClickNotOpen={onClickCleanUpStates} isOpen={isOpen}>
+        <div>Card info</div>
+        <SuperInputText value={newQuestion} placeholder={'Enter new question'} onChangeText={setNewQuestion}/>
+        <SuperInputText value={newAnswer} placeholder={'Enter new answer'} onChangeText={setNewAnswer}/>
+        <div>
+          <SuperButton onClick={onClickCleanUpStates}>Cancel</SuperButton>
+          <SuperButton onClick={onClickUpdateCard}>Save</SuperButton>
+        </div>
+      </Modal>
+  )
 })

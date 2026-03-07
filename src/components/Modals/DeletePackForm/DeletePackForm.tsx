@@ -19,12 +19,14 @@ export const DeletePackForm = memo(({onClickNotOpen, isOpen, name, packId}: Prop
     onClickNotOpen()
   }, [dispatch, onClickNotOpen, packId, name])
 
-  return <Modal onClickNotOpen={onClickNotOpen} isOpen={isOpen}>
-    <div>Do you really want to remove pack '{name}'?</div>
-    <div>All cards will be excluded from this course.</div>
-    <div>
-      <SuperButton onClick={onClickNotOpen}>Cancel</SuperButton>
-      <SuperButton onClick={onClickDeletePack} red>Delete</SuperButton>
-    </div>
-  </Modal>
+  return (
+      <Modal onClickNotOpen={onClickNotOpen} isOpen={isOpen}>
+        <div>Do you really want to remove pack '{name}'?</div>
+        <div>All cards will be excluded from this course.</div>
+        <div>
+          <SuperButton onClick={onClickNotOpen}>Cancel</SuperButton>
+          <SuperButton onClick={onClickDeletePack} red>Delete</SuperButton>
+        </div>
+      </Modal>
+  )
 })

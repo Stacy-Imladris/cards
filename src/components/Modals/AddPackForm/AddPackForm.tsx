@@ -7,35 +7,37 @@ import {SuperCheckbox} from 'common/super-components/c3-SuperCheckbox/SuperCheck
 import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton'
 
 type Props = {
-    onClickNotOpen: () => void
-    isOpen: boolean
+  onClickNotOpen: () => void
+  isOpen: boolean
 }
 
 export const AddPackForm = memo(({onClickNotOpen, isOpen}: Props) => {
-    const [name, setName] = useState<string>('')
-    const [isPrivate, setIsPrivate] = useState(false)
+  const [name, setName] = useState<string>('')
+  const [isPrivate, setIsPrivate] = useState(false)
 
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
-    const onClickAddPack = useCallback(() => {
-        dispatch(addPack(name, isPrivate))
-        onClickCleanUpStates()
-    }, [dispatch, onClickNotOpen, name, isPrivate])
+  const onClickAddPack = useCallback(() => {
+    dispatch(addPack(name, isPrivate))
+    onClickCleanUpStates()
+  }, [dispatch, onClickNotOpen, name, isPrivate])
 
-    const onClickCleanUpStates = () => {
-        onClickNotOpen()
-        setName('')
-        setIsPrivate(false)
-    }
+  const onClickCleanUpStates = () => {
+    onClickNotOpen()
+    setName('')
+    setIsPrivate(false)
+  }
 
-    return <Modal onClickNotOpen={onClickCleanUpStates} isOpen={isOpen}>
+  return (
+      <Modal onClickNotOpen={onClickCleanUpStates} isOpen={isOpen}>
         <div>Add new pack</div>
         <SuperInputText value={name} placeholder={'Enter pack name'}
                         onChangeText={setName}/>
         <SuperCheckbox checked={isPrivate} onChangeChecked={setIsPrivate}>Make private</SuperCheckbox>
         <div>
-            <SuperButton onClick={onClickCleanUpStates}>Cancel</SuperButton>
-            <SuperButton onClick={onClickAddPack}>Save</SuperButton>
+          <SuperButton onClick={onClickCleanUpStates}>Cancel</SuperButton>
+          <SuperButton onClick={onClickAddPack}>Save</SuperButton>
         </div>
-    </Modal>
+      </Modal>
+  )
 })

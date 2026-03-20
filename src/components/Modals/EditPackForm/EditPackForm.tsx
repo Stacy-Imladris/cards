@@ -31,13 +31,15 @@ export const EditPackForm = memo(({
     setNewName(name)
   }
 
-  return <Modal onClickNotOpen={onClickCleanUpStates} isOpen={isOpen}>
-    <div>Pack name</div>
-    <SuperInputText value={newName} placeholder={'Enter new name'}
-                    onChangeText={setNewName}/>
-    <div>
-      <SuperButton onClick={onClickCleanUpStates}>Cancel</SuperButton>
-      <SuperButton onClick={onClickUpdatePack}>Save</SuperButton>
-    </div>
-  </Modal>
+  return (
+      <Modal onClickNotOpen={onClickCleanUpStates} isOpen={isOpen}>
+        <div>Pack name</div>
+        <SuperInputText value={newName} placeholder={'Enter new name'}
+                        onChangeText={setNewName}/>
+        <div>
+          <SuperButton onClick={onClickCleanUpStates}>Cancel</SuperButton>
+          <SuperButton onClick={onClickUpdatePack}>Save</SuperButton>
+        </div>
+      </Modal>
+  )
 })

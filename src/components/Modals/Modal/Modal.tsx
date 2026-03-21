@@ -6,23 +6,29 @@ import t from '../../../common/styles/Themes.module.css';
 import {useAppSelector} from '../../../store/store';
 
 type Props = {
-    onClickNotOpen: () => void
-    isOpen: boolean
-    backgroundStyle?: CSSProperties
-    modalStyle?: CSSProperties
+  onClickNotOpen: () => void
+  isOpen: boolean
+  backgroundStyle?: CSSProperties
+  modalStyle?: CSSProperties
 }
-export const Modal: FC<Props> = memo(({onClickNotOpen, isOpen, children,
-                                                   backgroundStyle, modalStyle}) => {
-    const theme = useAppSelector(selectTheme)
+export const Modal: FC<Props> = memo(({
+                                        onClickNotOpen, isOpen, children,
+                                        backgroundStyle, modalStyle
+                                      }) => {
+  const theme = useAppSelector(selectTheme)
 
-    if (!isOpen) return null
+  if (!isOpen) return null
 
-    return ReactDOM.createPortal(
-        <>
+  return (
+      ReactDOM.createPortal(
+          <>
             <div style={{...backgroundStyle}} className={s.background} onClick={onClickNotOpen}/>
             <div style={{...modalStyle}} className={`${s.modal} ${t[theme]} ${t[theme + '-text']}`}>
-                <div className={s.escape}><div onClick={onClickNotOpen}>✘</div></div>
-                {children}
+              <div className={s.escape}>
+                <div onClick={onClickNotOpen}>✘</div>
+              </div>
+              {children}
             </div>
-        </>, document.body)
+          </>, document.body)
+  )
 })

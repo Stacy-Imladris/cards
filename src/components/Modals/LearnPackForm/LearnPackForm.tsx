@@ -48,25 +48,22 @@ export const LearnPackForm = memo(({
     onClickNotOpen()
   }, [onClickNotOpen])
 
-  return <>
-    <AnswerForm onClickNotOpen={setAnswerOff} isOpen={isAnswerOpen} name={name}
-                onClickLearnPackOn={onClickLearnPackOn}/>
-    <Modal onClickNotOpen={onClickStopLearning} isOpen={isOpen}
-           backgroundStyle={{
-             background: `${theme === '☀' ? '#d0eca1' : '#022507'}`,
-             opacity: 1
-           }}>
-      {
-        isLoading ? <Preloader/> :
-            <>
-              <div>Learn '{name}'</div>
-              <div>Question: '{randomCard.question}'</div>
-              <div>
-                <SuperButton onClick={onClickStopLearning}>Cancel</SuperButton>
-                <SuperButton onClick={setAnswerOn}>Show answer</SuperButton>
-              </div>
-            </>
-      }
-    </Modal>
-  </>
+  return (
+      <>
+        <AnswerForm onClickNotOpen={setAnswerOff} isOpen={isAnswerOpen} name={name}
+                    onClickLearnPackOn={onClickLearnPackOn}/>
+        <Modal onClickNotOpen={onClickStopLearning} isOpen={isOpen}
+               backgroundStyle={{background: `${theme === '☀' ? '#d0eca1' : '#022507'}`, opacity: 1}}>
+          {isLoading ? <Preloader/> :
+              <>
+                <div>Learn '{name}'</div>
+                <div>Question: '{randomCard.question}'</div>
+                <div>
+                  <SuperButton onClick={onClickStopLearning}>Cancel</SuperButton>
+                  <SuperButton onClick={setAnswerOn}>Show answer</SuperButton>
+                </div>
+              </>}
+        </Modal>
+      </>
+  )
 })

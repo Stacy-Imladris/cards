@@ -50,8 +50,7 @@ export const LearnPackForm = memo(({
 
   return (
       <>
-        <AnswerForm onClickNotOpen={setAnswerOff} isOpen={isAnswerOpen} name={name}
-                    onClickLearnPackOn={onClickLearnPackOn}/>
+        <AnswerForm onClickNotOpen={setAnswerOff} isOpen={isAnswerOpen} name={name} onClickLearnPackOn={onClickLearnPackOn}/>
         <Modal onClickNotOpen={onClickStopLearning} isOpen={isOpen}
                backgroundStyle={{background: `${theme === '☀' ? '#d0eca1' : '#022507'}`, opacity: 1}}>
           {isLoading ? <Preloader/> :

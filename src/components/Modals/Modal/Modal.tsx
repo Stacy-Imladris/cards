@@ -1,5 +1,5 @@
 import {CSSProperties, FC, memo} from 'react';
-import s from './Modal.module.css'
+import styles from './Modal.module.css'
 import ReactDOM from 'react-dom';
 import {selectTheme} from '../../../store/selectors';
 import t from '../../../common/styles/Themes.module.css';
@@ -22,9 +22,9 @@ export const Modal: FC<Props> = memo(({
   return (
       ReactDOM.createPortal(
           <>
-            <div style={{...backgroundStyle}} className={s.background} onClick={onClickNotOpen}/>
-            <div style={{...modalStyle}} className={`${s.modal} ${t[theme]} ${t[theme + '-text']}`}>
-              <div className={s.escape}>
+            <div style={{...backgroundStyle}} className={styles.background} onClick={onClickNotOpen}/>
+            <div style={{...modalStyle}} className={`${styles.modal} ${t[theme]} ${t[theme + '-text']}`}>
+              <div className={styles.escape}>
                 <div onClick={onClickNotOpen}>✘</div>
               </div>
               {children}

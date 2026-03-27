@@ -11,10 +11,7 @@ type Props = {
   backgroundStyle?: CSSProperties
   modalStyle?: CSSProperties
 }
-export const Modal: FC<Props> = memo(({
-                                        onClickNotOpen, isOpen, children,
-                                        backgroundStyle, modalStyle
-                                      }) => {
+export const Modal: FC<Props> = memo(({onClickNotOpen, isOpen, children, backgroundStyle, modalStyle}) => {
   const theme = useAppSelector(selectTheme)
 
   if (!isOpen) return null

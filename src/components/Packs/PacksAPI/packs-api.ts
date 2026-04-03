@@ -4,7 +4,7 @@ import {instance} from '../../../api/instance';
 
 export const packsAPI = {
     getPacks(params: PacksParamsType) {
-        return instance.get<any, AxiosResponse<PacksResponseType>, PacksParamsType>('cards/pack', {params}).then(res => res.data)
+        return instance.get<any, AxiosResponse<PacksResponse>, PacksParamsType>('cards/pack', {params}).then(res => res.data)
     },
     addPack(cardsPack: Partial<AddNewCardType>) {
         return instance.post<any, AxiosResponse<AdditionalPackResponse & Pick<PackResponses, 'newCardsPack'>>, Partial<AddNewCardType>>('cards/pack', cardsPack)
@@ -18,7 +18,7 @@ export const packsAPI = {
 }
 
 //types
-export type PacksResponseType = {
+export type PacksResponse = {
     cardPacks: PackType[]
     cardPacksTotalCount: number
     maxCardsCount: number

@@ -1,4 +1,4 @@
-import {AddNewCardType, packsAPI, PackType, UpdatePackType} from '../PacksAPI/packs-api'
+import {AddNewCardType, packsAPI, PackType, UpdatePackParams} from '../PacksAPI/packs-api'
 import {handleServerNetworkError} from '../../../utils/handleServerNetworkError';
 import {AppThunk, InferActionTypes} from '../../../store/store';
 import {appActions} from '../../../app/appReducer';
@@ -110,7 +110,7 @@ export const addPack = (name: string, isPrivate: boolean, deckCover: string = ''
 }
 
 export const updatePack = (_id: string, name: string, oldName: string): AppThunk => async (dispatch) => {
-    const cardsPack: UpdatePackType = {cardsPack: {_id, name}}
+    const cardsPack: UpdatePackParams = {cardsPack: {_id, name}}
     dispatch(appActions.setAppIsLoading(true))
     try {
         await packsAPI.updatePack(cardsPack)

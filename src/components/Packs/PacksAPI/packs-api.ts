@@ -6,8 +6,8 @@ export const packsAPI = {
     getPacks(params: PacksParamsType) {
         return instance.get<any, AxiosResponse<PacksResponse>, PacksParamsType>('cards/pack', {params}).then(res => res.data)
     },
-    addPack(cardsPack: Partial<AddNewCardType>) {
-        return instance.post<any, AxiosResponse<AdditionalPackResponse & Pick<PackResponses, 'newCardsPack'>>, Partial<AddNewCardType>>('cards/pack', cardsPack)
+    addPack(cardsPack: Partial<AddNewCardParams>) {
+        return instance.post<any, AxiosResponse<AdditionalPackResponse & Pick<PackResponses, 'newCardsPack'>>, Partial<AddNewCardParams>>('cards/pack', cardsPack)
     },
     deletePack(_id: string) {
         return instance.delete<any, AxiosResponse<AdditionalPackResponse & Pick<PackResponses, 'deletedCardsPack'>>>(`cards/pack?id=${_id}`)
@@ -66,7 +66,7 @@ export type UpdatePackParams = {
         deckCover?: null | string
     }
 }
-export type AddNewCardType = {
+export type AddNewCardParams = {
     cardsPack: {
         name: string,
         deckCover: string,

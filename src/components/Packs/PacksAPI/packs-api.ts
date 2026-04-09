@@ -18,6 +18,7 @@ export const packsAPI = {
 }
 
 //types
+
 export type PacksResponse = {
     cardPacks: PackType[]
     cardPacksTotalCount: number
@@ -28,6 +29,7 @@ export type PacksResponse = {
     token: string
     tokenDeathTime: number
 }
+
 export type PackType = {
     _id: string
     user_id: string
@@ -46,6 +48,7 @@ export type PackType = {
     __v: number
     deckCover: null | string
 }
+
 export type UpdatePackParams = {
     cardsPack: {
         _id: string
@@ -66,6 +69,7 @@ export type UpdatePackParams = {
         deckCover?: null | string
     }
 }
+
 export type AddNewCardParams = {
     cardsPack: {
         name: string,
@@ -73,11 +77,13 @@ export type AddNewCardParams = {
         private: boolean
     }
 }
+
 export type PackResponses = {
     newCardsPack: PackType
     deletedCardsPack: PackType
     updatedCardsPack: PackType
 }
+
 export type AdditionalPackResponse = {
     token: string
     tokenDeathTime: number

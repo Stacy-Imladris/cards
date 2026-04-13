@@ -1,11 +1,11 @@
 import {
     packsActions,
-    PacksInitialStateType,
+    PacksInitialState,
     packsReducer,
 } from './packs-reducer';
 import {PackType} from '../PacksAPI/packs-api';
 
-let startState: PacksInitialStateType
+let startState: PacksInitialState
 let data: Date
 
 describe('packs reducer tests', () => {

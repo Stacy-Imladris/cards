@@ -20,7 +20,7 @@ const packsInitialState = {
     cardPacksTotalCount: 0,
 }
 
-export const packsReducer = (state: PacksInitialStateType = packsInitialState, action: PacksActionTypes): PacksInitialStateType => {
+export const packsReducer = (state: PacksInitialState = packsInitialState, action: PacksActionTypes): PacksInitialState => {
     switch (action.type) {
         case 'PACKS/SET_PACKS':
         case 'PACKS/SET_CARD_PACKS_TOTAL_COUNT':
@@ -117,7 +117,7 @@ export const updatePack = (_id: string, name: string, oldName: string): AppThunk
 }
 
 //types
-export type PacksInitialStateType = typeof packsInitialState
+export type PacksInitialState = typeof packsInitialState
 export type PacksActionTypes = InferActionTypes<typeof packsActions>
 export type PacksParamsType = {
     packName: string

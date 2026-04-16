@@ -118,7 +118,9 @@ export const updatePack = (_id: string, name: string, oldName: string): AppThunk
 
 //types
 export type PacksInitialState = typeof packsInitialState
+
 export type PacksActionTypes = InferActionTypes<typeof packsActions>
+
 export type PacksParamsType = {
     packName: string
     min: number
@@ -128,6 +130,9 @@ export type PacksParamsType = {
     pageCount: number
     user_id: string
 }
+
 export type PacksSortFields = 'name' | 'cardsCount' | 'updated' | 'user_name'
+
 export type SortOrder = '0' | '1'
+
 export type PacksType = 'All' | 'My'

@@ -5,7 +5,7 @@ import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
 import {SearchField} from 'components/Features/SearchField/SearchField';
 import {SuperRadio} from 'common/super-components/c6-SuperRadio/SuperRadio';
 import {useDispatch} from 'react-redux';
-import {packsActions, PacksType} from '../PacksBLL/packs-reducer';
+import {packsActions, PacksVariant} from '../PacksBLL/packs-reducer';
 import {DoubleRange} from 'components/Features/DoubleRange/DoubleRange';
 import {
     selectPackNameForSearch, selectPacksType,
@@ -16,7 +16,7 @@ import {useCallback, useState} from 'react';
 import {AddPackForm} from 'components/Modals/AddPackForm/AddPackForm';
 import {useAppSelector} from 'store/store';
 
-const arr: PacksType[] = ['All', 'My']
+const arr: PacksVariant[] = ['All', 'My']
 
 export const Packs = () => {
     const [isAddingOpen, setIsAddingOpen] = useState(false)
@@ -34,8 +34,8 @@ export const Packs = () => {
     const [valueFromArray, setValueFromArray] = useState(arr[0])
 
     const onChangeOption = useCallback((value: string) => {
-        setValueFromArray(value as PacksType)
-        dispatch(packsActions.setPacksType(value as PacksType))
+        setValueFromArray(value as PacksVariant)
+        dispatch(packsActions.setPacksType(value as PacksVariant))
         if (value === 'All') {
             dispatch(packsActions.setPacksForUser(''))
         } else {

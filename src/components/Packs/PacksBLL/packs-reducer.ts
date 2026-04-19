@@ -7,7 +7,7 @@ const packsInitialState = {
     packs: [] as PackType[],
     minCardsCount: 0,
     maxCardsCount: 103,
-    packsType: 'All' as PacksType,
+    packsType: 'All' as PacksVariant,
     params: {
         packName: '',
         min: 0,
@@ -56,7 +56,7 @@ export const packsActions = {
     setMaxCardsCount: (maxCardsCount: number) =>
         ({type: 'PACKS/SET_PACKS_MAX_CARDS_COUNT', payload: {maxCardsCount}} as const),
     setPacksPageCount: (pageCount: number) => ({type: 'PACKS/SET_PACKS_PAGE_COUNT', payload: {pageCount}} as const),
-    setPacksType: (packsType: PacksType)=> ({type: 'PACKS/SET_PACKS_TYPE', payload: {packsType}} as const),
+    setPacksType: (packsType: PacksVariant)=> ({type: 'PACKS/SET_PACKS_TYPE', payload: {packsType}} as const),
 }
 
 //thunks
@@ -135,4 +135,4 @@ export type PacksSortFields = 'name' | 'cardsCount' | 'updated' | 'user_name'
 
 export type SortOrder = '0' | '1'
 
-export type PacksType = 'All' | 'My'
+export type PacksVariant = 'All' | 'My'

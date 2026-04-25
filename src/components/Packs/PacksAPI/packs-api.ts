@@ -1,10 +1,10 @@
 import {AxiosResponse} from 'axios';
-import {PacksParamsType} from '../PacksBLL/packs-reducer';
+import {PacksParams} from '../PacksBLL/packs-reducer';
 import {instance} from '../../../api/instance';
 
 export const packsAPI = {
-    getPacks(params: PacksParamsType) {
-        return instance.get<any, AxiosResponse<PacksResponse>, PacksParamsType>('cards/pack', {params}).then(res => res.data)
+    getPacks(params: PacksParams) {
+        return instance.get<any, AxiosResponse<PacksResponse>, PacksParams>('cards/pack', {params}).then(res => res.data)
     },
     addPack(cardsPack: Partial<AddNewCardParams>) {
         return instance.post<any, AxiosResponse<AdditionalPackResponse & Pick<PackResponses, 'newCardsPack'>>, Partial<AddNewCardParams>>('cards/pack', cardsPack)

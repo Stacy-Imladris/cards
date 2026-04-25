@@ -16,7 +16,7 @@ const packsInitialState = {
         page: 1,
         pageCount: 10,
         user_id: '',
-    } as PacksParamsType,
+    } as PacksParams,
     cardPacksTotalCount: 0,
 }
 
@@ -121,7 +121,7 @@ export type PacksInitialState = typeof packsInitialState
 
 export type PacksActionTypes = InferActionTypes<typeof packsActions>
 
-export type PacksParamsType = {
+export type PacksParams = {
     packName: string
     min: number
     max: number

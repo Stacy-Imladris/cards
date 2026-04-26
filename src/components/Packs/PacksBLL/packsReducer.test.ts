@@ -133,19 +133,4 @@ describe('packs reducer tests', () => {
 
         expect(endState.packsType).toBe('My')
     })
-
-
-
-
-
-
 })
-
-
-
-
-
-
-
-
-

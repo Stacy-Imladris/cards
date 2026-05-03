@@ -6,7 +6,7 @@ import {LearnPackForm} from 'components/Modals/LearnPackForm/LearnPackForm'
 import {useDispatch} from 'react-redux'
 import {PackType} from 'components/Packs/PacksAPI/packs-api'
 import {learnCard} from 'store/learnReducer'
-import t from 'common/styles/Table.module.css'
+import styles from 'common/styles/Table.module.css'
 
 type Props = {
     isMyPacks: boolean
@@ -34,7 +34,7 @@ export const PackActions = memo(({isMyPacks, pack}: Props) => {
         dispatch(learnCard(pack._id))
     }, [])
 
-    return <div className={t.actionButtons}>
+    return <div className={styles.actionButtons}>
         <LearnPackForm onClickNotOpen={learnPackOff} isOpen={isLearningOpen}
                        name={pack.name} onClickLearnPackOn={learnPackOn}/>
         <EditPackForm onClickNotOpen={editPackOff} isOpen={isEditingOpen}

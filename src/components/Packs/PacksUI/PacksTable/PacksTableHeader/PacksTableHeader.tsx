@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {packsActions, PacksSortFields, SortOrder,} from 'components/Packs/PacksBLL/packs-reducer';
-import c from 'common/styles/TableHeader.module.css';
+import styles from 'common/styles/TableHeader.module.css';
 
 type Props = {
     text: string
@@ -25,9 +25,9 @@ export const PacksTableHeader = ({text, param}: Props) => {
     }
 
     return <th>
-        <div className={c.container}>
+        <div className={styles.container}>
             <div onClick={() => changeSortField(param)}>{text}</div>
-            <div className={c.triangle}>
+            <div className={styles.triangle}>
                 <div onClick={() => changeSortOrder('0')}>▲</div>
                 <div onClick={() => changeSortOrder('1')}>▼</div>
             </div>

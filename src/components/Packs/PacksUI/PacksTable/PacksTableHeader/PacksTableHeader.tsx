@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {packsActions, PacksSortFields, SortOrder} from 'components/Packs/PacksBLL/packs-reducer';
+import {packsActions, type PacksSortFields, type SortOrder} from 'components/Packs/PacksBLL/packs-reducer';
 import styles from 'common/styles/TableHeader.module.css';
 
 type Props = {

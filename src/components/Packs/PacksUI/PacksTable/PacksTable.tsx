@@ -2,7 +2,7 @@ import {useCallback, useEffect} from 'react'
 import {PacksList} from './PacksList/PacksList'
 import {getPacks, packsActions} from 'components/Packs/PacksBLL/packs-reducer'
 import {useDispatch} from 'react-redux'
-import t from 'common/styles/Table.module.css'
+import styles from 'common/styles/Table.module.css'
 import {
     selectCardPacksTotalCount,
     selectMaxForCards,
@@ -45,15 +45,15 @@ export const PacksTable = () => {
     }, [dispatch, packName, user_id, sortPacks, min, max, pageCount])
 
 
-    return <div className={t.tableContainer}>
-        <table className={t.table}>
+    return <div className={styles.tableContainer}>
+        <table className={styles.table}>
             <thead>
             <tr>
                 <PacksTableHeader text={'Name'} param={'name'}/>
                 <PacksTableHeader text={'Cards'} param={'cardsCount'}/>
                 <PacksTableHeader text={'Updated'} param={'updated'}/>
                 <PacksTableHeader text={'Creator'} param={'user_name'}/>
-                <th className={t.actions}>
+                <th className={styles.actions}>
                     Actions
                 </th>
             </tr>
@@ -61,7 +61,7 @@ export const PacksTable = () => {
             <tbody>
             <PacksList cardPacks={packs}/>
             <tr>
-                <td colSpan={5} className={t.pagination}>
+                <td colSpan={5} className={styles.pagination}>
                     <div>
                         <Paginator onChangeSetAmountOfItems={onChangeSetAmountOfPacks}
                                    onPageChanged={onPageChanged}

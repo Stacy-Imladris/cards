@@ -3,7 +3,7 @@ import {instance} from '../../../api/instance';
 
 export const profileAPI = {
     me() {
-        return instance.post<any, AxiosResponse<ResponseType>, {}>('auth/me', {})
+        return instance.post<any, AxiosResponse<UserType>, {}>('auth/me', {})
     },
     update(name: string, avatar: string) {
         return instance.put<any, AxiosResponse<ResponseUpdateType>, {name: string, avatar?: string}>('auth/me', {name})
@@ -15,8 +15,6 @@ export type LoginType = {
     email: string,
     password: string
 }
-
-type ResponseType = UserType
 
 type ResponseUpdateType = {
     updatedUser: UserType

@@ -1,8 +1,4 @@
-import {
-    packsActions,
-    PacksInitialState,
-    packsReducer,
-} from './packs-reducer';
+import {packsActions, type PacksInitialState, packsReducer} from './packs-reducer';
 import {PackType} from '../PacksAPI/packs-api';
 
 let startState: PacksInitialState

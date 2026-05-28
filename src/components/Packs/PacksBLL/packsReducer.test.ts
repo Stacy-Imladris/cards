@@ -1,5 +1,5 @@
 import {packsActions, type PacksInitialState, packsReducer} from './packs-reducer';
-import {PackType} from '../PacksAPI/packs-api';
+import type {PackType} from '../PacksAPI/packs-api';
 
 let startState: PacksInitialState
 let data: Date

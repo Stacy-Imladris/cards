@@ -1,5 +1,5 @@
 import {cardsActions} from 'components/Cards/CardsBLL/cards-reducer';
-import {PackType} from 'components/Packs/PacksAPI/packs-api'
+import type {PackType} from 'components/Packs/PacksAPI/packs-api'
 import {PATH} from 'enums/paths';
 import {memo} from 'react'
 import {useDispatch} from 'react-redux';

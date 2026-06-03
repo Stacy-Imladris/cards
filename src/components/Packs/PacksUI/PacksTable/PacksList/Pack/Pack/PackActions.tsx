@@ -4,7 +4,7 @@ import {DeletePackForm} from 'components/Modals/DeletePackForm/DeletePackForm'
 import {EditPackForm} from 'components/Modals/EditPackForm/EditPackForm'
 import {LearnPackForm} from 'components/Modals/LearnPackForm/LearnPackForm'
 import {useDispatch} from 'react-redux'
-import {PackType} from 'components/Packs/PacksAPI/packs-api'
+import type {PackType} from 'components/Packs/PacksAPI/packs-api'
 import {learnCard} from 'store/learnReducer'
 import styles from 'common/styles/Table.module.css'
 

@@ -3,7 +3,9 @@ import {Pack} from './Pack/Pack/Pack'
 import type {PackType} from 'components/Packs/PacksAPI/packs-api';
 
 type Props = {
-    cardPacks: PackType[]
+  cardPacks: PackType[]
 }
 
-export const PacksList = memo(({cardPacks}: Props) => <>{cardPacks.map(pack => <Pack key={pack._id} pack={pack}/>)}</>)
+export const PacksList = memo(({cardPacks}: Props) => (
+    <>{cardPacks.map(pack => <Pack key={pack._id} pack={pack}/>)}</>
+))

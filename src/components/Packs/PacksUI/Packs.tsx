@@ -1,6 +1,6 @@
 import {PacksTable} from './PacksTable/PacksTable'
 import t from 'common/styles/Themes.module.css'
-import c from 'common/styles/Container.module.css'
+import styles from 'common/styles/Container.module.css'
 import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
 import {SearchField} from 'components/Features/SearchField/SearchField';
 import {SuperRadio} from 'common/super-components/c6-SuperRadio/SuperRadio';
@@ -57,26 +57,26 @@ export const Packs = () => {
     }, [])
 
     return (
-        <div className={c.mainContainer}>
+        <div className={styles.mainContainer}>
             <AddPackForm onClickNotOpen={addPackOff} isOpen={isAddingOpen}/>
-            <div className={`${c.container} ${t[theme + '-text']}`}>
-                <div className={c.settings}>
-                    <div className={c.text}>Packs</div>
+            <div className={`${styles.container} ${t[theme + '-text']}`}>
+                <div className={styles.settings}>
+                    <div className={styles.text}>Packs</div>
                     <div><SuperRadio name={'radio'} options={arr} value={valueFromArray}
                                 onChangeOption={onChangeOption}/></div>
                         <div><DoubleRange/></div>
                 </div>
-                <div className={c.performance}>
-                    <div className={c.title}>Packs list</div>
-                    <div className={c.rowElements}>
+                <div className={styles.performance}>
+                    <div className={styles.title}>Packs list</div>
+                    <div className={styles.rowElements}>
                         <SearchField onChangeWithDebounce={onChangeDebounceRequest}
                                      value={packName} wide
                                      placeholder={'Enter search title'}/>
-                        <SuperButton className={c.addItem} onClick={addPackOn}>
+                        <SuperButton className={styles.addItem} onClick={addPackOn}>
                             Add pack
                         </SuperButton>
                     </div>
-                    <div className={c.table}><PacksTable/></div>
+                    <div className={styles.table}><PacksTable/></div>
                 </div>
             </div>
         </div>

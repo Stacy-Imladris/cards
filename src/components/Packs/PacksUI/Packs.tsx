@@ -1,5 +1,5 @@
 import {PacksTable} from './PacksTable/PacksTable'
-import t from 'common/styles/Themes.module.css'
+import extraStyles from 'common/styles/Themes.module.css'
 import styles from 'common/styles/Container.module.css'
 import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
 import {SearchField} from 'components/Features/SearchField/SearchField';
@@ -59,7 +59,7 @@ export const Packs = () => {
     return (
         <div className={styles.mainContainer}>
             <AddPackForm onClickNotOpen={addPackOff} isOpen={isAddingOpen}/>
-            <div className={`${styles.container} ${t[theme + '-text']}`}>
+            <div className={`${styles.container} ${extraStyles[theme + '-text']}`}>
                 <div className={styles.settings}>
                     <div className={styles.text}>Packs</div>
                     <div><SuperRadio name={'radio'} options={arr} value={valueFromArray}

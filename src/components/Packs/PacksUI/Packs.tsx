@@ -5,7 +5,7 @@ import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton';
 import {SearchField} from 'components/Features/SearchField/SearchField';
 import {SuperRadio} from 'common/super-components/c6-SuperRadio/SuperRadio';
 import {useDispatch} from 'react-redux';
-import {packsActions, PacksVariant} from '../PacksBLL/packs-reducer';
+import {packsActions, type PacksVariant} from '../PacksBLL/packs-reducer';
 import {DoubleRange} from 'components/Features/DoubleRange/DoubleRange';
 import {
     selectPackNameForSearch, selectPacksType,

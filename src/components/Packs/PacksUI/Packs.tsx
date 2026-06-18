@@ -57,8 +57,9 @@ export const Packs = () => {
             <div className={`${styles.container} ${extraStyles[theme + '-text']}`}>
                 <div className={styles.settings}>
                     <div className={styles.text}>Packs</div>
-                    <div><SuperRadio name={'radio'} options={arr} value={valueFromArray}
-                                onChangeOption={onChangeOption}/></div>
+                    <div>
+                        <SuperRadio name={'radio'} options={arr} value={valueFromArray} onChangeOption={onChangeOption}/>
+                    </div>
                         <div><DoubleRange/></div>
                 </div>
                 <div className={styles.performance}>
@@ -67,9 +68,7 @@ export const Packs = () => {
                         <SearchField onChangeWithDebounce={onChangeDebounceRequest}
                                      value={packName} wide
                                      placeholder={'Enter search title'}/>
-                        <SuperButton className={styles.addItem} onClick={addPackOn}>
-                            Add pack
-                        </SuperButton>
+                        <SuperButton className={styles.addItem} onClick={addPackOn}>Add pack</SuperButton>
                     </div>
                     <div className={styles.table}><PacksTable/></div>
                 </div>

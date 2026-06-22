@@ -60,7 +60,7 @@ export const Packs = () => {
                     <div>
                         <SuperRadio name={'radio'} options={arr} value={valueFromArray} onChangeOption={onChangeOption}/>
                     </div>
-                        <div><DoubleRange/></div>
+                    <div><DoubleRange/></div>
                 </div>
                 <div className={styles.performance}>
                     <div className={styles.title}>Packs list</div>

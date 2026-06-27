@@ -1,4 +1,4 @@
-import {AxiosResponse} from 'axios'
+import type {AxiosResponse} from 'axios'
 import {instance} from '../../../api/instance';
 
 export const profileAPI = {
@@ -11,11 +11,6 @@ export const profileAPI = {
 }
 
 //types
-export type LoginType = {
-    email: string,
-    password: string
-}
-
 type ResponseUpdateType = {
     updatedUser: UserType
 }

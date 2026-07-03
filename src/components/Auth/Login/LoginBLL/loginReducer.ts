@@ -2,7 +2,7 @@ import {profileActions} from '../../../Profile/ProfileBLL/profile-reducer';
 import {loginAPI, LoginData} from '../LoginAPI/login-api';
 import axios from 'axios';
 import {packsActions} from '../../../Packs/PacksBLL/packs-reducer';
-import {UserType} from '../../../Profile/ProfileAPI/profile-api';
+import {User} from '../../../Profile/ProfileAPI/profile-api';
 import {AppThunk, InferActionTypes} from '../../../../store/store';
 
 export const loginInitialState = {
@@ -57,7 +57,7 @@ export const logout = (): AppThunk => async dispatch => {
         dispatch(loginActions.setLoginError(''))
         dispatch(profileActions.setEditMode(false))
         dispatch(loginActions.setIsLoggedIn(false))
-        dispatch(profileActions.setUserData({} as UserType))
+        dispatch(profileActions.setUserData({} as User))
         dispatch(packsActions.setPacks([]))
         dispatch(packsActions.setTitleForSearch(''))
     } catch (e) {

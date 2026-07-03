@@ -1,11 +1,11 @@
-import {profileAPI, UserType} from '../ProfileAPI/profile-api'
+import {profileAPI, User} from '../ProfileAPI/profile-api'
 import {loginActions} from '../../Auth/Login/LoginBLL/loginReducer';
 import {handleServerNetworkError} from '../../../utils/handleServerNetworkError';
 import {AppThunk, InferActionTypes} from '../../../store/store';
 import {appActions} from '../../../app/appReducer';
 
 const profileInitialState = {
-    user: {} as UserType,
+    user: {} as User,
     editMode: false,
     isFetching: false,
     isInitialized: false,
@@ -26,7 +26,7 @@ export const profileReducer = (state: ProfileStateType = profileInitialState, ac
 export const profileActions = {
     setEditMode: (editMode: boolean) => ({type: 'profile/SET_EDIT_MODE', payload: {editMode}} as const),
     setIsFetching: (isFetching: boolean) => ({type: 'profile/SET_IS_FETCHING', payload: {isFetching}} as const),
-    setUserData: (user: UserType) => ({type: 'profile/SET_USER_DATA', payload: {user}} as const),
+    setUserData: (user: User) => ({type: 'profile/SET_USER_DATA', payload: {user}} as const),
     setIsInitialized: (isInitialized: boolean) => ({type: 'profile/SET_IS_INITIALIZED', payload: {isInitialized}} as const)
 }
 

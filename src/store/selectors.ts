@@ -1,7 +1,7 @@
 import {CardItem} from '../components/Cards/CardsAPI/cards-api'
 import {PackType} from '../components/Packs/PacksAPI/packs-api'
 import type {PacksVariant} from '../components/Packs/PacksBLL/packs-reducer'
-import {UserType} from '../components/Profile/ProfileAPI/profile-api'
+import {User} from '../components/Profile/ProfileAPI/profile-api'
 import {RootState} from './store';
 import type {ThemeType} from './themeReducer'
 
@@ -11,7 +11,7 @@ export const selectIsInitialized = (state: RootState): boolean => state.profile.
 export const selectUserId = (state: RootState): string => state.profile.user._id
 export const selectProfileEditMode = (state: RootState): boolean => state.profile.editMode
 export const selectProfileUserName = (state: RootState): string => state.profile.user.name
-export const selectProfileUser = (state: RootState): UserType => state.profile.user
+export const selectProfileUser = (state: RootState): User => state.profile.user
 export const selectProfileIsFetching = (state: RootState): boolean => state.profile.isFetching
 
 export const selectIsLoggedIn = (state: RootState): boolean => state.login.isLoggedIn

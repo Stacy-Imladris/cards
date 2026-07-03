@@ -3,7 +3,7 @@ import {instance} from '../../../api/instance';
 
 export const profileAPI = {
     me() {
-        return instance.post<any, AxiosResponse<UserType>, {}>('auth/me', {})
+        return instance.post<any, AxiosResponse<User>, {}>('auth/me', {})
     },
     update(name: string, avatar: string) {
         return instance.put<any, AxiosResponse<ResponseUpdate>, {name: string, avatar?: string}>('auth/me', {name})
@@ -12,10 +12,10 @@ export const profileAPI = {
 
 //types
 type ResponseUpdate = {
-    updatedUser: UserType
+    updatedUser: User
 }
 
-export type UserType = {
+export type User = {
     _id: string
     email: string
     name: string

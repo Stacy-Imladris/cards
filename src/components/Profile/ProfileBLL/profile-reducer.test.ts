@@ -1,6 +1,6 @@
-import {profileActions, profileReducer, ProfileStateType} from './profile-reducer'
+import {profileActions, profileReducer, ProfileState} from './profile-reducer'
 
-let state: ProfileStateType
+let state: ProfileState
 
 describe('profile reducer tests', () => {
     beforeEach(() => {

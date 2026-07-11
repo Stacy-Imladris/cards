@@ -1,4 +1,4 @@
-import {profileAPI, User} from '../ProfileAPI/profile-api'
+import {profileAPI, type User} from '../ProfileAPI/profile-api'
 import {loginActions} from '../../Auth/Login/LoginBLL/loginReducer';
 import {handleServerNetworkError} from '../../../utils/handleServerNetworkError';
 import {AppThunk, InferActionTypes} from '../../../store/store';

@@ -1,4 +1,4 @@
-import {profileActions, profileReducer, ProfileState} from './profile-reducer'
+import {profileActions, profileReducer, type ProfileState} from './profile-reducer'
 
 let state: ProfileState
 

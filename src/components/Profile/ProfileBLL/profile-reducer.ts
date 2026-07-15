@@ -30,7 +30,7 @@ export const profileActions = {
     setIsInitialized: (isInitialized: boolean) => ({type: 'profile/SET_IS_INITIALIZED', payload: {isInitialized}} as const)
 }
 
-//thunks:
+//thunks
 export const updateProfile = (name: string, avatar: string): AppThunk => async dispatch => {
     dispatch(profileActions.setIsFetching(true))
     try {

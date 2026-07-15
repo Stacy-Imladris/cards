@@ -1,5 +1,5 @@
 import {useCallback, useState} from 'react'
-import s from 'common/styles/Forms.module.css'
+import styles from 'common/styles/Forms.module.css'
 import t from 'common/styles/Themes.module.css'
 import profile_ava from 'assets/images/profile_ava.png'
 import {SuperInputText} from 'common/super-components/c1-SuperInputText/SuperInputText'
@@ -44,14 +44,14 @@ export const EditProfile = () => {
     }
 
     return (
-        <div className={`${s.container} ${t[theme + '-text']}`}>
+        <div className={`${styles.container} ${t[theme + '-text']}`}>
             <Logo/>
-            <div className={s.preloader}>{isFetching && <Preloader/>}</div>
-            <div className={s.mainText}>Personal Data</div>
-            <div className={s.profile__avatar}><img src={profile_ava} alt="avatar"/></div>
+            <div className={styles.preloader}>{isFetching && <Preloader/>}</div>
+            <div className={styles.mainText}>Personal Data</div>
+            <div className={styles.profile__avatar}><img src={profile_ava} alt="avatar"/></div>
             <div><SuperInputText value={name} onChangeText={changeNameHandle}/></div>
             <div><SuperInputText value={userData.email}/></div>
-            <div className={s.buttons}>
+            <div className={styles.buttons}>
                 <SuperButton onClick={navigateToProfile}>Cancel</SuperButton>
                 <SuperButton onClick={updateData}>Save</SuperButton>
             </div>

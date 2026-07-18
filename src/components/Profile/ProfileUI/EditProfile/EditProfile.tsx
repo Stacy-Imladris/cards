@@ -1,6 +1,6 @@
 import {useCallback, useState} from 'react'
 import styles from 'common/styles/Forms.module.css'
-import t from 'common/styles/Themes.module.css'
+import extraStyles from 'common/styles/Themes.module.css'
 import profile_ava from 'assets/images/profile_ava.png'
 import {SuperInputText} from 'common/super-components/c1-SuperInputText/SuperInputText'
 import {useDispatch} from 'react-redux'
@@ -44,7 +44,7 @@ export const EditProfile = () => {
     }
 
     return (
-        <div className={`${styles.container} ${t[theme + '-text']}`}>
+        <div className={`${styles.container} ${extraStyles[theme + '-text']}`}>
             <Logo/>
             <div className={styles.preloader}>{isFetching && <Preloader/>}</div>
             <div className={styles.mainText}>Personal Data</div>

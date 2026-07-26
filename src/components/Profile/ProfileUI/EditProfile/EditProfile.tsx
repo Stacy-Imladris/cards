@@ -39,9 +39,7 @@ export const EditProfile = () => {
         setName(value)
     }, [])
 
-    if (!editMode) {
-        return <Profile/>
-    }
+    if (!editMode) return <Profile/>
 
     return (
         <div className={`${styles.container} ${extraStyles[theme + '-text']}`}>

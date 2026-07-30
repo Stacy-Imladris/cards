@@ -27,9 +27,7 @@ export const EditProfile = () => {
 
     const dispatch = useDispatch()
 
-    const navigateToProfile = useCallback(() => {
-        dispatch(profileActions.setEditMode(false))
-    }, [dispatch])
+    const navigateToProfile = useCallback(() => dispatch(profileActions.setEditMode(false)), [dispatch])
 
     const updateData = useCallback(() => {
         dispatch(updateProfile(name, 'https//avatar-url.img'))

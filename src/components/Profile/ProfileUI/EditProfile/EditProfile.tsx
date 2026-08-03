@@ -29,9 +29,7 @@ export const EditProfile = () => {
 
     const navigateToProfile = useCallback(() => dispatch(profileActions.setEditMode(false)), [dispatch])
 
-    const updateData = useCallback(() => {
-        dispatch(updateProfile(name, 'https//avatar-url.img'))
-    }, [dispatch, name])
+    const updateData = useCallback(() => dispatch(updateProfile(name, 'https//avatar-url.img')), [dispatch, name])
 
     const changeNameHandle = useCallback((value: string) => setName(value), [])
 

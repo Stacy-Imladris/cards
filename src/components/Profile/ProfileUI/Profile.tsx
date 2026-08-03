@@ -1,5 +1,5 @@
 import {useCallback, useState} from 'react';
-import s from './Profile.module.css'
+import styles from './Profile.module.css'
 import c from 'common/styles/Container.module.css'
 import t from 'common/styles/Themes.module.css'
 import profileAva from 'assets/images/profile_ava.png'
@@ -65,13 +65,13 @@ export const Profile = () => {
             <AddPackForm onClickNotOpen={addPackOff} isOpen={isAddingOpen}/>
             <div className={`${c.container} ${t[theme + '-text']}`}>
                 <div className={c.settings}>
-                    <div className={s.profile}>
-                        <div className={s.profileAvatar}>
+                    <div className={styles.profile}>
+                        <div className={styles.profileAvatar}>
                             <img src={profileAva} alt={'avatar'}/>
                         </div>
                         <div className={c.text}>{name}</div>
-                        <div className={s.profileJob}>Front-end developer</div>
-                        <SuperButton onClick={editProfile} className={s.edit}>
+                        <div className={styles.profileJob}>Front-end developer</div>
+                        <SuperButton onClick={editProfile} className={styles.edit}>
                             Edit profile
                         </SuperButton>
                     </div>

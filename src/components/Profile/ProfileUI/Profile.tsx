@@ -51,9 +51,7 @@ export const Profile = () => {
         setIsAddingOpen(false)
     }
 
-    const addPackOn = () => {
-        setIsAddingOpen(true)
-    }
+    const addPackOn = () => setIsAddingOpen(true)
 
     if (location.pathname === PATH.PROFILE) {
         dispatch(packsActions.setPacksForUser(user_id))

@@ -69,9 +69,7 @@ export const Profile = () => {
                         </div>
                         <div className={c.text}>{name}</div>
                         <div className={styles.profileJob}>Front-end developer</div>
-                        <SuperButton onClick={editProfile} className={styles.edit}>
-                            Edit profile
-                        </SuperButton>
+                        <SuperButton onClick={editProfile} className={styles.edit}>Edit profile</SuperButton>
                     </div>
                     <DoubleRange/>
                 </div>

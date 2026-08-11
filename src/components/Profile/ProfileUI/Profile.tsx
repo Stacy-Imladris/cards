@@ -47,9 +47,7 @@ export const Profile = () => {
         return <EditProfile/>
     }
 
-    const addPackOff = () => {
-        setIsAddingOpen(false)
-    }
+    const addPackOff = () => setIsAddingOpen(false)
 
     const addPackOn = () => setIsAddingOpen(true)
 

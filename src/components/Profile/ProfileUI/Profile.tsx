@@ -43,9 +43,7 @@ export const Profile = () => {
         dispatch(packsActions.setTitleForSearch(title))
     }, [dispatch])
 
-    if (editMode) {
-        return <EditProfile/>
-    }
+    if (editMode) return <EditProfile/>
 
     const addPackOff = () => setIsAddingOpen(false)
 

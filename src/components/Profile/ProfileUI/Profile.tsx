@@ -76,9 +76,7 @@ export const Profile = () => {
                             <SearchField onChangeWithDebounce={onChangeDebounceRequest}
                                          value={packName} wide
                                          placeholder={'Enter pack\'s title for search'}/>
-                            <SuperButton className={c.addPack} onClick={addPackOn}>
-                                Add pack
-                            </SuperButton>
+                            <SuperButton className={c.addPack} onClick={addPackOn}>Add pack</SuperButton>
                         </div>
                         <div className={c.table}><PacksTable/></div>
                     </div>

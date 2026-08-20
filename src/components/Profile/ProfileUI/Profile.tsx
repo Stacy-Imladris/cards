@@ -1,6 +1,6 @@
 import {useCallback, useState} from 'react';
 import styles from './Profile.module.css'
-import c from 'common/styles/Container.module.css'
+import commonStyles from 'common/styles/Container.module.css'
 import t from 'common/styles/Themes.module.css'
 import profileAva from 'assets/images/profile_ava.png'
 import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton'
@@ -53,30 +53,30 @@ export const Profile = () => {
     }
 
     return (
-        <div className={c.mainContainer}>
+        <div className={commonStyles.mainContainer}>
             <AddPackForm onClickNotOpen={addPackOff} isOpen={isAddingOpen}/>
-            <div className={`${c.container} ${t[theme + '-text']}`}>
-                <div className={c.settings}>
+            <div className={`${commonStyles.container} ${t[theme + '-text']}`}>
+                <div className={commonStyles.settings}>
                     <div className={styles.profile}>
                         <div className={styles.profileAvatar}>
                             <img src={profileAva} alt={'avatar'}/>
                         </div>
-                        <div className={c.text}>{name}</div>
+                        <div className={commonStyles.text}>{name}</div>
                         <div className={styles.profileJob}>Front-end developer</div>
                         <SuperButton onClick={editProfile} className={styles.edit}>Edit profile</SuperButton>
                     </div>
                     <DoubleRange/>
                 </div>
-                <div className={c.performance}>
-                    <div className={c.title}>My packs list</div>
+                <div className={commonStyles.performance}>
+                    <div className={commonStyles.title}>My packs list</div>
                     <div>
-                        <div className={c.rowElements}>
+                        <div className={commonStyles.rowElements}>
                             <SearchField onChangeWithDebounce={onChangeDebounceRequest}
                                          value={packName} wide
                                          placeholder={'Enter pack\'s title for search'}/>
-                            <SuperButton className={c.addPack} onClick={addPackOn}>Add pack</SuperButton>
+                            <SuperButton className={commonStyles.addPack} onClick={addPackOn}>Add pack</SuperButton>
                         </div>
-                        <div className={c.table}><PacksTable/></div>
+                        <div className={commonStyles.table}><PacksTable/></div>
                     </div>
                 </div>
             </div>

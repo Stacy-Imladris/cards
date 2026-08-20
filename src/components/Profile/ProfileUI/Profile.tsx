@@ -1,7 +1,7 @@
 import {useCallback, useState} from 'react';
 import styles from './Profile.module.css'
 import commonStyles from 'common/styles/Container.module.css'
-import t from 'common/styles/Themes.module.css'
+import extraStyles from 'common/styles/Themes.module.css'
 import profileAva from 'assets/images/profile_ava.png'
 import {SuperButton} from 'common/super-components/c2-SuperButton/SuperButton'
 import {profileActions} from '../ProfileBLL/profile-reducer'
@@ -55,7 +55,7 @@ export const Profile = () => {
     return (
         <div className={commonStyles.mainContainer}>
             <AddPackForm onClickNotOpen={addPackOff} isOpen={isAddingOpen}/>
-            <div className={`${commonStyles.container} ${t[theme + '-text']}`}>
+            <div className={`${commonStyles.container} ${extraStyles[theme + '-text']}`}>
                 <div className={commonStyles.settings}>
                     <div className={styles.profile}>
                         <div className={styles.profileAvatar}>

@@ -7,5 +7,6 @@ import {useAppSelector} from 'store/store';
 export const LoginNavigate: FC = ({children}) => {
     const isLoggedIn = useAppSelector(selectIsLoggedIn)
     if (!isLoggedIn) return <Navigate to={PATH.LOGIN} />
+
     return <>{children}</>
 }

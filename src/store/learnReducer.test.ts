@@ -1,4 +1,4 @@
-import {learnActions, LearnInitialState, learnReducer} from './learnReducer';
+import {learnActions, type LearnInitialState, learnReducer} from './learnReducer';
 import {CardItem} from '../components/Cards/CardsAPI/cards-api';
 
 let state: LearnInitialState

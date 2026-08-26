@@ -1,5 +1,5 @@
 import {learnActions, type LearnInitialState, learnReducer} from './learnReducer';
-import {CardItem} from '../components/Cards/CardsAPI/cards-api';
+import type {CardItem} from '../components/Cards/CardsAPI/cards-api';
 
 let state: LearnInitialState
 let date: Date

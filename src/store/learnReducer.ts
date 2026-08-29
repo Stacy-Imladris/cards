@@ -1,4 +1,4 @@
-import {AppThunk, InferActionTypes} from './store'
+import type {AppThunk, InferActionTypes} from './store'
 import {cardsAPI, CardItem} from '../components/Cards/CardsAPI/cards-api'
 import {handleServerNetworkError} from '../utils/handleServerNetworkError';
 import {appActions} from '../app/appReducer';

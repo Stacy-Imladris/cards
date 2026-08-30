@@ -58,6 +58,5 @@ export const rate = (grade: number, card_id: string): AppThunk => async (dispatc
     }
 }
 
-//types
 export type LearnInitialState = typeof learnInitialState
 export type LearnActions = InferActionTypes<typeof learnActions>

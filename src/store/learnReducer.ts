@@ -29,8 +29,6 @@ export const learnActions = {
     setGrade: (cardId: string, grade: number) => ({type: 'LEARN/SET_GRADE', payload: {cardId, grade}} as const),
 }
 
-
-//thunks
 export const learnCard = (cardsPack_id: string): AppThunk => async (dispatch, getState) => {
     dispatch(appActions.setAppIsLoading(true))
     try {

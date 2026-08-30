@@ -1,5 +1,5 @@
 import type {AppThunk, InferActionTypes} from './store'
-import {cardsAPI, CardItem} from '../components/Cards/CardsAPI/cards-api'
+import {cardsAPI, type CardItem} from '../components/Cards/CardsAPI/cards-api'
 import {handleServerNetworkError} from '../utils/handleServerNetworkError';
 import {appActions} from '../app/appReducer';
 import {getRandomCard} from '../utils/getRandomCard';

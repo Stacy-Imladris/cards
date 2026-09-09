@@ -1,5 +1,5 @@
 import type {CardItem} from '../components/Cards/CardsAPI/cards-api'
-import {PackType} from '../components/Packs/PacksAPI/packs-api'
+import type {PackType} from '../components/Packs/PacksAPI/packs-api'
 import type {PacksVariant} from '../components/Packs/PacksBLL/packs-reducer'
 import type {User} from '../components/Profile/ProfileAPI/profile-api'
 import type {RootState} from './store';

@@ -1,5 +1,5 @@
 import {applyMiddleware, combineReducers, createStore} from 'redux';
-import thunk, {ThunkAction} from 'redux-thunk';
+import thunk, {type ThunkAction} from 'redux-thunk';
 import {themeReducer} from './themeReducer';
 import {TypedUseSelectorHook, useSelector} from 'react-redux';
 import {ProfileActions, profileReducer} from '../components/Profile/ProfileBLL/profile-reducer'

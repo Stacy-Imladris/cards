@@ -2,7 +2,7 @@ import {applyMiddleware, combineReducers, createStore} from 'redux';
 import thunk, {type ThunkAction} from 'redux-thunk';
 import {themeReducer} from './themeReducer';
 import {type TypedUseSelectorHook, useSelector} from 'react-redux';
-import {ProfileActions, profileReducer} from '../components/Profile/ProfileBLL/profile-reducer'
+import {type ProfileActions, profileReducer} from '../components/Profile/ProfileBLL/profile-reducer'
 import {RegistrationActions, registrationReducer
 } from '../components/Auth/Registration/RegistrationBLL/registration-reducer';
 import {LoginActions, loginReducer} from '../components/Auth/Login/LoginBLL/loginReducer';

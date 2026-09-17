@@ -5,7 +5,7 @@ import {type TypedUseSelectorHook, useSelector} from 'react-redux';
 import {type ProfileActions, profileReducer} from '../components/Profile/ProfileBLL/profile-reducer'
 import {RegistrationActions, registrationReducer
 } from '../components/Auth/Registration/RegistrationBLL/registration-reducer';
-import {LoginActions, loginReducer} from '../components/Auth/Login/LoginBLL/loginReducer';
+import {type LoginActions, loginReducer} from '../components/Auth/Login/LoginBLL/loginReducer';
 import {RecoveryActions, recoveryReducer
 } from '../components/Auth/Recovery/RecoveryBLL/recovery-reducer';
 import {NewPasswordActionTypes, newPasswordReducer

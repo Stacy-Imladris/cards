@@ -1,4 +1,4 @@
-import {themeActions, ThemeInitialState, themeReducer} from './themeReducer';
+import {themeActions, type ThemeInitialState, themeReducer} from './themeReducer';
 
 let themeStartState: ThemeInitialState
 

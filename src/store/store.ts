@@ -8,7 +8,7 @@ import {RegistrationActions, registrationReducer
 import {type LoginActions, loginReducer} from '../components/Auth/Login/LoginBLL/loginReducer';
 import {RecoveryActions, recoveryReducer
 } from '../components/Auth/Recovery/RecoveryBLL/recovery-reducer';
-import {NewPasswordActionTypes, newPasswordReducer
+import {type NewPasswordActionTypes, newPasswordReducer
 } from '../components/Auth/NewPassword/NewPasswordBLL/new-password-reducer';
 import {loadValue} from '../utils/localstorage';
 import {PacksActionTypes, packsReducer} from '../components/Packs/PacksBLL/packs-reducer';

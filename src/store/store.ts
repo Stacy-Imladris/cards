@@ -6,7 +6,7 @@ import {type ProfileActions, profileReducer} from '../components/Profile/Profile
 import {RegistrationActions, registrationReducer
 } from '../components/Auth/Registration/RegistrationBLL/registration-reducer';
 import {type LoginActions, loginReducer} from '../components/Auth/Login/LoginBLL/loginReducer';
-import {RecoveryActions, recoveryReducer
+import {type RecoveryActions, recoveryReducer
 } from '../components/Auth/Recovery/RecoveryBLL/recovery-reducer';
 import {type NewPasswordActionTypes, newPasswordReducer
 } from '../components/Auth/NewPassword/NewPasswordBLL/new-password-reducer';

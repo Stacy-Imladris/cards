@@ -11,7 +11,7 @@ import {type RecoveryActions, recoveryReducer
 import {type NewPasswordActionTypes, newPasswordReducer
 } from '../components/Auth/NewPassword/NewPasswordBLL/new-password-reducer';
 import {loadValue} from '../utils/localstorage';
-import {PacksActionTypes, packsReducer} from '../components/Packs/PacksBLL/packs-reducer';
+import {type PacksActionTypes, packsReducer} from '../components/Packs/PacksBLL/packs-reducer';
 import {CardsActions, cardsReducer} from '../components/Cards/CardsBLL/cards-reducer';
 import {AppActions, appReducer} from '../app/appReducer';
 import {LearnActions, learnReducer} from './learnReducer';

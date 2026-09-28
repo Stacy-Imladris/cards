@@ -14,7 +14,7 @@ import {loadValue} from '../utils/localstorage';
 import {type PacksActionTypes, packsReducer} from '../components/Packs/PacksBLL/packs-reducer';
 import {type CardsActions, cardsReducer} from '../components/Cards/CardsBLL/cards-reducer';
 import {type AppActions, appReducer} from '../app/appReducer';
-import {LearnActions, learnReducer} from './learnReducer';
+import {type LearnActions, learnReducer} from './learnReducer';
 
 const rootReducer = combineReducers({
     theme: themeReducer,

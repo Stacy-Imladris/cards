@@ -3,13 +3,10 @@ import thunk, {type ThunkAction} from 'redux-thunk';
 import {themeReducer} from './themeReducer';
 import {type TypedUseSelectorHook, useSelector} from 'react-redux';
 import {type ProfileActions, profileReducer} from '../components/Profile/ProfileBLL/profile-reducer'
-import {type RegistrationActions, registrationReducer
-} from '../components/Auth/Registration/RegistrationBLL/registration-reducer';
+import {type RegistrationActions, registrationReducer} from '../components/Auth/Registration/RegistrationBLL/registration-reducer';
 import {type LoginActions, loginReducer} from '../components/Auth/Login/LoginBLL/loginReducer';
-import {type RecoveryActions, recoveryReducer
-} from '../components/Auth/Recovery/RecoveryBLL/recovery-reducer';
-import {type NewPasswordActionTypes, newPasswordReducer
-} from '../components/Auth/NewPassword/NewPasswordBLL/new-password-reducer';
+import {type RecoveryActions, recoveryReducer} from '../components/Auth/Recovery/RecoveryBLL/recovery-reducer';
+import {type NewPasswordActionTypes, newPasswordReducer} from '../components/Auth/NewPassword/NewPasswordBLL/new-password-reducer';
 import {loadValue} from '../utils/localstorage';
 import {type PacksActionTypes, packsReducer} from '../components/Packs/PacksBLL/packs-reducer';
 import {type CardsActions, cardsReducer} from '../components/Cards/CardsBLL/cards-reducer';

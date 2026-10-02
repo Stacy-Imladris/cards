@@ -1,4 +1,4 @@
-import {InferActionTypes} from './store';
+import type {InferActionTypes} from './store';
 
 const themeInitialState = {
     theme: '☀' as ThemeType

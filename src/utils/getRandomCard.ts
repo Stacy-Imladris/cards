@@ -1,4 +1,4 @@
-import {CardItem} from '../components/Cards/CardsAPI/cards-api'
+import type {CardItem} from '../components/Cards/CardsAPI/cards-api'
 import {getRandom} from './getRandom';
 
 export const getRandomCard = (cards: CardItem[]) => {

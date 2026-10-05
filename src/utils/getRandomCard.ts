@@ -13,11 +13,6 @@ export const getRandomCard = (cards: CardItem[]) => {
         }
         return false
     })
-    /*probabilities.some((s, i) => {
-        res += s
-        if (res >= randomNumber) ind = i
-        return res >= randomNumber
-    })*/
     return cards[ind]
 }
 

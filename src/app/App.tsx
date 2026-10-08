@@ -1,6 +1,6 @@
 import {useEffect} from 'react'
 import {Header} from '../components/Header/Header'
-import t from '../common/styles/Themes.module.css'
+import extraStyles from '../common/styles/Themes.module.css'
 import styles from './App.module.css'
 import {AllRoutes} from './AllRoutes'
 import {useDispatch} from 'react-redux'
@@ -29,7 +29,7 @@ export const App = () => {
     if (!isInitialized) return <div className={styles.appProgress}><Preloader/></div>
 
     return (
-        <div className={`${styles.main} ${t[theme]}`}>
+        <div className={`${styles.main} ${extraStyles[theme]}`}>
             <Header/>
             <AppSnackbar/>
             {isLoading && <div className={styles.appProgress}><Preloader/></div>}

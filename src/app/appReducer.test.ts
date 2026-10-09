@@ -1,4 +1,4 @@
-import {appActions, AppInitialState, appReducer} from './appReducer';
+import {appActions, type AppInitialState, appReducer} from './appReducer';
 
 let state: AppInitialState
 

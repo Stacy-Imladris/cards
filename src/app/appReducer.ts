@@ -1,12 +1,12 @@
 import type {InferActionTypes} from 'store/store';
 
-const appInitialState = {
+const initialState = {
     status: '',
     error: '',
     isLoading: false,
 }
 
-export const appReducer = (state: AppInitialState = appInitialState, action: AppActions): AppInitialState => {
+export const appReducer = (state: AppInitialState = initialState, action: AppActions): AppInitialState => {
     switch (action.type) {
         case 'APP/SET_STATUS':
         case 'APP/SET_ERROR':
@@ -24,5 +24,5 @@ export const appActions = {
 }
 
 //types
-export type AppInitialState = typeof appInitialState
+export type AppInitialState = typeof initialState
 export type AppActions = InferActionTypes<typeof appActions>

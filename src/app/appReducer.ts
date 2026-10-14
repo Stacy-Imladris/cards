@@ -23,6 +23,5 @@ export const appActions = {
     setAppIsLoading: (isLoading: boolean) => ({type: 'APP/SET_IS_LOADING', payload: {isLoading}} as const),
 }
 
-//types
 export type AppInitialState = typeof initialState
 export type AppActions = InferActionTypes<typeof appActions>

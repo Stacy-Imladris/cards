@@ -1,6 +1,7 @@
 @keyframes spin {
     to { transform: rotate(1turn); }
 }
+
 .progress {
     position: relative;
     display: inline-block;
@@ -12,6 +13,7 @@
     overflow: hidden;
     animation: spin 1s infinite steps(50);
 }
+
 .progress:before,
 .progress:after,
 .progress > div:before,
@@ -27,17 +29,21 @@
     box-shadow: 0 3.5em #b9eaba;
     transform-origin: 50% 2.5em;
 }
+
 .progress:before {
     background: #077517;
 }
+
 .progress:after {
     transform: rotate(-45deg);
     background: #1b8f20;
 }
+
 .progress > div:before {
     transform: rotate(-90deg);
     background: #4CAF50;
 }
+
 .progress > div:after {
     transform: rotate(-135deg);
     background: #85da88;

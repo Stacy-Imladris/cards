@@ -18,6 +18,10 @@ export const Scroll = () => {
   }, []);
 
   return (
-      <>{show && <SuperButton className={styles.scroll} onClick={scrollFunction}>⃤</SuperButton>}</>
+      <>
+        {show && (
+          <SuperButton className={styles.scroll} onClick={scrollFunction}>⃤</SuperButton>
+        )}
+      </>
   )
 }

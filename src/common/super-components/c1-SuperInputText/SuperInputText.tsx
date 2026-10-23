@@ -8,13 +8,10 @@ import {
 } from 'react'
 import styles from './SuperInputText.module.css'
 
-// тип пропсов обычного инпута
 type DefaultInputProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
-// здесь мы говорим что у нашего инпута будут такие же пропсы как у обычного инпута
-// (чтоб не писать value: string, onChange: ...; они уже все описаны в DefaultInputProps)
-type Props = Omit<DefaultInputProps, 'type'> & { // и + ещё пропсы которых нет в стандартном инпуте
-    eye?: boolean //указывает, должен ли быть глаз возле инпута, переключающий типы text/password
+type Props = Omit<DefaultInputProps, 'type'> & {
+    eye?: boolean
     onChangeText?: (value: string) => void
     onEnter?: () => void
     error?: string

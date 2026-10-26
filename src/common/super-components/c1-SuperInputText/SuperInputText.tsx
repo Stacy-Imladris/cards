@@ -1,7 +1,7 @@
 import {
     type ChangeEvent,
     type DetailedHTMLProps,
-    InputHTMLAttributes,
+    type InputHTMLAttributes,
     KeyboardEvent,
     memo,
     useState

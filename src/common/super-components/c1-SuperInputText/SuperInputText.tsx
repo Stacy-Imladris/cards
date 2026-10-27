@@ -2,7 +2,7 @@ import {
     type ChangeEvent,
     type DetailedHTMLProps,
     type InputHTMLAttributes,
-    KeyboardEvent,
+    type KeyboardEvent,
     memo,
     useState
 } from 'react'

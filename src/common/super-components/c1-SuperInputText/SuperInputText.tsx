@@ -20,13 +20,11 @@ type Props = Omit<DefaultInputProps, 'type'> & {
 
 export const SuperInputText = memo((
     {
-        //type, // достаём и игнорируем чтоб нельзя было задать другой тип инпута
         onChange, onChangeText,
         onKeyPress, onEnter,
         error,
         className, spanClassName, eye = false,
-
-        ...restProps// все остальные пропсы попадут в объект restProps
+        ...restProps
     }: Props
 ) => {
     const [typeText, setTypeText] = useState(!eye)

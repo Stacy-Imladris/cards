@@ -39,9 +39,7 @@ export const SuperInputText = memo((
         e.key === 'Enter' && onEnter?.()
     }
 
-    const switchInputType = () => {
-        setTypeText(!typeText)
-    }
+    const switchInputType = () => setTypeText(!typeText)
 
     const finalSpanClassName = `${styles.error} ${spanClassName ? spanClassName : ''}`
     const finalInputClassName = `${styles.errorInput} ${className ? className : ''}`

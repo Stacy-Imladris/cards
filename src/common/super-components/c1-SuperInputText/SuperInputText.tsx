@@ -41,9 +41,6 @@ export const SuperInputText = memo((
 
     const switchInputType = () => setTypeText(!typeText)
 
-    const finalSpanClassName = `${styles.error} ${spanClassName ? spanClassName : ''}`
-    const finalInputClassName = `${styles.errorInput} ${className ? className : ''}`
-
     return (
         <>
             <div className={styles.superInput}>
@@ -53,7 +50,7 @@ export const SuperInputText = memo((
                         type={typeText ? 'text' : 'password'}
                         onChange={onChangeCallback}
                         onKeyPress={onKeyPressCallback}
-                        className={finalInputClassName}
+                        className={`${styles.errorInput} ${className ? className : ''}`}
 
                         {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
                     />
@@ -62,7 +59,7 @@ export const SuperInputText = memo((
                     {eye && <span onClick={switchInputType}>👁</span>}
                 </div>
             </div>
-            <div className={finalSpanClassName}>
+            <div className={`${styles.error} ${spanClassName ? spanClassName : ''}`}>
                 {error && <span>{error}</span>}
             </div>
         </>

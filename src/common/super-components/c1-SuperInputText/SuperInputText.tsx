@@ -51,8 +51,7 @@ export const SuperInputText = memo((
                         onChange={onChangeCallback}
                         onKeyPress={onKeyPressCallback}
                         className={`${styles.errorInput} ${className ? className : ''}`}
-
-                        {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
+                        {...restProps}
                     />
                 </div>
                 <div className={styles.eye}>

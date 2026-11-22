@@ -1,7 +1,6 @@
 import {ButtonHTMLAttributes, DetailedHTMLProps, memo} from 'react'
 import styles from './SuperButton.module.css'
 
-// тип пропсов обычной кнопки, children в котором храниться название кнопки там уже описан
 type DefaultButtonProps = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
 
 type Props = DefaultButtonProps & {

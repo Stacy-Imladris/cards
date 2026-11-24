@@ -11,9 +11,6 @@ export const SuperButton = memo(({red, className, ...restProps}: Props) => {
     const finalClassName = `${red ? styles.red : styles.default} ${className}`
 
     return (
-        <button
-            className={finalClassName}
-            {...restProps} // отдаём кнопке остальные пропсы если они есть (children там внутри)
-        />
+        <button className={finalClassName} {...restProps} />
     )
 })
